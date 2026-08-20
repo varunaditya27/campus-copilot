@@ -1,54 +1,56 @@
 # Library and Learning Commons
 
-> **Demo corpus document:** Opening hours, services, and facilities are illustrative workshop data.
-
 ## Overview
 
-The campus library is a central academic resource for students, faculty, and project teams. It supports individual study, reference work, access to books and digital resources, and collaborative learning.
+The Central Library is the university's primary academic resource, serving students, faculty, and project teams across all five engineering departments. Beyond its collection of books and periodicals, the library functions as the campus's main quiet-study and reference destination, and hosts several collaborative spaces used for group project work and peer learning.
 
-## Demonstration Opening Hours
+The library is managed by the Chief Librarian's office, which also oversees digital subscriptions, interlibrary loan requests, and the reading-room extension during examinations.
 
-For this corpus, the library operates:
+## Hours of Operation
 
-- Monday to Friday: 8:00 AM – 8:00 PM
-- Saturday: 9:00 AM – 5:00 PM
-- Sunday: Closed
+| Day | Hours |
+| --- | --- |
+| Monday – Friday | 8:00 a.m. – 8:00 p.m. |
+| Saturday | 9:00 a.m. – 5:00 p.m. |
+| Sunday and public holidays | Closed |
 
-Students should treat these times as demonstration data. A production assistant should read current opening hours from a structured, verified source because library schedules can change during examinations, holidays, and institutional events.
+During the two weeks preceding end-semester examinations, the ground-floor reading room extends its hours to 11:00 p.m. on weekdays and stays open until 9:00 p.m. on Saturdays. A separate 24-hour reading room on the second floor remains open through the final week of exams for students who prefer to study overnight; access requires swiping a valid student ID at the turnstile.
 
 ## Facilities
 
-The library includes several types of learning spaces:
-
 ### Quiet Study Area
 
-Designed for individual study, reading, and focused work. Students are expected to keep conversations and device audio to a minimum.
+The first floor is reserved for individual study and reading. Conversation, phone calls, and device audio should be kept outside this area — students needing to take a call are asked to step into the corridor or the collaborative area.
 
 ### Collaborative Study Area
 
-Suitable for group discussions, project meetings, peer learning, and collaborative problem solving. Students should move longer discussions to designated collaborative areas rather than disrupting quiet zones.
+The second floor includes eight enclosed discussion rooms (seating four to eight) and an open collaborative zone, intended for group project meetings, peer study sessions, and rehearsals for presentations. Discussion rooms can be booked in two-hour blocks at the circulation desk or through the library's booking terminal, up to three days in advance.
 
 ### Reference Area
 
-Provides access to reference material and subject-specific resources. Some reference material may be restricted to in-library use.
+The reference section holds standard textbooks, past semester question papers, and subject encyclopedias that do not circulate outside the building. A librarian is on duty at the reference desk during all opening hours to help locate material or navigate the catalogue.
 
 ### Digital Access
 
-A modern academic library may provide access to institutional subscriptions, online journals, databases, repositories, and digital learning resources. Access procedures can vary by service and may require institutional authentication.
+Students and faculty have institutional access to IEEE Xplore, ACM Digital Library, ScienceDirect, and SpringerLink, along with the university's own repository of past student theses and project reports. Off-campus access requires logging in through the library portal with a student or faculty account; access to a given database can be temporarily suspended if usage patterns suggest credential sharing.
 
 ## Borrowing and Returns
 
-Students should keep borrowed material within the permitted loan period and return or renew items before the due date where renewal is available. Lost or damaged material may result in replacement or recovery procedures.
+Undergraduate students may borrow up to five books at a time for a loan period of fourteen days. Loans can be renewed twice online through the library portal, provided no other student has placed a hold on the title. Postgraduate students and faculty have extended borrowing limits and loan periods, available on request from the circulation desk.
 
-The assistant should never invent a fine amount, loan duration, or renewal limit if the corresponding structured policy is not present in the corpus.
+A fine of ₹5 per day applies to items returned after the due date, capped at ₹200 per item. Borrowing privileges are suspended once a student's outstanding fines exceed ₹500 or three items remain unreturned, until the balance is cleared. A lost or significantly damaged item is charged at one and a half times its current list price plus a ₹100 processing fee.
+
+## Library Card and Access
+
+A student's institutional ID card doubles as their library card and is required for borrowing, entry to the 24-hour reading room, and reserving discussion rooms. A lost card should be reported to the circulation desk immediately so borrowing can be suspended on the account; a replacement card can be issued for a ₹150 fee through the Student Services Desk.
 
 ## Good Library Practice
 
 Students are expected to:
 
-- maintain a quiet environment in designated zones;
-- keep food and drinks within permitted areas;
-- handle books and equipment carefully;
-- return borrowed material on time;
-- respect other students' study spaces;
-- follow staff instructions during high-demand periods.
+- keep the quiet study floor free of conversation and device noise;
+- limit food and drink to the ground-floor common area;
+- handle books, journals, and shared equipment carefully;
+- return or renew borrowed material before the due date;
+- vacate booked discussion rooms promptly at the end of their slot so the next group isn't kept waiting;
+- follow staff instructions during high-demand periods such as exam week.

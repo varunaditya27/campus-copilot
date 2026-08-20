@@ -1,53 +1,35 @@
 # Campus Shuttle Routes
 
-> **Demo corpus document:** Route names, stops, and timings below are fictionalized workshop data, distinct from the general transport policy in [`dining-and-transport.md`](dining-and-transport.md).
+## Overview
 
-## Purpose
+The campus operates three internal shuttle routes connecting the main gate, academic buildings, hostel blocks, and the Sports Complex. Shuttles are operated by the Transport Office under the Administration and are provided free of charge to all enrolled students, faculty, and staff carrying a valid institutional ID.
 
-This document gives the RAG system concrete, structured-feeling route data to demonstrate that even "structured" looking information can live in the static knowledge corpus when it changes slowly — while genuinely live data (is the shuttle running right now, is it delayed) still belongs in a real-time or structured system, not here.
+## Route A — City Gate Line
 
-## Shuttle Routes
+Route A connects the main city-side entrance to the academic core, running Main Gate to Central Library to Main Academic Block to Innovation and Computing Centre to Hostel Blocks. This is the busiest route on campus, primarily used by day-scholars and staff arriving from off campus.
 
-### Route A — City Gate Line
+The route runs approximately every 20 minutes during peak hours, 7:30 a.m. to 9:30 a.m. and 4:30 p.m. to 6:30 p.m., and every 40 minutes during off-peak daytime hours between 9:30 a.m. and 4:30 p.m. Service on Route A begins at 7:00 a.m. and continues until 8:00 p.m. on weekdays, with a reduced Saturday schedule ending at 3:00 p.m.
 
-Connects the main city-side entrance to the academic core.
+## Route B — Hostel Loop
 
-```text
-Main Gate → Central Library → Main Academic Block → Innovation and Computing Centre → Hostel Blocks
-```
+Route B is a short internal loop primarily serving hostel residents, running Ashoka Block to Nilgiri Block to Kaveri Block to Vindhya Block to Student Activity Centre to Main Academic Block. This route is the most frequent on campus given its short circuit and high resident demand, particularly around meal times and the start of morning classes.
 
-Runs approximately every 20 minutes during peak hours (7:30 AM – 9:30 AM and 4:30 PM – 6:30 PM), and every 40 minutes during off-peak daytime hours.
+The route runs approximately every 15 minutes between 7:00 a.m. and 10:00 p.m. daily, including weekends, since hostel residents rely on it regardless of the academic schedule.
 
-### Route B — Hostel Loop
+## Route C — Sports and Recreation Line
 
-A short internal loop primarily serving hostel residents.
+Route C connects academic areas to the Sports Complex, running Main Academic Block to Innovation and Computing Centre to Sports Complex. This route is primarily useful around practice sessions, team try-outs, and tournament days, and sees lighter ridership outside those windows.
 
-```text
-Ashoka Block → Nilgiri Block → Kaveri Block → Vindhya Block → Student Activity Centre → Main Academic Block
-```
-
-Runs approximately every 15 minutes between 7:00 AM and 10:00 PM.
-
-### Route C — Sports and Recreation Line
-
-Connects academic areas to the Sports Complex, primarily useful around practice and tournament timings.
-
-```text
-Main Academic Block → Innovation and Computing Centre → Sports Complex
-```
-
-Runs approximately every 30 minutes between 4:00 PM and 8:00 PM on weekdays, with an extended schedule on weekend tournament days.
+The route runs approximately every 30 minutes between 4:00 p.m. and 8:00 p.m. on weekdays. On weekend tournament days, the Transport Office extends Route C service from 8:00 a.m. through 8:00 p.m. and increases frequency to every 15 minutes during the two hours before a scheduled match, based on the fixture list published by the Sports Complex.
 
 ## Boarding Notes
 
-- Shuttles operate on a first-come, first-served basis; there is no seat reservation system.
-- Priority boarding is given to students with mobility-related accessibility needs.
-- Shuttle service is suspended during declared campus holidays and severe weather advisories.
+Shuttles operate on a first-come, first-served basis and carry no seat reservation system. Priority boarding is given to students with mobility-related accessibility needs, and drivers are instructed to hold boarding briefly for a student visibly approaching with a mobility aid. Shuttle service is suspended during declared campus holidays and severe weather advisories, with an announcement posted at each stop and circulated by the Transport Office through the campus notice system.
 
 ## Parking
 
-Designated parking areas exist near the Main Gate, the Sports Complex, and select academic buildings for students and staff with registered vehicles. Unregistered vehicles or those parked in restricted zones (fire lanes, accessibility spaces, reserved faculty areas) may be subject to campus access enforcement. See [`dining-and-transport.md`](dining-and-transport.md) for general parking conduct expectations.
+Designated parking areas exist near the Main Gate, the Sports Complex, and select academic buildings for students and staff with a registered vehicle. Vehicle registration is handled by the Security Office at the start of each academic year and requires a copy of the vehicle's registration certificate and the owner's driving license. Unregistered vehicles, or vehicles parked in restricted zones such as fire lanes, accessibility spaces, or reserved faculty areas, are subject to campus access enforcement, which can include a fine or, for repeated violations, suspension of on-campus parking privileges for the remainder of the semester.
 
-## What This Document Does Not Answer
+## Route Changes and Feedback
 
-This document describes the *designed* route network, not live shuttle location or delay status. A question like "is Route A running late right now?" requires a live tracking system, not this markdown file — Campus Copilot should say so rather than guessing based on the published schedule.
+The Transport Office reviews route timings and stop patterns each semester based on ridership and class-schedule changes, and posts any revisions at shuttle stops and the Student Activity Centre notice board at least a week before they take effect. Students can submit feedback or report a missed or delayed shuttle to the Transport Office directly, whose counter is located next to the Security Office near the Main Gate.

@@ -1,48 +1,41 @@
 # International Students and Exchange Programs
 
-> **Demo corpus document:** Partner names, program terms, and processes below are fictionalized workshop data.
-
 ## International Student Admissions
 
-The demonstration campus admits a small cohort of international students each year through a separate admission track coordinated by the International Relations Office, working alongside the Registrar's Office (see [`administration-and-governance.md`](../administration/administration-and-governance.md)). Visa, documentation, and orientation support for incoming international students is handled by this office rather than the general admissions process described in [`admissions-and-fee-structure.md`](../administration/admissions-and-fee-structure.md).
+The university admits a small cohort of international students each year through a separate admission track coordinated by the International Relations Office, working alongside the Registrar's Office. Applications from international students are evaluated on prior academic record, standardized test scores where applicable, and a statement of purpose, and follow a different timeline from the general undergraduate admissions cycle, typically opening in November and closing in March for the following academic year.
+
+Visa sponsorship, documentation support, housing placement, and orientation for incoming international students are handled entirely by the International Relations Office, located on the ground floor of the Main Academic Block. Students admitted through this track receive an offer letter and a supporting document package needed for their student visa application roughly six to eight weeks before the semester begins.
 
 ## Semester Exchange Programs
 
-Students may apply for a semester-long exchange at a partner institution, subject to:
+Students in good academic standing may apply for a semester-long exchange at one of the university's partner institutions abroad. Eligibility for a given exchange cycle depends on:
 
-- minimum CGPA and standing requirements set by the exchange agreement;
-- availability of seats at the partner institution for that term;
-- course-equivalency approval, so that credits earned abroad transfer back correctly;
-- application deadlines that are typically well ahead of the exchange term itself (often the semester before).
+- a minimum CGPA, generally 7.0 or higher, though the exact threshold is set individually by each partner agreement;
+- availability of seats allocated to the university for that term, which typically ranges from one to four seats per partner depending on the agreement;
+- course-equivalency approval from the home department, confirming that credits earned abroad will transfer back correctly toward the degree;
+- submission ahead of the application deadline, which usually falls a full semester before the exchange term itself — for a fall-semester exchange abroad, the application typically closes in the preceding February.
 
-The exchange process generally looks like:
+The general process for a semester exchange runs as follows:
 
-```text
-Check eligibility and partner options
-      ↓
-Submit application + course-equivalency plan
-      ↓
-Department and International Relations Office approval
-      ↓
-Visa and travel arrangements (student-managed, with institutional support letters)
-      ↓
-Exchange term abroad
-      ↓
-Transcript transfer and credit reconciliation
-```
+1. Check current eligibility and the list of partner institutions with open seats for the relevant term, published each semester by the International Relations Office.
+2. Submit an application along with a proposed course-equivalency plan, prepared with the home department's academic advisor.
+3. Obtain approval from both the home department and the International Relations Office.
+4. Arrange a student visa and travel independently, with support letters and documentation provided by the university.
+5. Complete the exchange term at the partner institution.
+6. Submit the official transcript from the partner institution to the Registrar's Office for credit reconciliation, typically completed within four weeks of the transcript's arrival.
 
-Campus Copilot can explain this general process but should not claim a specific partner institution, seat count, or deadline unless that information is present in the corpus — exchange agreements change, and stating one confidently when it may have lapsed could mislead a student's academic planning.
+Because partner agreements, seat counts, and deadlines are renewed and occasionally renegotiated, students planning an exchange should confirm current details directly with the International Relations Office well before building an academic plan around a specific partner institution.
 
 ## Short-Term International Programs
 
-Beyond full-semester exchange, the institution occasionally runs short-term international programs: summer research placements, study tours, and joint workshops with partner universities. These are typically announced separately from the standard exchange cycle and have their own, shorter application windows.
+Beyond full-semester exchange, the university periodically runs short-term international programs, including summer research placements at partner laboratories, faculty-led study tours, and joint workshops held with partner universities. These programs are announced separately from the standard exchange cycle, usually with two to three months' notice, and have their own shorter application windows and eligibility criteria, which vary program to program.
 
 ## Support for Incoming International Students
 
-Incoming international students typically receive additional orientation covering visa compliance, local registration requirements, housing (see [`hostel-and-accommodation.md`](../campus/hostel-and-accommodation.md)), and cultural integration support, coordinated by the International Relations Office alongside the standard Orientation Week described in [`fests-and-cultural-events.md`](fests-and-cultural-events.md).
+Incoming international students receive an extended orientation beyond the standard Orientation Week held for all new students. This additional orientation, run by the International Relations Office, covers visa and local registration compliance, housing placement in the hostel blocks, opening a local bank account, obtaining a local SIM card, and cultural integration support, including a peer-buddy pairing with a current student from the same department.
 
-## What Campus Copilot Should Not Do Here
+The International Relations Office maintains office hours on weekdays from 9:00 a.m. to 5:00 p.m. and is the first point of contact for any visa, immigration, or local-compliance question; because immigration rules are set by government authorities and change independently of university policy, students should always confirm current visa and immigration requirements with the International Relations Office or the relevant government authority rather than relying on general guidance.
 
-- State current visa requirements or immigration rules — these are legally sensitive, jurisdiction-specific, and change independently of this corpus. Students should always be directed to the International Relations Office or official government sources for anything visa-related.
-- Confirm a specific student's exchange application status.
-- Guarantee that credits from a specific foreign course will transfer — this always requires department-level equivalency approval.
+## Limits on What This Office Can Confirm
+
+The International Relations Office can advise on process and eligibility but cannot guarantee that credits from a specific foreign course will transfer without department-level equivalency approval, cannot confirm a specific student's application status over general inquiry channels, and cannot state definitive visa or immigration rules, since these are set externally and subject to change.

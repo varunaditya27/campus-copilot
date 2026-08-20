@@ -1,58 +1,65 @@
 # Placement Cell and Industry Relations
 
-> **Demo corpus document:** Processes, categories, and statistics below are fictionalized workshop data and do not represent any real recruiter or outcome.
-
 ## Purpose
 
-The Placement Cell coordinates the bridge between graduating students and hiring organizations: internship pipelines, pre-placement talks, recruitment drives, and career-readiness programs. It works alongside the department-level career support described in [`career-development.md`](../student-life/career-development.md), which focuses on individual skill-building rather than institutional recruitment logistics.
+The Placement Cell coordinates the bridge between graduating students and hiring organizations, managing internship pipelines, pre-placement talks, recruitment drives, and career-readiness programs. It works alongside department-level career support, which focuses on individual skill-building such as resume reviews and mock interviews, while the Placement Cell focuses on institutional recruitment logistics, company relationships, and drive scheduling. The Placement Cell is headed by the Placement Officer, who reports to the Dean of Academics, and is supported by a Placement Coordinator nominated from each department's final-year class.
 
 ## Eligibility for Placement Support
 
-A student is typically eligible to participate in campus placement drives if they:
+A student is generally eligible to participate in campus placement drives if they meet the following conditions:
 
-- are in a graduating or pre-final year, depending on the drive type (internship vs. full-time);
-- meet the minimum CGPA threshold set by the individual recruiting organization (thresholds vary per company and are not fixed institution-wide);
-- have no unresolved active backlog beyond the limit specified by the recruiting organization;
-- have completed any mandatory pre-placement training the institution requires.
+- they are in their final year for full-time drives, or pre-final year for internship drives;
+- they meet the minimum CGPA threshold set by the recruiting organization, which commonly ranges from 6.0 to 7.5 depending on the company and role;
+- they have no more than one active backlog at the time of the drive, or meet whatever stricter threshold the recruiting organization specifies;
+- they have completed the mandatory pre-placement training conducted in the sixth semester, covering aptitude, group discussion, and interview preparation.
 
-Because eligibility criteria are set per recruiting organization and per drive, Campus Copilot should never state that a specific student "is eligible" or "is not eligible" for a specific company — it should explain the general criteria categories and direct the student to the Placement Cell for a definitive answer.
+Eligibility criteria are set independently by each recruiting organization and can vary significantly between drives. Students should confirm eligibility for a specific company directly with the Placement Cell rather than assuming based on another company's criteria.
 
 ## Recruiter Categories
 
-Organizations that visit the demonstration campus are broadly grouped as:
+Organizations that visit the campus for recruitment are broadly grouped into four categories:
 
-- **Product companies** — software product development, typically emphasizing data structures, algorithms, and system design in their interview process.
-- **Service companies** — IT services and consulting, typically hiring at higher volume with a broader eligibility band.
-- **Core-engineering companies** — manufacturing, power, automotive, and infrastructure firms relevant to Mechanical, Electrical, and Electronics graduates.
-- **Startups** — earlier-stage companies, often hiring in smaller numbers with role-specific requirements.
-- **Research and higher-education pathways** — organizations and programs supporting students pursuing further studies or research roles instead of immediate industry placement.
+- **Product companies** — software product development firms whose interview process typically emphasizes data structures, algorithms, and system design across three to five rounds.
+- **Service companies** — IT services and consulting firms that generally hire at higher volume with a broader eligibility band, often through a single aptitude test followed by a technical and HR round.
+- **Core-engineering companies** — manufacturing, power, automotive, and infrastructure firms of particular relevance to Mechanical, Electrical and Electronics, and Electronics and Communication graduates, typically recruiting through a technical interview and a plant-visit or trainee program.
+- **Startups** — earlier-stage companies that generally hire in smaller numbers with role-specific requirements, often visiting on shorter notice than larger recruiters.
+
+In addition, the Placement Cell maintains a Higher Studies and Research Cell that supports students pursuing postgraduate study or research roles instead of immediate industry placement, including guidance on entrance examinations and application timelines.
 
 ## Placement Process
+
+The standard placement process for a recruiting drive proceeds as follows:
 
 ```text
 Pre-placement training
       ↓
-Resume and profile registration
+Resume and profile registration with the Placement Cell
       ↓
 Company pre-placement talk
       ↓
-Eligibility shortlisting
+Eligibility shortlisting by the recruiter
       ↓
-Assessment / online test
+Assessment or online test
       ↓
 Interview round(s)
       ↓
 Offer
       ↓
-Offer acceptance / conversion tracking
+Offer acceptance and conversion tracking
 ```
 
-A student may receive multiple offers over the placement season; institutions typically apply a "one company, one offer lock" or similar dedupe rule so that seats and slots are not held unnecessarily against students who already have an offer. The precise rule for a given year should be confirmed with the Placement Cell rather than assumed.
+Students must register their resume and profile with the Placement Cell at the start of the placement season, typically in the first week of August for the academic year's main drive cycle. A student who does not register by the published deadline may not be considered for that season's drives, though late registration is occasionally permitted with the Placement Officer's approval for documented reasons.
+
+The Placement Cell applies a "one company, one offer" dedupe rule during the main drive season: once a student accepts an offer, they are moved to the placed list and are not eligible for further drives unless the offer falls under a higher-package "dream company" exception, which allows a placed student to sit for a small, published list of premium recruiters later in the season. The exact list and rule for a given year is confirmed by the Placement Cell before the season begins.
 
 ## Internship-to-Full-Time Conversion
 
-Some organizations recruit through a structured internship program with the possibility of a full-time offer contingent on internship performance. Students should treat an internship offer and a full-time conversion as distinct outcomes, not guaranteed to follow one another automatically.
+A number of recruiters run a structured internship program during the semester break between the third and fourth years, with a full-time offer contingent on internship performance. Historically, conversion rates for these programs at the university have ranged from 60% to 85% depending on the recruiter and year. Students should treat an internship offer and a full-time conversion as distinct outcomes and continue preparing for the main placement season unless conversion has been formally confirmed in writing by the recruiter.
 
-## What Campus Copilot Can and Cannot Do Here
+## Placement Statistics and Reporting
 
-Campus Copilot can help a student understand the general placement process, prepare a portfolio, or practice explaining a project (see [`career-development.md`](../student-life/career-development.md)). It cannot confirm a specific student's placement registration status, shortlist result, or offer status — those live in the Placement Cell's own systems, not the static knowledge corpus.
+The Placement Cell publishes a placement report at the end of each academic year, summarizing the number of students placed by department, the range and median of offered compensation, and the list of participating recruiters. This report is available from the Placement Cell office and is also shared with prospective students during admission counselling. Students seeking placement statistics for a specific past year should request the archived report directly from the Placement Cell.
+
+## Preparing for Placement Season
+
+The Placement Cell conducts mandatory pre-placement training across the sixth and seventh semesters, covering quantitative aptitude, verbal reasoning, group discussion practice, and mock technical and HR interviews. Attendance at pre-placement training is tracked and a minimum of 80% attendance is required for a student to be certified eligible for the main drive season. Students are also encouraged to complete at least one substantial project and maintain an updated portfolio well ahead of the registration deadline, since most recruiters review project work during the technical interview round.

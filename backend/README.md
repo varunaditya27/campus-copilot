@@ -103,7 +103,7 @@ The `api/` → `agent/`+`services/` → `tools/` split is deliberate: HTTP route
 
 ## 🔎 RAG Pipeline
 
-The `knowledge/` corpus (32 markdown files, simulating a complete virtual engineering university -- see [`knowledge/README.md`](../knowledge/README.md) for the full breakdown) is chunked by `##` heading rather than by raw character count, so every retrieved chunk carries a real section title (`library.md · Opening Hours`) instead of an arbitrary offset -- the frontend's source cards display that directly.
+The `knowledge/` corpus (32 markdown files, simulating a complete virtual engineering university -- see [`knowledge/README.md`](../knowledge/README.md) for the full breakdown) is chunked by `##` heading rather than by raw character count, so every retrieved chunk carries a real section title (`library.md · Hours of Operation`) instead of an arbitrary offset -- the frontend's source cards display that directly.
 
 ```text
 knowledge/**/*.md

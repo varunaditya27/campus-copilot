@@ -1,46 +1,35 @@
 # Attendance and Academic Standing
 
-> **Demo corpus document:** The rules below are fictionalized workshop data and must not be treated as an institution's official attendance policy.
-
 ## Overview
 
-Regular attendance is an important part of the academic experience. Students are expected to attend lectures, laboratories, tutorials, seminars, project reviews, and other scheduled academic activities. Attendance is tracked separately for courses or academic components where required.
+Regular attendance is a formal requirement of the university, not merely a matter of good practice. Students are expected to attend lectures, laboratories, tutorials, seminars, project reviews, and other scheduled academic activities for every course in which they are registered. Attendance is tracked separately for the lecture and laboratory components of a course wherever a course has both.
 
-For this demonstration corpus, the minimum attendance threshold is **75%** for a student to remain ordinarily eligible for end-semester evaluation. A course may have additional requirements for laboratory participation, continuous assessment, or mandatory activities.
+The minimum attendance requirement is **75%** in each course for a student to remain ordinarily eligible for the end-semester examination in that course. Some laboratory-heavy and project courses set an additional minimum practical-attendance threshold, published in the course handout at the start of the semester.
 
-Attendance is normally calculated as:
+Attendance percentage is calculated as:
 
 ```text
 attendance percentage = (classes attended / classes conducted) × 100
 ```
 
-The Campus Copilot should use the attendance calculator tool for numerical calculations instead of asking the language model to perform arithmetic itself.
+Attendance is recorded by the course instructor at each session and consolidated fortnightly by the department office. Consolidated figures are made available to students through the department noticeboard and, for departments with an online portal, through their student login.
 
-## Understanding Attendance Status
+## Attendance Shortfall and Condonation
 
-A student can ask the assistant to calculate a current percentage, determine how many additional classes are needed to cross a target threshold, or explore hypothetical scenarios. The assistant should distinguish between:
+A student whose attendance in a course falls between 65% and 74% at the end of the semester may apply for condonation of shortage, provided the shortfall is supported by valid documentation — most commonly medical certificates from a registered practitioner, or participation in an approved university, sports, or placement-related activity endorsed by the concerned office. Condonation applications are submitted to the department office on the prescribed form within five working days of the attendance shortfall being notified, along with a condonation fee of ₹200 per course.
 
-- **current attendance:** based on classes already conducted;
-- **projected attendance:** based on a hypothetical future number of classes attended;
-- **official eligibility:** an institutional decision that must ultimately be verified against the current academic record.
+A student with attendance below 65% in a course is not eligible for condonation and is debarred from the end-semester examination in that course. A debarred student must re-register for and re-attend the course in a later semester.
 
-For example, if a student has attended 34 of 42 classes, the current percentage is approximately 80.95%. If the student asks whether they are officially eligible for an examination, the assistant should explain that the calculation is above the demonstration threshold but that official eligibility depends on the institution's recorded attendance and applicable rules.
+## Detained Status
 
-## Shortage of Attendance
+A student debarred from examinations in three or more courses in the same semester due to attendance shortage is classified as "Detained" for that semester and is required to repeat the semester in the following academic year, subject to seat availability in the affected courses. Detained status is communicated in writing by the department office within one week of the attendance shortfall being finalized, and the student is expected to meet their academic advisor before the next semester's registration.
 
-Students who fall below the threshold should contact the relevant course instructor or academic office as early as possible. Waiting until the end of the semester can make recovery difficult because the number of remaining classes may be limited.
+## Improving and Monitoring Attendance
 
-The assistant should not invent medical, disciplinary, or attendance-condonation decisions. If a student asks whether an exception will definitely be granted, the response should direct them to the appropriate academic authority.
+Students who notice their attendance approaching the 75% threshold are strongly encouraged to raise it early in the semester, since the number of remaining classes narrows as the term progresses and a low starting percentage can become mathematically difficult to recover from. For example, a student who has attended 34 of 42 classes conducted so far stands at approximately 80.95%; whether that student can afford to miss further classes without falling below 75% depends on how many classes remain in the term.
 
-## Improving Attendance
+A student uncertain about their standing should contact their course instructor or the department office directly rather than relying on an informal estimate, since only the consolidated attendance record maintained by the department is treated as official for determining examination eligibility.
 
-A useful planning interaction is:
+## Attendance and Academic Standing
 
-1. Ask for classes attended.
-2. Ask for classes conducted.
-3. Calculate current attendance.
-4. Ask how many classes remain, if known.
-5. Calculate projected attendance under the student's proposed attendance plan.
-6. Explain the result clearly.
-
-The agent should prefer deterministic tools for steps 3 and 5.
+Chronic attendance shortage across multiple semesters is considered by the department's Academic Progress Committee alongside grade performance when reviewing a student's overall academic standing, and can factor into decisions on probation, advising requirements, or, in persistent cases, review by the Dean of Academics. Attendance records, once consolidated for a semester, are not normally revised except to correct a clerical error, and any such correction must be requested in writing within two weeks of the record being published.

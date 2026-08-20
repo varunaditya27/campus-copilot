@@ -23,7 +23,7 @@ This is the retrieval source for [Campus Copilot](../README.md)'s RAG pipeline �
 
 ## Important
 
-The documents are **demonstration data for the workshop**. They are intentionally written to resemble a realistic, complete engineering-college knowledge base — a fictional institution with its own departments, hostels, labs, committees, and calendar — but they are not an authoritative representation of any real institution's current rules, policies, schedules, fees, or contact information. No document names a real institution, and any name-like detail (email domains, faculty names) is a clearly fictional placeholder.
+The documents are **demonstration data for the workshop**. They are intentionally written the way a real university actually writes its own material — as documents that assume they're being read by a student or staff member, not by an AI system — so that retrieval and citation quality reflect a real deployment rather than a corpus written with the RAG pipeline in mind. No individual document says "this is fictional"; that's stated once, here: no document names a real institution, and any name-like detail (faculty names, committee names) is a clearly invented placeholder for a fictional university.
 
 For a real deployment, replace these documents with verified institutional material and attach source metadata, publication dates, and document versions.
 
@@ -89,9 +89,9 @@ knowledge/
 - **campus/** — the physical and service layer: departments, faculty, labs, library, facilities, hostels, health, transport, and general campus services.
 - **student-life/** — everything outside the classroom: clubs, fests, sports, research culture, career growth, alumni, and international programs.
 - **policies/** — conduct and safety: computing conduct, the general code of conduct, and the dedicated anti-ragging/grievance path. Kept separate from `administration/` because these documents encode *behavioral* rules and escalation paths, not organizational structure.
-- **faq/** — a meta-layer explaining how the assistant itself should behave, used to sanity-check agent behavior against realistic student questions.
+- **faq/** — a genuine student quick-answers page (duplicate ID cards, transcripts, timetable clashes, fee deadlines, grade appeals) — the kind of page a registrar's office actually publishes, not a page about the assistant.
 
-Several documents deliberately cross-reference each other (a grade dispute in `grading-and-backlogs.md` points to the general grievance committee; a ragging report in `anti-ragging-and-grievance-redressal.md` is explicitly prioritized over a routine request) — this mirrors how a real handbook is never a flat list of independent facts.
+Several documents deliberately cross-reference each other by name rather than by link (a grade dispute in `grading-and-backlogs.md` points a student to the General Grievance Redressal Committee; a ragging report in `anti-ragging-and-grievance-redressal.md` is explicitly prioritized over a routine request) — this mirrors how a real handbook is never a flat list of independent facts, and how real institutional documents reference each other in prose ("see the Student Code of Conduct") rather than with hyperlinks.
 
 ---
 
@@ -272,8 +272,8 @@ The agent should cite the document names used to construct an answer wherever po
 
 ### Digital Conduct and Computing
 
-- Can I share my OTP with the campus assistant?
-- Is it okay to use AI for an assignment?
+- Is it okay to use AI tools for an assignment?
+- What should I do if someone asks for my one-time password over the phone?
 
 ### Code of Conduct and Discipline
 
@@ -288,16 +288,17 @@ The agent should cite the document names used to construct an answer wherever po
 
 ### Common Student Questions
 
-- Can Campus Copilot register me for an event?
-- Why does the assistant ask me to confirm?
-- What is RAG?
-- What is an AI agent?
+- How do I get a duplicate student ID card?
+- How do I request an official transcript or a bonafide certificate?
+- What happens if I pay my semester fees late?
+- Can I appeal a grade I think is wrong?
 
 ---
 
 ## 🧩 Notes for Contributors
 
 - Chunking is by `##` heading (see [`backend/app/rag/ingest.py`](../backend/app/rag/ingest.py)), so every section should stand reasonably well on its own — write section headers that would make sense as a citation label, not just as prose flow.
-- Every document opens with a `> **Demo corpus document:**` disclaimer. Keep it — it's what stops the agent (and a reader) from mistaking fictionalized workshop content for a real policy.
-- Cross-link related documents with relative markdown links rather than duplicating content — several documents in this corpus intentionally route related-but-distinct questions (a grade dispute vs. a fee dispute vs. a safety report) to different places, which is realistic and also a good retrieval stress test.
+- Write every document as if no AI system exists. No document should mention Campus Copilot, an assistant, an agent, RAG, retrieval, or "the corpus" — that's the whole point of this corpus: it should read exactly like material a real university would publish on its own, for its own students, independent of anything reading it later.
+- Never link to another document with `[text](path)`. Reference other policies or offices by plain-text name instead ("the Registrar's Office," "the Student Code of Conduct") — a real handbook doesn't hyperlink to itself, and named-but-unlinked references are also a more realistic retrieval stress test than a link would be.
+- When adding a fact that another document might also touch (a fee, a deadline, a committee's process), grep the rest of the corpus for it first — several documents deliberately cover adjacent ground (a grade dispute vs. a fee dispute vs. a safety report all route through different committees), and they need to agree with each other where they overlap.
 - After editing anything in this directory, rebuild the index: `python -m app.rag.ingest` from `backend/` (see [`backend/README.md`](../backend/README.md#-getting-started)).
