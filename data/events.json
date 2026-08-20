@@ -1,0 +1,348 @@
+[
+  {
+    "id": "evt_ai_001",
+    "name": "AI Odyssey: Building with Generative AI",
+    "category": "artificial-intelligence",
+    "date": "2026-08-21",
+    "time": "15:00",
+    "duration_minutes": 120,
+    "venue": "Innovation and Computing Centre - Seminar Hall",
+    "capacity": 50,
+    "registered": 33,
+    "organizer": "AI and Machine Learning Community",
+    "description": "A hands-on introduction to generative AI, retrieval-augmented generation, and practical AI application design.",
+    "tags": [
+      "AI",
+      "LLM",
+      "RAG",
+      "generative-ai",
+      "workshop",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_web_002",
+    "name": "React and Next.js Build Night",
+    "category": "web-development",
+    "date": "2026-08-22",
+    "time": "16:00",
+    "duration_minutes": 150,
+    "venue": "Computing Lab 2",
+    "capacity": 40,
+    "registered": 18,
+    "organizer": "Coding Club",
+    "description": "A project-oriented session on component architecture, routing, data fetching, and modern React application development.",
+    "tags": [
+      "React",
+      "Next.js",
+      "JavaScript",
+      "web",
+      "workshop",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_sec_003",
+    "name": "Cybersecurity Foundations Lab",
+    "category": "cybersecurity",
+    "date": "2026-08-23",
+    "time": "10:30",
+    "duration_minutes": 180,
+    "venue": "Cybersecurity Lab",
+    "capacity": 35,
+    "registered": 31,
+    "organizer": "Cybersecurity Community",
+    "description": "An introductory lab covering secure authentication, common web vulnerabilities, and responsible security experimentation.",
+    "tags": [
+      "security",
+      "web-security",
+      "CTF",
+      "lab",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_cp_004",
+    "name": "Competitive Programming Sprint",
+    "category": "competitive-programming",
+    "date": "2026-08-24",
+    "time": "17:00",
+    "duration_minutes": 120,
+    "venue": "Computing Lab 1",
+    "capacity": 60,
+    "registered": 42,
+    "organizer": "Coding Club",
+    "description": "A timed problem-solving session covering algorithms, data structures, and implementation patterns.",
+    "tags": [
+      "algorithms",
+      "data-structures",
+      "competitive-programming",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_res_005",
+    "name": "Undergraduate Research Showcase",
+    "category": "research",
+    "date": "2026-08-25",
+    "time": "14:00",
+    "duration_minutes": 180,
+    "venue": "Seminar Hall",
+    "capacity": 150,
+    "registered": 79,
+    "organizer": "Centre for AI and Data Systems",
+    "description": "Student researchers present ongoing projects spanning AI, embedded systems, and applied engineering.",
+    "tags": [
+      "research",
+      "showcase",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_robot_006",
+    "name": "Robotics Build Weekend",
+    "category": "robotics",
+    "date": "2026-08-26",
+    "time": "11:00",
+    "duration_minutes": 240,
+    "venue": "Innovation Lab",
+    "capacity": 45,
+    "registered": 12,
+    "organizer": "Robotics and Embedded Systems Community",
+    "description": "A weekend build session for microcontroller-based robotics projects, from wiring to first movement.",
+    "tags": [
+      "robotics",
+      "embedded",
+      "hardware",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_ai_007",
+    "name": "Retrieval-Augmented Generation Deep Dive",
+    "category": "artificial-intelligence",
+    "date": "2026-08-28",
+    "time": "14:00",
+    "duration_minutes": 120,
+    "venue": "Innovation and Computing Centre - Seminar Hall",
+    "capacity": 60,
+    "registered": 40,
+    "organizer": "Centre for AI and Data Systems",
+    "description": "A technical session on chunking strategy, embedding choice, and retrieval evaluation for RAG systems.",
+    "tags": [
+      "AI",
+      "RAG",
+      "retrieval",
+      "research",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_web_008",
+    "name": "API Design and Backend Architecture Workshop",
+    "category": "web-development",
+    "date": "2026-08-29",
+    "time": "15:30",
+    "duration_minutes": 150,
+    "venue": "Computing Lab 2",
+    "capacity": 40,
+    "registered": 22,
+    "organizer": "Coding Club",
+    "description": "Designing clean REST APIs, request/response contracts, and service-layer separation in a real backend.",
+    "tags": [
+      "backend",
+      "API",
+      "web",
+      "workshop",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_cp_009",
+    "name": "Weekly Algorithms Practice Session",
+    "category": "competitive-programming",
+    "date": "2026-08-30",
+    "time": "17:00",
+    "duration_minutes": 90,
+    "venue": "Computing Lab 1",
+    "capacity": 50,
+    "registered": 35,
+    "organizer": "Coding Club",
+    "description": "A recurring peer practice session working through algorithmic problem sets together.",
+    "tags": [
+      "algorithms",
+      "practice",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_sec_010",
+    "name": "Capture The Flag: Campus Edition",
+    "category": "cybersecurity",
+    "date": "2026-09-02",
+    "time": "10:00",
+    "duration_minutes": 240,
+    "venue": "Cybersecurity Lab",
+    "capacity": 40,
+    "registered": 40,
+    "organizer": "Cybersecurity Research Lab",
+    "description": "A campus-wide capture-the-flag competition covering web, crypto, and reverse-engineering challenges.",
+    "tags": [
+      "security",
+      "CTF",
+      "competition",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_robot_011",
+    "name": "Autonomous Line-Following Robot Challenge",
+    "category": "robotics",
+    "date": "2026-09-03",
+    "time": "13:00",
+    "duration_minutes": 180,
+    "venue": "Innovation Lab",
+    "capacity": 30,
+    "registered": 18,
+    "organizer": "Robotics and Embedded Systems Community",
+    "description": "Teams build and tune an autonomous line-following robot for a timed track challenge.",
+    "tags": [
+      "robotics",
+      "embedded",
+      "competition",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_res_012",
+    "name": "Undergraduate Research Symposium",
+    "category": "research",
+    "date": "2026-09-05",
+    "time": "10:00",
+    "duration_minutes": 300,
+    "venue": "Seminar Hall",
+    "capacity": 200,
+    "registered": 130,
+    "organizer": "Centre for AI and Data Systems",
+    "description": "A full-day symposium featuring student and faculty research talks across all departments.",
+    "tags": [
+      "research",
+      "symposium",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_ai_013",
+    "name": "Generative AI for Regional Languages",
+    "category": "artificial-intelligence",
+    "date": "2026-09-08",
+    "time": "15:00",
+    "duration_minutes": 120,
+    "venue": "Innovation and Computing Centre - Seminar Hall",
+    "capacity": 55,
+    "registered": 20,
+    "organizer": "AI and Machine Learning Community",
+    "description": "Exploring generative AI applications for low-resource and regional language processing.",
+    "tags": [
+      "AI",
+      "NLP",
+      "generative-ai",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_web_014",
+    "name": "Frontend Systems Design with React",
+    "category": "web-development",
+    "date": "2026-09-10",
+    "time": "16:00",
+    "duration_minutes": 120,
+    "venue": "Computing Lab 2",
+    "capacity": 45,
+    "registered": 30,
+    "organizer": "Coding Club",
+    "description": "Component architecture, state management, and performance trade-offs in production React apps.",
+    "tags": [
+      "React",
+      "frontend",
+      "web",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_cp_015",
+    "name": "Inter-Department Competitive Programming Finale",
+    "category": "competitive-programming",
+    "date": "2026-09-12",
+    "time": "17:00",
+    "duration_minutes": 150,
+    "venue": "Computing Lab 1",
+    "capacity": 80,
+    "registered": 55,
+    "organizer": "Coding Club",
+    "description": "The finale round of the semester-long inter-department competitive programming league.",
+    "tags": [
+      "algorithms",
+      "competition",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_sec_016",
+    "name": "Secure Coding Practices Workshop",
+    "category": "cybersecurity",
+    "date": "2026-09-15",
+    "time": "11:00",
+    "duration_minutes": 120,
+    "venue": "Cybersecurity Lab",
+    "capacity": 35,
+    "registered": 10,
+    "organizer": "Cybersecurity Community",
+    "description": "Practical secure-coding patterns for web applications: input validation, authentication, and common pitfalls.",
+    "tags": [
+      "security",
+      "secure-coding",
+      "workshop",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_robot_017",
+    "name": "Embedded AI on Microcontrollers",
+    "category": "robotics",
+    "date": "2026-09-17",
+    "time": "14:00",
+    "duration_minutes": 150,
+    "venue": "Embedded Systems and IoT Lab",
+    "capacity": 30,
+    "registered": 9,
+    "organizer": "Embedded Systems and IoT Lab",
+    "description": "Running lightweight machine learning models on microcontroller-class hardware for edge inference.",
+    "tags": [
+      "embedded",
+      "AI",
+      "IoT",
+      "technical"
+    ]
+  },
+  {
+    "id": "evt_res_018",
+    "name": "AI Ethics and Responsible Deployment Panel",
+    "category": "research",
+    "date": "2026-09-20",
+    "time": "16:00",
+    "duration_minutes": 90,
+    "venue": "Seminar Hall",
+    "capacity": 120,
+    "registered": 65,
+    "organizer": "Centre for AI and Data Systems",
+    "description": "A panel discussion on responsible AI deployment, evaluation, and failure modes in campus and industry systems.",
+    "tags": [
+      "research",
+      "ethics",
+      "AI",
+      "panel",
+      "technical"
+    ]
+  }
+]
