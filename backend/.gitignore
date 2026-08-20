@@ -1,0 +1,13 @@
+# virtual environment
+.venv/
+
+# secrets
+.env
+.env.local
+
+# python
+__pycache__/
+*.pyc
+
+# chroma persistence (rebuilt by rag/ingest.py)
+chroma/
