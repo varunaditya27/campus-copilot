@@ -1,0 +1,16 @@
+[
+  {
+    "registration_id": "REG-DEMO-001",
+    "student_id": "1RV23IS101",
+    "event_id": "evt_web_002",
+    "registered_at": "2026-08-18T14:20:00+05:30",
+    "status": "confirmed"
+  },
+  {
+    "registration_id": "REG-DEMO-002",
+    "student_id": "1RV24IS219",
+    "event_id": "evt_res_005",
+    "registered_at": "2026-08-19T11:05:00+05:30",
+    "status": "confirmed"
+  }
+]
