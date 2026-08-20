@@ -1,0 +1,26 @@
+[
+  {
+    "student_id": "1RV23IS101",
+    "name": "Aarav Sharma",
+    "program": "Information Science and Engineering",
+    "year": 3
+  },
+  {
+    "student_id": "1RV23CS114",
+    "name": "Meera Nair",
+    "program": "Computer Science and Engineering",
+    "year": 3
+  },
+  {
+    "student_id": "1RV24EC207",
+    "name": "Kabir Rao",
+    "program": "Electronics and Communication Engineering",
+    "year": 2
+  },
+  {
+    "student_id": "1RV24IS219",
+    "name": "Ananya Iyer",
+    "program": "Information Science and Engineering",
+    "year": 2
+  }
+]
