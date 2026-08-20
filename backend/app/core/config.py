@@ -11,4 +11,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 
 DATA_DIR = REPO_ROOT / "data"
 
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
