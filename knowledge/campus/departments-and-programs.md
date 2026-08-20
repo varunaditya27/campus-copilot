@@ -51,15 +51,3 @@ Information Science + Design
         →
 Human-centered software
 ```
-
-Campus Copilot should avoid claiming that a specific course or department offers a specialization unless that information exists in the verified corpus.
-
-## Example Questions
-
-- What does Information Science and Engineering focus on?
-- Which department would be relevant to embedded systems?
-- What kinds of projects combine electronics and AI?
-- Can students work across departments?
-- Which program is most relevant to a particular career?
-
-Career-oriented questions should be answered as guidance, not as definitive admissions or employment advice.

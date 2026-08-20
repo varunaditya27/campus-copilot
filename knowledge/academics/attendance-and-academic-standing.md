@@ -44,15 +44,3 @@ A useful planning interaction is:
 6. Explain the result clearly.
 
 The agent should prefer deterministic tools for steps 3 and 5.
-
-## Example Questions
-
-- What is the minimum attendance requirement?
-- I attended 34 out of 42 classes. What is my attendance?
-- How many classes can I miss before falling below 75%?
-- If I attend all ten remaining classes, what will my attendance become?
-- Am I officially eligible for my examination?
-
-## Source and Authority
-
-This document is educational demonstration material. In a production Campus Copilot, the assistant should retrieve the latest verified attendance regulation, include its source and effective date, and avoid presenting outdated or unofficial information as policy.

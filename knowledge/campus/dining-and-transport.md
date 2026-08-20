@@ -42,13 +42,3 @@ For example:
 > "The Seminar Hall is in the Innovation and Computing Centre. It is commonly used for technical workshops and student conferences."
 
 The assistant should not fabricate walking distances or turn-by-turn directions without a mapping source.
-
-## Example Questions
-
-- When does the cafeteria serve lunch?
-- Where is the seminar hall?
-- Is there campus shuttle service?
-- Can I park near the library?
-- Is the cafeteria open right now?
-
-The final question is time-sensitive and should use structured/live data in a production system.

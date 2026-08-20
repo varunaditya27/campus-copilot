@@ -86,11 +86,3 @@ For an AI assistant, useful evaluation dimensions include:
 - cost per interaction.
 
 A polished interface is useful, but it should not substitute for evaluation.
-
-## Example Questions
-
-- How should I structure an engineering project?
-- What makes an AI project research-worthy?
-- How can I evaluate a RAG system?
-- What should I measure in an agentic AI project?
-- How can I turn a campus problem into a technical project?

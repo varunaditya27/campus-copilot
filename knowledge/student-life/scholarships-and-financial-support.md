@@ -43,13 +43,3 @@ Track status
 ```
 
 Campus Copilot can help students understand a documented workflow and create a checklist. It should not claim to have submitted an application unless an explicit submission tool exists and the user has confirmed the action.
-
-## Example Questions
-
-- What types of scholarships are available?
-- What documents might a scholarship application require?
-- How should I evaluate whether a scholarship is relevant to me?
-- Can you turn the application process into a checklist?
-- Can you submit the scholarship application for me?
-
-The last question is an intentional agent-design boundary: an application submission would require a dedicated, authenticated, user-confirmed action tool.

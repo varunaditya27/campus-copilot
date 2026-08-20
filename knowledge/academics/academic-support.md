@@ -57,11 +57,3 @@ Progress check
 ```
 
 The assistant should not claim that a particular study plan guarantees an academic outcome. It should instead help the student make a realistic plan and encourage adjustment based on progress.
-
-## Example Questions
-
-- Who should I contact about a course-specific deadline?
-- How should I ask my professor for help?
-- Can you turn my syllabus into a study plan?
-- I have four hours today. How should I divide my time?
-- What support options are available if I am struggling in a subject?

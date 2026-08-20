@@ -52,13 +52,3 @@ A useful Campus Copilot interaction is:
 > "I lost my student ID. What should I do?"
 
 The assistant should retrieve the documented process for reporting the loss and identify the responsible service. If the exact process is absent, it should say so.
-
-## Example Questions
-
-- Who should I contact for Wi-Fi problems?
-- Where can I get help with internship preparation?
-- Who handles student activity bookings?
-- Can you help me report a lost ID?
-- Can you tell me my fee balance?
-
-The final question should not be answered from static corpus data unless a secure, authenticated student-record tool is explicitly implemented.

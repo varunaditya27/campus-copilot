@@ -48,11 +48,3 @@ A student using an AI assistant should:
 ## Incident Reporting
 
 Suspected security incidents should be reported through the appropriate institutional channel. Students should preserve relevant evidence and avoid taking unauthorized actions that could destroy logs or interfere with an investigation.
-
-## Example Questions
-
-- Can I share my OTP with the campus assistant?
-- Is it okay to use AI for an assignment?
-- Can I test a security vulnerability on a campus system?
-- What should I do if my account may be compromised?
-- Can I upload confidential college documents to an AI tool?

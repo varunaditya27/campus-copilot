@@ -52,11 +52,3 @@ If a student describes a serious personal, medical, safety, or mental-health con
 ## Privacy
 
 Students should not paste passwords, authentication codes, private medical records, financial information, or other highly sensitive information into an ordinary campus chatbot unless the system has been explicitly designed and authorized to handle that information securely.
-
-## Example Questions
-
-- Can you help me make a study plan?
-- I have too many deadlines. How should I prioritize them?
-- What academic support options are available?
-- How can I balance club activities with coursework?
-- Where can I find official student support?

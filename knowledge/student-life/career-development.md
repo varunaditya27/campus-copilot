@@ -56,11 +56,3 @@ Problem → Approach → Architecture → Challenge → Solution → Result → 
 ## Networking and Communities
 
 Technical clubs, hackathons, conferences, research groups, open-source projects, and peer communities can help students discover opportunities and receive feedback. Networking is most effective when it is based on genuine technical interest and contribution rather than simply requesting referrals.
-
-## Example Questions
-
-- What makes a project valuable on a resume?
-- How should I explain my AI project in an interview?
-- What should I document in an AI repository?
-- How can I prepare for a software internship?
-- What skills should I build for an AI engineering role?

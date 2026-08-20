@@ -69,11 +69,3 @@ Whereas:
 > "What normally happens before end-semester examinations?"
 
 can be answered from this document.
-
-## Example Questions
-
-- What are the main stages of a semester?
-- What should I track during the semester?
-- When should I verify my examination timetable?
-- Can you help me build a study plan around my deadlines?
-- Where should I check official academic dates?

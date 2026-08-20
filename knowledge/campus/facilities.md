@@ -41,13 +41,3 @@ The assistant should not expose passwords, network credentials, internal IP addr
 ## Accessibility
 
 Campus facilities should be designed to provide accessible routes and reasonable access to academic and student services. If a student asks about a specific accessibility feature that is not documented, the assistant should recommend contacting campus services rather than guessing.
-
-## Example Questions
-
-- Where is the seminar hall?
-- Where are coding workshops usually held?
-- Which building has computer laboratories?
-- Where can I find a group-study space?
-- Is the seminar hall available tomorrow?
-
-The last question requires structured event or facility availability data and should trigger an appropriate tool rather than relying only on RAG.
