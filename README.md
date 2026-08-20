@@ -291,17 +291,17 @@ The registration action is deliberately protected by explicit user confirmation.
 Before a consequential action, the application presents a confirmation step such as:
 
 ```text
-┌────────────────────────────────────────┐
-│ Registration Confirmation               │
-│                                        │
-│ Event: AI Odyssey                      │
-│ Date: 21 August                        │
-│ Time: 3:00 PM                          │
-│ Venue: Innovation and Computing Centre │
-│ Student: 1RV23IS101                    │
-│                                        │
-│       [ Confirm ]   [ Cancel ]         │
-└────────────────────────────────────────┘
+        ┌────────────────────────────────────────┐
+        │       Registration Confirmation        │
+        │                                        │
+        │ Event: AI Odyssey                      │
+        │ Date: 21 August                        │
+        │ Time: 3:00 PM                          │
+        │ Venue: Innovation and Computing Centre │
+        │ Student: 1RV23IS101                    │
+        │                                        │
+        │       [ Confirm ]   [ Cancel ]         │
+        └────────────────────────────────────────┘
 ```
 
 This introduces an important production-oriented principle:
