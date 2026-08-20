@@ -379,7 +379,7 @@ campus-copilot/
 └── README.md
 ```
 
-> UI, orchestration, retrieval, tools, and data are kept in separate, single-responsibility directories on purpose. The frontend has its own [`frontend/README.md`](frontend/README.md) with implementation-specific detail — a backend README will follow as that implementation lands. This file stays focused on the system as a whole.
+> UI, orchestration, retrieval, tools, and data are kept in separate, single-responsibility directories on purpose. [`frontend/README.md`](frontend/README.md) and [`backend/README.md`](backend/README.md) each carry their own implementation-specific detail — this file stays focused on the system as a whole.
 
 ---
 
@@ -433,6 +433,8 @@ pip install -r requirements.txt
 .venv\Scripts\activate
 pip install -r requirements.txt
 ```
+
+See [`backend/README.md`](backend/README.md) for the RAG pipeline, the agent loop, tool design, and the full API reference.
 
 ## 5. Prepare the knowledge base
 
@@ -501,24 +503,23 @@ Then open the local development URL shown by Next.js.
 
 ```mermaid
 flowchart LR
-    A[✅ Frontend UI] --> B[🚧 Groq Integration]
-    B --> C[🚧 RAG + Chroma]
-    C --> D[🚧 Tool Calling]
-    D --> E[⬜ Multi-Step Agent]
-    E --> F[⬜ Human Confirmation]
-    F --> G[⬜ Polish + Demo]
+    A[✅ Frontend UI] --> B[✅ Groq Integration]
+    B --> C[✅ RAG + Chroma]
+    C --> D[✅ Tool Calling]
+    D --> E[✅ Multi-Step Agent]
+    E --> F[✅ Human Confirmation]
+    F --> G[🚧 Polish + Demo]
 ```
 
 ### Current focus
 
 - [x] Finalize campus knowledge corpus
 - [x] Build the frontend UI (chat, agent activity log, confirmation card, events browser)
-- [ ] Implement the RAG ingestion pipeline
-- [ ] Implement event search
-- [ ] Implement availability checks
-- [ ] Implement registration workflow
-- [ ] Wire the frontend up to a working backend end-to-end
-- [ ] Add robust error handling
+- [x] Implement the RAG ingestion pipeline
+- [x] Implement event search and availability checks
+- [x] Implement the registration workflow, gated behind human confirmation
+- [x] Wire the frontend up to a working backend end-to-end (verified live, not just curl)
+- [ ] Add robust error handling (e.g. Groq unreachable, malformed requests)
 - [ ] Add demo-ready sample conversations
 
 ---
