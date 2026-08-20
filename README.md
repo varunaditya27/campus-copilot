@@ -111,7 +111,7 @@ That is the central **“this is why agentic AI is powerful”** moment of the p
 
 ---
 
-# 🧠 Architecture
+## 🧠 Architecture
 
 ```mermaid
 flowchart TB
@@ -172,7 +172,7 @@ flowchart TB
 
 ---
 
-# 🔎 RAG Pipeline
+## 🔎 RAG Pipeline
 
 Campus Copilot uses Retrieval-Augmented Generation to answer questions grounded in the supplied campus knowledge corpus.
 
@@ -203,7 +203,7 @@ The application retrieves the relevant section from the campus corpus and uses t
 
 ---
 
-# 🛠️ Agentic Tool Calling
+## 🛠️ Agentic Tool Calling
 
 The project deliberately keeps the tool set small. Each tool has a clear purpose and performs deterministic work in Python.
 
@@ -213,8 +213,10 @@ The project deliberately keeps the tool set small. Each tool has a clear purpose
 | --- | --- |
 | `search_events` | Find campus events matching a request |
 | `check_event_availability` | Check remaining seats |
-| `register_for_event` | Create a registration |
+| `register_for_event`* | Create a registration |
 | `calculate_attendance` | Perform exact attendance calculations |
+
+\* `register_for_event` is the one exception: the model can request it, but the backend never auto-executes it — see [Human-in-the-Loop](#-human-in-the-loop) below.
 
 The model does **not** directly execute these functions. It requests a structured tool call; FastAPI executes the function and returns the result to the model.
 
@@ -235,7 +237,7 @@ sequenceDiagram
 
 ---
 
-# ⚡ Why This Is Agentic
+## ⚡ Why This Is Agentic
 
 The important distinction is not simply **“LLM + tools.”**
 
@@ -282,7 +284,7 @@ That is the project's central demonstration of agentic AI.
 
 ---
 
-# 🛡️ Human-in-the-Loop
+## 🛡️ Human-in-the-Loop
 
 The registration action is deliberately protected by explicit user confirmation.
 
@@ -295,8 +297,8 @@ Before a consequential action, the application presents a confirmation step such
 │ Event: AI Odyssey                      │
 │ Date: 21 August                        │
 │ Time: 3:00 PM                          │
-│ Venue: Seminar Hall                    │
-│ Student: 1RV23IS123                    │
+│ Venue: Innovation and Computing Centre │
+│ Student: 1RV23IS101                    │
 │                                        │
 │       [ Confirm ]   [ Cancel ]         │
 └────────────────────────────────────────┘
@@ -308,13 +310,13 @@ This introduces an important production-oriented principle:
 
 ---
 
-# 🏫 Knowledge Corpus
+## 🏫 Knowledge Corpus
 
 The project is grounded in a curated, human-readable markdown corpus rather than scraped websites or a pile of PDFs — the point is **AI application architecture**, not document-ingestion gymnastics. The corpus itself simulates a complete virtual engineering university (academics, administration, campus life, and policy) so that retrieval has real structure to work with. See [`knowledge/README.md`](knowledge/README.md) for the full corpus design, category breakdown, and example questions.
 
 ---
 
-# 🗂️ Project Structure
+## 🗂️ Project Structure
 
 ```text
 campus-copilot/
@@ -337,7 +339,7 @@ campus-copilot/
 │       ├── tools/               # search_events, registration, attendance
 │       └── main.py
 │
-├── data/                       # structured application data (JSON)
+├── data/                       # structured application data (JSON) — see data/README.md
 │   ├── events.json
 │   ├── students.json
 │   └── registrations.json
@@ -353,78 +355,71 @@ campus-copilot/
 └── README.md
 ```
 
-> UI, orchestration, retrieval, tools, and data are kept in separate, single-responsibility directories on purpose. [`frontend/README.md`](frontend/README.md), [`backend/README.md`](backend/README.md), and [`knowledge/README.md`](knowledge/README.md) each carry their own implementation-specific detail — this file stays focused on the system as a whole.
+> UI, orchestration, retrieval, tools, and data are kept in separate, single-responsibility directories on purpose. [`frontend/README.md`](frontend/README.md), [`backend/README.md`](backend/README.md), [`knowledge/README.md`](knowledge/README.md), and [`data/README.md`](data/README.md) each carry their own implementation-specific detail — this file stays focused on the system as a whole.
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
-> The exact commands below should match the repository's current implementation. Keep this section synchronized as the project evolves.
-
-## 1. Clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/varunaditya27/campus-copilot.git
 cd campus-copilot
 ```
 
-## 2. Configure the environment
-
-Create the required environment files for the frontend and backend based on the provided examples.
-
-At minimum, the backend requires a Groq API key.
-
-```env
-GROQ_API_KEY=your_groq_api_key
-```
-
-## 3. Install frontend dependencies
+### 2. Install frontend dependencies
 
 ```bash
 cd frontend
 npm install
+cp .env.example .env
 ```
 
 See [`frontend/README.md`](frontend/README.md) for the frontend's design system, component layout, and the API contract it expects from the backend.
 
-## 4. Install backend dependencies
+### 3. Install backend dependencies
 
 ```bash
 cd ../backend
 python -m venv .venv
 ```
 
-### Linux / macOS
+**Linux / macOS**
 
 ```bash
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Windows
+**Windows**
 
 ```powershell
 .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+```bash
+cp .env.example .env    # add your GROQ_API_KEY
+```
+
 See [`backend/README.md`](backend/README.md) for the RAG pipeline, the agent loop, tool design, and the full API reference.
 
-## 5. Prepare the knowledge base
+### 4. Prepare the knowledge base
 
 Run the project's ingestion script to process the campus knowledge corpus and populate Chroma. See [`knowledge/README.md`](knowledge/README.md) for what's in the corpus and [`backend/README.md`](backend/README.md#-rag-pipeline) for how ingestion works.
 
 ```bash
-python rag/ingest.py
+python -m app.rag.ingest
 ```
 
-## 6. Start FastAPI
+### 5. Start FastAPI
 
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload --port 8000
 ```
 
-## 7. Start Next.js
+### 6. Start Next.js
 
 In another terminal:
 
@@ -437,7 +432,7 @@ Then open the local development URL shown by Next.js.
 
 ---
 
-# 🧪 Example Interactions
+## 🧪 Example Interactions
 
 ### Knowledge retrieval
 
@@ -473,7 +468,7 @@ Then open the local development URL shown by Next.js.
 
 ---
 
-# 🧭 Development Roadmap
+## 🧭 Development Roadmap
 
 ```mermaid
 flowchart LR
@@ -498,7 +493,7 @@ flowchart LR
 
 ---
 
-# 🎓 Educational Value
+## 🎓 Educational Value
 
 Campus Copilot is intentionally structured as a learning project and workshop artifact.
 
@@ -515,7 +510,7 @@ It demonstrates the progression:
 
 ---
 
-# 💼 Why This Is More Than a Chatbot
+## 💼 Why This Is More Than a Chatbot
 
 A generic LLM wrapper often looks like:
 
@@ -547,7 +542,7 @@ That architecture gives the project meaningful exposure to modern AI engineering
 
 ---
 
-# 🔐 Design Principles
+## 🔐 Design Principles
 
 ### Keep the system understandable
 
@@ -571,7 +566,7 @@ No separate vector database server, complex orchestration layer, or unnecessary 
 
 ---
 
-# 🌱 Future Extensions
+## 🌱 Future Extensions
 
 Possible future directions include:
 
@@ -591,28 +586,15 @@ These are intentionally outside the core scope of the project.
 
 ---
 
-# 🤝 Contributing
+## 🤝 Contributing
 
-Contributions are welcome.
-
-A useful contribution should ideally improve one of the following:
-
-- User experience
-- Retrieval quality
-- Agent reliability
-- Tool design
-- Campus knowledge coverage
-- Error handling
-- Developer experience
-- Documentation
-
-For larger changes, open an issue first to discuss the proposed direction.
+Contributions are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for what a good contribution looks like, where things live, and how to submit a change.
 
 ---
 
-# 📄 License
+## 📄 License
 
-Add the project's chosen license here when finalized.
+MIT — see [`LICENSE`](LICENSE).
 
 ---
 
