@@ -53,14 +53,36 @@ TOOL_SCHEMAS = [
             },
         },
     },
+    {
+        "type": "function",
+        "function": {
+            "name": "register_for_event",
+            "description": (
+                "Prepare an event registration for the student to confirm. "
+                "Call this once you have a real event_id (from search_events) "
+                "and the student's id, and they've asked to register. This "
+                "does NOT complete the registration -- it shows the student "
+                "a confirmation card; the actual registration only happens "
+                "if they approve it."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "event_id": {"type": "string"},
+                    "student_id": {"type": "string"},
+                },
+                "required": ["event_id", "student_id"],
+            },
+        },
+    },
 ]
 
+# Only tools that are safe to auto-execute go here. register_for_event is
+# intentionally absent: it mutates data, so the model's call to it is
+# intercepted by the agent loop and turned into a confirmation prompt
+# instead of being run automatically. See agent/agent.py.
 TOOL_FUNCTIONS = {
     "search_events": search_events,
     "check_event_availability": check_event_availability,
     "calculate_attendance": calculate_attendance,
 }
-
-# register_for_event is deliberately NOT registered here. It mutates data,
-# so the model is never allowed to call it directly -- it goes through the
-# human-confirmation gate we build in the next step instead.
