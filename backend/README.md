@@ -23,7 +23,7 @@
 
 This service owns everything the [frontend](../frontend/README.md) doesn't:
 
-- **Retrieval** — the `knowledge/` corpus, embedded and searched via a local Chroma collection.
+- **Retrieval** — the [`knowledge/`](../knowledge/README.md) corpus, embedded and searched via a local Chroma collection.
 - **Tool execution** — deterministic Python functions (`search_events`, `check_event_availability`, `calculate_attendance`, `register_for_event`) that Groq can call.
 - **The agent loop** — deciding, per request, whether to answer directly, call a tool, chain several tool calls, or ask the user to confirm a consequential action.
 - **Structured data** — events, students, and registrations, read and written as plain JSON.
@@ -103,7 +103,7 @@ The `api/` → `agent/`+`services/` → `tools/` split is deliberate: HTTP route
 
 ## 🔎 RAG Pipeline
 
-The `knowledge/` corpus (16 markdown files) is chunked by `##` heading rather than by raw character count, so every retrieved chunk carries a real section title (`library.md · Opening Hours`) instead of an arbitrary offset -- the frontend's source cards display that directly.
+The `knowledge/` corpus (32 markdown files, simulating a complete virtual engineering university -- see [`knowledge/README.md`](../knowledge/README.md) for the full breakdown) is chunked by `##` heading rather than by raw character count, so every retrieved chunk carries a real section title (`library.md · Opening Hours`) instead of an arbitrary offset -- the frontend's source cards display that directly.
 
 ```text
 knowledge/**/*.md

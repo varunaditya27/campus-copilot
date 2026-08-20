@@ -310,34 +310,7 @@ This introduces an important production-oriented principle:
 
 # 🏫 Knowledge Corpus
 
-The project is designed around a small, curated campus corpus so that the application can be run without scraping websites or processing large collections of PDFs.
-
-Suggested structure:
-
-```text
-knowledge/
-├── academics/
-│   ├── attendance_policy.md
-│   ├── examination_rules.md
-│   ├── grading_policy.md
-│   └── academic_calendar.md
-│
-├── campus/
-│   ├── library.md
-│   ├── facilities.md
-│   ├── departments.md
-│   └── campus_contacts.md
-│
-├── student_life/
-│   ├── clubs.md
-│   ├── scholarships.md
-│   └── student_services.md
-│
-└── faq/
-    └── common_questions.md
-```
-
-The corpus is intentionally small and human-readable. The project is about **AI application architecture**, not document-ingestion gymnastics.
+The project is grounded in a curated, human-readable markdown corpus rather than scraped websites or a pile of PDFs — the point is **AI application architecture**, not document-ingestion gymnastics. The corpus itself simulates a complete virtual engineering university (academics, administration, campus life, and policy) so that retrieval has real structure to work with. See [`knowledge/README.md`](knowledge/README.md) for the full corpus design, category breakdown, and example questions.
 
 ---
 
@@ -369,8 +342,9 @@ campus-copilot/
 │   ├── students.json
 │   └── registrations.json
 │
-├── knowledge/                  # curated campus knowledge corpus (RAG source)
+├── knowledge/                  # curated campus knowledge corpus (RAG source) — see knowledge/README.md
 │   ├── academics/
+│   ├── administration/
 │   ├── campus/
 │   ├── student-life/
 │   ├── policies/
@@ -379,7 +353,7 @@ campus-copilot/
 └── README.md
 ```
 
-> UI, orchestration, retrieval, tools, and data are kept in separate, single-responsibility directories on purpose. [`frontend/README.md`](frontend/README.md) and [`backend/README.md`](backend/README.md) each carry their own implementation-specific detail — this file stays focused on the system as a whole.
+> UI, orchestration, retrieval, tools, and data are kept in separate, single-responsibility directories on purpose. [`frontend/README.md`](frontend/README.md), [`backend/README.md`](backend/README.md), and [`knowledge/README.md`](knowledge/README.md) each carry their own implementation-specific detail — this file stays focused on the system as a whole.
 
 ---
 
@@ -438,7 +412,7 @@ See [`backend/README.md`](backend/README.md) for the RAG pipeline, the agent loo
 
 ## 5. Prepare the knowledge base
 
-Run the project's ingestion script to process the campus knowledge corpus and populate Chroma.
+Run the project's ingestion script to process the campus knowledge corpus and populate Chroma. See [`knowledge/README.md`](knowledge/README.md) for what's in the corpus and [`backend/README.md`](backend/README.md#-rag-pipeline) for how ingestion works.
 
 ```bash
 python rag/ingest.py
