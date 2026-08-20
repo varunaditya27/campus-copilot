@@ -11,7 +11,14 @@
     "registered": 33,
     "organizer": "AI and Machine Learning Community",
     "description": "A hands-on introduction to generative AI, retrieval-augmented generation, and practical AI application design.",
-    "tags": ["AI", "LLM", "RAG", "generative-ai", "workshop"]
+    "tags": [
+      "AI",
+      "LLM",
+      "RAG",
+      "generative-ai",
+      "workshop",
+      "technical"
+    ]
   },
   {
     "id": "evt_web_002",
@@ -25,7 +32,14 @@
     "registered": 18,
     "organizer": "Coding Club",
     "description": "A project-oriented session on component architecture, routing, data fetching, and modern React application development.",
-    "tags": ["React", "Next.js", "JavaScript", "web", "workshop"]
+    "tags": [
+      "React",
+      "Next.js",
+      "JavaScript",
+      "web",
+      "workshop",
+      "technical"
+    ]
   },
   {
     "id": "evt_sec_003",
@@ -39,7 +53,13 @@
     "registered": 31,
     "organizer": "Cybersecurity Community",
     "description": "An introductory lab covering secure authentication, common web vulnerabilities, and responsible security experimentation.",
-    "tags": ["security", "web-security", "CTF", "lab"]
+    "tags": [
+      "security",
+      "web-security",
+      "CTF",
+      "lab",
+      "technical"
+    ]
   },
   {
     "id": "evt_cp_004",
@@ -53,7 +73,12 @@
     "registered": 42,
     "organizer": "Coding Club",
     "description": "A timed problem-solving session covering algorithms, data structures, and implementation patterns.",
-    "tags": ["algorithms", "data-structures", "competitive-programming"]
+    "tags": [
+      "algorithms",
+      "data-structures",
+      "competitive-programming",
+      "technical"
+    ]
   },
   {
     "id": "evt_res_005",
@@ -67,7 +92,13 @@
     "registered": 79,
     "organizer": "Innovation and Research Cell",
     "description": "Student teams present engineering and research projects and discuss methodology, evaluation, and lessons learned.",
-    "tags": ["research", "projects", "innovation", "showcase"]
+    "tags": [
+      "research",
+      "projects",
+      "innovation",
+      "showcase",
+      "technical"
+    ]
   },
   {
     "id": "evt_robot_006",
@@ -81,6 +112,12 @@
     "registered": 12,
     "organizer": "Robotics and Embedded Systems Community",
     "description": "Demonstrations of sensor systems, microcontrollers, robotics prototypes, and lightweight machine learning at the edge.",
-    "tags": ["robotics", "embedded", "edge-ai", "IoT"]
+    "tags": [
+      "robotics",
+      "embedded",
+      "edge-ai",
+      "IoT",
+      "technical"
+    ]
   }
 ]
