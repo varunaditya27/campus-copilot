@@ -1,6 +1,7 @@
 import type { ChatMessage } from "@/lib/types";
 import SourceCard from "../rag/SourceCard";
 import ConfirmationCard from "../agent/ConfirmationCard";
+import Markdown from "./Markdown";
 
 export default function MessageBubble({ message }: { message: ChatMessage }) {
   const isUser = message.role === "user";
@@ -21,14 +22,12 @@ export default function MessageBubble({ message }: { message: ChatMessage }) {
           <span className="h-1.5 w-1.5 animate-pulse bg-ink-faint [animation-delay:150ms]" />
           <span className="h-1.5 w-1.5 animate-pulse bg-ink-faint [animation-delay:300ms]" />
         </div>
-      ) : (
-        <p
-          className={`whitespace-pre-wrap text-[15px] leading-relaxed ${
-            isUser ? "text-right text-ink" : "text-ink"
-          }`}
-        >
+      ) : isUser ? (
+        <p className="whitespace-pre-wrap text-right text-[15px] leading-relaxed text-ink">
           {message.content}
         </p>
+      ) : (
+        <Markdown content={message.content} />
       )}
 
       {message.sources && message.sources.length > 0 && (

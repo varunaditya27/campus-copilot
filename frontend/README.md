@@ -51,6 +51,8 @@ Chat messages render as a labeled transcript (`YOU` / `CAMPUS COPILOT` + rule) r
 
 All design tokens live in [`app/globals.css`](app/globals.css) as CSS custom properties, mapped into Tailwind v4 via `@theme inline`.
 
+Assistant replies are markdown — Groq's answers routinely include headings, lists, and tables (a grading scale, a fee breakdown) — so [`app/components/chat/Markdown.tsx`](app/components/chat/Markdown.tsx) renders them with [`react-markdown`](https://github.com/remarkjs/react-markdown) and `remark-gfm` (for tables and task lists) rather than dumping raw asterisks and hashes into a `<p>`. It's not the Tailwind Typography plugin's `prose` class — every element (`h1`–`h3`, lists, `code`/`pre`, `table`) has its own override in that file so markdown output lands in the same hairline-border, no-shadow register as the rest of the interface instead of picking up generic prose defaults. User messages skip this entirely and render as plain text, since a student typing `*` or `#` almost certainly doesn't mean markdown.
+
 ---
 
 ## 🧠 How This Fits Together
@@ -88,6 +90,7 @@ frontend/
 │       │   ├── ChatWindow.tsx    # Message list, empty state, auto-scroll
 │       │   ├── ChatInput.tsx     # Message composer
 │       │   ├── MessageBubble.tsx # Single transcript turn
+│       │   ├── Markdown.tsx      # Styled react-markdown renderer for agent replies
 │       │   └── SuggestedPrompts.tsx
 │       ├── agent/
 │       │   ├── AgentActivity.tsx # Sidebar tool-activity log
@@ -191,4 +194,5 @@ The frontend runs independently of the backend — the chat and events pages wil
 - Keep new UI in the established visual language — no rounded chat bubbles, gradients, drop shadows, or emoji-as-icons. Use [`app/components/icons.tsx`](app/components/icons.tsx) for new icons.
 - Design tokens (color, type, motion) live in [`app/globals.css`](app/globals.css) — extend them there rather than hardcoding values in components.
 - New backend endpoints should be added to [`lib/api.ts`](lib/api.ts) and [`lib/types.ts`](lib/types.ts) so the rest of the app stays fully typed.
+- If a markdown element renders unstyled, add an override to the `components` map in [`app/components/chat/Markdown.tsx`](app/components/chat/Markdown.tsx) — don't reach for the Typography plugin or inline styles, and don't let raw HTML through unstyled.
 
