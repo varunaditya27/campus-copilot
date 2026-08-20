@@ -6,10 +6,46 @@
     "year": 3
   },
   {
+    "student_id": "1RV24IS219",
+    "name": "Ananya Iyer",
+    "program": "Information Science and Engineering",
+    "year": 2
+  },
+  {
+    "student_id": "1RV22IS305",
+    "name": "Priya Menon",
+    "program": "Information Science and Engineering",
+    "year": 4
+  },
+  {
+    "student_id": "1RV25IS410",
+    "name": "Rohan Gupta",
+    "program": "Information Science and Engineering",
+    "year": 1
+  },
+  {
     "student_id": "1RV23CS114",
     "name": "Meera Nair",
     "program": "Computer Science and Engineering",
     "year": 3
+  },
+  {
+    "student_id": "1RV22CS220",
+    "name": "Arjun Reddy",
+    "program": "Computer Science and Engineering",
+    "year": 4
+  },
+  {
+    "student_id": "1RV24CS118",
+    "name": "Sneha Kulkarni",
+    "program": "Computer Science and Engineering",
+    "year": 2
+  },
+  {
+    "student_id": "1RV25CS330",
+    "name": "Vikram Chandran",
+    "program": "Computer Science and Engineering",
+    "year": 1
   },
   {
     "student_id": "1RV24EC207",
@@ -18,9 +54,69 @@
     "year": 2
   },
   {
-    "student_id": "1RV24IS219",
-    "name": "Ananya Iyer",
-    "program": "Information Science and Engineering",
+    "student_id": "1RV23EC150",
+    "name": "Ishita Bhatt",
+    "program": "Electronics and Communication Engineering",
+    "year": 3
+  },
+  {
+    "student_id": "1RV22EC088",
+    "name": "Aditya Verma",
+    "program": "Electronics and Communication Engineering",
+    "year": 4
+  },
+  {
+    "student_id": "1RV25EC275",
+    "name": "Nandini Pillai",
+    "program": "Electronics and Communication Engineering",
+    "year": 1
+  },
+  {
+    "student_id": "1RV23EE142",
+    "name": "Rahul Deshmukh",
+    "program": "Electrical and Electronics Engineering",
+    "year": 3
+  },
+  {
+    "student_id": "1RV24EE099",
+    "name": "Kavya Krishnan",
+    "program": "Electrical and Electronics Engineering",
     "year": 2
+  },
+  {
+    "student_id": "1RV22EE160",
+    "name": "Siddharth Rao",
+    "program": "Electrical and Electronics Engineering",
+    "year": 4
+  },
+  {
+    "student_id": "1RV25EE050",
+    "name": "Divya Shetty",
+    "program": "Electrical and Electronics Engineering",
+    "year": 1
+  },
+  {
+    "student_id": "1RV23ME201",
+    "name": "Karthik Subramanian",
+    "program": "Mechanical Engineering",
+    "year": 3
+  },
+  {
+    "student_id": "1RV24ME077",
+    "name": "Neha Joshi",
+    "program": "Mechanical Engineering",
+    "year": 2
+  },
+  {
+    "student_id": "1RV22ME188",
+    "name": "Manoj Pillai",
+    "program": "Mechanical Engineering",
+    "year": 4
+  },
+  {
+    "student_id": "1RV25ME295",
+    "name": "Tanvi Agarwal",
+    "program": "Mechanical Engineering",
+    "year": 1
   }
 ]

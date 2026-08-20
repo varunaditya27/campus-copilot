@@ -12,5 +12,19 @@
     "event_id": "evt_res_005",
     "registered_at": "2026-08-19T11:05:00+05:30",
     "status": "confirmed"
+  },
+  {
+    "registration_id": "REG-DEMO-003",
+    "student_id": "1RV22CS220",
+    "event_id": "evt_sec_010",
+    "registered_at": "2026-08-20T09:15:00+05:30",
+    "status": "confirmed"
+  },
+  {
+    "registration_id": "REG-DEMO-004",
+    "student_id": "1RV23EC150",
+    "event_id": "evt_robot_011",
+    "registered_at": "2026-08-20T10:40:00+05:30",
+    "status": "confirmed"
   }
 ]
