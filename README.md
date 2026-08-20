@@ -132,10 +132,8 @@ flowchart TB
     end
 
     subgraph DATA[Knowledge & Application Data]
-        CHROMA[(🧠 Chroma)
-        Semantic Knowledge]
-        JSON[(🗂️ JSON)
-        Structured Data]
+        CHROMA[("🧠 Chroma<br/>Semantic Knowledge")]
+        JSON[("🗂️ JSON<br/>Structured Data")]
     end
 
     GROQ[⚡ Groq LLM]
@@ -147,6 +145,7 @@ flowchart TB
     AGENT --> RAG
     RAG --> CHROMA
     AGENT --> GROQ
+    GROQ --> AGENT
     AGENT --> TOOLS
     TOOLS --> JSON
     TOOLS --> AGENT
