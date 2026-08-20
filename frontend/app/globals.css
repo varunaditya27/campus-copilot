@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+:root {
+  /* Campus institutional palette */
+  --color-cream: #f7f3e9;
+  --color-cream-raised: #fbf9f3;
+  --color-cream-sunken: #efe9d8;
+  --color-ink: #24211c;
+  --color-ink-soft: #57534a;
+  --color-ink-faint: #8b8577;
+  --color-navy: #1b2a4a;
+  --color-navy-soft: #2e3f5c;
+  --color-navy-line: #33456a;
+  --color-brass: #b8863b;
+  --color-brass-soft: #d9bc85;
+  --color-brass-line: rgba(184, 134, 59, 0.35);
+  --color-line: #ded5c0;
+  --color-line-strong: #c9bd9e;
+  --color-forest: #33684f;
+  --color-rust: #9c4a30;
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-public-sans);
+  --font-mono: var(--font-plex-mono);
+
+  --ease-considered: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-raised: var(--color-cream-raised);
+  --color-cream-sunken: var(--color-cream-sunken);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-navy: var(--color-navy);
+  --color-navy-soft: var(--color-navy-soft);
+  --color-navy-line: var(--color-navy-line);
+  --color-brass: var(--color-brass);
+  --color-brass-soft: var(--color-brass-soft);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-forest: var(--color-forest);
+  --color-rust: var(--color-rust);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-brass-soft);
+  color: var(--color-navy);
+}
+
+/* Considered motion: short, precisely-eased, never bouncy */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-rise {
+    animation: rise 260ms var(--ease-considered) both;
+  }
+  .anim-fade {
+    animation: fade 200ms var(--ease-considered) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-rise,
+  .anim-fade {
+    animation: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hairline rule utility, used instead of shadows for separation */
+.rule-top {
+  border-top: 1px solid var(--color-line);
+}
+.rule-bottom {
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* Thin scrollbars that match the institutional register */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+}
