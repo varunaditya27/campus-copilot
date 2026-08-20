@@ -18,9 +18,9 @@ export default function ChatPage() {
   const [sending, setSending] = useState(false);
   const [banner, setBanner] = useState<string | null>(null);
 
-  const latestActivity =
-    [...messages].reverse().find((m) => m.toolActivity?.length)
-      ?.toolActivity ?? [];
+  const allActivity = messages.flatMap((m) =>
+    (m.toolActivity ?? []).map((entry) => ({ ...entry, id: `${m.id}:${entry.id}` })),
+  );
 
   async function handleSend(text: string) {
     const userMessage: ChatMessage = {
@@ -83,7 +83,7 @@ export default function ChatPage() {
         <ChatWindow messages={messages} onSelectPrompt={handleSend} />
         <ChatInput onSend={handleSend} disabled={sending} />
       </div>
-      <AgentActivity entries={latestActivity} />
+      <AgentActivity entries={allActivity} />
     </div>
   );
 }
