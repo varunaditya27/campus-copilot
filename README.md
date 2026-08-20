@@ -346,32 +346,41 @@ The corpus is intentionally small and human-readable. The project is about **AI 
 
 ```text
 campus-copilot/
-├── frontend/
+├── frontend/                  # Next.js UI — see frontend/README.md
 │   ├── app/
-│   ├── components/
-│   ├── lib/
+│   │   ├── components/        # chat, agent, rag, events, layout
+│   │   ├── about/, events/    # routes
+│   │   └── page.tsx           # chat page
+│   ├── lib/                   # typed API client + shared types
 │   └── package.json
 │
-├── backend/
-│   ├── agent/
-│   ├── rag/
-│   ├── tools/
-│   ├── data/
-│   ├── chroma/
-│   ├── main.py
-│   ├── requirements.txt
-│   └── .env.example
+├── backend/                   # FastAPI service
+│   └── app/
+│       ├── agent/             # agent loop, prompts, tool registry
+│       ├── api/                # route handlers (chat, events)
+│       ├── core/               # config, constants
+│       ├── models/              # request/response schemas
+│       ├── rag/                 # ingestion, embeddings, retrieval
+│       ├── services/            # event + registration business logic
+│       ├── tools/               # search_events, registration, attendance
+│       └── main.py
 │
-├── knowledge/
+├── data/                       # structured application data (JSON)
+│   ├── events.json
+│   ├── students.json
+│   └── registrations.json
+│
+├── knowledge/                  # curated campus knowledge corpus (RAG source)
 │   ├── academics/
 │   ├── campus/
-│   ├── student_life/
+│   ├── student-life/
+│   ├── policies/
 │   └── faq/
 │
 └── README.md
 ```
 
-> The exact repository structure may evolve as the implementation grows. The architectural separation is intentional: UI, orchestration, retrieval, tools, and data should remain easy to reason about.
+> UI, orchestration, retrieval, tools, and data are kept in separate, single-responsibility directories on purpose. The frontend has its own [`frontend/README.md`](frontend/README.md) with implementation-specific detail — a backend README will follow as that implementation lands. This file stays focused on the system as a whole.
 
 ---
 
@@ -402,6 +411,8 @@ GROQ_API_KEY=your_groq_api_key
 cd frontend
 npm install
 ```
+
+See [`frontend/README.md`](frontend/README.md) for the frontend's design system, component layout, and the API contract it expects from the backend.
 
 ## 4. Install backend dependencies
 
@@ -491,23 +502,23 @@ Then open the local development URL shown by Next.js.
 
 ```mermaid
 flowchart LR
-    A[✅ Full-Stack Skeleton] --> B[✅ Groq Integration]
-    B --> C[✅ RAG + Chroma]
-    C --> D[✅ Tool Calling]
-    D --> E[✅ Multi-Step Agent]
-    E --> F[✅ Human Confirmation]
-    F --> G[🚀 Polish + Demo]
+    A[✅ Frontend UI] --> B[🚧 Groq Integration]
+    B --> C[🚧 RAG + Chroma]
+    C --> D[🚧 Tool Calling]
+    D --> E[⬜ Multi-Step Agent]
+    E --> F[⬜ Human Confirmation]
+    F --> G[⬜ Polish + Demo]
 ```
 
 ### Current focus
 
-- [ ] Finalize campus knowledge corpus
+- [x] Finalize campus knowledge corpus
+- [x] Build the frontend UI (chat, agent activity log, confirmation card, events browser)
 - [ ] Implement the RAG ingestion pipeline
 - [ ] Implement event search
 - [ ] Implement availability checks
 - [ ] Implement registration workflow
-- [ ] Add confirmation UI
-- [ ] Add agent activity visualization
+- [ ] Wire the frontend up to a working backend end-to-end
 - [ ] Add robust error handling
 - [ ] Add demo-ready sample conversations
 
