@@ -1,4 +1,3 @@
-import logging
 from datetime import datetime, timedelta, timezone
 from uuid import UUID
 
@@ -11,8 +10,9 @@ from app.db import session as db_session
 from app.db.models import PendingAction
 from app.models.actions import ActionOutcome, Confirmation, ConfirmationLine
 from app.models.auth import CurrentStudent
+from app.observability.logging import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 # How long a student has to approve what the assistant proposed.
 CONFIRMATION_MINUTES = 10
@@ -108,10 +108,11 @@ def confirm(action_id: UUID, student: CurrentStudent) -> ActionOutcome:
     except ActionError as exc:
         result, final = {"success": False, "message": str(exc), "details": {}}, "failed"
     except Exception:
-        logger.exception("Action %s failed", name)
+        logger.exception("action.error", action=name)
         result = {"success": False, "message": "Something went wrong, so nothing was done. Please try again.", "details": {}}
         final = "failed"
 
+    logger.info("action.finished", action=name, status=final)
     with db_session.SessionLocal() as db:
         db.execute(update(PendingAction).where(PendingAction.id == action_id).values(status=final, result=result))
         db.commit()

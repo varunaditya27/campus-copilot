@@ -1,8 +1,13 @@
+import time
 from collections.abc import Iterator
 from types import ModuleType
 
 from app.llm.base import BaseLLMClient, LLMChunk, ToolCallPart, Usage
 from app.llm.errors import to_app_error
+from app.observability import metrics
+from app.observability.logging import get_logger
+
+logger = get_logger(__name__)
 
 
 def _usage_of(chunk) -> Usage | None:
@@ -46,12 +51,14 @@ class OpenAICompatibleClient(BaseLLMClient):
             options["tools"] = tools  # tool_choice is left at its default, "auto"; some servers reject the field
         if self._stream_usage:
             options["stream_options"] = {"include_usage": True}
+        model = self.model_for(tier)
+        started = time.perf_counter()
+        outcome, reported = "error", None
         try:
-            stream = self._raw.chat.completions.create(
-                model=self.model_for(tier), messages=messages, stream=True, **options
-            )
+            stream = self._raw.chat.completions.create(model=model, messages=messages, stream=True, **options)
             for chunk in stream:
                 usage = _usage_of(chunk)
+                reported = usage or reported
                 if not chunk.choices:
                     if usage:
                         yield LLMChunk(usage=usage)
@@ -67,5 +74,18 @@ class OpenAICompatibleClient(BaseLLMClient):
                     for part in delta.tool_calls or []
                 )
                 yield LLMChunk(text=delta.content or "", tool_call_parts=parts, usage=usage)
+            outcome = "ok"
         except self._sdk.APIError as exc:
             raise to_app_error(exc, self._sdk) from exc
+        finally:
+            elapsed = time.perf_counter() - started
+            metrics.LLM_REQUESTS.labels(self.provider, model, tier, outcome).inc()
+            metrics.LLM_REQUEST_SECONDS.labels(self.provider, model).observe(elapsed)
+            if reported:
+                metrics.LLM_TOKENS.labels(self.provider, model, "prompt").inc(reported.prompt_tokens)
+                metrics.LLM_TOKENS.labels(self.provider, model, "completion").inc(reported.completion_tokens)
+            logger.info(
+                "llm.request", provider=self.provider, model=model, tier=tier, outcome=outcome, duration_ms=round(elapsed * 1000, 1),
+                prompt_tokens=reported.prompt_tokens if reported else None,
+                completion_tokens=reported.completion_tokens if reported else None,
+            )

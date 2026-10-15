@@ -37,6 +37,9 @@ services:
       EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-local}
       EMBEDDING_MODEL: ${EMBEDDING_MODEL:-}
       MULTI_AGENT: ${MULTI_AGENT:-false}
+      LOG_FORMAT: ${LOG_FORMAT:-json}
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-}
+      SENTRY_DSN: ${SENTRY_DSN:-}
       SMTP_HOST: ${SMTP_HOST:-}
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_USER: ${SMTP_USER:-}
@@ -141,9 +144,48 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
 
+  # Monitoring (docker compose --profile monitoring up -d). Prometheus keeps the backend's metrics,
+  # Grafana draws them (http://localhost:3001, admin / the GRAFANA_PASSWORD you set), and Jaeger shows
+  # traces (http://localhost:16686) once OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4318 is set for the backend.
+  prometheus:
+    image: prom/prometheus:v3.13.4
+    profiles: ["monitoring"]
+    volumes:
+      # ":z" lets SELinux hosts (Fedora, RHEL) read a mounted file; other systems ignore it.
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro,z
+      - prometheus_data:/prometheus
+    ports:
+      - "127.0.0.1:${PROMETHEUS_PORT:-9090}:9090"
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:13.0.11
+    profiles: ["monitoring"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:?set GRAFANA_PASSWORD}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro,z
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro,z
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "127.0.0.1:${GRAFANA_PORT:-3001}:3000"
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  jaeger:
+    image: jaegertracing/jaeger:2.22.0
+    profiles: ["monitoring"]
+    ports:
+      - "127.0.0.1:${JAEGER_PORT:-16686}:16686"
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   chroma_data:
   qdrant_data:
   campus_data:
   model_cache:
+  prometheus_data:
+  grafana_data:

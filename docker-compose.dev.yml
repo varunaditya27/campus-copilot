@@ -7,8 +7,8 @@ services:
     environment:
       RUN_INGEST: "false"
     volumes:
-      - ./backend/app:/app/backend/app
-      - ./backend/tests:/app/backend/tests
+      - ./backend/app:/app/backend/app:z
+      - ./backend/tests:/app/backend/tests:z
       - campus_data:/var/lib/campus
       - model_cache:/home/app/.cache
 
@@ -18,6 +18,6 @@ services:
     environment:
       NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:8000}
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app:z
       - /app/node_modules
       - /app/.next

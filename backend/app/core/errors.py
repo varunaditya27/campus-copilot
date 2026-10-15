@@ -1,9 +1,11 @@
+import structlog
 from fastapi import FastAPI, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+logger = structlog.stdlib.get_logger(__name__)
 _HTTP_ERROR_CODES = {404: "not_found", 405: "method_not_allowed"}
 
 
@@ -41,6 +43,7 @@ async def _validation_error_handler(request: Request, exc: RequestValidationErro
 
 
 async def _unexpected_error_handler(request: Request, exc: Exception) -> JSONResponse:
+    logger.error("unhandled_exception", exc_info=exc, path=request.url.path)
     return _response(500, "internal_error", "Something went wrong on our side. Please try again.")
 
 

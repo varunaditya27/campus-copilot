@@ -109,3 +109,18 @@ SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
 SMTP_FROM = os.getenv("SMTP_FROM", "Campus Copilot <no-reply@campus.example>")
 # STARTTLS upgrades the connection to encrypted before logging in; turn it off only for a local test server.
 SMTP_STARTTLS = os.getenv("SMTP_STARTTLS", "true").lower() == "true"
+
+# Running the application for real (docker-compose.prod.yml sets "production").
+ENVIRONMENT = os.getenv("ENVIRONMENT", "development").lower()
+
+# Logs are one JSON object per line ("json") or readable text ("console").
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+LOG_FORMAT = os.getenv("LOG_FORMAT", "json").lower()
+
+# Traces are sent to an OpenTelemetry collector when this is set (for example http://jaeger:4318).
+OTEL_EXPORTER_OTLP_ENDPOINT = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "")
+
+# Errors are sent to Sentry when a DSN is set. Request bodies, cookies and headers are never sent.
+SENTRY_DSN = os.getenv("SENTRY_DSN", "")
+SENTRY_TRACES_SAMPLE_RATE = float(os.getenv("SENTRY_TRACES_SAMPLE_RATE", "0"))
+SENTRY_RELEASE = os.getenv("SENTRY_RELEASE", "")

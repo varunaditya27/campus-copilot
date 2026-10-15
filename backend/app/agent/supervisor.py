@@ -17,8 +17,11 @@ from app.llm.tiers import tier_for
 from app.models.auth import CurrentStudent
 from app.models.chat import ChatHistoryItem, ChatResponse, Source
 from app.models.memory import Entity
+from app.observability.logging import get_logger
 
 MAX_DOMAINS = 3
+
+logger = get_logger(__name__)
 ROUTER_HISTORY_ITEMS = 4
 ROUTER_HISTORY_CHARS = 300
 
@@ -82,7 +85,9 @@ class SupervisorState:
 
 
 def router_node(state: SupervisorState) -> dict:
-    return {"domains": route(state.message, state.history) or [None]}
+    domains = route(state.message, state.history) or [None]
+    logger.info("agent.route", domains=domains)
+    return {"domains": domains}
 
 
 def fan_out(state: SupervisorState) -> list[Send]:

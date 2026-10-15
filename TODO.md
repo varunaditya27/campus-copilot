@@ -380,12 +380,12 @@
 
 ### 9.3 Observability
 
-- [ ] Add `structlog` to backend for structured JSON logging on every request, agent decision, and tool call
-- [ ] Add `prometheus-fastapi-instrumentator` — expose `/metrics` endpoint
-- [ ] Add custom Prometheus metrics: `agent_tool_rounds_total`, `rag_retrieval_latency_seconds`, `rag_chunks_returned_count`, `llm_tokens_used_total`
-- [ ] Add Grafana + Prometheus to `docker-compose.yml` for local monitoring
-- [ ] Add distributed tracing with OpenTelemetry (instrument FastAPI + DB queries)
-- [ ] Add Sentry SDK to both backend and frontend for error tracking in production
+- [x] Add `structlog` to backend for structured JSON logging on every request, agent decision, and tool call
+- [x] Add `prometheus-fastapi-instrumentator` — expose `/metrics` endpoint (needed FastAPI 0.143 and Starlette 1.x, so FastAPI moved from 0.116.1)
+- [x] Add custom Prometheus metrics: `agent_tool_rounds_total`, `rag_retrieval_latency_seconds`, `rag_chunks_returned_count`, `llm_tokens_used_total` (tokens only when the service reports usage while streaming; Groq documents nothing for that)
+- [x] Add Grafana + Prometheus to `docker-compose.yml` for local monitoring (a `monitoring` profile, with a provisioned dashboard and Jaeger; run for real)
+- [x] Add distributed tracing with OpenTelemetry (instrument FastAPI + DB queries) (SQLAlchemy instrumentation needs its dependency check skipped on SQLAlchemy 2.1; seen working against Postgres and Jaeger)
+- [x] Add Sentry SDK to both backend and frontend for error tracking in production (privacy settings tested; never run against Sentry itself, only a local receiver)
 
 ### 9.4 Testing
 

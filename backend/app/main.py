@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.api.actions import router as actions_router
 from app.api.admin_analytics import router as admin_analytics_router
@@ -19,7 +20,12 @@ from app.api.students import router as students_router
 from app.core.config import CORS_ORIGINS
 from app.core.errors import register_error_handlers
 from app.core.origin_check import OriginCheckMiddleware
+from app.db.session import engine
 from app.llm import LLMConfigError, get_llm_client
+from app.observability.logging import configure_logging
+from app.observability.middleware import RequestLoggingMiddleware
+from app.observability.sentry import init_sentry
+from app.observability.tracing import setup_tracing
 from app.rag import retriever
 
 @asynccontextmanager
@@ -35,6 +41,8 @@ async def lifespan(app: FastAPI):
     yield
 
 
+configure_logging()
+init_sentry()
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Campus Copilot API", lifespan=lifespan)
@@ -60,6 +68,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# Added last, so it wraps everything else and its request id and timing cover the whole request.
+app.add_middleware(RequestLoggingMiddleware)
+setup_tracing(app, engine)
+# Prometheus metrics at /metrics: request counts and latency per route, plus the agent's own (observability/metrics.py).
+# It is not served by the reverse proxy in docker-compose.prod.yml, so it is only reachable inside the network.
+Instrumentator(excluded_handlers=["/metrics", "/health"]).instrument(app).expose(app, include_in_schema=False)
 
 
 @app.get("/health")

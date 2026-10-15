@@ -1,5 +1,7 @@
+import contextvars
 import json
 import operator
+import time
 from collections.abc import Callable, Iterator
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
@@ -28,6 +30,8 @@ from app.llm import BaseLLMClient, get_llm_client
 from app.llm.base import collect
 from app.llm.tiers import tier_for
 from app.models.auth import CurrentStudent
+from app.observability import metrics
+from app.observability.logging import get_logger
 from app.models.memory import Entity
 from app.models.actions import Confirmation
 from app.models.chat import ChatHistoryItem, ChatResponse, Source, ToolActivityEntry
@@ -35,6 +39,8 @@ from app.rag.retriever import KnowledgeBaseNotFound, retrieve
 from app.services import action_service
 
 MAX_TOOL_ROUNDS = 4
+
+logger = get_logger(__name__)
 
 TOOL_LABELS = {
     "search_events": "Searching campus events",
@@ -137,6 +143,20 @@ def _describe_validation_error(exc: ValidationError) -> str:
 def _run_tool(
     name: str, raw_arguments: str, student: CurrentStudent, allowed: frozenset[str] | None = None
 ) -> tuple[dict | list, str]:
+    started = time.perf_counter()
+    result, status = _call_tool(name, raw_arguments, student, allowed)
+    elapsed = time.perf_counter() - started
+    label = name if name in TOOL_FUNCTIONS or name in ACTIONS else "unknown"  # the model may invent names
+    metrics.AGENT_TOOL_CALLS.labels(label, status).inc()
+    metrics.AGENT_TOOL_SECONDS.labels(label).observe(elapsed)
+    # Only the tool's name and outcome are logged: its arguments and results hold personal data.
+    logger.info("agent.tool", tool=name, status=status, duration_ms=round(elapsed * 1000, 1))
+    return result, status
+
+
+def _call_tool(
+    name: str, raw_arguments: str, student: CurrentStudent, allowed: frozenset[str] | None
+) -> tuple[dict | list, str]:
     if allowed is not None and name not in allowed:
         return {"error": f"The tool {name} is not available to you here."}, "error"
     args = _parse_arguments(raw_arguments)
@@ -223,11 +243,16 @@ def _activity(call: dict, result: dict | list, status: str) -> ToolActivityEntry
 def retrieve_node(state: AgentState) -> dict:
     emit = get_stream_writer()
     knowledge_unavailable = False
+    started = time.perf_counter()
     try:
         chunks = retrieve(state.message)
     except KnowledgeBaseNotFound:
         chunks = []
         knowledge_unavailable = True
+    elapsed = time.perf_counter() - started
+    metrics.RAG_RETRIEVAL_SECONDS.observe(elapsed)
+    metrics.RAG_CHUNKS_RETURNED.observe(len(chunks))
+    logger.info("rag.retrieve", chunks=len(chunks), unavailable=knowledge_unavailable, duration_ms=round(elapsed * 1000, 1))
 
     emit(_event("rag_context", sources=[s.model_dump() for s in _sources(chunks)]))
 
@@ -284,6 +309,7 @@ def reason_node(state: AgentState) -> dict:
     update: dict = {"tool_calls": tool_calls, "draft": text, "loop_count": state.loop_count + 1}
     if not tool_calls:
         update["reply"] = text
+    logger.info("agent.reason", domain=state.domain, tier=tier, round=state.loop_count + 1, tool_calls=[c["name"] for c in tool_calls])
     return update
 
 
@@ -298,6 +324,8 @@ def request_confirmation_node(state: AgentState) -> dict:
         reply = f"I've prepared this for you: {confirmation.title}. Please confirm below to complete it."
     except ActionError as exc:
         confirmation, reply = None, str(exc)
+    metrics.AGENT_CONFIRMATIONS.labels(call["name"]).inc()
+    logger.info("agent.confirmation", action=call["name"], proposed=confirmation is not None)
     emit(_event("token", text=reply))
     return {"pending_confirmation": confirmation, "reply": reply, "tool_calls": []}
 
@@ -322,7 +350,11 @@ def _run_tools(
         finish(0, _run_tool(calls[0]["name"], calls[0]["arguments"], student, allowed))
     else:
         with ThreadPoolExecutor(max_workers=min(len(calls), MAX_PARALLEL_TOOLS)) as pool:
-            futures = {pool.submit(_run_tool, c["name"], c["arguments"], student, allowed): i for i, c in enumerate(calls)}
+            # Each call runs in a copy of this context, so its log lines carry the request id.
+            futures = {
+                pool.submit(contextvars.copy_context().run, _run_tool, c["name"], c["arguments"], student, allowed): i
+                for i, c in enumerate(calls)
+            }
             for future in as_completed(futures):
                 finish(futures[future], future.result())
     return entries, outcomes
@@ -331,6 +363,7 @@ def _run_tools(
 def execute_tools_node(state: AgentState) -> dict:
     emit = get_stream_writer()
     calls = state.tool_calls
+    metrics.AGENT_TOOL_ROUNDS.labels(state.domain or "all").inc()
     entries, outcomes = _run_tools(calls, emit, state.student, allowed_tools(state.domain))
 
     messages = [

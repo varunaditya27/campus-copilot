@@ -3,6 +3,7 @@ from typing import Annotated
 from fastapi import Cookie, Depends
 
 from app.core import security
+from app.observability import context as observability
 from app.core.errors import AppError
 from app.models.auth import CurrentStudent, CurrentUser, Role
 from app.services import academic_service, auth_service
@@ -18,6 +19,7 @@ def get_current_user(
     user = auth_service.get_current_user(user_id) if user_id is not None else None
     if user is None:
         raise AppError(401, "not_authenticated", "Please sign in to continue.")
+    observability.bind(user_id=user.user_id, role=user.role)
     return user
 
 

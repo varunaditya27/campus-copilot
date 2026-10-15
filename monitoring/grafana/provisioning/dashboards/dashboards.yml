@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: Campus Copilot
+    folder: Campus Copilot
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards
