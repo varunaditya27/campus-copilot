@@ -58,7 +58,7 @@ def test_malformed_tool_arguments_become_a_tool_error(monkeypatch, raw_arguments
     assert response.toolActivity[0].status == "error"
 
 
-def test_malformed_register_arguments_give_fallback_text(monkeypatch):
+def test_malformed_register_arguments_give_fallback_text(monkeypatch, db):
     call = _tool_call("c1", "register_for_event", {})
     call.function.arguments = "{bad"
     _use_client(monkeypatch, FakeGroq(_completion(tool_calls=[call])))
@@ -141,7 +141,7 @@ def test_retriever_raises_specific_error_when_index_missing(monkeypatch):
 # 1.4: input validation
 
 
-def test_register_rejects_malformed_student_id(data_files):
+def test_register_rejects_malformed_student_id(db):
     response = client.post("/api/register", json={"event_id": "evt_ai_001", "student_id": "bad id!"})
     _assert_error_shape(response, 422, "validation_error")
 
@@ -166,7 +166,7 @@ def test_attendance_rejects_attended_above_total():
     assert "error" in calculate_attendance(11, 10)
 
 
-def test_search_rejects_huge_query(data_files):
+def test_search_rejects_huge_query(db):
     with pytest.raises(ValidationError):
         search_events("x" * 500)
 
@@ -184,11 +184,11 @@ def test_invalid_tool_arguments_are_reported_not_raised(monkeypatch):
 # 2e: structured handlers
 
 
-def test_not_found_uses_structured_shape(data_files):
+def test_not_found_uses_structured_shape(db):
     _assert_error_shape(client.get("/api/events/nope"), 404, "not_found")
 
 
-def test_unexpected_exception_returns_500_without_leaking(monkeypatch, data_files):
+def test_unexpected_exception_returns_500_without_leaking(monkeypatch, db):
     def explode():
         raise RuntimeError("secret internal detail")
 

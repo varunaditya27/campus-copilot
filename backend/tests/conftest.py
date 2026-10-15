@@ -1,8 +1,8 @@
-import json
-
 import pytest
+from sqlalchemy.orm import sessionmaker
 
-from app.services import event_service, registration_service
+from app.db import session as db_session
+from app.db.models import Base, Event, Student
 
 
 def _event(event_id, name, category, capacity, registered, tags):
@@ -32,27 +32,28 @@ STUDENTS = [
 ]
 
 
+@pytest.fixture(autouse=True)
+def _forbid_real_database(monkeypatch):
+    def refuse(*args, **kwargs):
+        raise RuntimeError("Test reached the real database; request the `db` fixture.")
+
+    monkeypatch.setattr(db_session, "SessionLocal", refuse)
+
+
 @pytest.fixture
-def data_files(tmp_path, monkeypatch):
-    """Copy a small known dataset into tmp_path and point both services at it.
+def db(tmp_path, monkeypatch):
+    """A throwaway SQLite database seeded with a small known dataset.
 
-    The services compute their file paths once at import time, so patching
-    DATA_DIR would have no effect; the module-level path names are patched.
+    The services open sessions through app.db.session.SessionLocal, so that
+    one name is swapped for a factory bound to the temporary database.
     """
-    events_file = tmp_path / "events.json"
-    students_file = tmp_path / "students.json"
-    registrations_file = tmp_path / "registrations.json"
-    events_file.write_text(json.dumps(EVENTS))
-    students_file.write_text(json.dumps(STUDENTS))
-    registrations_file.write_text("[]")
+    engine = db_session.make_engine(f"sqlite:///{tmp_path / 'test.db'}")
+    Base.metadata.create_all(engine)
+    factory = sessionmaker(engine, expire_on_commit=False)
+    with factory.begin() as session:
+        session.add_all([Student(**s) for s in STUDENTS])
+        session.add_all([Event(**e) for e in EVENTS])
 
-    monkeypatch.setattr(event_service, "_EVENTS_FILE", events_file)
-    monkeypatch.setattr(registration_service, "_EVENTS_FILE", events_file)
-    monkeypatch.setattr(registration_service, "_STUDENTS_FILE", students_file)
-    monkeypatch.setattr(registration_service, "_REGISTRATIONS_FILE", registrations_file)
-
-    return {
-        "events": events_file,
-        "students": students_file,
-        "registrations": registrations_file,
-    }
+    monkeypatch.setattr(db_session, "SessionLocal", factory)
+    yield factory
+    engine.dispose()

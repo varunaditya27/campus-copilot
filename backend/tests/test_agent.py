@@ -5,7 +5,7 @@ import pytest
 
 from app.agent import agent
 from app.models.chat import ChatHistoryItem
-from helpers import read_json
+from helpers import all_registrations, event_registered
 
 
 def _tool_call(call_id, name, args):
@@ -109,22 +109,21 @@ def test_tool_that_raises_is_logged_as_error(monkeypatch, use_fakes):
     assert response.toolActivity[0].resultSummary == "bad input"
 
 
-def test_register_returns_confirmation_and_does_not_register(data_files, use_fakes):
+def test_register_returns_confirmation_and_does_not_register(db, use_fakes):
     use_fakes(
         _completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "evt_ai_001", "student_id": "1RV23IS101"})]),
     )
-    events_before = read_json(data_files["events"])
 
     response = agent.run_agent("register me", [])
 
     assert response.confirmation.event.id == "evt_ai_001"
     assert response.confirmation.studentId == "1RV23IS101"
     assert "confirm" in response.reply.lower()
-    assert read_json(data_files["registrations"]) == []
-    assert read_json(data_files["events"]) == events_before
+    assert all_registrations(db) == []
+    assert event_registered(db, "evt_ai_001") == 4
 
 
-def test_register_for_unknown_event_gives_fallback_text(data_files, use_fakes):
+def test_register_for_unknown_event_gives_fallback_text(db, use_fakes):
     use_fakes(
         _completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "nope", "student_id": "1RV23IS101"})]),
     )

@@ -1,0 +1,25 @@
+# PostgreSQL for production-style runs. Local development works without it:
+# the backend falls back to a SQLite file when DATABASE_URL is not set.
+#
+#   POSTGRES_PASSWORD=choose-a-password docker compose up -d postgres
+#   DATABASE_URL=postgresql+psycopg://campus:choose-a-password@localhost:5432/campus_copilot
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: campus
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: campus_copilot
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # Postgres 18+ keeps its version-specific data directory under this path.
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U campus -d campus_copilot"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  postgres_data:

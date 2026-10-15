@@ -66,7 +66,7 @@ flowchart LR
     API --> UI
 ```
 
-The frontend never talks to Groq, Chroma, or the JSON data files directly — every request goes through the FastAPI backend, which owns orchestration.
+The frontend never talks to Groq, Chroma, or the database directly — every request goes through the FastAPI backend, which owns orchestration.
 
 ---
 

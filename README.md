@@ -83,7 +83,7 @@ sequenceDiagram
     participant UI as Next.js
     participant Agent as FastAPI + Groq Agent
     participant RAG as Chroma
-    participant Data as JSON Data
+    participant Data as Database
     participant Tool as Campus Tools
 
     User->>UI: Find an AI event tomorrow and register me
@@ -133,7 +133,7 @@ flowchart TB
 
     subgraph DATA[Knowledge & Application Data]
         CHROMA[("🧠 Chroma<br/>Semantic Knowledge")]
-        JSON[("🗂️ JSON<br/>Structured Data")]
+        JSON[("🗂️ SQL Database<br/>Structured Data")]
     end
 
     GROQ[⚡ Groq LLM]
@@ -165,10 +165,10 @@ flowchart TB
 | Backend | **FastAPI** | API endpoints, orchestration, tool execution |
 | LLM | **Groq** | Natural-language reasoning and tool calling |
 | RAG | **Chroma** | Semantic retrieval over campus knowledge |
-| Structured data | **JSON** | Events, students, registrations, capacities |
+| Structured data | **SQLAlchemy + SQLite / PostgreSQL** | Events, students, registrations, capacities (schema managed with Alembic) |
 | Language | **TypeScript + Python** | Frontend and backend implementation |
 
-> **Design choice:** Chroma is used as a Python library rather than as a separate database container. JSON is intentionally used for structured application data to keep the project lightweight and workshop-friendly.
+> **Design choice:** Chroma is used as a Python library rather than as a separate database container. Structured application data lives in a SQL database through SQLAlchemy -- a local SQLite file by default (no setup) and PostgreSQL in production -- because registrations need real transactions: two students must not be able to take the same last seat.
 
 ---
 
@@ -339,7 +339,7 @@ campus-copilot/
 │       ├── tools/               # search_events, registration, attendance
 │       └── main.py
 │
-├── data/                       # structured application data (JSON) — see data/README.md
+├── data/                       # seed data (JSON) loaded into the database — see data/README.md
 │   ├── events.json
 │   ├── students.json
 │   └── registrations.json

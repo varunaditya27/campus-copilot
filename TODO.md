@@ -28,13 +28,13 @@
 
 ### 1.1 Database Migration
 
-- [ ] Replace `events.json`, `students.json`, `registrations.json` with SQLAlchemy models
-- [ ] Set up SQLite for local dev (zero infrastructure change, ACID-safe)
-- [ ] Write Alembic migrations for all tables: `students`, `events`, `registrations`, `sessions`, `users`
-- [ ] Replace all direct JSON file reads/writes in `event_service.py` and `registration_service.py` with DB queries
-- [ ] Add unique constraint on `(student_id, event_id)` for registrations
-- [ ] Add `docker-compose.yml` with a PostgreSQL service for production mode
-- [ ] Make the app switch between SQLite (dev) and PostgreSQL (prod) via `DATABASE_URL` env var
+- [x] Replace `events.json`, `students.json`, `registrations.json` with SQLAlchemy models
+- [x] Set up SQLite for local dev (zero infrastructure change, ACID-safe)
+- [ ] Write Alembic migrations for all tables: `students`, `events`, `registrations`, `sessions`, `users` (students, events, registrations done; sessions with 1.3, users with 2.1)
+- [x] Replace all direct JSON file reads/writes in `event_service.py` and `registration_service.py` with DB queries
+- [x] Add unique constraint on `(student_id, event_id)` for registrations
+- [x] Add `docker-compose.yml` with a PostgreSQL service for production mode
+- [x] Make the app switch between SQLite (dev) and PostgreSQL (prod) via `DATABASE_URL` env var
 
 ### 1.2 Streaming Responses
 

@@ -4,7 +4,7 @@
 
 ### The Application State the Agent Can Search, Check, and Change
 
-**Plain JSON modeling the live, mutable side of the virtual university — events, students, and registrations — as distinct from the static [knowledge corpus](../knowledge/README.md) the agent retrieves from.**
+**JSON seed data modeling the live, mutable side of the virtual university — events, students, and registrations — loaded into the application database by `python -m app.db.seed`, as distinct from the static [knowledge corpus](../knowledge/README.md) the agent retrieves from.**
 
 <br />
 
@@ -23,13 +23,15 @@ Two kinds of information feed Campus Copilot, and they are deliberately kept apa
 - **Static knowledge** ([`knowledge/`](../knowledge/README.md)) — policy, process, and "how does this place work" material. Slow-changing, embedded into Chroma, retrieved semantically.
 - **Structured data** (this directory) — facts with an identity, a current state, and the possibility of changing *during a conversation*. An event has a seat count that goes down. A registration either exists or doesn't. No embedding model should ever be asked to "recall" whether a specific seat is still free — that's a lookup, not retrieval.
 
-This is why `search_events` and `check_event_availability` are Python functions reading these files directly (see [`backend/README.md`](../backend/README.md#-tools--the-agent-loop)), not RAG. The distinction is one of the core teaching points of the whole project.
+This is why `search_events` and `check_event_availability` are Python functions querying this data directly (see [`backend/README.md`](../backend/README.md#-tools--the-agent-loop)), not RAG. The distinction is one of the core teaching points of the whole project.
 
-| File | Shape | Mutated by |
+The files are seed data. At runtime the app reads and writes the database tables they seed, never the files themselves.
+
+| File | Seeds table | Changed at runtime by |
 | --- | --- | --- |
-| `events.json` | list of `CampusEvent` | `POST /api/register` increments `registered` |
-| `students.json` | list of student records | nothing at runtime — a fixed roster |
-| `registrations.json` | list of registration records | `POST /api/register` appends |
+| `events.json` | `events` | `POST /api/register` increments `registered` |
+| `students.json` | `students` | nothing at runtime — a fixed roster |
+| `registrations.json` | `registrations` | `POST /api/register` inserts a row |
 
 ---
 

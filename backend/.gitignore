@@ -11,3 +11,6 @@ __pycache__/
 
 # chroma persistence (rebuilt by rag/ingest.py)
 chroma/
+
+# local SQLite database (created by alembic upgrade + app.db.seed)
+*.db

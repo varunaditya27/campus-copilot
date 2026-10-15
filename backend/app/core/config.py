@@ -11,6 +11,8 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 DATA_DIR = REPO_ROOT / "data"
 KNOWLEDGE_DIR = REPO_ROOT / "knowledge"
 
+DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{REPO_ROOT / 'backend' / 'campus.db'}")
+
 CHROMA_DIR = REPO_ROOT / "backend" / "chroma"
 CHROMA_COLLECTION = "campus_knowledge"
 
