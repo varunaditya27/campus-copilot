@@ -13,10 +13,13 @@ const NAV_LINKS = [
 export default function Header() {
   const pathname = usePathname();
   const { state, logout } = useAuth();
+  const role = state.status === "signedIn" ? state.user.role : null;
   const links =
-    state.status === "signedIn" && state.user.role === "student"
+    role === "student"
       ? [...NAV_LINKS, { href: "/profile", label: "Profile" }]
-      : NAV_LINKS;
+      : role
+        ? [...NAV_LINKS, { href: "/admin", label: "Dashboard" }]
+        : NAV_LINKS;
 
   return (
     <header className="bg-navy text-cream">

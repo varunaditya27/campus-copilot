@@ -21,6 +21,7 @@ class ApiError extends Error {
   constructor(
     message: string,
     public status?: number,
+    public code?: string,
   ) {
     super(message);
     this.name = "ApiError";
@@ -28,17 +29,24 @@ class ApiError extends Error {
 }
 
 // Build an ApiError from a failed response, preferring the backend's message.
-async function toApiError(path: string, res: Response): Promise<ApiError> {
+export async function toApiError(
+  path: string,
+  res: Response,
+): Promise<ApiError> {
   let message = `Request to ${path} failed (${res.status})`;
+  let code: string | undefined;
   try {
     const body = await res.json();
     if (typeof body?.message === "string") {
       message = body.message;
     }
+    if (typeof body?.error_code === "string") {
+      code = body.error_code;
+    }
   } catch {
     // Non-JSON error body: keep the generic message.
   }
-  return new ApiError(message, res.status);
+  return new ApiError(message, res.status, code);
 }
 
 // Called when the user's session has ended and cannot be renewed.
@@ -76,7 +84,10 @@ function refreshSession(): Promise<boolean> {
 
 // fetch with the session cookies attached. A 401 on a protected call means the
 // short-lived access token expired: renew it once and retry.
-async function send(path: string, init: RequestInit = {}): Promise<Response> {
+export async function send(
+  path: string,
+  init: RequestInit = {},
+): Promise<Response> {
   const attempt = async () => {
     try {
       return await fetch(`${API_BASE_URL}${path}`, {
@@ -103,7 +114,10 @@ async function send(path: string, init: RequestInit = {}): Promise<Response> {
   return retried;
 }
 
-async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
+export async function request<T>(
+  path: string,
+  init: RequestInit = {},
+): Promise<T> {
   const res = await send(path, {
     headers: { "Content-Type": "application/json" },
     ...init,
@@ -117,7 +131,7 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-function post<T>(path: string, body?: unknown): Promise<T> {
+export function post<T>(path: string, body?: unknown): Promise<T> {
   return request<T>(path, {
     method: "POST",
     body: body === undefined ? undefined : JSON.stringify(body),

@@ -234,41 +234,41 @@
 
 ### 5.1 Event Management
 
-- [ ] Add `POST /admin/events` — create a new event (name, description, date, time, venue, capacity, category, organiser)
-- [ ] Add `PUT /admin/events/{event_id}` — update an event
-- [ ] Add `DELETE /admin/events/{event_id}` — cancel/delete an event
-- [ ] Add `GET /admin/events/{event_id}/registrations` — list all registrations for an event with student details
-- [ ] Add `POST /admin/events/{event_id}/registrations/export` — export registration list as CSV
-- [ ] Build `/admin/events` page in Next.js: table of all events, create/edit modal, delete confirmation
-- [ ] Build `/admin/events/[id]` page: registration list, export button, capacity gauge
+- [x] Add `POST /admin/events` — create a new event (name, description, date, time, venue, capacity, category, organiser)
+- [x] Add `PUT /admin/events/{event_id}` — update an event
+- [x] Add `DELETE /admin/events/{event_id}` — cancel/delete an event (refused with a count of registered students until forced)
+- [x] Add `GET /admin/events/{event_id}/registrations` — list all registrations for an event with student details
+- [x] Add `POST /admin/events/{event_id}/registrations/export` — export registration list as CSV
+- [x] Build `/admin/events` page in Next.js: table of all events, create/edit modal, delete confirmation
+- [x] Build `/admin/events/[id]` page: registration list, export button, capacity gauge
 
 ### 5.2 Student Management
 
-- [ ] Add `GET /admin/students` — paginated list of all students with search/filter
-- [ ] Add `GET /admin/students/{student_id}` — full profile with academic records, registrations, tickets
-- [ ] Add `POST /admin/students/import` — bulk import students from a CSV file
-- [ ] Build `/admin/students` page in Next.js: searchable table, click-through to student detail
+- [x] Add `GET /admin/students` — paginated list of all students with search/filter
+- [x] Add `GET /admin/students/{student_id}` — full profile with academic records, registrations, tickets
+- [x] Add `POST /admin/students/import` — bulk import students from a CSV file (all or nothing; existing students are skipped)
+- [x] Build `/admin/students` page in Next.js: searchable table, click-through to student detail
 
 ### 5.3 Knowledge Management
 
-- [ ] Build `/admin/knowledge` page: list all ingested documents with chunk counts and last-updated timestamps
-- [ ] File upload UI for adding new markdown or PDF knowledge documents
-- [ ] Trigger re-ingest from the UI with a progress indicator
-- [ ] Preview a document's chunks and their embeddings metadata
+- [x] Build `/admin/knowledge` page: list all ingested documents with chunk counts and last-updated timestamps
+- [x] File upload UI for adding new markdown or PDF knowledge documents
+- [x] Trigger re-ingest from the UI with a progress indicator (a pulse with elapsed seconds: one request that takes up to a minute has no percentage to show)
+- [x] Preview a document's chunks and their embeddings metadata (model, vector size, collection, character and word counts; the vectors themselves are not shown)
 
 ### 5.4 Grievances Dashboard
 
-- [ ] Add `GET /admin/grievances` — all tickets with filter by status (open / in-progress / resolved)
-- [ ] Add `PUT /admin/grievances/{ticket_id}` — update status and add a resolution note
-- [ ] Build `/admin/grievances` Kanban board: drag-and-drop tickets between status columns
-- [ ] Send email notification to student when their ticket status changes
+- [x] Add `GET /admin/grievances` — all tickets with filter by status (open / in-progress / resolved)
+- [x] Add `PUT /admin/grievances/{ticket_id}` — update status and add a resolution note
+- [x] Build `/admin/grievances` Kanban board: drag-and-drop tickets between status columns (with a menu on each card as the keyboard route)
+- [x] Send email notification to student when their ticket status changes (SMTP, optional; never run against a real mail server here, only a fake one in tests)
 
 ### 5.5 Analytics Dashboard
 
-- [ ] Track: daily active users, messages per session, most-used tools, most-queried knowledge documents
-- [ ] Build `/admin/analytics` page with charts: DAU graph, tool usage pie chart, top-10 queries word cloud
-- [ ] Add agent performance metrics: average tool rounds per query, confirmation accept/reject rate
-- [ ] Add RAG metrics: average retrieval distance, cache hit rate, queries that returned zero context
+- [x] Track: daily active users, messages per session, most-used tools, most-queried knowledge documents (a `usage_events` table of names and counts, not conversations; recorded from this version on)
+- [x] Build `/admin/analytics` page with charts: DAU graph, tool usage pie chart, top-10 queries word cloud (plain SVG; the cloud shows words, not whole queries, and only after two uses)
+- [x] Add agent performance metrics: average tool rounds per query, confirmation accept/reject rate (tool calls per reply, since rounds are not recorded)
+- [ ] Add RAG metrics: average retrieval distance, cache hit rate, queries that returned zero context (partly done: only the zero-context rate is measured; the reranker's score is not kept and there is no cache, so the other two show as not recorded)
 
 ---
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useAuth } from "./AuthProvider";
 
 const LABELS = {
@@ -30,17 +31,24 @@ export default function StudentsOnly({
           You are signed in as {LABELS[state.user.role]}
         </h1>
         <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">
-          The campus assistant chat is for students. Tools for managing events
-          and registrations are available through the API, and a dashboard for
-          them is planned.
+          The campus assistant chat is for students. Managing events, students,
+          grievances and the knowledge base is done in the dashboard.
         </p>
-        <button
-          type="button"
-          onClick={logout}
-          className="mt-5 bg-navy px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-cream transition-colors duration-150 hover:bg-brass"
-        >
-          Sign out
-        </button>
+        <div className="mt-5 flex gap-3">
+          <Link
+            href="/admin"
+            className="bg-navy px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-cream transition-colors duration-150 hover:bg-brass"
+          >
+            Open the dashboard
+          </Link>
+          <button
+            type="button"
+            onClick={logout}
+            className="border border-line-strong px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-ink transition-colors duration-150 hover:border-brass"
+          >
+            Sign out
+          </button>
+        </div>
       </div>
     </div>
   );

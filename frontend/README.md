@@ -83,6 +83,14 @@ frontend/
 │   ├── events/
 │   │   ├── page.tsx              # Events list
 │   │   └── [id]/page.tsx         # Single event detail
+│   ├── admin/                    # The dashboard for faculty, staff and administrators
+│   │   ├── layout.tsx            # Sign-in guard and the section tabs each role may see
+│   │   ├── events/               # Table, create/edit form, delete; [id]/ is the roster with export
+│   │   ├── students/             # Searchable, filterable, paged roster, CSV import; [id]/ is one student
+│   │   ├── knowledge/            # Documents, upload, re-ingest with progress, chunk preview
+│   │   ├── grievances/           # Kanban board with drag and drop
+│   │   ├── analytics/            # Charts (plain SVG) and metrics
+│   │   └── _components/          # Buttons, modal, gauge, charts, the useLoad data hook
 │   └── components/
 │       ├── layout/
 │       │   └── Header.tsx        # Masthead navigation
@@ -104,6 +112,8 @@ frontend/
 │       └── icons.tsx             # Shared hairline icon set
 ├── lib/
 │   ├── api.ts                    # Typed fetch client for the backend
+│   ├── adminApi.ts, adminTypes.ts # The dashboard's calls and types
+│   ├── adminSections.ts          # Which role sees which dashboard section
 │   └── types.ts                  # Shared request/response types
 ├── public/
 ├── .env.example
@@ -216,6 +226,16 @@ Returns `CampusEvent` objects matching the shape of `data/events.json` at the re
 Until these endpoints exist, pages degrade gracefully to a plain-text error banner rather than crashing — this is expected while the backend is still being built.
 
 ---
+
+## 🧭 The dashboard
+
+`/admin` is for signed-in faculty, staff and administrators (students are told it is not for them, and the Dashboard link only shows for the other roles). The tabs follow the backend's permissions: **faculty** see Events, and can edit only their own department's events (campus-wide ones are marked "Admin only"); **staff** see Grievances; **administrators** see everything. The pages call the `/api/admin/...` endpoints listed in [`backend/README.md`](../backend/README.md), and the server is what enforces the rules: hiding a tab is a convenience, not security.
+
+- **Events:** deleting an event that has registrations first shows how many students are affected and only deletes with a second confirmation. The roster page has a capacity gauge and downloads the registrations as CSV.
+- **Students:** search waits for a pause in typing; the import is all or nothing and shows every problem.
+- **Knowledge:** a re-ingest is one request that takes up to a minute, so the progress indicator is a pulse with the elapsed seconds rather than a percentage. The chunk preview shows the embedding model and vector size.
+- **Grievances:** drag a ticket between columns, or use the menu on the card (the keyboard route). A ticket moves on screen at once and snaps back if the server refuses. Resolving needs a note, which is emailed to the student if the server has SMTP set up.
+- **Analytics:** the charts are plain SVG, with no charting library. Words in the word cloud appear only after two questions have used them.
 
 ## 🚀 Getting Started
 
