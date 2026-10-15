@@ -78,7 +78,7 @@ def asha(db):
 def spy_agent(monkeypatch):
     calls = []
 
-    def fake(message, history, student, entities=None):
+    def fake(message, history, student, entities=None, quality=None):
         calls.append({"message": message, "entities": list(entities or [])})
         return ChatResponse(reply=f"Sure, the AI Workshop it is. ({message})")
 
@@ -139,7 +139,7 @@ def sse(response):
 def test_streamed_chats_remember_and_recall_too(asha, db, monkeypatch):
     seen = []
 
-    def fake_stream(message, history, student, entities=None):
+    def fake_stream(message, history, student, entities=None, quality=None):
         seen.append([e.key for e in entities or []])
         yield {"type": "done", "payload": ChatResponse(reply="The AI Workshop is on.").model_dump()}
 
@@ -153,7 +153,7 @@ def test_streamed_chats_remember_and_recall_too(asha, db, monkeypatch):
 
 
 def test_a_failed_stream_remembers_nothing(asha, db, monkeypatch):
-    def failing(message, history, student, entities=None):
+    def failing(message, history, student, entities=None, quality=None):
         raise RuntimeError("boom")
         yield
 

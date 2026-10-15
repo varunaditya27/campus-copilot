@@ -11,9 +11,10 @@ from pathlib import Path, PurePath
 from app.core.config import KNOWLEDGE_COLLECTION, KNOWLEDGE_DIR, UPLOAD_DIR
 from app.core.errors import AppError
 from app.rag import retriever
-from app.rag.ingest import EMBEDDING_MODEL, IngestReport, ingest, knowledge_files
+from app.rag.embeddings import get_embedding_function
+from app.rag.ingest import IngestReport, ingest, knowledge_files
 from app.rag.pdf import pdf_to_markdown
-from app.rag.store import KnowledgeBaseNotFound, create_store, open_store
+from app.rag.store import EmbeddingSettingsChanged, KnowledgeBaseNotFound, create_store, open_store
 
 logger = logging.getLogger(__name__)
 
@@ -64,10 +65,10 @@ def _exclusive() -> Iterator[None]:
 
 
 def _ingest_now(full: bool = False) -> IngestReport:
-    store = create_store()
-    if full:
-        store = store.reset()
-    return ingest(store)
+    try:
+        return ingest(create_store(fresh=full))
+    except EmbeddingSettingsChanged as exc:
+        raise AppError(409, "embedding_settings_changed", str(exc).replace("python -m app.rag.ingest --full", "run a full rebuild")) from exc
 
 
 def run_ingest(full: bool = False) -> IngestReport:
@@ -169,9 +170,6 @@ def delete_document(filename: str) -> dict:
     return {"document": name, "chunks_removed": removed}
 
 
-# The vector length of the embedding model (all-MiniLM-L6-v2), checked against the installed model.
-EMBEDDING_DIMENSIONS = 384
-
 
 def document_chunks(name: str) -> dict:
     """The chunks one document was split into, as they sit in the store."""
@@ -184,12 +182,13 @@ def document_chunks(name: str) -> dict:
     if name not in infos or not chunks:
         raise AppError(404, "not_found", f"No document named '{name}' in the knowledge base.")
     info = infos[name]
+    embedding = get_embedding_function()
     return {
         "document": name,
         "source": "curated" if name in _curated_names() else "uploaded",
         "ingested_at": info.ingested_at or None,
         "chunk_count": len(chunks),
-        "embedding": {"model": EMBEDDING_MODEL, "dimensions": EMBEDDING_DIMENSIONS, "collection": KNOWLEDGE_COLLECTION},
+        "embedding": {"model": embedding.identity, "dimensions": embedding.dimensions, "collection": KNOWLEDGE_COLLECTION},
         "chunks": [
             {"id": c.id, "section": c.section, "characters": len(c.text), "words": len(c.text.split()), "text": c.text}
             for c in sorted(chunks, key=lambda c: c.id)

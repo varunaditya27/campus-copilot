@@ -50,7 +50,7 @@ def chat(
 ) -> ChatResponse:
     session_id = chat_service.resolve_session(session_cookie, student.student_id)
     history = chat_service.load_history(session_id, HISTORY_WINDOW)
-    result = run_agent(request.message, history, student, entity_service.recent(session_id))
+    result = run_agent(request.message, history, student, entity_service.recent(session_id), request.quality)
     chat_service.save_exchange(session_id, request.message, result)
     entity_service.remember_exchange(session_id, request.message, result.reply, student.program)
     usage_service.record_exchange(student.student_id, session_id, request.message, result)
@@ -78,7 +78,7 @@ def chat_stream(
 
     def events() -> Iterator[str]:
         try:
-            for event in run_agent_stream(request.message, history, student, entities):
+            for event in run_agent_stream(request.message, history, student, entities, request.quality):
                 if event["type"] == "done":
                     done = ChatResponse.model_validate(event["payload"])
                     chat_service.save_exchange(session_id, request.message, done)

@@ -16,6 +16,7 @@ from app.core.errors import AppError
 from app.main import app
 from app.models.chat import ChatHistoryItem
 from fakes import _chunks
+from fakes import fake_llm
 from fakes import completion as _completion
 from fakes import tool_call as _tool_call
 from helpers import ASHA_PROFILE, sign_up
@@ -64,7 +65,7 @@ def multi(monkeypatch):
     monkeypatch.setattr(supervisor, "MULTI_AGENT", True)
 
     def install(brain, chunks=()):
-        monkeypatch.setattr(agent, "get_groq_client", lambda: brain)
+        monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(brain))
         monkeypatch.setattr(agent, "retrieve", lambda message: list(chunks))
         return brain
 
@@ -254,7 +255,7 @@ def test_a_model_failure_while_routing_is_the_usual_error(multi):
 
 def test_with_the_flag_off_there_is_no_router_at_all(monkeypatch):
     brain = Brain("unused")
-    monkeypatch.setattr(agent, "get_groq_client", lambda: brain)
+    monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(brain))
     monkeypatch.setattr(agent, "retrieve", lambda m: [])
     assert supervisor.MULTI_AGENT is False
     assert stream("hello")[-1]["payload"]["reply"] == "single agent answer"

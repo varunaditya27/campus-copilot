@@ -10,6 +10,7 @@ from app.agent import agent
 from app.db import session as db_session
 from app.db.models import Base, Event, Student
 from fakes import FakeEmbedding, FakeGroq
+from fakes import fake_llm
 
 
 def _event(event_id, name, category, capacity, registered, tags):
@@ -72,7 +73,7 @@ def use_fakes(monkeypatch):
 
     def install(*replies, chunks=()):
         client = FakeGroq(*replies)
-        monkeypatch.setattr(agent, "get_groq_client", lambda: client)
+        monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(client))
         monkeypatch.setattr(agent, "retrieve", lambda message: list(chunks))
         return client
 

@@ -4,7 +4,7 @@ import json
 import math
 from types import SimpleNamespace
 
-from chromadb import EmbeddingFunction
+from app.rag.embeddings import BaseEmbeddingFunction
 
 
 def tool_call(call_id, name, args):
@@ -97,16 +97,18 @@ class FailingStreamGroq:
         return stream()
 
 
-class FakeEmbedding(EmbeddingFunction):
+class FakeEmbedding(BaseEmbeddingFunction):
     """Bag-of-hashed-words vectors: texts that share words end up close together.
     Deterministic and instant, so tests can use a real Chroma without the model."""
+
+    identity = "fake-embedding"
 
     def __init__(self):
         pass
 
-    def __call__(self, input):
+    def embed(self, texts):
         vectors = []
-        for text in input:
+        for text in texts:
             vector = [0.0] * 64
             for word in text.lower().split():
                 vector[int(hashlib.md5(word.encode()).hexdigest(), 16) % 64] += 1.0
@@ -179,3 +181,11 @@ class SlowGroq:
             self.finished_at = time.monotonic()
 
         return stream()
+
+
+def fake_llm(raw, models=None):
+    """Wrap a fake SDK client (anything with chat.completions.create) as the application's LLM client,
+    so provider error mapping runs just as it does for the real one."""
+    from app.llm.providers import GroqLLMClient
+
+    return GroqLLMClient(raw, models or {"fast": "fast-model", "balanced": "balanced-model", "best": "best-model"})

@@ -13,6 +13,7 @@ from app.core.errors import AppError
 from app.db.models import ChatMessage
 from app.main import app
 from fakes import FailingStreamGroq, RaisingGroq
+from fakes import fake_llm
 from helpers import ASHA_PROFILE, sign_up
 from fakes import completion as _completion
 from fakes import tool_call as _tool_call
@@ -135,7 +136,7 @@ def test_giving_up_after_max_rounds_streams_the_fallback(use_fakes):
 
 def test_a_failing_request_raises_an_app_error(monkeypatch):
     exc = RateLimitError("slow down", response=httpx.Response(429, request=_REQUEST), body=None)
-    monkeypatch.setattr(agent, "get_groq_client", lambda: RaisingGroq(exc))
+    monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(RaisingGroq(exc)))
     monkeypatch.setattr(agent, "retrieve", lambda message: [])
 
     with pytest.raises(AppError) as info:
@@ -146,7 +147,7 @@ def test_a_failing_request_raises_an_app_error(monkeypatch):
 
 def test_a_connection_lost_mid_stream_raises_an_app_error(monkeypatch):
     monkeypatch.setattr(
-        agent, "get_groq_client", lambda: FailingStreamGroq(APIConnectionError(request=_REQUEST))
+        agent, "get_llm_client", lambda: fake_llm(FailingStreamGroq(APIConnectionError(request=_REQUEST)))
     )
     monkeypatch.setattr(agent, "retrieve", lambda message: [])
     seen = []
@@ -225,7 +226,7 @@ def test_stream_endpoint_uses_the_server_side_history(browser, use_fakes):
 
 
 def test_app_error_becomes_an_error_event_and_saves_nothing(db, browser, monkeypatch):
-    def failing(message, history, student, entities=None):
+    def failing(message, history, student, entities=None, quality=None):
         raise AppError(429, "rate_limited", "The AI service is busy.")
         yield
 
@@ -242,7 +243,7 @@ def test_app_error_becomes_an_error_event_and_saves_nothing(db, browser, monkeyp
 
 
 def test_unexpected_error_becomes_a_generic_error_event(db, browser, monkeypatch):
-    def exploding(message, history, student, entities=None):
+    def exploding(message, history, student, entities=None, quality=None):
         raise RuntimeError("secret internal detail")
         yield
 

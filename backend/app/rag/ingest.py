@@ -20,7 +20,8 @@ from pathlib import Path
 
 from app.core.config import KNOWLEDGE_COLLECTION, KNOWLEDGE_DIR, UPLOAD_DIR
 from app.rag.chunking import Chunk, chunk_markdown
-from app.rag.store import VectorStore, create_store, describe_store
+from app.rag.embeddings import get_embedding_function
+from app.rag.store import EmbeddingSettingsChanged, VectorStore, create_store, describe_store
 
 logger = logging.getLogger(__name__)
 
@@ -33,11 +34,11 @@ CHUNK_OVERLAP = 32
 
 # Bump when the chunking code changes in a way that changes its output.
 CHUNKER_VERSION = 1
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 # Stored with every document. A document is re-ingested when its file or this
 # signature changes, so changed settings never leave stale chunks behind.
-SIGNATURE = f"chunker{CHUNKER_VERSION}:{CHUNK_TOKENS}:{CHUNK_OVERLAP}:{EMBEDDING_MODEL}"
+def current_signature() -> str:
+    return f"chunker{CHUNKER_VERSION}:{CHUNK_TOKENS}:{CHUNK_OVERLAP}:{get_embedding_function().identity}"
 
 
 @dataclass
@@ -95,7 +96,7 @@ def ingest_file(store: VectorStore, path: Path, seen: set[str], report: IngestRe
         chunks.append(chunk)
 
     store.delete_document(path.name)
-    store.upsert(chunks, file_hash(path), SIGNATURE, datetime.now(timezone.utc).isoformat(timespec="seconds"))
+    store.upsert(chunks, file_hash(path), current_signature(), datetime.now(timezone.utc).isoformat(timespec="seconds"))
     report.chunks_written += len(chunks)
 
 
@@ -106,13 +107,21 @@ def ingest(store: VectorStore, directories: Path | Sequence[Path] | None = None)
         directories = [KNOWLEDGE_DIR, UPLOAD_DIR]
     started = time.monotonic()
     report = IngestReport()
+    signature = current_signature()
     known = {info.document: info for info in store.documents()}
+    embedding_id = signature.split(":", 3)[3]
+    stale = sorted(i.document for i in known.values() if i.signature and i.signature.split(":", 3)[-1] != embedding_id)
+    if stale:
+        raise EmbeddingSettingsChanged(
+            f"The knowledge base was built with a different embedding model than '{embedding_id}' "
+            f"({len(stale)} documents, for example {stale[0]}). Rebuild it with: python -m app.rag.ingest --full"
+        )
     seen: set[str] = set()
     files = knowledge_files(directories)
 
     for path in files:
         info = known.get(path.name)
-        if info and info.file_hash == file_hash(path) and info.signature == SIGNATURE:
+        if info and info.file_hash == file_hash(path) and info.signature == signature:
             report.unchanged.append(path.name)
             logger.info("unchanged: %s", path.name)
             continue
@@ -138,10 +147,10 @@ def main() -> None:
     for noisy in ("httpx", "httpcore"):
         logging.getLogger(noisy).setLevel(logging.WARNING)  # one line per request otherwise
 
-    store = create_store()
-    if args.full:
-        store = store.reset()
-    report = ingest(store)
+    try:
+        report = ingest(create_store(fresh=args.full))
+    except EmbeddingSettingsChanged as exc:
+        raise SystemExit(str(exc)) from exc
     print(f"Knowledge base '{KNOWLEDGE_COLLECTION}' in {describe_store()}: {report.summary()}")
 
 

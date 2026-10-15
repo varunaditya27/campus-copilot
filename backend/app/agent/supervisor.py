@@ -13,6 +13,7 @@ from app.agent import agent
 from app.agent.domains import DOMAIN_DESCRIPTIONS, DOMAIN_TOOLS
 from app.core.config import MULTI_AGENT
 from app.core.errors import AppError
+from app.llm.tiers import tier_for
 from app.models.auth import CurrentStudent
 from app.models.chat import ChatHistoryItem, ChatResponse, Source
 from app.models.memory import Entity
@@ -60,10 +61,11 @@ def route(message: str, history: list[ChatHistoryItem]) -> list[str]:
     recent = "\n".join(f"{h.role}: {h.content[:ROUTER_HISTORY_CHARS]}" for h in history[-ROUTER_HISTORY_ITEMS:])
     prompt = (f"Recent conversation:\n{recent}\n\n" if recent else "") + f"Message to route: {message}"
     text, _ = agent._stream_completion(
-        agent.get_groq_client(),
+        agent.get_llm_client(),
         [{"role": "system", "content": ROUTER_PROMPT}, {"role": "user", "content": prompt}],
         emit=lambda event: None,
         tools=None,
+        tier="fast",  # sorting a message into five domains is the easy part
     )
     return parse_domains(text)
 
@@ -74,6 +76,7 @@ class SupervisorState:
     student: CurrentStudent
     history: list[ChatHistoryItem] = field(default_factory=list)
     entities: list[Entity] = field(default_factory=list)
+    quality: str | None = None
     domains: list[str | None] = field(default_factory=list)  # None means the single agent
     results: Annotated[list[tuple[int, str | None, ChatResponse]], operator.add] = field(default_factory=list)
 
@@ -94,6 +97,7 @@ def fan_out(state: SupervisorState) -> list[Send]:
                 "student": state.student,
                 "history": state.history,
                 "entities": state.entities,
+                "quality": state.quality,
             },
         )
         for index, domain in enumerate(state.domains)
@@ -109,7 +113,8 @@ def specialist_node(task: dict) -> dict:
     emit = get_stream_writer()
     domain, alone = task["domain"], task["alone"]
     state = agent.AgentState(
-        message=task["message"], student=task["student"], history=task["history"], entities=task["entities"], domain=domain
+        message=task["message"], student=task["student"], history=task["history"], entities=task["entities"], domain=domain,
+        quality=task["quality"],
     )
     response = None
     for part in agent._graph.stream(state, {"recursion_limit": agent.RECURSION_LIMIT}, stream_mode="custom", version="v2"):
@@ -148,13 +153,14 @@ def merge_node(state: SupervisorState) -> dict:
     answers = "\n\n".join(f"[{domain}] {response.reply}" for _, domain, response in ordered)
     try:
         reply, _ = agent._stream_completion(
-            agent.get_groq_client(),
+            agent.get_llm_client(),
             [
                 {"role": "system", "content": MERGE_PROMPT},
                 {"role": "user", "content": f"The student asked: {state.message}\n\nSpecialist answers:\n{answers}"},
             ],
             emit=emit,
             tools=None,
+            tier=tier_for(state.quality, agentic=False),
         )
     except AppError:
         # Better the specialists' own words than failing after the work is done.
@@ -186,8 +192,8 @@ def build_supervisor():
 _supervisor = build_supervisor()
 
 
-def _run_supervisor(message, history, student, entities) -> Iterator[dict]:
-    state = SupervisorState(message=message, student=student, history=history, entities=entities or [])
+def _run_supervisor(message, history, student, entities, quality) -> Iterator[dict]:
+    state = SupervisorState(message=message, student=student, history=history, entities=entities or [], quality=quality)
     for part in _supervisor.stream(state, {"recursion_limit": 25}, stream_mode="custom", version="v2"):
         yield part["data"]
 
@@ -197,12 +203,13 @@ def run_agent_stream(
     history: list[ChatHistoryItem],
     student: CurrentStudent,
     entities: list[Entity] | None = None,
+    quality: str | None = None,
 ) -> Iterator[dict]:
     """The agent's events for a message: through the router and specialists when
     MULTI_AGENT is on, otherwise the single agent. The events are the same either way."""
     if MULTI_AGENT:
-        return _run_supervisor(message, history, student, entities)
-    return agent.run_agent_stream(message, history, student, entities)
+        return _run_supervisor(message, history, student, entities, quality)
+    return agent.run_agent_stream(message, history, student, entities, quality)
 
 
 def run_agent(
@@ -210,6 +217,7 @@ def run_agent(
     history: list[ChatHistoryItem],
     student: CurrentStudent,
     entities: list[Entity] | None = None,
+    quality: str | None = None,
 ) -> ChatResponse:
-    events = list(run_agent_stream(message, history, student, entities))
+    events = list(run_agent_stream(message, history, student, entities, quality))
     return ChatResponse.model_validate(events[-1]["payload"])

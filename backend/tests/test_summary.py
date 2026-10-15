@@ -31,7 +31,7 @@ def model(monkeypatch):
 
 @pytest.fixture
 def asha(db, monkeypatch):
-    monkeypatch.setattr(chat_api, "run_agent", lambda m, h, s, entities=None: ChatResponse(reply=f"answer to {m}"))
+    monkeypatch.setattr(chat_api, "run_agent", lambda m, h, s, entities=None, quality=None: ChatResponse(reply=f"answer to {m}"))
     return sign_up(TestClient(app), ASHA)
 
 

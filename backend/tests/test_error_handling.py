@@ -12,6 +12,7 @@ from helpers import ASHA_PROFILE, sign_up
 from app.tools.attendance import calculate_attendance
 from app.tools.events import search_events
 from fakes import FakeGroq, RaisingGroq
+from fakes import fake_llm
 from fakes import completion as _completion
 from fakes import tool_call as _tool_call
 
@@ -29,7 +30,7 @@ def _status_error(cls, status, message="boom", body=None):
 
 
 def _use_client(monkeypatch, groq_client):
-    monkeypatch.setattr(agent, "get_groq_client", lambda: groq_client)
+    monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(groq_client))
     monkeypatch.setattr(agent, "retrieve", lambda message: [])
 
 
@@ -110,7 +111,7 @@ def test_missing_knowledge_base_still_answers(monkeypatch):
         return original(**kwargs)
 
     fake.chat.completions.create = spy
-    monkeypatch.setattr(agent, "get_groq_client", lambda: fake)
+    monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(fake))
     monkeypatch.setattr(agent, "retrieve", missing)
 
     response = agent.run_agent("leave policy?", [], ASHA_PROFILE)

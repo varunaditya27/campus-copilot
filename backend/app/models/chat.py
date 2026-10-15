@@ -20,6 +20,9 @@ class ChatHistoryItem(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1, max_length=MAX_MESSAGE_CHARS)
+    # How capable (and slow) a model to use. Left out, ordinary questions use "balanced" and
+    # multi-step tasks use "best".
+    quality: Literal["fast", "balanced", "best"] | None = None
 
 
 class Source(BaseModel):

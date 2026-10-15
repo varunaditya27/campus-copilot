@@ -183,7 +183,7 @@ def test_the_approval_rate_counts_those_who_decided(db):
 
 @pytest.fixture
 def asha(db, monkeypatch):
-    monkeypatch.setattr(chat_api, "run_agent", lambda m, h, s, entities=None: reply(tools=[("get_cgpa", "done")], sources=["library.md"]))
+    monkeypatch.setattr(chat_api, "run_agent", lambda m, h, s, entities=None, quality=None: reply(tools=[("get_cgpa", "done")], sources=["library.md"]))
     return sign_up(TestClient(app))
 
 
@@ -195,14 +195,14 @@ def test_every_answered_question_is_recorded_for_the_student(asha, db):
 
 
 def test_streamed_questions_are_recorded_and_failed_ones_are_not(asha, db, monkeypatch):
-    def fake_stream(message, history, student, entities=None):
+    def fake_stream(message, history, student, entities=None, quality=None):
         yield {"type": "done", "payload": reply(sources=["library.md"]).model_dump(mode="json")}
 
     monkeypatch.setattr(chat_api, "run_agent_stream", fake_stream)
     with asha.stream("POST", "/api/chat/stream", json={"message": "library fines"}) as response:
         list(response.iter_lines())
 
-    def failing(message, history, student, entities=None):
+    def failing(message, history, student, entities=None, quality=None):
         raise RuntimeError("boom")
         yield
 

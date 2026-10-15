@@ -23,6 +23,21 @@ class KnowledgeBaseNotFound(RuntimeError):
     """The knowledge base cannot be used: it was never built, or cannot be reached."""
 
 
+class EmbeddingSettingsChanged(KnowledgeBaseNotFound):
+    """The knowledge base was built with a different embedding model than the one configured now.
+
+    Vectors from different models cannot be compared (they may not even be the same length), so
+    the knowledge base has to be rebuilt from the documents. Until then it counts as unavailable
+    and the assistant says so instead of searching with mismatched vectors."""
+
+
+def _changed() -> EmbeddingSettingsChanged:
+    return EmbeddingSettingsChanged(
+        f"The knowledge base was built with a different embedding model than '{get_embedding_function().identity}'. "
+        "Rebuild it with: python -m app.rag.ingest --full"
+    )
+
+
 @dataclass(frozen=True)
 class StoredChunk:
     id: str
@@ -111,6 +126,10 @@ class ChromaStore:
             collection = client.get_collection(
                 name=KNOWLEDGE_COLLECTION, embedding_function=get_embedding_function()
             )
+        except ValueError as exc:
+            if "embedding function" in str(exc).lower():
+                raise _changed() from exc
+            raise
         except Exception as exc:
             raise KnowledgeBaseNotFound(
                 "Knowledge base not found. Run `python -m app.rag.ingest` first."
@@ -119,9 +138,14 @@ class ChromaStore:
 
     @classmethod
     def create(cls, client) -> "ChromaStore":
-        collection = client.get_or_create_collection(
-            name=KNOWLEDGE_COLLECTION, embedding_function=get_embedding_function()
-        )
+        try:
+            collection = client.get_or_create_collection(
+                name=KNOWLEDGE_COLLECTION, embedding_function=get_embedding_function()
+            )
+        except ValueError as exc:
+            if "embedding function" in str(exc).lower():
+                raise _changed() from exc
+            raise
         return cls(client, collection)
 
     def count(self) -> int:
@@ -186,14 +210,18 @@ class QdrantStore:
     def open(cls, client: QdrantClient) -> "QdrantStore":
         if not client.collection_exists(KNOWLEDGE_COLLECTION):
             raise KnowledgeBaseNotFound("Knowledge base not found. Run `python -m app.rag.ingest` first.")
-        return cls(client)
+        store = cls(client)
+        built_with = client.get_collection(KNOWLEDGE_COLLECTION).config.params.vectors.size
+        if built_with != store._embedding.dimensions:
+            raise _changed()
+        return store
 
     @classmethod
     def create(cls, client: QdrantClient) -> "QdrantStore":
         store = cls(client)
         if not client.collection_exists(KNOWLEDGE_COLLECTION):
             # The vector length belongs to the embedding model, so ask it.
-            size = len(store._embed(["dimension probe"])[0])
+            size = store._embedding.dimensions
             client.create_collection(
                 KNOWLEDGE_COLLECTION,
                 vectors_config=models.VectorParams(size=size, distance=models.Distance.COSINE),
@@ -203,7 +231,7 @@ class QdrantStore:
         return store
 
     def _embed(self, texts: list[str]) -> list[list[float]]:
-        return [[float(x) for x in vector] for vector in self._embedding(texts)]
+        return self._embedding.embed(texts)
 
     @staticmethod
     def _point_id(chunk_id: str) -> str:
@@ -299,11 +327,21 @@ def open_store() -> VectorStore:
     return ChromaStore.open(_chroma_client())
 
 
-def create_store() -> VectorStore:
-    """The configured vector store, created if it does not exist yet."""
+def create_store(fresh: bool = False) -> VectorStore:
+    """The configured vector store, created if it does not exist yet. With fresh=True anything
+    already there is dropped first, even if it was built with a different embedding model."""
     if VECTOR_STORE == "qdrant":
-        return QdrantStore.create(_qdrant_client())
-    return ChromaStore.create(_chroma_client())
+        client = _qdrant_client()
+        if fresh and client.collection_exists(KNOWLEDGE_COLLECTION):
+            client.delete_collection(KNOWLEDGE_COLLECTION)
+        return QdrantStore.create(client)
+    client = _chroma_client()
+    if fresh:
+        try:
+            client.delete_collection(name=KNOWLEDGE_COLLECTION)
+        except Exception:
+            pass  # it did not exist yet
+    return ChromaStore.create(client)
 
 
 def describe_store() -> str:

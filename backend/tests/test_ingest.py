@@ -89,12 +89,12 @@ def test_a_new_file_is_added_later(store, corpus):
 
 def test_changed_chunking_settings_redo_documents_whose_files_did_not_change(store, corpus, monkeypatch):
     ingest(store, corpus)
-    monkeypatch.setattr(ingest_module, "SIGNATURE", "a-different-setup")
+    monkeypatch.setattr(ingest_module, "current_signature", lambda: "chunker2:128:16:all-MiniLM-L6-v2")
 
     report = ingest(store, corpus)
 
     assert sorted(report.updated) == ["hostel.md", "library.md"] and report.unchanged == []
-    assert {d.signature for d in store.documents()} == {"a-different-setup"}
+    assert {d.signature for d in store.documents()} == {"chunker2:128:16:all-MiniLM-L6-v2"}
 
 
 def test_identical_chunks_are_stored_once(store, tmp_path):

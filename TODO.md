@@ -336,26 +336,26 @@
 
 ### 8.1 LLM Abstraction Layer
 
-- [ ] Create a `BaseLLMClient` abstract class with methods: `chat_completion()`, `stream_completion()`, `tool_call()`
-- [ ] Implement `GroqLLMClient` (current default)
-- [ ] Implement `OllamaLLMClient` for fully local inference (no API cost, works offline)
-- [ ] Implement `OpenAILLMClient` as a drop-in for OpenAI-compatible APIs
-- [ ] Add `LLM_PROVIDER=groq|ollama|openai` env var to switch providers at runtime
-- [ ] Add `LLM_MODEL` env var to configure which model to use per provider
+- [x] Create a `BaseLLMClient` abstract class with methods: `chat_completion()`, `stream_completion()`, `tool_call()` (a provider implements `stream_completion`; the other two are built on it)
+- [x] Implement `GroqLLMClient` (current default)
+- [x] Implement `OllamaLLMClient` for fully local inference (no API cost, works offline) (through Ollama's OpenAI-compatible endpoint; not run against a real Ollama server)
+- [x] Implement `OpenAILLMClient` as a drop-in for OpenAI-compatible APIs (not run against a real server)
+- [x] Add `LLM_PROVIDER=groq|ollama|openai` env var to switch providers at runtime (read at start-up, not changeable while running)
+- [x] Add `LLM_MODEL` env var to configure which model to use per provider (plus `LLM_MODEL_FAST` and `LLM_MODEL_BEST`)
 
 ### 8.2 Embedding Abstraction
 
-- [ ] Create a `BaseEmbeddingFunction` interface
-- [ ] Implement `SentenceTransformerEmbedding` (current: `all-MiniLM-L6-v2`)
-- [ ] Implement `OllamaEmbedding` (e.g., `nomic-embed-text` via Ollama — fully local)
-- [ ] Implement `OpenAIEmbedding` for `text-embedding-3-small`
-- [ ] Add `EMBEDDING_PROVIDER` env var
+- [x] Create a `BaseEmbeddingFunction` interface
+- [x] Implement `SentenceTransformerEmbedding` (current: `all-MiniLM-L6-v2`) (as `MiniLMEmbedding`: the same model on the ONNX runtime, not the sentence-transformers library, which would need PyTorch)
+- [x] Implement `OllamaEmbedding` (e.g., `nomic-embed-text` via Ollama — fully local) (not run against a real Ollama server)
+- [x] Implement `OpenAIEmbedding` for `text-embedding-3-small` (not run against the real service)
+- [x] Add `EMBEDDING_PROVIDER` env var
 
 ### 8.3 Model Quality Tiers
 
-- [ ] Define a `quality` request parameter: `fast | balanced | best`
-- [ ] Map quality tiers to specific models per provider (e.g., fast = `llama-3.1-8b-instant`, best = `llama-3.3-70b-versatile` on Groq)
-- [ ] Default to `balanced` for regular queries, `best` for multi-step agentic tasks
+- [x] Define a `quality` request parameter: `fast | balanced | best`
+- [x] Map quality tiers to specific models per provider (e.g., fast = `llama-3.1-8b-instant`, best = `llama-3.3-70b-versatile` on Groq) (Groq: fast = `openai/gpt-oss-20b`, balanced and best = `openai/gpt-oss-120b`, because Groq scheduled both Llama models to shut down for free and developer accounts on 2026-08-16; Ollama and OpenAI take the model from the environment)
+- [x] Default to `balanced` for regular queries, `best` for multi-step agentic tasks
 
 ---
 

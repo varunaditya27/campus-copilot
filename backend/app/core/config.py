@@ -58,7 +58,27 @@ RAG_RRF_K = int(os.getenv("RAG_RRF_K", "60"))
 RAG_RERANK_MIN_SCORE = float(os.getenv("RAG_RERANK_MIN_SCORE", "-8.5"))
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
-GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")  # the older name for LLM_MODEL on Groq
+
+# Which service answers questions: groq, ollama (a model running on your own machine) or
+# openai (OpenAI or any service with the same protocol, through OPENAI_BASE_URL).
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq").lower()
+# The model for ordinary ("balanced") questions, and optionally for the "fast" and "best" tiers.
+# Groq has defaults. Ollama and OpenAI have none, because which models exist and handle tools
+# depends on what you have pulled or are allowed to use, so LLM_MODEL is required there.
+LLM_MODEL = os.getenv("LLM_MODEL", "")
+LLM_MODEL_FAST = os.getenv("LLM_MODEL_FAST", "")
+LLM_MODEL_BEST = os.getenv("LLM_MODEL_BEST", "")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "")
+
+# Which model turns text into vectors for the knowledge base: local (all-MiniLM-L6-v2 on this
+# machine, the default), ollama (nomic-embed-text unless EMBEDDING_MODEL says otherwise) or
+# openai (text-embedding-3-small unless EMBEDDING_MODEL says otherwise). Changing it means
+# rebuilding the knowledge base, because vectors from different models cannot be compared.
+EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "local").lower()
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "")
 
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
 

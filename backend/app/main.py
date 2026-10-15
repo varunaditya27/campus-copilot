@@ -1,3 +1,4 @@
+import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -18,6 +19,7 @@ from app.api.students import router as students_router
 from app.core.config import CORS_ORIGINS
 from app.core.errors import register_error_handlers
 from app.core.origin_check import OriginCheckMiddleware
+from app.llm import LLMConfigError, get_llm_client
 from app.rag import retriever
 
 @asynccontextmanager
@@ -25,8 +27,15 @@ async def lifespan(app: FastAPI):
     # Load the search models and index now, in a worker thread, so the first
     # question is not slow and the server can still answer requests meanwhile.
     await run_in_threadpool(retriever.warm_up)
+    try:
+        client = get_llm_client()
+        logger.info("Language model: %s (fast=%s, balanced=%s, best=%s)", client.provider, *(client.model_for(t) for t in ("fast", "balanced", "best")))
+    except LLMConfigError as exc:
+        logger.error("Language model not configured: %s", exc)  # chat will fail until this is fixed
     yield
 
+
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Campus Copilot API", lifespan=lifespan)
 register_error_handlers(app)

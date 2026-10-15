@@ -5,7 +5,6 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from typing import Annotated, Literal
 
-from groq import APIError, APIStatusError, BadRequestError, RateLimitError
 from langgraph.config import get_stream_writer
 from langgraph.graph import END, START, StateGraph
 from pydantic import ValidationError
@@ -23,9 +22,11 @@ from app.agent.prompts import (
 from app.actions.base import ActionError
 from app.actions.registry import ACTIONS
 from app.agent.tool_registry import STUDENT_TOOLS, TOOL_FUNCTIONS, TOOL_SCHEMAS
-from app.core.config import AGENT_PLANNING, GROQ_MODEL
+from app.core.config import AGENT_PLANNING
 from app.core.errors import AppError
-from app.core.groq_client import get_groq_client
+from app.llm import BaseLLMClient, get_llm_client
+from app.llm.base import collect
+from app.llm.tiers import tier_for
 from app.models.auth import CurrentStudent
 from app.models.memory import Entity
 from app.models.actions import Confirmation
@@ -34,10 +35,6 @@ from app.rag.retriever import KnowledgeBaseNotFound, retrieve
 from app.services import action_service
 
 MAX_TOOL_ROUNDS = 4
-
-# Groq documents 413 for an oversized request but no specific code for an
-# over-long prompt, so a 400 is matched by its message wording as well.
-_CONTEXT_TOO_LONG_HINTS = ("context length", "reduce the length", "too long")
 
 TOOL_LABELS = {
     "search_events": "Searching campus events",
@@ -155,66 +152,23 @@ def _run_tool(
         return {"error": str(exc)}, "error"
 
 
-def _to_app_error(exc: APIError) -> AppError:
-    if isinstance(exc, RateLimitError):
-        return AppError(
-            429, "rate_limited", "The AI service is busy right now. Please try again in a moment."
-        )
-    too_long = (isinstance(exc, APIStatusError) and exc.status_code == 413) or (
-        isinstance(exc, BadRequestError)
-        and any(hint in exc.message.lower() for hint in _CONTEXT_TOO_LONG_HINTS)
-    )
-    if too_long:
-        return AppError(
-            413, "context_too_long", "This conversation is too long. Please start a new chat."
-        )
-    return AppError(
-        502, "llm_unavailable", "The AI service is unavailable right now. Please try again shortly."
-    )
-
-
 def _event(kind: str, **payload) -> dict:
     return {"type": kind, "payload": payload}
 
 
 def _stream_completion(
-    client, messages: list[dict], emit: Callable[[dict], None], tools: list[dict] | None = TOOL_SCHEMAS
+    client: BaseLLMClient,
+    messages: list[dict],
+    emit: Callable[[dict], None],
+    tools: list[dict] | None = TOOL_SCHEMAS,
+    tier: str = "balanced",
 ) -> tuple[str, list[dict]]:
     """Stream one model round, calling emit with a token event for each piece of
-    text as it arrives.
-
-    The model's tool calls arrive as fragments (an id and name first, then the
-    JSON arguments in pieces), so they are reassembled by index. Returns the
-    full text and the list of complete tool calls.
-    """
-    text_parts: list[str] = []
-    calls: dict[int, dict] = {}
-    options = {"tools": tools, "tool_choice": "auto"} if tools else {}
-    try:
-        stream = client.chat.completions.create(model=GROQ_MODEL, messages=messages, stream=True, **options)
-        for chunk in stream:
-            if not chunk.choices:
-                continue
-            delta = chunk.choices[0].delta
-            if delta.content:
-                text_parts.append(delta.content)
-                emit(_event("token", text=delta.content))
-            for part in delta.tool_calls or []:
-                call = calls.setdefault(part.index, {"id": None, "name": "", "arguments": ""})
-                if part.id:
-                    call["id"] = part.id
-                if part.function:
-                    if part.function.name:
-                        call["name"] = part.function.name
-                    if part.function.arguments:
-                        call["arguments"] += part.function.arguments
-    except APIError as exc:
-        raise _to_app_error(exc) from exc
-
-    tool_calls = [
-        {**calls[index], "id": calls[index]["id"] or f"call_{index}"} for index in sorted(calls)
-    ]
-    return "".join(text_parts), tool_calls
+    text as it arrives. Returns the full text and the list of complete tool calls."""
+    completion = collect(
+        client.stream_completion(messages, tools, tier), on_text=lambda text: emit(_event("token", text=text))
+    )
+    return completion.text, completion.tool_calls
 
 
 # --- the agent as a graph
@@ -245,6 +199,7 @@ class AgentState:
     reply: str | None = None
     loop_count: int = 0
     domain: str | None = None  # a specialist's domain; None for the single agent with every tool
+    quality: str | None = None  # a quality tier the student asked for; None lets the agent choose
 
 
 MAX_PARALLEL_TOOLS = 8
@@ -306,10 +261,11 @@ def _parse_plan(text: str) -> list[str]:
 def plan_node(state: AgentState) -> dict:
     """Ask the model for an ordered list of steps, and show it to the model as a plan."""
     text, _ = _stream_completion(
-        get_groq_client(),
+        get_llm_client(),
         [{"role": "system", "content": PLANNER_PROMPT}, {"role": "user", "content": state.message}],
         emit=lambda event: None,
         tools=None,
+        tier=tier_for(state.quality, agentic=False),
     )
     steps = _parse_plan(text)
     if not steps:
@@ -320,7 +276,9 @@ def plan_node(state: AgentState) -> dict:
 def reason_node(state: AgentState) -> dict:
     """One model call: it answers, or asks for tools."""
     emit = get_stream_writer()
-    text, tool_calls = _stream_completion(get_groq_client(), state.messages, emit, schemas_for(state.domain))
+    # A plan, or tools already run with their results being worked through, means a multi-step task.
+    tier = tier_for(state.quality, agentic=bool(state.plan) or state.loop_count > 0)
+    text, tool_calls = _stream_completion(get_llm_client(), state.messages, emit, schemas_for(state.domain), tier)
     if tool_calls and text:
         emit(_event("reset"))  # the text so far was only a preamble to the tool calls
     update: dict = {"tool_calls": tool_calls, "draft": text, "loop_count": state.loop_count + 1}
@@ -471,6 +429,7 @@ def run_agent_stream(
     history: list[ChatHistoryItem],
     student: CurrentStudent,
     entities: list[Entity] | None = None,
+    quality: str | None = None,
 ) -> Iterator[dict]:
     """Run the agent for a signed-in student, yielding typed events as it goes.
 
@@ -479,7 +438,7 @@ def run_agent_stream(
     finally done, whose payload is the complete ChatResponse. Failures raise
     AppError.
     """
-    state = AgentState(message=message, student=student, history=history, entities=entities or [])
+    state = AgentState(message=message, student=student, history=history, entities=entities or [], quality=quality)
     config = {"recursion_limit": RECURSION_LIMIT}
     for part in _graph.stream(state, config, stream_mode="custom", version="v2"):
         yield part["data"]
@@ -490,13 +449,14 @@ def run_agent(
     history: list[ChatHistoryItem],
     student: CurrentStudent,
     entities: list[Entity] | None = None,
+    quality: str | None = None,
 ) -> ChatResponse:
     """The same run without streaming: wait for the final event."""
-    events = list(run_agent_stream(message, history, student, entities))
+    events = list(run_agent_stream(message, history, student, entities, quality))
     return ChatResponse.model_validate(events[-1]["payload"])
 
 
-def complete_text(messages: list[dict]) -> str:
+def complete_text(messages: list[dict], tier: str = "balanced") -> str:
     """A single model answer to the messages, with no tools. Model failures raise AppError."""
-    text, _ = _stream_completion(get_groq_client(), messages, emit=lambda event: None, tools=None)
+    text, _ = _stream_completion(get_llm_client(), messages, emit=lambda event: None, tools=None, tier=tier)
     return text.strip()

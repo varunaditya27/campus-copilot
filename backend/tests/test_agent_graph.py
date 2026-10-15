@@ -15,6 +15,7 @@ from app.agent.agent import (
     should_call_tools,
 )
 from fakes import SlowGroq
+from fakes import fake_llm
 from fakes import completion as _completion
 from fakes import tool_call as _tool_call
 from helpers import ASHA_PROFILE
@@ -165,7 +166,7 @@ def test_a_failing_tool_among_several_does_not_stop_the_others(db, use_fakes, mo
 
 def test_tokens_arrive_while_the_model_is_still_talking(monkeypatch):
     slow = SlowGroq(["one", "two", "three", "four"], pause=0.1)
-    monkeypatch.setattr(agent, "get_groq_client", lambda: slow)
+    monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(slow))
     monkeypatch.setattr(agent, "retrieve", lambda message: [])
 
     first_token_at = None
