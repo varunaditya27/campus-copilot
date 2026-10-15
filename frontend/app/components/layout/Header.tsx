@@ -55,7 +55,7 @@ export default function Header() {
           {state.status === "signedIn" && (
             <>
               <span className="hidden text-cream/80 sm:inline">
-                {state.student.name}
+                {state.user.name}
               </span>
               <button
                 type="button"

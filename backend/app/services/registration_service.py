@@ -6,6 +6,7 @@ from sqlalchemy.exc import IntegrityError
 
 from app.db import session as db_session
 from app.db.models import Event, Registration, Student
+from app.models.registration import RegistrationRecord
 
 
 def _full() -> dict:
@@ -70,3 +71,32 @@ def create_registration(student_id: str, event_id: str) -> dict:
         registration.registration_id = f"REG-{registration.id:05d}"
         session.commit()
         return {"success": True, "registration_id": registration.registration_id}
+
+
+def list_registrations(event_id: str | None = None) -> list[RegistrationRecord]:
+    """Every registration, oldest first, optionally for one event."""
+    query = (
+        select(Registration, Event, Student)
+        .join(Event, Event.id == Registration.event_id)
+        .join(Student, Student.student_id == Registration.student_id)
+        .order_by(Registration.id)
+    )
+    if event_id is not None:
+        query = query.where(Registration.event_id == event_id)
+    with db_session.SessionLocal() as db:
+        rows = db.execute(query).all()
+    return [
+        RegistrationRecord(
+            registration_id=registration.registration_id,
+            status=registration.status,
+            registered_at=registration.registered_at,
+            event_id=event.id,
+            event_name=event.name,
+            event_date=event.date,
+            student_id=student.student_id,
+            student_name=student.name,
+            program=student.program,
+            year=student.year,
+        )
+        for registration, event, student in rows
+    ]

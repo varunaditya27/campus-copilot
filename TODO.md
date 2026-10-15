@@ -30,7 +30,7 @@
 
 - [x] Replace `events.json`, `students.json`, `registrations.json` with SQLAlchemy models
 - [x] Set up SQLite for local dev (zero infrastructure change, ACID-safe)
-- [ ] Write Alembic migrations for all tables: `students`, `events`, `registrations`, `sessions`, `users` (students, events, registrations, sessions and messages done; users with 2.1)
+- [x] Write Alembic migrations for all tables: `students`, `events`, `registrations`, `sessions`, `users`
 - [x] Replace all direct JSON file reads/writes in `event_service.py` and `registration_service.py` with DB queries
 - [x] Add unique constraint on `(student_id, event_id)` for registrations
 - [x] Add `docker-compose.yml` with a PostgreSQL service for production mode
@@ -85,12 +85,12 @@
 
 ### 2.2 Role-Based Access Control
 
-- [ ] Add a `role` field to the user model: `student | faculty | staff | admin`
-- [ ] Create a `faculty` table linked to `users`: faculty_id, name, department, office, office_hours
-- [ ] Admin role can access all admin CRUD endpoints
-- [ ] Faculty role can create/edit events assigned to their department
-- [ ] Staff role can view all registrations and export them
-- [ ] Student role can only read and self-register
+- [x] Add a `role` field to the user model: `student | faculty | staff | admin`
+- [x] Create a `faculty` table linked to `users`: faculty_id, name, department, office, office_hours (the name lives on `users`, so it is not repeated)
+- [x] Admin role can access all admin CRUD endpoints (the role check exists and is used by the endpoints built so far; the rest of phase 5 uses it)
+- [x] Faculty role can create/edit events assigned to their department
+- [x] Staff role can view all registrations and export them
+- [x] Student role can only read and self-register
 
 ### 2.3 Institutional SSO (Stretch)
 

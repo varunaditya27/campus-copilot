@@ -159,6 +159,8 @@ The backend owns sign-in. Tokens live in HttpOnly cookies that page scripts cann
 { "user_id": 1, "student_id": "1RV23IS101", "name": "Aarav Sharma", "program": "Information Science and Engineering", "year": 3, "email": "aarav@example.com" }
 ```
 
+The profile's `role` is `student`, `faculty`, `staff` or `admin`; `student_id`, `program` and `year` are `null` for anyone who is not a student, and `faculty` is `null` for anyone who is not faculty. The chat is for students only: other roles get `403` from the chat endpoints, and the chat page shows them a short notice instead (`StudentsOnly`). The staff and admin endpoints (`/api/staff/...`, `/api/admin/events`) have no screens yet.
+
 ### `GET /api/chat/history`
 
 Returns the conversation for the current `session_id` cookie, so the chat can be restored after a page refresh. A browser with no session gets an empty list.

@@ -62,10 +62,12 @@ backend/
 │   │
 │   ├── api/                       # HTTP layer -- thin, no business logic
 │   │   ├── auth.py                 # register, login, refresh, logout, me
+│   │   ├── admin_events.py         # POST/PUT /api/admin/events (faculty, admin)
 │   │   ├── chat.py                 # chat, chat/stream, history, sessions
 │   │   ├── deps.py                 # get_current_student: the sign-in check
 │   │   ├── events.py               # GET /api/events, /api/events/:id
-│   │   └── registration.py         # POST /api/register
+│   │   ├── registration.py         # POST /api/register
+│   │   └── staff.py                # registrations list and CSV export (staff, admin)
 │   │
 │   ├── agent/
 │   │   ├── agent.py                # run_agent_stream(): the tool-calling loop, as a stream of events
@@ -97,7 +99,8 @@ backend/
 │   │   ├── chat.py
 │   │   ├── auth.py                 # sign-up / sign-in request and profile shapes
 │   │   ├── events.py
-│   │   └── ids.py                  # student id (USN) format
+│   │   ├── ids.py                  # student id (USN) format
+│   │   └── registration.py         # a registration as staff see it
 │   │
 │   └── core/
 │       ├── config.py                # env vars, paths -- the only os.environ access
@@ -106,6 +109,7 @@ backend/
 │       ├── security.py              # password hashing, JWT, refresh-token helpers
 │       └── groq_client.py           # cached Groq client
 │
+├── cli.py                          # admin commands: python -m app.cli create-user
 ├── migrations/                     # Alembic migrations (the schema's history)
 ├── tests/                          # pytest suite (fake Groq client, temporary database)
 ├── chroma/                         # persisted vector store (gitignored, rebuilt by ingest.py)
@@ -175,7 +179,7 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | `POST /api/auth/login` | Sign in with email and password |
 | `POST /api/auth/refresh` | Swap the refresh token for a new access token and refresh token |
 | `POST /api/auth/logout` | Sign out and revoke the login on the server |
-| `GET /api/auth/me` | The signed-in student's profile |
+| `GET /api/auth/me` | The signed-in user's profile, including their role |
 | `POST /api/chat` | Send a message, run the agent loop, get back a reply + sources + tool activity + optional confirmation. The exchange is saved to the caller's session |
 | `POST /api/chat/stream` | Same as `POST /api/chat`, but streamed as server-sent events: tokens and tool activity arrive as they happen |
 | `GET /api/chat/history` | The current session's saved messages, for restoring the chat after a refresh |
@@ -183,7 +187,12 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | `DELETE /api/chat/sessions/{id}` | Delete the student's own conversation (404 for anyone else's) |
 | `POST /api/register` | Execute a registration for the signed-in student -- the only endpoint that creates registrations |
 
-Everything except events, health and the first three auth calls requires a signed-in student and answers `401 not_authenticated` otherwise.
+| `GET /api/staff/registrations` | Every registration with student and event details; `?event_id=` filters (staff, admin) |
+| `GET /api/staff/registrations/export` | The same as a CSV download (staff, admin) |
+| `POST /api/admin/events` | Create an event (faculty, admin) |
+| `PUT /api/admin/events/{id}` | Edit an event (faculty for their own department's events, admin for any) |
+
+Everything except events, health and the first three auth calls requires sign-in and answers `401 not_authenticated` otherwise. A signed-in user of the wrong role gets `403 forbidden`: the chat, sessions and registration endpoints are for students only.
 Every 4xx/5xx response has the same JSON shape: `{ "error_code": "...", "message": "...", "detail": ... }`. `message` is safe to show to a user; `detail` carries field-level information for validation errors (422). Notable codes: `rate_limited` (429, Groq is throttling), `context_too_long` (413), `llm_unavailable` (502), `validation_error` (422), `not_found` (404), `internal_error` (500, no internals leaked).
 
 Request limits: a chat `message` is 1-2000 characters; an account's `student_id` must look like a USN (e.g. `1RV23IS101`); a password is 12-128 characters.
@@ -205,6 +214,16 @@ Once streaming has started the HTTP status is already 200, so failures arrive as
 **Sessions.** The server, not the browser, remembers the conversation. A student's first `POST /api/chat` creates a row in `sessions`, owned by that student, and sets a random `session_id` in an HttpOnly, `SameSite=Lax` cookie (HttpOnly means page scripts cannot read it) that remembers which conversation the browser is in. Each later request loads the session's most recent 40 messages (`HISTORY_WINDOW` in `api/chat.py`) and passes them to the agent; the reply is saved with its tool activity and sources. A failed agent run saves nothing. A session id that belongs to another student is treated as unknown, so nobody can read or continue someone else's conversation by guessing or borrowing an id. Set `COOKIE_SECURE=true` once the app is served over HTTPS.
 
 **Authentication.** Students sign up with their USN, their name as it appears in the `students` roster, an email and a password, so an account can only be created for a real student record. Passwords are hashed with Argon2id (`pwdlib`; OWASP's preferred algorithm), and a login for an unknown email costs the same time as one for a known email and gives the same error, so neither timing nor wording reveals which accounts exist. A login sets two HttpOnly cookies: a short-lived (15 minute) signed JWT access token, and a random refresh token (14 days, only sent to `/api/auth/*`, only its hash is stored). Every refresh replaces the refresh token; presenting one that was already used (a sign of theft) revokes that whole login, apart from a 10 second grace for two tabs refreshing at once. The JWT algorithm is pinned, so unsigned or re-signed tokens are rejected. Because cookies authenticate requests, state-changing requests that carry an `Origin` header from an unknown site are refused (`OriginCheckMiddleware`), on top of `SameSite` cookies.
+
+**Roles.** Every account has one role: `student`, `faculty`, `staff` or `admin`. Students are linked to a roster record; the others never are (a database `CHECK` enforces both). Public sign-up only ever makes students. Because anyone able to choose their own role could make themselves an admin, faculty, staff and admin accounts are created from the server with a command that prompts for the password (it is never an argument, so it stays out of shell history):
+
+```bash
+python -m app.cli create-user --role admin --name "Root Admin" --email root@campus.example
+python -m app.cli create-user --role faculty --name "Dr. Rao" --email rao@campus.example \
+    --department "Information Science and Engineering" --office B-204 --office-hours "Tue 2-4"
+```
+
+What each role may do: students chat, register themselves for events, and read events; staff also view and export all registrations; faculty also create events and edit their own department's (an event's `department` is set from the faculty member's, and cannot be changed by them; events with no department, including the seed events, are admin-only); admins can do everything staff and faculty can. Permissions are checked by the `require_roles(...)` dependency in `api/deps.py`. The CSV export prefixes any cell that starts with `=`, `+`, `-`, `@`, a tab or a line break with a single quote, so a hostile name cannot run as a spreadsheet formula ([OWASP: CSV injection](https://owasp.org/www-community/attacks/CSV_Injection)).
 
 Known limits, until later roadmap phases: there is no email verification, so anyone who knows a student's USN and name can create that student's account first; and there is no login rate limiting or lockout yet. Set `JWT_SECRET` (`openssl rand -hex 32`) in production. If it is unset the server makes a temporary one, which signs everyone out on every restart.
 

@@ -9,14 +9,14 @@ import {
   useState,
 } from "react";
 import {
-  getCurrentStudent,
+  getCurrentUser,
   login as loginRequest,
   logout as logoutRequest,
   onSessionExpired,
   registerAccount,
 } from "@/lib/api";
 import type {
-  CurrentStudent,
+  CurrentUser,
   LoginRequest,
   RegisterAccountRequest,
 } from "@/lib/types";
@@ -24,7 +24,7 @@ import type {
 type AuthState =
   | { status: "loading" }
   | { status: "signedOut" }
-  | { status: "signedIn"; student: CurrentStudent };
+  | { status: "signedIn"; user: CurrentUser };
 
 interface AuthContextValue {
   state: AuthState;
@@ -54,19 +54,19 @@ export default function AuthProvider({
     // The backend decides who is signed in (from HttpOnly cookies the page
     // cannot read), so ask it, and listen for the session ending later.
     onSessionExpired(() => setState({ status: "signedOut" }));
-    getCurrentStudent().then(
-      (student) => setState({ status: "signedIn", student }),
+    getCurrentUser().then(
+      (user) => setState({ status: "signedIn", user }),
       () => setState({ status: "signedOut" }),
     );
     return () => onSessionExpired(null);
   }, []);
 
   const login = useCallback(async (body: LoginRequest) => {
-    setState({ status: "signedIn", student: await loginRequest(body) });
+    setState({ status: "signedIn", user: await loginRequest(body) });
   }, []);
 
   const register = useCallback(async (body: RegisterAccountRequest) => {
-    setState({ status: "signedIn", student: await registerAccount(body) });
+    setState({ status: "signedIn", user: await registerAccount(body) });
   }, []);
 
   const logout = useCallback(async () => {

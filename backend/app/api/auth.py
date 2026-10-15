@@ -2,10 +2,10 @@ from typing import Annotated
 
 from fastapi import APIRouter, Cookie, Response
 
-from app.api.deps import ACCESS_COOKIE, SignedInStudent
+from app.api.deps import ACCESS_COOKIE, SignedInUser
 from app.core.config import ACCESS_TOKEN_MINUTES, COOKIE_SECURE, REFRESH_TOKEN_DAYS
 from app.core.errors import AppError
-from app.models.auth import CurrentStudent, LoginRequest, RegisterRequest
+from app.models.auth import CurrentUser, LoginRequest, RegisterRequest
 from app.services import auth_service
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
@@ -42,20 +42,20 @@ def _clear_auth_cookies(response: Response) -> None:
     )
 
 
-def _sign_in(response: Response, user_id: int) -> CurrentStudent:
+def _sign_in(response: Response, user_id: int) -> CurrentUser:
     access, refresh = auth_service.start_login(user_id)
     _set_auth_cookies(response, access, refresh)
-    return auth_service.get_current_student(user_id)
+    return auth_service.get_current_user(user_id)
 
 
 @router.post("/register", status_code=201)
-def register(request: RegisterRequest, response: Response) -> CurrentStudent:
+def register(request: RegisterRequest, response: Response) -> CurrentUser:
     user_id = auth_service.register(request.student_id, request.name, request.email, request.password)
     return _sign_in(response, user_id)
 
 
 @router.post("/login")
-def login(request: LoginRequest, response: Response) -> CurrentStudent:
+def login(request: LoginRequest, response: Response) -> CurrentUser:
     user_id = auth_service.authenticate(request.email, request.password)
     if user_id is None:
         # Same message for an unknown email and a wrong password.
@@ -92,5 +92,5 @@ def logout(refresh_token: Annotated[str | None, Cookie(alias=REFRESH_COOKIE)] = 
 
 
 @router.get("/me")
-def me(student: SignedInStudent) -> CurrentStudent:
-    return student
+def me(user: SignedInUser) -> CurrentUser:
+    return user

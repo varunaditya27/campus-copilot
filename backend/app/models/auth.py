@@ -1,6 +1,6 @@
-from typing import Annotated
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field, StringConstraints
+from pydantic import BaseModel, Field, StringConstraints, model_validator
 
 from app.models.ids import StudentId
 
@@ -24,6 +24,48 @@ class LoginRequest(BaseModel):
     email: Email
     # No length rules here: a login must not leak the password policy.
     password: Annotated[str, Field(max_length=128)]
+
+
+Role = Literal["student", "faculty", "staff", "admin"]
+
+
+class FacultyProfile(BaseModel):
+    faculty_id: str
+    department: str
+    office: str | None = None
+    office_hours: str | None = None
+
+
+class CurrentUser(BaseModel):
+    """Whoever is signed in. The student or faculty fields are set only for that role."""
+
+    user_id: int
+    role: Role
+    name: str
+    email: str
+    student_id: str | None = None
+    program: str | None = None
+    year: int | None = None
+    faculty: FacultyProfile | None = None
+
+
+class NewStaffAccount(BaseModel):
+    """An account for faculty, staff or an admin. There is no public sign-up for
+    these roles; an administrator creates them (see app/cli.py)."""
+
+    role: Literal["faculty", "staff", "admin"]
+    name: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]
+    email: Email
+    password: Password
+    department: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)] | None = None
+    office: Annotated[str, StringConstraints(max_length=100)] | None = None
+    office_hours: Annotated[str, StringConstraints(max_length=200)] | None = None
+
+    @model_validator(mode="after")
+    def _faculty_need_a_department(self):
+        if self.role == "faculty" and not self.department:
+            raise ValueError("A faculty account needs a department.")
+        return self
 
 
 class CurrentStudent(BaseModel):

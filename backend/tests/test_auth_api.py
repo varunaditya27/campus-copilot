@@ -33,8 +33,8 @@ def test_register_creates_an_account_and_signs_in(db, client):
 
     assert response.status_code == 201
     assert response.json() == {
-        "user_id": 1, "student_id": "1RV23IS101", "name": "Asha",
-        "program": "ISE", "year": 3, "email": "asha@example.com",
+        "user_id": 1, "role": "student", "name": "Asha", "email": "asha@example.com",
+        "student_id": "1RV23IS101", "program": "ISE", "year": 3, "faculty": None,
     }
     assert client.get("/api/auth/me").json()["student_id"] == "1RV23IS101"
 

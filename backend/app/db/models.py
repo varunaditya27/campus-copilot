@@ -63,6 +63,8 @@ class Event(Base):
     organizer: Mapped[str] = mapped_column(String(200))
     description: Mapped[str] = mapped_column(Text)
     tags: Mapped[list[str]] = mapped_column(JSON)
+    # The department that owns the event; faculty may only edit their own.
+    department: Mapped[str | None] = mapped_column(String(100))
 
 
 class Registration(Base):
@@ -79,15 +81,43 @@ class Registration(Base):
     status: Mapped[str] = mapped_column(String(20), default="confirmed")
 
 
+ROLES = ("student", "faculty", "staff", "admin")
+
+
 class User(Base):
     __tablename__ = "users"
+    __table_args__ = (
+        CheckConstraint(
+            "role IN ('student', 'faculty', 'staff', 'admin')", name="valid_role"
+        ),
+        # Students are linked to the roster; nobody else is.
+        CheckConstraint(
+            "(role = 'student' AND student_id IS NOT NULL) "
+            "OR (role <> 'student' AND student_id IS NULL)",
+            name="student_link",
+        ),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), unique=True)
+    role: Mapped[str] = mapped_column(String(20), default="student", server_default="student")
+    name: Mapped[str] = mapped_column(String(100))
+    student_id: Mapped[str | None] = mapped_column(ForeignKey("students.student_id"), unique=True)
     email: Mapped[str] = mapped_column(String(254), unique=True)
     password_hash: Mapped[str] = mapped_column(String(255))
     is_active: Mapped[bool] = mapped_column(default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class Faculty(Base):
+    __tablename__ = "faculty"
+
+    faculty_id: Mapped[str] = mapped_column(String(20), primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), unique=True
+    )
+    department: Mapped[str] = mapped_column(String(100))
+    office: Mapped[str | None] = mapped_column(String(100))
+    office_hours: Mapped[str | None] = mapped_column(String(200))
 
 
 class RefreshToken(Base):

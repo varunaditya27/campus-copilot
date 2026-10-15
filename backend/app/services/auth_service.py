@@ -8,8 +8,8 @@ from app.core import security
 from app.core.config import REFRESH_TOKEN_DAYS
 from app.core.errors import AppError
 from app.db import session as db_session
-from app.db.models import RefreshToken, Student, User
-from app.models.auth import CurrentStudent
+from app.db.models import Faculty, RefreshToken, Student, User
+from app.models.auth import CurrentUser, FacultyProfile, NewStaffAccount
 
 # If a just-rotated refresh token is presented again within this many seconds,
 # it is most likely two tabs refreshing at once, not theft: refuse it, but
@@ -30,14 +30,23 @@ def _not_authenticated() -> AppError:
     return AppError(401, "not_authenticated", "Please sign in again.")
 
 
-def _profile(user: User, student: Student) -> CurrentStudent:
-    return CurrentStudent(
+def _profile(user: User, student: Student | None, faculty: Faculty | None) -> CurrentUser:
+    return CurrentUser(
         user_id=user.id,
-        student_id=student.student_id,
-        name=student.name,
-        program=student.program,
-        year=student.year,
+        role=user.role,
+        name=user.name,
         email=user.email,
+        student_id=student.student_id if student else None,
+        program=student.program if student else None,
+        year=student.year if student else None,
+        faculty=FacultyProfile(
+            faculty_id=faculty.faculty_id,
+            department=faculty.department,
+            office=faculty.office,
+            office_hours=faculty.office_hours,
+        )
+        if faculty
+        else None,
     )
 
 
@@ -55,7 +64,13 @@ def register(student_id: str, name: str, email: str, password: str) -> int:
         if db.scalar(select(User.id).where(User.email == email)) is not None:
             raise AppError(409, "email_taken", "That email address is already registered.")
 
-        user = User(student_id=student_id, email=email, password_hash=security.hash_password(password))
+        user = User(
+            role="student",
+            name=student.name,
+            student_id=student_id,
+            email=email,
+            password_hash=security.hash_password(password),
+        )
         db.add(user)
         try:
             db.commit()
@@ -72,11 +87,41 @@ def authenticate(email: str, password: str) -> int | None:
         return user.id if user is not None and matches and user.is_active else None
 
 
-def get_current_student(user_id: int) -> CurrentStudent | None:
+def create_staff_account(account: NewStaffAccount) -> int:
+    """Create a faculty, staff or admin account. Returns the user id."""
+    email = account.email.lower()
+    with db_session.SessionLocal() as db:
+        if db.scalar(select(User.id).where(User.email == email)) is not None:
+            raise AppError(409, "email_taken", "That email address is already registered.")
+        user = User(
+            role=account.role,
+            name=account.name,
+            student_id=None,
+            email=email,
+            password_hash=security.hash_password(account.password),
+        )
+        db.add(user)
+        db.flush()
+        if account.role == "faculty":
+            db.add(
+                Faculty(
+                    faculty_id=f"FAC-{user.id:04d}",
+                    user_id=user.id,
+                    department=account.department,
+                    office=account.office,
+                    office_hours=account.office_hours,
+                )
+            )
+        db.commit()
+        return user.id
+
+
+def get_current_user(user_id: int) -> CurrentUser | None:
     with db_session.SessionLocal() as db:
         row = db.execute(
-            select(User, Student)
-            .join(Student, Student.student_id == User.student_id)
+            select(User, Student, Faculty)
+            .outerjoin(Student, Student.student_id == User.student_id)
+            .outerjoin(Faculty, Faculty.user_id == User.id)
             .where(User.id == user_id, User.is_active)
         ).first()
         return _profile(*row) if row else None

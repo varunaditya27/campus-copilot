@@ -23,6 +23,7 @@ export interface CampusEvent {
   organizer: string;
   description: string;
   tags: string[];
+  department?: string | null;
 }
 
 export interface Source {
@@ -112,13 +113,26 @@ export interface ConfirmRegistrationResponse {
   error?: string;
 }
 
-export interface CurrentStudent {
+export type Role = "student" | "faculty" | "staff" | "admin";
+
+export interface FacultyProfile {
+  faculty_id: string;
+  department: string;
+  office: string | null;
+  office_hours: string | null;
+}
+
+// Whoever is signed in. The student fields are set for students, the faculty
+// profile for faculty.
+export interface CurrentUser {
   user_id: number;
-  student_id: string;
+  role: Role;
   name: string;
-  program: string;
-  year: number;
   email: string;
+  student_id: string | null;
+  program: string | null;
+  year: number | null;
+  faculty: FacultyProfile | null;
 }
 
 export interface LoginRequest {

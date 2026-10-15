@@ -5,7 +5,7 @@ import type {
   ChatRequest,
   ConfirmRegistrationRequest,
   ConfirmRegistrationResponse,
-  CurrentStudent,
+  CurrentUser,
   LoginRequest,
   RegisterAccountRequest,
 } from "./types";
@@ -181,18 +181,18 @@ export function getEvent(id: string): Promise<CampusEvent> {
   return request<CampusEvent>(`/api/events/${id}`);
 }
 
-export function getCurrentStudent(): Promise<CurrentStudent> {
-  return request<CurrentStudent>("/api/auth/me");
+export function getCurrentUser(): Promise<CurrentUser> {
+  return request<CurrentUser>("/api/auth/me");
 }
 
-export function login(body: LoginRequest): Promise<CurrentStudent> {
-  return post<CurrentStudent>("/api/auth/login", body);
+export function login(body: LoginRequest): Promise<CurrentUser> {
+  return post<CurrentUser>("/api/auth/login", body);
 }
 
 export function registerAccount(
   body: RegisterAccountRequest,
-): Promise<CurrentStudent> {
-  return post<CurrentStudent>("/api/auth/register", body);
+): Promise<CurrentUser> {
+  return post<CurrentUser>("/api/auth/register", body);
 }
 
 export function logout(): Promise<void> {

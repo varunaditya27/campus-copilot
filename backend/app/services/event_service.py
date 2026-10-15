@@ -1,8 +1,12 @@
+from uuid import uuid4
+
 from sqlalchemy import select
 
+from app.core.errors import AppError
 from app.db import session as db_session
 from app.db.models import Event
-from app.models.events import CampusEvent
+from app.models.auth import CurrentUser
+from app.models.events import CampusEvent, EventInput
 
 
 def list_events() -> list[CampusEvent]:
@@ -15,3 +19,41 @@ def get_event(event_id: str) -> CampusEvent | None:
     with db_session.SessionLocal() as session:
         row = session.get(Event, event_id)
         return CampusEvent.model_validate(row, from_attributes=True) if row else None
+
+
+def create_event(data: EventInput, editor: CurrentUser) -> CampusEvent:
+    # A faculty member's events always belong to their own department.
+    department = editor.faculty.department if editor.role == "faculty" else data.department
+    with db_session.SessionLocal() as session:
+        row = Event(
+            id=f"evt_{uuid4().hex[:10]}",
+            registered=0,
+            department=department,
+            **data.model_dump(exclude={"department"}),
+        )
+        session.add(row)
+        session.commit()
+        return CampusEvent.model_validate(row, from_attributes=True)
+
+
+def update_event(event_id: str, data: EventInput, editor: CurrentUser) -> CampusEvent:
+    with db_session.SessionLocal() as session:
+        row = session.get(Event, event_id)
+        if row is None:
+            raise AppError(404, "not_found", f"Event '{event_id}' not found")
+        if editor.role == "faculty" and row.department != editor.faculty.department:
+            raise AppError(403, "forbidden", "You can only edit events from your own department.")
+        if data.capacity < row.registered:
+            raise AppError(
+                409,
+                "capacity_below_registered",
+                f"{row.registered} seats are already taken, so capacity cannot go below that.",
+            )
+
+        for field, value in data.model_dump(exclude={"department"}).items():
+            setattr(row, field, value)
+        # Only an admin can move an event between departments.
+        if editor.role == "admin" and "department" in data.model_fields_set:
+            row.department = data.department
+        session.commit()
+        return CampusEvent.model_validate(row, from_attributes=True)

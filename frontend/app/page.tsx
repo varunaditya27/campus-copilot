@@ -8,6 +8,7 @@ import ChatWindow from "./components/chat/ChatWindow";
 import ChatInput from "./components/chat/ChatInput";
 import AgentActivity from "./components/agent/AgentActivity";
 import RequireAuth from "./components/auth/RequireAuth";
+import StudentsOnly from "./components/auth/StudentsOnly";
 
 let idCounter = 0;
 function nextId() {
@@ -28,7 +29,9 @@ function toChatMessage(m: StoredMessage): ChatMessage {
 export default function ChatPage() {
   return (
     <RequireAuth>
-      <Chat />
+      <StudentsOnly>
+        <Chat />
+      </StudentsOnly>
     </RequireAuth>
   );
 }
