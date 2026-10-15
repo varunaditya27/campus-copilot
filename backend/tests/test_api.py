@@ -7,7 +7,7 @@ client = TestClient(app)
 
 
 def test_register_success(data_files):
-    response = client.post("/api/register", json={"event_id": "evt_ai_001", "student_id": "S1"})
+    response = client.post("/api/register", json={"event_id": "evt_ai_001", "student_id": "1RV23IS101"})
 
     assert response.status_code == 200
     assert response.json() == {"success": True, "registration_id": "REG-00001", "error": None}
@@ -15,7 +15,7 @@ def test_register_success(data_files):
 
 
 def test_register_full_event_reports_error(data_files):
-    response = client.post("/api/register", json={"event_id": "evt_web_002", "student_id": "S1"})
+    response = client.post("/api/register", json={"event_id": "evt_web_002", "student_id": "1RV23IS101"})
 
     assert response.status_code == 200
     assert response.json()["success"] is False

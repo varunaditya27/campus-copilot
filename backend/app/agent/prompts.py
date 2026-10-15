@@ -12,6 +12,12 @@ the student to confirm.
 """
 
 
+KNOWLEDGE_UNAVAILABLE_MESSAGE = (
+    "The campus knowledge base is currently unavailable. Do not guess "
+    "campus-specific facts; tell the student you can't look that up right now."
+)
+
+
 def build_context_message(chunks: list[dict]) -> str:
     blocks = [f"[{c['document']} - {c['section']}]\n{c['snippet']}" for c in chunks]
     return (

@@ -33,7 +33,16 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   }
 
   if (!res.ok) {
-    throw new ApiError(`Request to ${path} failed (${res.status})`, res.status);
+    let message = `Request to ${path} failed (${res.status})`;
+    try {
+      const body = await res.json();
+      if (typeof body?.message === "string") {
+        message = body.message;
+      }
+    } catch {
+      // Non-JSON error body: keep the generic message.
+    }
+    throw new ApiError(message, res.status);
   }
 
   return res.json() as Promise<T>;

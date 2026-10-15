@@ -27,8 +27,8 @@ EVENTS = [
     _event("evt_web_002", "Web Night", "web-development", 5, 5, ["react"]),
 ]
 STUDENTS = [
-    {"student_id": "S1", "name": "Asha", "program": "ISE", "year": 3},
-    {"student_id": "S2", "name": "Ravi", "program": "CSE", "year": 2},
+    {"student_id": "1RV23IS101", "name": "Asha", "program": "ISE", "year": 3},
+    {"student_id": "1RV24IS219", "name": "Ravi", "program": "CSE", "year": 2},
 ]
 
 

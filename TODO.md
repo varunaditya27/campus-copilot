@@ -58,13 +58,13 @@
 
 ### 1.4 Error Handling & Input Validation
 
-- [ ] Add Pydantic v2 validators on all tool function inputs (type coercion, field constraints)
-- [ ] Add structured FastAPI exception handlers: return `{ error_code, message, detail }` JSON on all 4xx/5xx
-- [ ] Catch and handle Groq API errors specifically: rate limit (429), context length exceeded, server error (500)
-- [ ] Catch and handle ChromaDB `RuntimeError` ("knowledge base not found") with a user-facing message instead of a 500
-- [ ] Add `MAX_DISTANCE` to config (currently hardcoded as `1.5` in `retriever.py`) and document its tuning
-- [ ] Validate `student_id` format on all registration-related endpoints
-- [ ] Add request size limits to FastAPI (guard against giant context payloads)
+- [x] Add Pydantic v2 validators on all tool function inputs (type coercion, field constraints)
+- [x] Add structured FastAPI exception handlers: return `{ error_code, message, detail }` JSON on all 4xx/5xx
+- [x] Catch and handle Groq API errors specifically: rate limit (429), context length exceeded, server error (500)
+- [x] Catch and handle ChromaDB `RuntimeError` ("knowledge base not found") with a user-facing message instead of a 500
+- [x] Add `MAX_DISTANCE` to config (currently hardcoded as `1.5` in `retriever.py`) and document its tuning
+- [x] Validate `student_id` format on all registration-related endpoints
+- [x] Add request size limits to FastAPI (guard against giant context payloads)
 
 ---
 
@@ -390,10 +390,10 @@
 ### 9.4 Testing
 
 - [ ] Add `pytest` + `pytest-asyncio` to `requirements.txt`
-- [ ] Write unit tests for all tool functions (`search_events`, `calculate_attendance`, etc.)
-- [ ] Write unit tests for the RAG retriever (mock Chroma, test distance filtering)
+- [x] Write unit tests for all tool functions (`search_events`, `calculate_attendance`, etc.)
+- [x] Write unit tests for the RAG retriever (mock Chroma, test distance filtering)
 - [ ] Write integration tests for all FastAPI endpoints using `httpx.AsyncClient`
-- [ ] Write end-to-end agent tests: send a message → assert the right tools are called → assert response structure
+- [x] Write end-to-end agent tests: send a message → assert the right tools are called → assert response structure
 - [ ] Write RAG eval tests that run the golden dataset and assert minimum Recall@3 threshold
 - [ ] Add `vitest` + `testing-library/react` for Next.js component tests
 - [ ] Aim for >80% backend coverage; track with `pytest-cov`

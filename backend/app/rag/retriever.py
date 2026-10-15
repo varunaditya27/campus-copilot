@@ -2,8 +2,12 @@ from functools import lru_cache
 
 import chromadb
 
-from app.core.config import CHROMA_COLLECTION, CHROMA_DIR
+from app.core.config import CHROMA_COLLECTION, CHROMA_DIR, MAX_DISTANCE
 from app.rag.embeddings import get_embedding_function
+
+
+class KnowledgeBaseNotFound(RuntimeError):
+    pass
 
 
 @lru_cache
@@ -14,16 +18,9 @@ def _get_collection():
             name=CHROMA_COLLECTION, embedding_function=get_embedding_function()
         )
     except Exception as exc:
-        raise RuntimeError(
+        raise KnowledgeBaseNotFound(
             "Knowledge base not found. Run `python -m app.rag.ingest` first."
         ) from exc
-
-
-# Chunks farther than this (L2 distance, all-MiniLM-L6-v2) are treated as
-# "not actually about this" rather than force-fed to the model as context.
-# Calibrated empirically: on-topic queries against this corpus land at
-# ~0.7-1.3, off-topic queries land at ~1.8+.
-MAX_DISTANCE = 1.5
 
 
 def retrieve(query: str, k: int = 3) -> list[dict]:

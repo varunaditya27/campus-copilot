@@ -1,8 +1,12 @@
 import json
 
-from app.agent.prompts import SYSTEM_PROMPT, build_context_message
+from groq import APIError, APIStatusError, BadRequestError, RateLimitError
+from pydantic import ValidationError
+
+from app.agent.prompts import KNOWLEDGE_UNAVAILABLE_MESSAGE, SYSTEM_PROMPT, build_context_message
 from app.agent.tool_registry import TOOL_FUNCTIONS, TOOL_SCHEMAS
 from app.core.config import GROQ_MODEL
+from app.core.errors import AppError
 from app.core.groq_client import get_groq_client
 from app.models.chat import (
     ChatHistoryItem,
@@ -12,10 +16,15 @@ from app.models.chat import (
     Source,
     ToolActivityEntry,
 )
-from app.rag.retriever import retrieve
+from app.models.ids import is_valid_student_id
+from app.rag.retriever import KnowledgeBaseNotFound, retrieve
 from app.services import event_service
 
 MAX_TOOL_ROUNDS = 4
+
+# Groq documents 413 for an oversized request but no specific code for an
+# over-long prompt, so a 400 is matched by its message wording as well.
+_CONTEXT_TOO_LONG_HINTS = ("context length", "reduce the length", "too long")
 
 TOOL_LABELS = {
     "search_events": "Searching campus events",
@@ -36,10 +45,66 @@ def _summarize(tool: str, result: dict) -> str:
     return "Done"
 
 
+def _parse_arguments(raw: str) -> dict | None:
+    try:
+        args = json.loads(raw)
+    except json.JSONDecodeError:
+        return None
+    return args if isinstance(args, dict) else None
+
+
+def _describe_validation_error(exc: ValidationError) -> str:
+    return "; ".join(
+        f"{'.'.join(str(part) for part in e['loc'])}: {e['msg']}" for e in exc.errors()
+    )
+
+
+def _run_tool(name: str, raw_arguments: str) -> tuple[dict | list, str]:
+    args = _parse_arguments(raw_arguments)
+    if args is None:
+        return {"error": "Tool arguments were not a valid JSON object"}, "error"
+    try:
+        return TOOL_FUNCTIONS[name](**args), "done"
+    except ValidationError as exc:
+        return {"error": _describe_validation_error(exc)}, "error"
+    except Exception as exc:
+        return {"error": str(exc)}, "error"
+
+
+def _to_app_error(exc: APIError) -> AppError:
+    if isinstance(exc, RateLimitError):
+        return AppError(
+            429, "rate_limited", "The AI service is busy right now. Please try again in a moment."
+        )
+    too_long = (isinstance(exc, APIStatusError) and exc.status_code == 413) or (
+        isinstance(exc, BadRequestError)
+        and any(hint in exc.message.lower() for hint in _CONTEXT_TOO_LONG_HINTS)
+    )
+    if too_long:
+        return AppError(
+            413, "context_too_long", "This conversation is too long. Please start a new chat."
+        )
+    return AppError(
+        502, "llm_unavailable", "The AI service is unavailable right now. Please try again shortly."
+    )
+
+
+def _call_model(client, messages: list[dict]):
+    try:
+        return client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=messages,
+            tools=TOOL_SCHEMAS,
+            tool_choice="auto",
+        )
+    except APIError as exc:
+        raise _to_app_error(exc) from exc
+
+
 def _confirmation_for(args: dict) -> RegistrationConfirmation | None:
     event = event_service.get_event(args.get("event_id", ""))
     student_id = args.get("student_id")
-    if event is None or not student_id:
+    if event is None or not isinstance(student_id, str) or not is_valid_student_id(student_id):
         return None
     return RegistrationConfirmation(
         event=ConfirmationEvent(
@@ -50,12 +115,19 @@ def _confirmation_for(args: dict) -> RegistrationConfirmation | None:
 
 
 def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
-    chunks = retrieve(message)
+    knowledge_unavailable = False
+    try:
+        chunks = retrieve(message)
+    except KnowledgeBaseNotFound:
+        chunks = []
+        knowledge_unavailable = True
 
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     messages += [{"role": h.role, "content": h.content} for h in history]
     if chunks:
         messages.append({"role": "system", "content": build_context_message(chunks)})
+    elif knowledge_unavailable:
+        messages.append({"role": "system", "content": KNOWLEDGE_UNAVAILABLE_MESSAGE})
     messages.append({"role": "user", "content": message})
 
     client = get_groq_client()
@@ -63,12 +135,7 @@ def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
     confirmation: RegistrationConfirmation | None = None
 
     for _ in range(MAX_TOOL_ROUNDS):
-        completion = client.chat.completions.create(
-            model=GROQ_MODEL,
-            messages=messages,
-            tools=TOOL_SCHEMAS,
-            tool_choice="auto",
-        )
+        completion = _call_model(client, messages)
         reply_message = completion.choices[0].message
 
         if not reply_message.tool_calls:
@@ -80,7 +147,7 @@ def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
             None,
         )
         if register_call is not None:
-            args = json.loads(register_call.function.arguments)
+            args = _parse_arguments(register_call.function.arguments) or {}
             confirmation = _confirmation_for(args)
             reply = (
                 f"I've prepared a registration for {confirmation.event.name}. "
@@ -101,14 +168,7 @@ def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
 
         for tool_call in reply_message.tool_calls:
             name = tool_call.function.name
-            args = json.loads(tool_call.function.arguments)
-
-            try:
-                result = TOOL_FUNCTIONS[name](**args)
-                status = "done"
-            except Exception as exc:
-                result = {"error": str(exc)}
-                status = "error"
+            result, status = _run_tool(name, tool_call.function.arguments)
 
             tool_activity.append(
                 ToolActivityEntry(

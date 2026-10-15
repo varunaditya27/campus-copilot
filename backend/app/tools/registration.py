@@ -1,5 +1,11 @@
+from typing import Annotated
+
+from pydantic import Field, validate_call
+
+from app.models.ids import StudentId
 from app.services import registration_service
 
 
-def register_for_event(student_id: str, event_id: str) -> dict:
+@validate_call
+def register_for_event(student_id: StudentId, event_id: Annotated[str, Field(max_length=64)]) -> dict:
     return registration_service.create_registration(student_id, event_id)

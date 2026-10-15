@@ -1,14 +1,15 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
+from app.models.ids import StudentId
 from app.services import registration_service
 
 router = APIRouter(prefix="/api/register", tags=["registration"])
 
 
 class RegisterRequest(BaseModel):
-    event_id: str
-    student_id: str
+    event_id: str = Field(max_length=64)
+    student_id: StudentId
 
 
 class RegisterResponse(BaseModel):

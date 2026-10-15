@@ -7,6 +7,9 @@ import ChatWindow from "./components/chat/ChatWindow";
 import ChatInput from "./components/chat/ChatInput";
 import AgentActivity from "./components/agent/AgentActivity";
 
+// The backend rejects more than 50 history items; stay well under it.
+const MAX_HISTORY_MESSAGES = 40;
+
 let idCounter = 0;
 function nextId() {
   idCounter += 1;
@@ -43,7 +46,9 @@ export default function ChatPage() {
     try {
       const res = await sendChatMessage({
         message: text,
-        history: messages.map((m) => ({ role: m.role, content: m.content })),
+        history: messages
+          .slice(-MAX_HISTORY_MESSAGES)
+          .map((m) => ({ role: m.role, content: m.content })),
       });
 
       setMessages((prev) =>

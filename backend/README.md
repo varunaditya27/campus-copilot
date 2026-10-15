@@ -117,7 +117,7 @@ top-k chunks, filtered by distance cutoff
 injected as context for Groq + returned as `sources`
 ```
 
-The distance cutoff (`rag/retriever.py`, `MAX_DISTANCE = 1.5`) exists because Chroma always returns its top-k nearest chunks regardless of whether any of them are actually relevant. Without it, an off-topic question would still get citations attached -- which defeats the point of showing sources at all. The threshold was calibrated empirically: on-topic queries against this corpus land at ~0.7-1.3, off-topic queries at ~1.8+.
+The distance cutoff (`MAX_DISTANCE` in `core/config.py`, default `1.5`, overridable with the `RAG_MAX_DISTANCE` env var) exists because Chroma always returns its top-k nearest chunks regardless of whether any of them are actually relevant. Without it, an off-topic question would still get citations attached -- which defeats the point of showing sources at all. The threshold was calibrated empirically: on-topic queries against this corpus land at ~0.7-1.3, off-topic queries at ~1.8+.
 
 Rebuild the index after editing `knowledge/`:
 
@@ -156,6 +156,10 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | `POST /api/chat` | Send a message, run the agent loop, get back a reply + sources + tool activity + optional confirmation |
 | `POST /api/register` | Execute a registration -- the only endpoint that writes to `registrations.json` |
 
+Every 4xx/5xx response has the same JSON shape: `{ "error_code": "...", "message": "...", "detail": ... }`. `message` is safe to show to a user; `detail` carries field-level information for validation errors (422). Notable codes: `rate_limited` (429, Groq is throttling), `context_too_long` (413), `llm_unavailable` (502), `validation_error` (422), `not_found` (404), `internal_error` (500, no internals leaked).
+
+Request limits: a chat `message` is 1-2000 characters, `history` holds at most 50 items of up to 8000 characters each, and `student_id` must look like a USN (e.g. `1RV23IS101`).
+
 ---
 
 ## 🚀 Getting Started
@@ -187,6 +191,16 @@ curl http://localhost:8000/health
 | `GROQ_API_KEY` | *(required)* | Your Groq API key |
 | `GROQ_MODEL` | `openai/gpt-oss-120b` | Chosen for tool-use/reasoning support -- verify against `GET https://api.groq.com/openai/v1/models` before changing; Groq deprecates models over time and the docs' example model may not match what your account actually has |
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated origins allowed to call this API |
+| `RAG_MAX_DISTANCE` | `1.5` | Retrieval distance cutoff; chunks farther than this are dropped. Re-calibrate if you change the embedding model or the corpus (lower is stricter) |
+
+### Running the tests
+
+```bash
+cd backend
+pytest
+```
+
+The tests use a fake Groq client and a temporary copy of the data files, so they need no API key or network and never modify `data/`.
 
 ---
 

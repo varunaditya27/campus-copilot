@@ -14,6 +14,13 @@ KNOWLEDGE_DIR = REPO_ROOT / "knowledge"
 CHROMA_DIR = REPO_ROOT / "backend" / "chroma"
 CHROMA_COLLECTION = "campus_knowledge"
 
+# Chunks farther than this (L2 distance, all-MiniLM-L6-v2) are treated as
+# "not actually about this" rather than force-fed to the model as context.
+# Calibrated empirically: on-topic queries against this corpus land at
+# ~0.7-1.3, off-topic queries land at ~1.8+. Re-calibrate if the embedding
+# model or the corpus changes.
+MAX_DISTANCE = float(os.getenv("RAG_MAX_DISTANCE", "1.5"))
+
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 

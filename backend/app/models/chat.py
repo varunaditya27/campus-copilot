@@ -1,18 +1,24 @@
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 ChatRole = Literal["user", "assistant"]
+
+# Bounds on what a client may send, so one request cannot carry an
+# arbitrarily large prompt to the LLM.
+MAX_MESSAGE_CHARS = 2000
+MAX_HISTORY_ITEMS = 50
+MAX_HISTORY_ITEM_CHARS = 8000
 
 
 class ChatHistoryItem(BaseModel):
     role: ChatRole
-    content: str
+    content: str = Field(max_length=MAX_HISTORY_ITEM_CHARS)
 
 
 class ChatRequest(BaseModel):
-    message: str
-    history: list[ChatHistoryItem] = []
+    message: str = Field(min_length=1, max_length=MAX_MESSAGE_CHARS)
+    history: list[ChatHistoryItem] = Field(default=[], max_length=MAX_HISTORY_ITEMS)
 
 
 class Source(BaseModel):
