@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "../auth/AuthProvider";
 
 const NAV_LINKS = [
   { href: "/", label: "Chat" },
@@ -11,6 +12,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const pathname = usePathname();
+  const { state, logout } = useAuth();
 
   return (
     <header className="bg-navy text-cream">
@@ -48,6 +50,31 @@ export default function Header() {
             );
           })}
         </nav>
+
+        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.14em]">
+          {state.status === "signedIn" && (
+            <>
+              <span className="hidden text-cream/80 sm:inline">
+                {state.student.name}
+              </span>
+              <button
+                type="button"
+                onClick={logout}
+                className="text-cream/60 transition-colors duration-150 hover:text-cream"
+              >
+                Sign out
+              </button>
+            </>
+          )}
+          {state.status === "signedOut" && pathname !== "/login" && (
+            <Link
+              href="/login"
+              className="text-cream/60 transition-colors duration-150 hover:text-cream"
+            >
+              Sign in
+            </Link>
+          )}
+        </div>
       </div>
       <div className="h-[2px] w-full bg-brass" />
       <div className="h-px w-full bg-navy-line" />

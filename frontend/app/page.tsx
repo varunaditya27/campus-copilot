@@ -7,6 +7,7 @@ import { applyAgentEvent } from "@/lib/events";
 import ChatWindow from "./components/chat/ChatWindow";
 import ChatInput from "./components/chat/ChatInput";
 import AgentActivity from "./components/agent/AgentActivity";
+import RequireAuth from "./components/auth/RequireAuth";
 
 let idCounter = 0;
 function nextId() {
@@ -25,6 +26,14 @@ function toChatMessage(m: StoredMessage): ChatMessage {
 }
 
 export default function ChatPage() {
+  return (
+    <RequireAuth>
+      <Chat />
+    </RequireAuth>
+  );
+}
+
+function Chat() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [sending, setSending] = useState(false);
   const [banner, setBanner] = useState<string | null>(null);

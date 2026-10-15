@@ -142,6 +142,23 @@ The conversation history is kept on the server. The backend identifies the conve
 
 `sources`, `toolActivity`, and `confirmation` are all optional — a plain RAG answer omits `toolActivity` and `confirmation`; a pure tool call may omit `sources`.
 
+### Authentication
+
+The backend owns sign-in. Tokens live in HttpOnly cookies that page scripts cannot read, so the frontend never handles them: it sends requests with `credentials: "include"` and asks the backend who is signed in. Everything except events requires sign-in and answers `401` otherwise. `lib/api.ts` handles a `401` by calling `POST /api/auth/refresh` once (shared by concurrent calls, because a refresh token works once) and retrying; if that fails, `AuthProvider` marks the user signed out and `RequireAuth` sends them to `/login`.
+
+| Call | Request | Response |
+| --- | --- | --- |
+| `POST /api/auth/register` | `{ student_id, name, email, password }` (name must match the student roster, password 12-128 characters) | the profile below, and the user is signed in |
+| `POST /api/auth/login` | `{ email, password }` | the profile below |
+| `GET /api/auth/me` | | the profile below |
+| `POST /api/auth/refresh` | | 204 |
+| `POST /api/auth/logout` | | 204 |
+
+```json
+// Profile
+{ "user_id": 1, "student_id": "1RV23IS101", "name": "Aarav Sharma", "program": "Information Science and Engineering", "year": 3, "email": "aarav@example.com" }
+```
+
 ### `GET /api/chat/history`
 
 Returns the conversation for the current `session_id` cookie, so the chat can be restored after a page refresh. A browser with no session gets an empty list.
@@ -156,7 +173,9 @@ Returns the conversation for the current `session_id` cookie, so the chat can be
 }
 ```
 
-`DELETE /api/chat/sessions/{session_id}` deletes that conversation and clears the cookie (204). It only works for the caller's own session; anything else is a 404.
+`GET /api/chat/sessions` lists the student's conversations, newest first: `[{ "session_id", "createdAt", "updatedAt", "preview" }]`.
+
+`DELETE /api/chat/sessions/{session_id}` deletes that conversation and clears the cookie (204). It only works for the student's own sessions; anything else is a 404.
 
 ### `POST /api/chat/stream`
 
@@ -176,9 +195,11 @@ The "thinking" dots stay up until the first `token` arrives.
 
 ### `POST /api/register`
 
+Requires a signed-in student, and registers that student: the request names only the event.
+
 ```json
 // Request
-{ "event_id": "evt_ai_001", "student_id": "1RV23IS123" }
+{ "event_id": "evt_ai_001" }
 ```
 
 ```json

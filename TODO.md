@@ -53,7 +53,7 @@
 - [x] Generate a `session_id` cookie on first visit (or on login once auth exists)
 - [x] Stop sending full `history[]` from client on every request — fetch history server-side using `session_id`
 - [x] Expose `GET /chat/history?session_id=...` endpoint for frontend to load previous messages on refresh (reads the session cookie, which JavaScript cannot see, so no query parameter)
-- [ ] Add `GET /chat/sessions` to list all past sessions for a student (needs sign-in; deferred to phase 2)
+- [x] Add `GET /chat/sessions` to list all past sessions for a student
 - [x] Add `DELETE /chat/sessions/{session_id}` to clear a conversation
 
 ### 1.4 Error Handling & Input Validation
@@ -72,16 +72,16 @@
 
 ### 2.1 Student Authentication
 
-- [ ] Add `POST /auth/register` — create a student account (USN, name, email, password hash)
-- [ ] Add `POST /auth/login` — return a signed JWT (access token + refresh token)
-- [ ] Add `POST /auth/refresh` — rotate refresh token
-- [ ] Add `POST /auth/logout` — invalidate refresh token server-side
-- [ ] Add `GET /auth/me` — return the authenticated student's profile from the DB
-- [ ] Add FastAPI dependency `get_current_student` that validates JWT on protected routes
-- [ ] Store passwords with `bcrypt` (via `passlib`)
-- [ ] Add NextAuth.js (or a custom auth context) on the frontend for session management
-- [ ] Protect all chat and registration endpoints behind JWT middleware
-- [ ] Auto-inject `student_id` from the JWT into agent context — students should never have to type their own ID
+- [x] Add `POST /auth/register` — create a student account (USN, name, email, password hash)
+- [x] Add `POST /auth/login` — return a signed JWT (access token + refresh token) (both set as HttpOnly cookies, not returned in the body)
+- [x] Add `POST /auth/refresh` — rotate refresh token (with reuse detection)
+- [x] Add `POST /auth/logout` — invalidate refresh token server-side
+- [x] Add `GET /auth/me` — return the authenticated student's profile from the DB
+- [x] Add FastAPI dependency `get_current_student` that validates JWT on protected routes
+- [x] Store passwords with `bcrypt` (via `passlib`) (done with Argon2id via `pwdlib` instead: OWASP's preferred algorithm; `passlib` is not used)
+- [x] Add NextAuth.js (or a custom auth context) on the frontend for session management (custom auth context, since the backend owns the session)
+- [x] Protect all chat and registration endpoints behind JWT middleware
+- [x] Auto-inject `student_id` from the JWT into agent context — students should never have to type their own ID
 
 ### 2.2 Role-Based Access Control
 

@@ -101,13 +101,34 @@ export type AgentEvent =
   | { type: "done"; payload: ChatResponse }
   | { type: "error"; payload: { error_code: string; message: string } };
 
+// The backend registers the signed-in student; the client does not name one.
 export interface ConfirmRegistrationRequest {
   event_id: string;
-  student_id: string;
 }
 
 export interface ConfirmRegistrationResponse {
   success: boolean;
   registration_id?: string;
   error?: string;
+}
+
+export interface CurrentStudent {
+  user_id: number;
+  student_id: string;
+  name: string;
+  program: string;
+  year: number;
+  email: string;
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface RegisterAccountRequest {
+  student_id: string;
+  name: string;
+  email: string;
+  password: string;
 }

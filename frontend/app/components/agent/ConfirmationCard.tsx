@@ -22,10 +22,7 @@ export default function ConfirmationCard({
     setStatus("submitting");
     setError(null);
     try {
-      const res = await confirmRegistration({
-        event_id: event.id,
-        student_id: studentId,
-      });
+      const res = await confirmRegistration({ event_id: event.id });
       if (res.success) {
         setRegistrationId(res.registration_id ?? null);
         setStatus("success");

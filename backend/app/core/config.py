@@ -1,4 +1,6 @@
+import logging
 import os
+import secrets
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -27,6 +29,21 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+
+_jwt_secret = os.getenv("JWT_SECRET", "")
+if not _jwt_secret:
+    # A random key is safe but short-lived: every restart signs everyone out,
+    # and several server processes would each have a different key.
+    _jwt_secret = secrets.token_hex(32)
+    logging.getLogger(__name__).warning(
+        "JWT_SECRET is not set; using a temporary one. Set it in production "
+        "(for example: openssl rand -hex 32)."
+    )
+elif len(_jwt_secret) < 32:
+    raise RuntimeError("JWT_SECRET must be at least 32 characters (openssl rand -hex 32).")
+JWT_SECRET = _jwt_secret
+ACCESS_TOKEN_MINUTES = 15
+REFRESH_TOKEN_DAYS = 14
 
 # Send the session cookie over HTTPS only. Turn on once the app is served over HTTPS.
 COOKIE_SECURE = os.getenv("COOKIE_SECURE", "false").lower() == "true"

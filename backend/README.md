@@ -61,7 +61,9 @@ backend/
 │   ├── main.py                    # FastAPI app, CORS, router wiring, /health
 │   │
 │   ├── api/                       # HTTP layer -- thin, no business logic
-│   │   ├── chat.py                 # POST /api/chat
+│   │   ├── auth.py                 # register, login, refresh, logout, me
+│   │   ├── chat.py                 # chat, chat/stream, history, sessions
+│   │   ├── deps.py                 # get_current_student: the sign-in check
 │   │   ├── events.py               # GET /api/events, /api/events/:id
 │   │   └── registration.py         # POST /api/register
 │   │
@@ -86,18 +88,22 @@ backend/
 │   │   └── registration.py         # register_for_event (not model-callable)
 │   │
 │   ├── services/                   # reusable business logic, no HTTP/LLM concerns
+│   │   ├── auth_service.py         # accounts, login, refresh-token rotation
 │   │   ├── chat_service.py         # sessions and message history
 │   │   ├── event_service.py        # reads events from the database
 │   │   └── registration_service.py # validates + writes registrations
 │   │
 │   ├── models/                     # Pydantic request/response schemas
 │   │   ├── chat.py
+│   │   ├── auth.py                 # sign-up / sign-in request and profile shapes
 │   │   ├── events.py
 │   │   └── ids.py                  # student id (USN) format
 │   │
 │   └── core/
 │       ├── config.py                # env vars, paths -- the only os.environ access
 │       ├── errors.py                # AppError + the { error_code, message, detail } handlers
+│       ├── origin_check.py          # refuses state-changing requests from unknown origins (CSRF)
+│       ├── security.py              # password hashing, JWT, refresh-token helpers
 │       └── groq_client.py           # cached Groq client
 │
 ├── migrations/                     # Alembic migrations (the schema's history)
@@ -150,7 +156,7 @@ Safe to re-run any time -- it wipes and rebuilds the collection from scratch.
 | `calculate_attendance` | ✅ | Exact arithmetic in Python -- never trust an LLM with math it can just compute wrong |
 | `register_for_event` | ⚠️ schema-visible, never auto-executed | Validates event/student/capacity/duplicate and writes the registration |
 
-`app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Only the first three tools are in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`, a real `student_id`) -- but the agent loop special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
+`app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Only the first three tools are in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`; the student is always the signed-in one, never something the model supplies) -- but the agent loop special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
 
 The loop itself (`run_agent_stream()` in `agent/agent.py`, with `run_agent()` as a wrapper that waits for the final result) is bounded (`MAX_TOOL_ROUNDS = 4`) so the model can chain a few calls -- e.g. `search_events` then `check_event_availability` -- before producing a final answer, without risking an unbounded loop.
 
@@ -163,17 +169,24 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | Endpoint | Purpose |
 | --- | --- |
 | `GET /health` | Liveness check |
-| `GET /api/events` | List all campus events |
-| `GET /api/events/{id}` | Single event, 404 if unknown |
+| `GET /api/events` | List all campus events (public) |
+| `GET /api/events/{id}` | Single event, 404 if unknown (public) |
+| `POST /api/auth/register` | Create an account for a student on the roster and sign them in |
+| `POST /api/auth/login` | Sign in with email and password |
+| `POST /api/auth/refresh` | Swap the refresh token for a new access token and refresh token |
+| `POST /api/auth/logout` | Sign out and revoke the login on the server |
+| `GET /api/auth/me` | The signed-in student's profile |
 | `POST /api/chat` | Send a message, run the agent loop, get back a reply + sources + tool activity + optional confirmation. The exchange is saved to the caller's session |
 | `POST /api/chat/stream` | Same as `POST /api/chat`, but streamed as server-sent events: tokens and tool activity arrive as they happen |
 | `GET /api/chat/history` | The current session's saved messages, for restoring the chat after a refresh |
-| `DELETE /api/chat/sessions/{id}` | Delete the caller's own conversation (404 for anyone else's) |
-| `POST /api/register` | Execute a registration -- the only endpoint that creates registrations |
+| `GET /api/chat/sessions` | The student's conversations, newest first, each with a short preview |
+| `DELETE /api/chat/sessions/{id}` | Delete the student's own conversation (404 for anyone else's) |
+| `POST /api/register` | Execute a registration for the signed-in student -- the only endpoint that creates registrations |
 
+Everything except events, health and the first three auth calls requires a signed-in student and answers `401 not_authenticated` otherwise.
 Every 4xx/5xx response has the same JSON shape: `{ "error_code": "...", "message": "...", "detail": ... }`. `message` is safe to show to a user; `detail` carries field-level information for validation errors (422). Notable codes: `rate_limited` (429, Groq is throttling), `context_too_long` (413), `llm_unavailable` (502), `validation_error` (422), `not_found` (404), `internal_error` (500, no internals leaked).
 
-Request limits: a chat `message` is 1-2000 characters, and `student_id` must look like a USN (e.g. `1RV23IS101`).
+Request limits: a chat `message` is 1-2000 characters; an account's `student_id` must look like a USN (e.g. `1RV23IS101`); a password is 12-128 characters.
 
 **Streaming.** `POST /api/chat/stream` runs the same agent loop but replies with `text/event-stream`. Each event is one line, `data: {"type": ..., "payload": ...}`, followed by a blank line:
 
@@ -189,7 +202,11 @@ Request limits: a chat `message` is 1-2000 characters, and `student_id` must loo
 
 Once streaming has started the HTTP status is already 200, so failures arrive as an `error` event; a request that is invalid from the start (for example an empty message) still gets a normal 422. The agent is a plain (sync) generator because the Groq client and the database are synchronous; Starlette runs such a generator in a worker thread, so it does not block other requests. Model tool calls arrive as fragments and are reassembled by index before they run.
 
-**Sessions.** The server, not the browser, remembers the conversation. The first `POST /api/chat` creates a row in `sessions` and sets a random `session_id` in an HttpOnly, `SameSite=Lax` cookie (HttpOnly means page scripts cannot read it). Each later request loads the session's most recent 40 messages (`HISTORY_WINDOW` in `api/chat.py`) and passes them to the agent; the reply is saved with its tool activity and sources. A failed agent run saves nothing. Possession of the cookie is the only proof of ownership until sign-in exists, so listing a student's past sessions waits for authentication (roadmap phase 2). Set `COOKIE_SECURE=true` once the app is served over HTTPS.
+**Sessions.** The server, not the browser, remembers the conversation. A student's first `POST /api/chat` creates a row in `sessions`, owned by that student, and sets a random `session_id` in an HttpOnly, `SameSite=Lax` cookie (HttpOnly means page scripts cannot read it) that remembers which conversation the browser is in. Each later request loads the session's most recent 40 messages (`HISTORY_WINDOW` in `api/chat.py`) and passes them to the agent; the reply is saved with its tool activity and sources. A failed agent run saves nothing. A session id that belongs to another student is treated as unknown, so nobody can read or continue someone else's conversation by guessing or borrowing an id. Set `COOKIE_SECURE=true` once the app is served over HTTPS.
+
+**Authentication.** Students sign up with their USN, their name as it appears in the `students` roster, an email and a password, so an account can only be created for a real student record. Passwords are hashed with Argon2id (`pwdlib`; OWASP's preferred algorithm), and a login for an unknown email costs the same time as one for a known email and gives the same error, so neither timing nor wording reveals which accounts exist. A login sets two HttpOnly cookies: a short-lived (15 minute) signed JWT access token, and a random refresh token (14 days, only sent to `/api/auth/*`, only its hash is stored). Every refresh replaces the refresh token; presenting one that was already used (a sign of theft) revokes that whole login, apart from a 10 second grace for two tabs refreshing at once. The JWT algorithm is pinned, so unsigned or re-signed tokens are rejected. Because cookies authenticate requests, state-changing requests that carry an `Origin` header from an unknown site are refused (`OriginCheckMiddleware`), on top of `SameSite` cookies.
+
+Known limits, until later roadmap phases: there is no email verification, so anyone who knows a student's USN and name can create that student's account first; and there is no login rate limiting or lockout yet. Set `JWT_SECRET` (`openssl rand -hex 32`) in production. If it is unset the server makes a temporary one, which signs everyone out on every restart.
 
 ---
 
@@ -226,6 +243,7 @@ curl http://localhost:8000/health
 | `GROQ_MODEL` | `openai/gpt-oss-120b` | Chosen for tool-use/reasoning support -- verify against `GET https://api.groq.com/openai/v1/models` before changing; Groq deprecates models over time and the docs' example model may not match what your account actually has |
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated origins allowed to call this API |
 | `DATABASE_URL` | `sqlite:///<repo>/backend/campus.db` | SQLAlchemy URL. Use `postgresql+psycopg://user:password@host:5432/dbname` for PostgreSQL |
+| `JWT_SECRET` | *(random per start)* | Signs access tokens; at least 32 characters. Set it in production, otherwise every restart signs everyone out |
 | `COOKIE_SECURE` | `false` | Send the session cookie over HTTPS only; set to `true` in production |
 | `RAG_MAX_DISTANCE` | `1.5` | Retrieval distance cutoff; chunks farther than this are dropped. Re-calibrate if you change the embedding model or the corpus (lower is stricter) |
 

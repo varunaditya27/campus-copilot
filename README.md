@@ -96,10 +96,10 @@ sequenceDiagram
     Tool->>Data: Check capacity
     Data-->>Tool: Availability
     Tool-->>Agent: Seats available
-    Agent-->>UI: Ask for student ID / confirmation
+    Agent-->>UI: Ask for confirmation
     User->>UI: Confirm registration
     UI->>Agent: Confirm
-    Agent->>Tool: register_for_event(student_id, event_id)
+    Agent->>Tool: register_for_event(event_id) for the signed-in student
     Tool->>Data: Create registration
     Data-->>Tool: Registration created
     Tool-->>Agent: Registration ID

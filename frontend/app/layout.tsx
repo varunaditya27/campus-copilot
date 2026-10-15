@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Public_Sans, IBM_Plex_Mono } from "next/font/google";
+import AuthProvider from "./components/auth/AuthProvider";
 import Header from "./components/layout/Header";
 import "./globals.css";
 
@@ -33,8 +34,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable} h-dvh antialiased`}
     >
       <body className="flex h-dvh flex-col bg-cream text-ink">
-        <Header />
-        <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+        <AuthProvider>
+          <Header />
+          <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -58,20 +58,17 @@ TOOL_SCHEMAS = [
         "function": {
             "name": "register_for_event",
             "description": (
-                "Prepare an event registration for the student to confirm. "
-                "Call this once you have a real event_id (from search_events) "
-                "and the student's id, and they've asked to register. This "
-                "does NOT complete the registration -- it shows the student "
-                "a confirmation card; the actual registration only happens "
-                "if they approve it."
+                "Prepare an event registration for the signed-in student to "
+                "confirm. Call this once you have a real event_id (from "
+                "search_events) and they've asked to register. This does NOT "
+                "complete the registration -- it shows the student a "
+                "confirmation card; the actual registration only happens if "
+                "they approve it."
             ),
             "parameters": {
                 "type": "object",
-                "properties": {
-                    "event_id": {"type": "string"},
-                    "student_id": {"type": "string"},
-                },
-                "required": ["event_id", "student_id"],
+                "properties": {"event_id": {"type": "string"}},
+                "required": ["event_id"],
             },
         },
     },

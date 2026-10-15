@@ -7,9 +7,15 @@ from fastapi import APIRouter, Cookie, Response
 from fastapi.responses import StreamingResponse
 
 from app.agent.agent import run_agent, run_agent_stream
+from app.api.deps import SignedInStudent
 from app.core.config import COOKIE_SECURE
 from app.core.errors import AppError
-from app.models.chat import ChatHistoryResponse, ChatRequest, ChatResponse
+from app.models.chat import (
+    ChatHistoryResponse,
+    ChatRequest,
+    ChatResponse,
+    SessionSummary,
+)
 from app.services import chat_service
 
 router = APIRouter(prefix="/api/chat", tags=["chat"])
@@ -19,6 +25,7 @@ SESSION_MAX_AGE = 60 * 60 * 24 * 30
 # How many of the most recent messages the model gets to see.
 HISTORY_WINDOW = 40
 
+# Remembers which of the student's conversations the browser is in.
 SessionCookie = Annotated[str | None, Cookie(alias=SESSION_COOKIE)]
 
 
@@ -34,10 +41,15 @@ def _set_session_cookie(response: Response, session_id: UUID) -> None:
 
 
 @router.post("")
-def chat(request: ChatRequest, response: Response, session_cookie: SessionCookie = None) -> ChatResponse:
-    session_id = chat_service.resolve_session(session_cookie)
+def chat(
+    request: ChatRequest,
+    response: Response,
+    student: SignedInStudent,
+    session_cookie: SessionCookie = None,
+) -> ChatResponse:
+    session_id = chat_service.resolve_session(session_cookie, student.student_id)
     history = chat_service.load_history(session_id, HISTORY_WINDOW)
-    result = run_agent(request.message, history)
+    result = run_agent(request.message, history, student)
     chat_service.save_exchange(session_id, request.message, result)
     _set_session_cookie(response, session_id)
     return result
@@ -49,18 +61,20 @@ def _sse(event: dict) -> str:
 
 
 @router.post("/stream")
-def chat_stream(request: ChatRequest, session_cookie: SessionCookie = None) -> StreamingResponse:
+def chat_stream(
+    request: ChatRequest, student: SignedInStudent, session_cookie: SessionCookie = None
+) -> StreamingResponse:
     """Same as POST /api/chat, but streamed as server-sent events.
 
     Once streaming has begun the HTTP status is already 200, so failures are
     reported as an "error" event instead.
     """
-    session_id = chat_service.resolve_session(session_cookie)
+    session_id = chat_service.resolve_session(session_cookie, student.student_id)
     history = chat_service.load_history(session_id, HISTORY_WINDOW)
 
     def events() -> Iterator[str]:
         try:
-            for event in run_agent_stream(request.message, history):
+            for event in run_agent_stream(request.message, history, student):
                 if event["type"] == "done":
                     chat_service.save_exchange(
                         session_id, request.message, ChatResponse.model_validate(event["payload"])
@@ -93,18 +107,22 @@ def chat_stream(request: ChatRequest, session_cookie: SessionCookie = None) -> S
 
 
 @router.get("/history")
-def history(session_cookie: SessionCookie = None) -> ChatHistoryResponse:
-    session_id = chat_service.parse_session_id(session_cookie)
+def history(student: SignedInStudent, session_cookie: SessionCookie = None) -> ChatHistoryResponse:
+    session_id = chat_service.find_owned_session(session_cookie, student.student_id)
     if session_id is None:
         return ChatHistoryResponse(session_id=None, messages=[])
     return ChatHistoryResponse(session_id=session_id, messages=chat_service.list_messages(session_id))
 
 
+@router.get("/sessions")
+def sessions(student: SignedInStudent) -> list[SessionSummary]:
+    return chat_service.list_sessions(student.student_id)
+
+
 @router.delete("/sessions/{session_id}", status_code=204)
-def delete_session(session_id: UUID, session_cookie: SessionCookie = None) -> Response:
-    # A session id only counts as the caller's if their cookie matches it.
-    # Anything else is reported as missing, so ids of other sessions stay hidden.
-    if session_cookie != str(session_id) or not chat_service.delete_session(session_id):
+def delete_session(session_id: UUID, student: SignedInStudent) -> Response:
+    # Someone else's session is reported as missing, so its id is not confirmed.
+    if not chat_service.delete_session(session_id, student.student_id):
         raise AppError(404, "not_found", "No such conversation.")
     response = Response(status_code=204)
     response.delete_cookie(SESSION_COOKIE, httponly=True, samesite="lax", secure=COOKIE_SECURE)

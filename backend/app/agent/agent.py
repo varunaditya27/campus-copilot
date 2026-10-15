@@ -4,7 +4,12 @@ from collections.abc import Iterator
 from groq import APIError, APIStatusError, BadRequestError, RateLimitError
 from pydantic import ValidationError
 
-from app.agent.prompts import KNOWLEDGE_UNAVAILABLE_MESSAGE, SYSTEM_PROMPT, build_context_message
+from app.agent.prompts import (
+    KNOWLEDGE_UNAVAILABLE_MESSAGE,
+    SYSTEM_PROMPT,
+    build_context_message,
+    build_student_message,
+)
 from app.agent.tool_registry import TOOL_FUNCTIONS, TOOL_SCHEMAS
 from app.core.config import GROQ_MODEL
 from app.core.errors import AppError
@@ -17,7 +22,7 @@ from app.models.chat import (
     Source,
     ToolActivityEntry,
 )
-from app.models.ids import is_valid_student_id
+from app.models.auth import CurrentStudent
 from app.rag.retriever import KnowledgeBaseNotFound, retrieve
 from app.services import event_service
 
@@ -137,21 +142,22 @@ def _stream_completion(client, messages: list[dict]):
     return "".join(text_parts), tool_calls
 
 
-def _confirmation_for(args: dict) -> RegistrationConfirmation | None:
+def _confirmation_for(args: dict, student: CurrentStudent) -> RegistrationConfirmation | None:
     event = event_service.get_event(args.get("event_id", ""))
-    student_id = args.get("student_id")
-    if event is None or not isinstance(student_id, str) or not is_valid_student_id(student_id):
+    if event is None:
         return None
     return RegistrationConfirmation(
         event=ConfirmationEvent(
             id=event.id, name=event.name, date=event.date, time=event.time, venue=event.venue
         ),
-        studentId=student_id,
+        studentId=student.student_id,
     )
 
 
-def run_agent_stream(message: str, history: list[ChatHistoryItem]) -> Iterator[dict]:
-    """Run the agent loop, yielding typed events as it goes.
+def run_agent_stream(
+    message: str, history: list[ChatHistoryItem], student: CurrentStudent
+) -> Iterator[dict]:
+    """Run the agent loop for a signed-in student, yielding typed events as it goes.
 
     Event types: rag_context, token, reset (discard the text streamed so far,
     because the model is about to call a tool), tool_start, tool_done, and
@@ -171,7 +177,10 @@ def run_agent_stream(message: str, history: list[ChatHistoryItem]) -> Iterator[d
     ]
     yield _event("rag_context", sources=[s.model_dump() for s in sources])
 
-    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": build_student_message(student)},
+    ]
     messages += [{"role": h.role, "content": h.content} for h in history]
     if chunks:
         messages.append({"role": "system", "content": build_context_message(chunks)})
@@ -196,13 +205,13 @@ def run_agent_stream(message: str, history: list[ChatHistoryItem]) -> Iterator[d
         register_call = next((c for c in tool_calls if c["name"] == "register_for_event"), None)
         if register_call is not None:
             args = _parse_arguments(register_call["arguments"]) or {}
-            confirmation = _confirmation_for(args)
+            confirmation = _confirmation_for(args, student)
             reply = (
                 f"I've prepared a registration for {confirmation.event.name}. "
                 "Please confirm below to complete it."
                 if confirmation
                 else "I couldn't find that event to register you for -- could you "
-                "confirm the event and your student ID?"
+                "confirm which event you mean?"
             )
             yield _event("token", text=reply)
             break
@@ -258,7 +267,9 @@ def run_agent_stream(message: str, history: list[ChatHistoryItem]) -> Iterator[d
     yield _event("done", **response.model_dump())
 
 
-def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
+def run_agent(
+    message: str, history: list[ChatHistoryItem], student: CurrentStudent
+) -> ChatResponse:
     """The same loop without streaming: wait for the final event."""
-    events = list(run_agent_stream(message, history))
+    events = list(run_agent_stream(message, history, student))
     return ChatResponse.model_validate(events[-1]["payload"])

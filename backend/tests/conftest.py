@@ -1,4 +1,8 @@
-import pytest
+import os
+
+os.environ.setdefault("JWT_SECRET", "test-only-secret-" + "x" * 32)
+
+import pytest  # noqa: E402
 from sqlalchemy.orm import sessionmaker
 
 from app.agent import agent

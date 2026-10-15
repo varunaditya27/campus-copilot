@@ -63,6 +63,13 @@ class StoredMessage(BaseModel):
     createdAt: datetime
 
 
+class SessionSummary(BaseModel):
+    session_id: UUID
+    createdAt: datetime
+    updatedAt: datetime
+    preview: str | None
+
+
 class ChatHistoryResponse(BaseModel):
     session_id: UUID | None
     messages: list[StoredMessage]

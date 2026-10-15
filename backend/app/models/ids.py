@@ -1,4 +1,3 @@
-import re
 from typing import Annotated
 
 from pydantic import StringConstraints
@@ -7,7 +6,3 @@ from pydantic import StringConstraints
 STUDENT_ID_PATTERN = r"^[0-9][A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{3}$"
 
 StudentId = Annotated[str, StringConstraints(pattern=STUDENT_ID_PATTERN)]
-
-
-def is_valid_student_id(value: str) -> bool:
-    return re.fullmatch(STUDENT_ID_PATTERN, value) is not None

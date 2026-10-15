@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
 
-from app.models.ids import StudentId
+from app.api.deps import SignedInStudent
 from app.services import registration_service
 
 router = APIRouter(prefix="/api/register", tags=["registration"])
@@ -9,7 +9,6 @@ router = APIRouter(prefix="/api/register", tags=["registration"])
 
 class RegisterRequest(BaseModel):
     event_id: str = Field(max_length=64)
-    student_id: StudentId
 
 
 class RegisterResponse(BaseModel):
@@ -19,6 +18,7 @@ class RegisterResponse(BaseModel):
 
 
 @router.post("")
-def register(request: RegisterRequest) -> RegisterResponse:
-    result = registration_service.create_registration(request.student_id, request.event_id)
+def register(request: RegisterRequest, student: SignedInStudent) -> RegisterResponse:
+    # Always the signed-in student: the client does not get to name one.
+    result = registration_service.create_registration(student.student_id, request.event_id)
     return RegisterResponse(**result)

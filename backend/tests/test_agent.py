@@ -2,13 +2,13 @@ from app.agent import agent
 from app.models.chat import ChatHistoryItem
 from fakes import completion as _completion
 from fakes import tool_call as _tool_call
-from helpers import all_registrations, event_registered
+from helpers import ASHA_PROFILE, all_registrations, event_registered
 
 
 def test_plain_reply_without_tools(use_fakes):
     use_fakes(_completion(content="Hello there"))
 
-    response = agent.run_agent("hi", [])
+    response = agent.run_agent("hi", [], ASHA_PROFILE)
 
     assert response.reply == "Hello there"
     assert response.toolActivity is None
@@ -26,7 +26,7 @@ def test_history_is_sent_to_the_model(monkeypatch, use_fakes):
 
     client.chat.completions.create = spy
 
-    agent.run_agent("second", [ChatHistoryItem(role="user", content="first")])
+    agent.run_agent("second", [ChatHistoryItem(role="user", content="first")], ASHA_PROFILE)
 
     contents = [m["content"] for m in seen["messages"]]
     assert contents[-2:] == ["first", "second"]
@@ -38,7 +38,7 @@ def test_tool_call_then_reply_fills_activity_log(use_fakes):
         _completion(content="You are at 75%."),
     )
 
-    response = agent.run_agent("what's my attendance?", [])
+    response = agent.run_agent("what's my attendance?", [], ASHA_PROFILE)
 
     assert response.reply == "You are at 75%."
     assert len(response.toolActivity) == 1
@@ -57,7 +57,7 @@ def test_tool_that_raises_is_logged_as_error(monkeypatch, use_fakes):
         _completion(content="Sorry."),
     )
 
-    response = agent.run_agent("x", [])
+    response = agent.run_agent("x", [], ASHA_PROFILE)
 
     assert response.toolActivity[0].status == "error"
     assert response.toolActivity[0].resultSummary == "bad input"
@@ -65,10 +65,10 @@ def test_tool_that_raises_is_logged_as_error(monkeypatch, use_fakes):
 
 def test_register_returns_confirmation_and_does_not_register(db, use_fakes):
     use_fakes(
-        _completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "evt_ai_001", "student_id": "1RV23IS101"})]),
+        _completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "evt_ai_001"})]),
     )
 
-    response = agent.run_agent("register me", [])
+    response = agent.run_agent("register me", [], ASHA_PROFILE)
 
     assert response.confirmation.event.id == "evt_ai_001"
     assert response.confirmation.studentId == "1RV23IS101"
@@ -79,10 +79,10 @@ def test_register_returns_confirmation_and_does_not_register(db, use_fakes):
 
 def test_register_for_unknown_event_gives_fallback_text(db, use_fakes):
     use_fakes(
-        _completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "nope", "student_id": "1RV23IS101"})]),
+        _completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "nope"})]),
     )
 
-    response = agent.run_agent("register me", [])
+    response = agent.run_agent("register me", [], ASHA_PROFILE)
 
     assert response.confirmation is None
     assert "couldn't find that event" in response.reply
@@ -92,7 +92,7 @@ def test_stops_after_max_tool_rounds(use_fakes):
     endless = _completion(tool_calls=[_tool_call("c1", "calculate_attendance", {"attended": 1, "total": 2})])
     client = use_fakes(endless)
 
-    response = agent.run_agent("loop forever", [])
+    response = agent.run_agent("loop forever", [], ASHA_PROFILE)
 
     assert client.calls == agent.MAX_TOOL_ROUNDS
     assert "wasn't able to finish" in response.reply
@@ -103,7 +103,7 @@ def test_retrieved_chunks_become_sources(use_fakes):
     chunk = {"document": "policies.md", "section": "Leave", "snippet": "Apply 3 days ahead."}
     use_fakes(_completion(content="See policy."), chunks=[chunk])
 
-    response = agent.run_agent("leave policy?", [])
+    response = agent.run_agent("leave policy?", [], ASHA_PROFILE)
 
     assert len(response.sources) == 1
     assert response.sources[0].model_dump() == chunk

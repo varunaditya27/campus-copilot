@@ -79,6 +79,36 @@ class Registration(Base):
     status: Mapped[str] = mapped_column(String(20), default="confirmed")
 
 
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), unique=True)
+    email: Mapped[str] = mapped_column(String(254), unique=True)
+    password_hash: Mapped[str] = mapped_column(String(255))
+    is_active: Mapped[bool] = mapped_column(default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class RefreshToken(Base):
+    """One issued refresh token. Only a hash of the token is stored.
+
+    Every login starts a family; each refresh replaces the token with a new
+    one in the same family, so a stolen, already-used token can be spotted and
+    the whole family revoked.
+    """
+
+    __tablename__ = "refresh_tokens"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    family_id: Mapped[uuid.UUID] = mapped_column(Uuid, index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
 class ChatSession(Base):
     __tablename__ = "sessions"
 
