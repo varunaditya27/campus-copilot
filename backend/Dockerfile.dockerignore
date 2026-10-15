@@ -1,0 +1,20 @@
+# Used when building with the repository root as the context (see backend/Dockerfile).
+**/.git
+**/__pycache__
+**/*.pyc
+**/node_modules
+**/.next
+frontend
+backend/venv
+backend/chroma
+backend/*.db
+backend/knowledge_uploads
+backend/.env
+backend/.pytest_cache
+**/.env
+**/.env.*
+!**/.env.example
+project_analysis.html
+docs
+*.md
+!knowledge/**/*.md

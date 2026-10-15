@@ -1,0 +1,23 @@
+# Hot-reload development. Use it on top of the main file:
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+services:
+  backend:
+    build:
+      target: dev
+    environment:
+      RUN_INGEST: "false"
+    volumes:
+      - ./backend/app:/app/backend/app
+      - ./backend/tests:/app/backend/tests
+      - campus_data:/var/lib/campus
+      - model_cache:/home/app/.cache
+
+  frontend:
+    build:
+      target: dev
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:8000}
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next

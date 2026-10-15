@@ -362,6 +362,18 @@ campus-copilot/
 
 ## 🚀 Getting Started
 
+### Quickest: Docker
+
+```bash
+cp .env.example .env        # set POSTGRES_PASSWORD, JWT_SECRET (openssl rand -hex 32) and GROQ_API_KEY
+docker compose up -d --build
+docker compose exec backend python -m app.cli create-user --role admin
+```
+
+Then open http://localhost:3000. The first start downloads the search models (about 170 MB, several minutes on a slow connection) while the one-shot `ingest` service builds the knowledge base; after that, starts are fast. `make help` lists the everyday commands (`make dev` for hot reload, `make ingest`, `make migrate`, `make test`). The stack is Postgres, Redis, the backend and the frontend; Qdrant and Chroma-server are optional profiles in `docker-compose.yml`.
+
+To run the pieces by hand instead, follow the steps below.
+
 ### 1. Clone the repository
 
 ```bash

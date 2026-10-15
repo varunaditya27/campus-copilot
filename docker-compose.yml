@@ -1,11 +1,110 @@
-# PostgreSQL for production-style runs. Local development works without it:
-# the backend falls back to a SQLite file when DATABASE_URL is not set.
+# The whole application, in containers:
 #
-#   POSTGRES_PASSWORD=choose-a-password docker compose up -d postgres
-#   DATABASE_URL=postgresql+psycopg://campus:choose-a-password@localhost:5432/campus_copilot
+#   cp .env.example .env     # then set POSTGRES_PASSWORD, JWT_SECRET and GROQ_API_KEY
+#   docker compose up -d --build
+#   docker compose exec backend python -m app.cli create-user --role admin --name "Your Name" --email you@example.org
+#
+# The backend waits for Postgres, applies the database migrations, loads the demo data into empty
+# tables on start, after the one-shot ingest service has built the knowledge base. The search models (about 170 MB) are downloaded on
+# the first start into the model_cache volume. Optional extras: the vector stores below (profiles
+# chroma-server and qdrant) and the monitoring stack (profile monitoring).
+#
+# There are no celery-worker or celery-beat services: nothing in the application uses Celery yet
+# (notifications and background jobs are a later phase), so idle workers would only mislead.
+#
+# Run locally without Postgres: the backend falls back to a SQLite file when DATABASE_URL is not set.
 services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: runtime
+    image: ${IMAGE_PREFIX:-campus-copilot}-backend:${IMAGE_TAG:-local}
+    environment:
+      DATABASE_URL: postgresql+psycopg://campus:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@postgres:5432/campus_copilot
+      JWT_SECRET: ${JWT_SECRET:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      REDIS_URL: redis://redis:6379/0
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      LLM_PROVIDER: ${LLM_PROVIDER:-groq}
+      LLM_MODEL: ${LLM_MODEL:-}
+      LLM_MODEL_FAST: ${LLM_MODEL_FAST:-}
+      LLM_MODEL_BEST: ${LLM_MODEL_BEST:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434/v1}
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-local}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-}
+      MULTI_AGENT: ${MULTI_AGENT:-false}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-Campus Copilot <no-reply@campus.example>}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - campus_data:/var/lib/campus
+      - model_cache:/home/app/.cache
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ingest:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  # Builds the knowledge base before the backend starts: the first time it downloads the search
+  # models, which takes a few minutes; afterwards only documents that changed are redone.
+  ingest:
+    image: ${IMAGE_PREFIX:-campus-copilot}-backend:${IMAGE_TAG:-local}
+    entrypoint: ["python", "-m", "app.rag.ingest"]
+    environment:
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-local}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434/v1}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - campus_data:/var/lib/campus
+      - model_cache:/home/app/.cache
+    restart: "no"
+
+  frontend:
+    build:
+      context: frontend
+      target: runtime
+      args:
+        # Baked into the browser code at build time: the address the browser uses to reach the backend.
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:8000}
+    image: ${IMAGE_PREFIX:-campus-copilot}-frontend:${IMAGE_TAG:-local}
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  redis:
+    image: redis:8-alpine
+    # Shared state for the rate limiter, so limits hold when there are several backend processes.
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
   postgres:
     image: postgres:18
+    restart: unless-stopped
     environment:
       POSTGRES_USER: campus
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
@@ -46,3 +145,5 @@ volumes:
   postgres_data:
   chroma_data:
   qdrant_data:
+  campus_data:
+  model_cache:
