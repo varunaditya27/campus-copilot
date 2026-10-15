@@ -124,3 +124,36 @@ class FakeEmbedding(EmbeddingFunction):
     @staticmethod
     def build_from_config(config):
         return FakeEmbedding()
+
+
+def make_pdf(pages: list[str]) -> bytes:
+    """A minimal valid PDF with one line of text per page (an empty string gives a
+    blank page with no text)."""
+
+    def escape(text):
+        return text.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+
+    kids = " ".join(f"{4 + 2 * i} 0 R" for i in range(len(pages)))
+    objects = [
+        b"<< /Type /Catalog /Pages 2 0 R >>",
+        f"<< /Type /Pages /Kids [{kids}] /Count {len(pages)} >>".encode(),
+        b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+    ]
+    for i, text in enumerate(pages):
+        objects.append(
+            f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents {5 + 2 * i} 0 R "
+            f"/Resources << /Font << /F1 3 0 R >> >> >>".encode()
+        )
+        stream = f"BT /F1 12 Tf 72 720 Td ({escape(text)}) Tj ET".encode() if text else b""
+        objects.append(b"<< /Length %d >>\nstream\n" % len(stream) + stream + b"\nendstream")
+
+    out = b"%PDF-1.4\n"
+    offsets = []
+    for number, body in enumerate(objects, start=1):
+        offsets.append(len(out))
+        out += f"{number} 0 obj\n".encode() + body + b"\nendobj\n"
+    xref = len(out)
+    out += f"xref\n0 {len(objects) + 1}\n0000000000 65535 f \n".encode()
+    out += b"".join(f"{offset:010d} 00000 n \n".encode() for offset in offsets)
+    out += f"trailer\n<< /Size {len(objects) + 1} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n".encode()
+    return out

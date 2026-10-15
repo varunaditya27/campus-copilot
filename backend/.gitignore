@@ -14,3 +14,6 @@ chroma/
 
 # local SQLite database (created by alembic upgrade + app.db.seed)
 *.db
+
+# documents uploaded through the admin API
+knowledge_uploads/

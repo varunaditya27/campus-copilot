@@ -13,11 +13,12 @@ import hashlib
 import logging
 import re
 import time
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 
-from app.core.config import CHROMA_COLLECTION, CHROMA_DIR, KNOWLEDGE_DIR
+from app.core.config import CHROMA_COLLECTION, CHROMA_DIR, KNOWLEDGE_DIR, UPLOAD_DIR
 from app.rag.chunking import Chunk, chunk_markdown
 from app.rag.store import ChromaStore, get_client
 
@@ -57,8 +58,21 @@ class IngestReport:
         )
 
 
-def knowledge_files(directory: Path = KNOWLEDGE_DIR) -> list[Path]:
-    return [p for p in sorted(directory.glob("**/*.md")) if p.name != "README.md"]
+def knowledge_files(directories: Path | Sequence[Path]) -> list[Path]:
+    """Every document in the given folders. A name found in two folders is taken
+    from the first (so a curated document wins over an upload of the same name)."""
+    if isinstance(directories, Path):
+        directories = [directories]
+    files: dict[str, Path] = {}
+    for directory in directories:
+        for path in sorted(directory.glob("**/*.md")):
+            if path.name == "README.md":
+                continue
+            if path.name in files:
+                logger.warning("%s exists in two places; using %s", path.name, files[path.name])
+                continue
+            files[path.name] = path
+    return list(files.values())
 
 
 def file_hash(path: Path) -> str:
@@ -85,13 +99,16 @@ def ingest_file(store: ChromaStore, path: Path, seen: set[str], report: IngestRe
     report.chunks_written += len(chunks)
 
 
-def ingest(store: ChromaStore, directory: Path = KNOWLEDGE_DIR) -> IngestReport:
-    """Bring the store in line with the files in `directory`."""
+def ingest(store: ChromaStore, directories: Path | Sequence[Path] | None = None) -> IngestReport:
+    """Bring the store in line with the files in the curated corpus and the uploads
+    (or in the given folder or folders)."""
+    if directories is None:
+        directories = [KNOWLEDGE_DIR, UPLOAD_DIR]
     started = time.monotonic()
     report = IngestReport()
     known = {info.document: info for info in store.documents()}
     seen: set[str] = set()
-    files = knowledge_files(directory)
+    files = knowledge_files(directories)
 
     for path in files:
         info = known.get(path.name)

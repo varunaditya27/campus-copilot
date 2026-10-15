@@ -138,14 +138,14 @@
 - [x] Build a golden dataset: 50+ question/ground-truth-answer pairs from the knowledge corpus (92, plus off-topic and near-miss queries)
 - [x] Write a `scripts/eval_rag.py` that runs each question through the retriever and scores Recall@3, MRR, and Hit Rate (`python -m app.rag.evaluate`)
 - [x] Run this eval before and after any retriever change and log the delta
-- [ ] Add a `GET /admin/rag/eval` endpoint that triggers an eval run and returns a JSON report
+- [x] Add a `GET /admin/rag/eval` endpoint that triggers an eval run and returns a JSON report (`POST /api/admin/rag/eval` starts it in the background and `GET` returns the report, because a run takes about a minute)
 
 ### 3.6 Document Ingestion API
 
-- [ ] Add `POST /admin/knowledge/ingest` — trigger a full re-ingest of the `knowledge/` corpus
-- [ ] Add `POST /admin/knowledge/upload` — accept a `.md` or `.pdf` file, parse and add to Chroma without a full rebuild
-- [ ] Add `GET /admin/knowledge/status` — return collection name, document count, last ingested timestamp
-- [ ] Add `DELETE /admin/knowledge/{document_name}` — remove a specific document's chunks from the collection
+- [x] Add `POST /admin/knowledge/ingest` — trigger a full re-ingest of the `knowledge/` corpus (incremental by default, `?full=true` for a full rebuild)
+- [x] Add `POST /admin/knowledge/upload` — accept a `.md` or `.pdf` file, parse and add to Chroma without a full rebuild
+- [x] Add `GET /admin/knowledge/status` — return collection name, document count, last ingested timestamp
+- [x] Add `DELETE /admin/knowledge/{document_name}` — remove a specific document's chunks from the collection (uploaded documents only; curated ones are managed in the repository)
 
 ---
 
@@ -318,7 +318,7 @@
 
 ### 7.2 Document Understanding (Multimodal RAG)
 
-- [ ] Add `POST /admin/knowledge/upload-pdf` — accept a PDF, extract text with `pymupdf`, chunk and embed
+- [x] Add `POST /admin/knowledge/upload-pdf` — accept a PDF, extract text with `pymupdf`, chunk and embed (done through the general upload endpoint, using `pypdf`: PyMuPDF is AGPL-licensed)
 - [ ] Add OCR fallback for scanned PDFs using `pytesseract` + image preprocessing
 - [ ] Support ingesting lecture slide decks (`.pptx`) — extract slide text + titles
 - [ ] Add `POST /chat/ask-document` — let a student upload a document (e.g., marksheet, question paper) and ask questions about it

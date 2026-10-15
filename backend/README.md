@@ -63,6 +63,7 @@ backend/
 │   ├── api/                       # HTTP layer -- thin, no business logic
 │   │   ├── auth.py                 # register, login, refresh, logout, me
 │   │   ├── admin_events.py         # POST/PUT /api/admin/events (faculty, admin)
+│   │   ├── admin_knowledge.py      # knowledge base and retrieval evaluation (admin)
 │   │   ├── chat.py                 # chat, chat/stream, history, sessions
 │   │   ├── deps.py                 # get_current_student: the sign-in check
 │   │   ├── events.py               # GET /api/events, /api/events/:id
@@ -80,6 +81,7 @@ backend/
 │   │   ├── store.py                # the vector store (Chroma) behind one small interface
 │   │   ├── lexical.py              # BM25 keyword search
 │   │   ├── fusion.py               # Reciprocal Rank Fusion
+│   │   ├── pdf.py                  # text of a PDF, as markdown with a section per page
 │   │   ├── rerank.py               # cross-encoder reranker
 │   │   ├── retriever.py            # the search pipeline and relevance cutoff
 │   │   ├── evaluate.py             # scores retrieval against rag_eval/golden.json
@@ -98,6 +100,8 @@ backend/
 │   ├── services/                   # reusable business logic, no HTTP/LLM concerns
 │   │   ├── auth_service.py         # accounts, login, refresh-token rotation
 │   │   ├── chat_service.py         # sessions and message history
+│   │   ├── knowledge_service.py    # uploads, ingest, status and deletion of documents
+│   │   ├── rag_eval_service.py     # runs the retrieval evaluation in the background
 │   │   ├── event_service.py        # reads events from the database
 │   │   └── registration_service.py # validates + writes registrations
 │   │
@@ -215,6 +219,11 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 
 | `GET /api/staff/registrations` | Every registration with student and event details; `?event_id=` filters (staff, admin) |
 | `GET /api/staff/registrations/export` | The same as a CSV download (staff, admin) |
+| `POST /api/admin/knowledge/ingest` | Bring the knowledge base up to date; `?full=true` wipes and rebuilds it (admin) |
+| `POST /api/admin/knowledge/upload` | Add a `.md` or `.pdf` document without a rebuild (admin) |
+| `GET /api/admin/knowledge/status` | Collection name, document and chunk counts, last ingest time, each document's source (admin) |
+| `DELETE /api/admin/knowledge/{name}` | Remove an uploaded document (admin) |
+| `POST /api/admin/rag/eval` | Start scoring retrieval against the golden questions (admin); read the result from `GET /api/admin/rag/eval` |
 | `POST /api/admin/events` | Create an event (faculty, admin) |
 | `PUT /api/admin/events/{id}` | Edit an event (faculty for their own department's events, admin for any) |
 
@@ -250,6 +259,8 @@ python -m app.cli create-user --role faculty --name "Dr. Rao" --email rao@campus
 ```
 
 What each role may do: students chat, register themselves for events, and read events; staff also view and export all registrations; faculty also create events and edit their own department's (an event's `department` is set from the faculty member's, and cannot be changed by them; events with no department, including the seed events, are admin-only); admins can do everything staff and faculty can. Permissions are checked by the `require_roles(...)` dependency in `api/deps.py`. The CSV export prefixes any cell that starts with `=`, `+`, `-`, `@`, a tab or a line break with a single quote, so a hostile name cannot run as a spreadsheet formula ([OWASP: CSV injection](https://owasp.org/www-community/attacks/CSV_Injection)).
+
+**Managing the knowledge base.** Admins can update what the assistant knows without touching the server. The curated corpus in `knowledge/` stays under version control; documents added through the API are kept apart in `backend/knowledge_uploads/` (gitignored, `KNOWLEDGE_UPLOAD_DIR`) and are searched along with it. An upload is a `.md` file, or a `.pdf` whose text is read with `pypdf` and stored as markdown with a section per page (a scanned PDF has no text and is refused; password-protected ones too); uploading a name again replaces the earlier one. File names are restricted to letters, digits, spaces, dots, dashes and underscores with no folders, the size limit is 10 MB, an upload cannot replace a curated document, and curated documents cannot be deleted through the API (change the file in the repository and ingest again). Only one ingest runs at a time. The evaluation takes about a minute, so `POST /api/admin/rag/eval` starts it in the background and `GET` returns `idle`, `running`, `done` (with the report) or `failed`; the state belongs to one server process, so with several workers ask the one that started it.
 
 Known limits, until later roadmap phases: there is no email verification, so anyone who knows a student's USN and name can create that student's account first; and there is no login rate limiting or lockout yet. Set `JWT_SECRET` (`openssl rand -hex 32`) in production. If it is unset the server makes a temporary one, which signs everyone out on every restart.
 
@@ -295,6 +306,7 @@ curl http://localhost:8000/health
 | `RAG_RRF_K` | `60` | Reciprocal Rank Fusion constant (the value from the original paper) |
 | `RAG_RERANK_MIN_SCORE` | `-8.5` | Passages the reranker scores below this are not given to the model. Re-check with `python -m app.rag.evaluate` if you change the corpus or the reranker (higher is stricter) |
 | `CHROMA_DIR` | `backend/chroma` | Where the vector store is kept |
+| `KNOWLEDGE_UPLOAD_DIR` | `backend/knowledge_uploads` | Where documents uploaded through the admin API are kept |
 
 ### Database
 

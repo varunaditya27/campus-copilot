@@ -5,6 +5,7 @@ from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.admin_events import router as admin_events_router
+from app.api.admin_knowledge import router as admin_knowledge_router
 from app.api.auth import router as auth_router
 from app.api.chat import router as chat_router
 from app.api.events import router as events_router
@@ -31,6 +32,7 @@ app.include_router(chat_router)
 app.include_router(registration_router)
 app.include_router(staff_router)
 app.include_router(admin_events_router)
+app.include_router(admin_knowledge_router)
 
 # Added first so CORS (added next) wraps it: even a refusal then carries CORS headers.
 app.add_middleware(OriginCheckMiddleware, allowed_origins=CORS_ORIGINS)

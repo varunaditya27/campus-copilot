@@ -69,6 +69,10 @@ class Retriever:
             self._snapshot = current
             return current
 
+    def invalidate(self) -> None:
+        """Rebuild the keyword index on the next search, for use after the store changed."""
+        self._snapshot = None
+
     def warm_up(self) -> None:
         """Load the models and build the keyword index now, by running one search."""
         self.search("campus", 1)

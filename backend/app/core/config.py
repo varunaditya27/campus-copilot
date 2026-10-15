@@ -13,6 +13,8 @@ BACKEND_DIR = REPO_ROOT / "backend"
 
 DATA_DIR = REPO_ROOT / "data"
 KNOWLEDGE_DIR = REPO_ROOT / "knowledge"
+# Documents added through the admin API live apart from the curated corpus in knowledge/.
+UPLOAD_DIR = Path(os.getenv("KNOWLEDGE_UPLOAD_DIR", BACKEND_DIR / "knowledge_uploads"))
 
 DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{REPO_ROOT / 'backend' / 'campus.db'}")
 

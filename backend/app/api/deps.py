@@ -56,6 +56,7 @@ def require_roles(*roles: Role):
     return Depends(check)
 
 
+AdminUser = Annotated[CurrentUser, require_roles("admin")]
 # Admins can do everything the other staff roles can.
 StaffUser = Annotated[CurrentUser, require_roles("staff", "admin")]
 EventEditor = Annotated[CurrentUser, require_roles("faculty", "admin")]
