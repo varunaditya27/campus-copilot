@@ -45,6 +45,17 @@ def _create_user(args: argparse.Namespace) -> int:
     return 0
 
 
+def _create_admin_key(args: argparse.Namespace) -> int:
+    from app.security import api_keys
+
+    key, digest = api_keys.generate_key()
+    print("API key (shown once, keep it secret; send it as the X-Admin-Key header):")
+    print(f"  {key}")
+    print("\nAdd its digest to the server's ADMIN_API_KEY_HASHES (comma-separated for several keys), then restart:")
+    print(f"  {digest}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m app.cli")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -57,6 +68,9 @@ def main(argv: list[str] | None = None) -> int:
     create.add_argument("--office")
     create.add_argument("--office-hours")
     create.set_defaults(run=_create_user)
+
+    key = commands.add_parser("create-admin-key", help="make an API key for scripts to call the admin endpoints")
+    key.set_defaults(run=_create_admin_key)
 
     args = parser.parse_args(argv)
     return args.run(args)

@@ -3,13 +3,15 @@ from collections.abc import Iterator
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Cookie, Response
+from fastapi import APIRouter, Cookie, Request, Response
 from fastapi.responses import StreamingResponse
 
 from app.agent.supervisor import run_agent, run_agent_stream
 from app.api.deps import SignedInStudent
 from app.core.config import COOKIE_SECURE
 from app.core.errors import AppError
+from app.security import guard
+from app.security.limits import chat_limit, limiter
 from app.models.chat import (
     ChatHistoryResponse,
     ChatRequest,
@@ -41,19 +43,32 @@ def _set_session_cookie(response: Response, session_id: UUID) -> None:
     )
 
 
+def _clean(body: ChatRequest) -> str:
+    """The message with anything hidden in it removed. A message that is nothing but hidden characters is empty."""
+    message = guard.sanitize(body.message)
+    if not message:
+        raise AppError(422, "empty_message", "The message is empty.")
+    return message
+
+
 @router.post("")
+@limiter.shared_limit(chat_limit, scope="chat")
 def chat(
-    request: ChatRequest,
+    request: Request,
+    body: ChatRequest,
     response: Response,
     student: SignedInStudent,
     session_cookie: SessionCookie = None,
 ) -> ChatResponse:
+    message = _clean(body)
+    if (refusal := guard.screen(message)) is not None:
+        return refusal  # not saved: a message like that must not become part of the history the model reads later
     session_id = chat_service.resolve_session(session_cookie, student.student_id)
     history = chat_service.load_history(session_id, HISTORY_WINDOW)
-    result = run_agent(request.message, history, student, entity_service.recent(session_id), request.quality)
-    chat_service.save_exchange(session_id, request.message, result)
-    entity_service.remember_exchange(session_id, request.message, result.reply, student.program)
-    usage_service.record_exchange(student.student_id, session_id, request.message, result)
+    result = run_agent(message, history, student, entity_service.recent(session_id), body.quality)
+    chat_service.save_exchange(session_id, message, result)
+    entity_service.remember_exchange(session_id, message, result.reply, student.program)
+    usage_service.record_exchange(student.student_id, session_id, message, result)
     _set_session_cookie(response, session_id)
     return result
 
@@ -64,26 +79,33 @@ def _sse(event: dict) -> str:
 
 
 @router.post("/stream")
+@limiter.shared_limit(chat_limit, scope="chat")
 def chat_stream(
-    request: ChatRequest, student: SignedInStudent, session_cookie: SessionCookie = None
+    request: Request, body: ChatRequest, student: SignedInStudent, session_cookie: SessionCookie = None
 ) -> StreamingResponse:
     """Same as POST /api/chat, but streamed as server-sent events.
 
     Once streaming has begun the HTTP status is already 200, so failures are
     reported as an "error" event instead.
     """
+    message = _clean(body)
+    refusal = guard.screen(message)
     session_id = chat_service.resolve_session(session_cookie, student.student_id)
     history = chat_service.load_history(session_id, HISTORY_WINDOW)
     entities = entity_service.recent(session_id)
 
     def events() -> Iterator[str]:
+        if refusal is not None:  # the same events a real answer sends, but nothing is run or saved
+            yield _sse({"type": "token", "payload": {"text": refusal.reply}})
+            yield _sse({"type": "done", "payload": refusal.model_dump(mode="json")})
+            return
         try:
-            for event in run_agent_stream(request.message, history, student, entities, request.quality):
+            for event in run_agent_stream(message, history, student, entities, body.quality):
                 if event["type"] == "done":
                     done = ChatResponse.model_validate(event["payload"])
-                    chat_service.save_exchange(session_id, request.message, done)
-                    entity_service.remember_exchange(session_id, request.message, done.reply, student.program)
-                    usage_service.record_exchange(student.student_id, session_id, request.message, done)
+                    chat_service.save_exchange(session_id, message, done)
+                    entity_service.remember_exchange(session_id, message, done.reply, student.program)
+                    usage_service.record_exchange(student.student_id, session_id, message, done)
                 yield _sse(event)
         except AppError as exc:
             yield _sse(

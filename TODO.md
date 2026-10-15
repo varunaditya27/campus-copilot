@@ -400,13 +400,13 @@
 
 ### 9.5 Security
 
-- [ ] Add rate limiting to the chat endpoint (e.g., 30 req/min per student) using `slowapi`
-- [ ] Add CORS policy: restrict `allow_origins` to the deployed frontend URL in production
-- [ ] Rotate GROQ_API_KEY using a secrets manager (HashiCorp Vault or GitHub Actions secrets)
-- [ ] Add input sanitisation on all user-provided text before passing to the LLM (guard against prompt injection)
-- [ ] Implement a prompt injection detection layer: classify incoming messages for adversarial patterns before routing to the agent
-- [ ] Add HTTPS enforcement (reverse proxy with Nginx + Let's Encrypt or Caddy)
-- [ ] Add API key authentication for the admin endpoints (separate from student JWT)
+- [x] Add rate limiting to the chat endpoint (e.g., 30 req/min per student) using `slowapi` (also sign-in and sign-up per address, and wrong admin keys; Redis-backed when `REDIS_URL` is set; seen working against real Redis)
+- [x] Add CORS policy: restrict `allow_origins` to the deployed frontend URL in production (production refuses to start with a wildcard, plain http, a path or a malformed origin; the malformed-origin warning applies everywhere)
+- [x] Rotate GROQ_API_KEY using a secrets manager (HashiCorp Vault or GitHub Actions secrets) (partly: every secret can be read from a file, which is what Docker, Kubernetes and Vault Agent provide, and rotation is replace-and-recreate; there is no Vault client, and CI needs no secret other than the automatic `GITHUB_TOKEN`)
+- [x] Add input sanitisation on all user-provided text before passing to the LLM (guard against prompt injection) (the chat message; other text, such as grievance descriptions, is not passed to the model)
+- [x] Implement a prompt injection detection layer: classify incoming messages for adversarial patterns before routing to the agent (a weighted pattern filter, not a model; a heuristic that can be rephrased around, with the real limits being least privilege and approval cards)
+- [x] Add HTTPS enforcement (reverse proxy with Nginx + Let's Encrypt or Caddy) (Caddy; run locally with its own certificate authority for `localhost`, not with a public domain and Let's Encrypt)
+- [x] Add API key authentication for the admin endpoints (separate from student JWT)
 
 ---
 

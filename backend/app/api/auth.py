@@ -1,11 +1,12 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Cookie, Response
+from fastapi import APIRouter, Cookie, Request, Response
 
 from app.api.deps import ACCESS_COOKIE, SignedInUser
 from app.core.config import ACCESS_TOKEN_MINUTES, COOKIE_SECURE, REFRESH_TOKEN_DAYS
 from app.core.errors import AppError
 from app.models.auth import CurrentUser, LoginRequest, RegisterRequest
+from app.security.limits import auth_limit, limiter
 from app.services import auth_service
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
@@ -49,14 +50,16 @@ def _sign_in(response: Response, user_id: int) -> CurrentUser:
 
 
 @router.post("/register", status_code=201)
-def register(request: RegisterRequest, response: Response) -> CurrentUser:
-    user_id = auth_service.register(request.student_id, request.name, request.email, request.password)
+@limiter.limit(auth_limit)
+def register(request: Request, body: RegisterRequest, response: Response) -> CurrentUser:
+    user_id = auth_service.register(body.student_id, body.name, body.email, body.password)
     return _sign_in(response, user_id)
 
 
 @router.post("/login")
-def login(request: LoginRequest, response: Response) -> CurrentUser:
-    user_id = auth_service.authenticate(request.email, request.password)
+@limiter.limit(auth_limit)
+def login(request: Request, body: LoginRequest, response: Response) -> CurrentUser:
+    user_id = auth_service.authenticate(body.email, body.password)
     if user_id is None:
         # Same message for an unknown email and a wrong password.
         raise AppError(401, "invalid_credentials", "Incorrect email or password.")

@@ -4,7 +4,10 @@
 # Set RUN_MIGRATIONS=false when several copies start at once; run `alembic upgrade head` once instead.
 set -e
 # Without a fixed key every restart would sign everyone out, so refuse to start.
-: "${JWT_SECRET:?Set JWT_SECRET (openssl rand -hex 32)}"
+if [ -z "${JWT_SECRET:-}" ] && [ -z "${JWT_SECRET_FILE:-}" ]; then
+    echo "Set JWT_SECRET or JWT_SECRET_FILE (openssl rand -hex 32)." >&2
+    exit 1
+fi
 if [ "${RUN_MIGRATIONS:-true}" = "true" ]; then
     alembic upgrade head
     python -m app.db.seed

@@ -1,9 +1,10 @@
 from typing import Annotated
 
-from fastapi import Cookie, Depends
+from fastapi import Cookie, Depends, Header, Request
 
 from app.core import security
 from app.observability import context as observability
+from app.security import api_keys, limits
 from app.core.errors import AppError
 from app.models.auth import CurrentStudent, CurrentUser, Role
 from app.services import academic_service, auth_service
@@ -11,10 +12,28 @@ from app.services import academic_service, auth_service
 ACCESS_COOKIE = "access_token"
 
 
+def _api_key_user(request: Request, key: str) -> CurrentUser:
+    """The administrator an X-Admin-Key stands for. A wrong key is refused, and wrong keys are counted per
+    address so they cannot be guessed at speed."""
+    ip = request.client.host if request.client else "unknown"
+    if not limits.allow("admin-key", ip):
+        raise AppError(429, "rate_limited", "Too many attempts. Please wait a moment and try again.")
+    key_id = api_keys.verify(key)
+    if key_id is None:
+        raise AppError(401, "invalid_api_key", "That API key is not valid.")
+    observability.bind(role="admin", api_key=key_id)
+    return CurrentUser(user_id=0, role="admin", name=f"API key {key_id}", email="")
+
+
 def get_current_user(
+    request: Request,
     access_token: Annotated[str | None, Cookie(alias=ACCESS_COOKIE)] = None,
+    admin_key: Annotated[str | None, Header(alias="X-Admin-Key")] = None,
 ) -> CurrentUser:
-    """Whoever is signed in, or a 401. Reads the access-token cookie."""
+    """Whoever is signed in, or a 401. A valid X-Admin-Key header makes the caller an administrator for
+    scripts and automation; otherwise the access-token cookie is read."""
+    if admin_key is not None:
+        return _api_key_user(request, admin_key)
     user_id = security.decode_access_token(access_token) if access_token else None
     user = auth_service.get_current_user(user_id) if user_id is not None else None
     if user is None:

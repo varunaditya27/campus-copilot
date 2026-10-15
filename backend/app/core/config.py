@@ -7,6 +7,21 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
+def _secret(name: str, default: str = "") -> str:
+    """A secret from the environment, or from the file NAME_FILE points to.
+
+    A file is how Docker secrets, Kubernetes secrets and Vault Agent hand a secret over without putting
+    it in the environment (where it shows in process listings and container inspection). Rotating a secret
+    means replacing the file or the variable and restarting the application, which reads it once at start."""
+    path = os.getenv(f"{name}_FILE")
+    if path:
+        try:
+            return Path(path).read_text().strip()
+        except OSError as exc:
+            raise RuntimeError(f"{name}_FILE points to {path}, which cannot be read: {exc.strerror}") from exc
+    return os.getenv(name, default)
+
 # backend/app/core/config.py -> backend/app/core -> backend/app -> backend -> repo root
 REPO_ROOT = Path(__file__).resolve().parents[3]
 BACKEND_DIR = REPO_ROOT / "backend"
@@ -16,7 +31,7 @@ KNOWLEDGE_DIR = REPO_ROOT / "knowledge"
 # Documents added through the admin API live apart from the curated corpus in knowledge/.
 UPLOAD_DIR = Path(os.getenv("KNOWLEDGE_UPLOAD_DIR", BACKEND_DIR / "knowledge_uploads"))
 
-DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{REPO_ROOT / 'backend' / 'campus.db'}")
+DATABASE_URL = _secret("DATABASE_URL", f"sqlite:///{REPO_ROOT / 'backend' / 'campus.db'}")
 
 CHROMA_DIR = Path(os.getenv("CHROMA_DIR", REPO_ROOT / "backend" / "chroma"))
 KNOWLEDGE_COLLECTION = "campus_knowledge"
@@ -57,7 +72,7 @@ RAG_RRF_K = int(os.getenv("RAG_RRF_K", "60"))
 # Re-check it if the reranker model or the corpus changes.
 RAG_RERANK_MIN_SCORE = float(os.getenv("RAG_RERANK_MIN_SCORE", "-8.5"))
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_API_KEY = _secret("GROQ_API_KEY")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")  # the older name for LLM_MODEL on Groq
 
 # Which service answers questions: groq, ollama (a model running on your own machine) or
@@ -70,7 +85,7 @@ LLM_MODEL = os.getenv("LLM_MODEL", "")
 LLM_MODEL_FAST = os.getenv("LLM_MODEL_FAST", "")
 LLM_MODEL_BEST = os.getenv("LLM_MODEL_BEST", "")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+OPENAI_API_KEY = _secret("OPENAI_API_KEY")
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "")
 
 # Which model turns text into vectors for the knowledge base: local (all-MiniLM-L6-v2 on this
@@ -82,7 +97,8 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "")
 
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
 
-_jwt_secret = os.getenv("JWT_SECRET", "")
+_jwt_secret = _secret("JWT_SECRET")
+JWT_SECRET_IS_TEMPORARY = not _jwt_secret
 if not _jwt_secret:
     # A random key is safe but short-lived: every restart signs everyone out,
     # and several server processes would each have a different key.
@@ -105,7 +121,7 @@ COOKIE_SECURE = os.getenv("COOKIE_SECURE", "false").lower() == "true"
 SMTP_HOST = os.getenv("SMTP_HOST", "")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 SMTP_USER = os.getenv("SMTP_USER", "")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
+SMTP_PASSWORD = _secret("SMTP_PASSWORD")
 SMTP_FROM = os.getenv("SMTP_FROM", "Campus Copilot <no-reply@campus.example>")
 # STARTTLS upgrades the connection to encrypted before logging in; turn it off only for a local test server.
 SMTP_STARTTLS = os.getenv("SMTP_STARTTLS", "true").lower() == "true"
@@ -124,3 +140,22 @@ OTEL_EXPORTER_OTLP_ENDPOINT = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "")
 SENTRY_DSN = os.getenv("SENTRY_DSN", "")
 SENTRY_TRACES_SAMPLE_RATE = float(os.getenv("SENTRY_TRACES_SAMPLE_RATE", "0"))
 SENTRY_RELEASE = os.getenv("SENTRY_RELEASE", "")
+
+# --- security
+
+# How often one client may call a limited endpoint, as "count/period" (seconds, minute, hour, day).
+# The chat is limited per signed-in student (a student on several devices shares the allowance);
+# sign-in and sign-up are limited per network address, because the caller is not known yet.
+RATE_LIMIT_CHAT = os.getenv("RATE_LIMIT_CHAT", "30/minute")
+RATE_LIMIT_AUTH = os.getenv("RATE_LIMIT_AUTH", "10/minute")
+# Where the counters live. Without this they are kept in memory, per process, which is fine for one
+# process and wrong for several: each would allow the full limit.
+REDIS_URL = os.getenv("REDIS_URL", "")
+
+# What to do with a message that looks like an attempt to take over the assistant:
+# "block" (refuse it), "log" (note it and let it through, for tuning), or "off".
+PROMPT_GUARD = os.getenv("PROMPT_GUARD", "block").lower()
+
+# SHA-256 digests (hex) of the API keys that may call the admin endpoints with an X-Admin-Key header
+# instead of a signed-in session. Create one with: python -m app.cli create-admin-key
+ADMIN_API_KEY_HASHES = [h.strip().lower() for h in _secret("ADMIN_API_KEY_HASHES").split(",") if h.strip()]

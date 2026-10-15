@@ -41,6 +41,19 @@ STUDENTS = [
 
 
 @pytest.fixture(autouse=True)
+def _generous_rate_limits(monkeypatch):
+    """Tests sign up and chat far faster than any real client, so the limits are lifted unless a test sets its own."""
+    from app.core import config
+    from app.security.limits import limiter
+
+    monkeypatch.setattr(config, "RATE_LIMIT_CHAT", "100000/minute")
+    monkeypatch.setattr(config, "RATE_LIMIT_AUTH", "100000/minute")
+    limiter.reset()
+    yield
+    limiter.reset()
+
+
+@pytest.fixture(autouse=True)
 def _forbid_real_database(monkeypatch):
     def refuse(*args, **kwargs):
         raise RuntimeError("Test reached the real database; request the `db` fixture.")

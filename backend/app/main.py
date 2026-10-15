@@ -17,7 +17,7 @@ from app.api.chat import router as chat_router
 from app.api.events import router as events_router
 from app.api.staff import router as staff_router
 from app.api.students import router as students_router
-from app.core.config import CORS_ORIGINS
+from app.core.config import CORS_ORIGINS, COOKIE_SECURE, ENVIRONMENT, JWT_SECRET_IS_TEMPORARY
 from app.core.errors import register_error_handlers
 from app.core.origin_check import OriginCheckMiddleware
 from app.db.session import engine
@@ -27,6 +27,10 @@ from app.observability.middleware import RequestLoggingMiddleware
 from app.observability.sentry import init_sentry
 from app.observability.tracing import setup_tracing
 from app.rag import retriever
+from app.security.headers import SecurityHeadersMiddleware
+from app.security.limits import limiter, rate_limit_handler
+from app.security.settings_check import origin_problems, production_problems
+from slowapi.errors import RateLimitExceeded
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -43,10 +47,17 @@ async def lifespan(app: FastAPI):
 
 configure_logging()
 init_sentry()
+_problems = production_problems(ENVIRONMENT, CORS_ORIGINS, COOKIE_SECURE, not JWT_SECRET_IS_TEMPORARY)
+if _problems:
+    raise RuntimeError("Not safe to run in production:\n- " + "\n- ".join(_problems))
+for _problem in origin_problems(CORS_ORIGINS):
+    logging.getLogger(__name__).warning("%s", _problem)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Campus Copilot API", lifespan=lifespan)
 register_error_handlers(app)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, rate_limit_handler)
 app.include_router(auth_router)
 app.include_router(actions_router)
 app.include_router(admin_students_router)
@@ -71,6 +82,7 @@ app.add_middleware(
 
 
 # Added last, so it wraps everything else and its request id and timing cover the whole request.
+app.add_middleware(SecurityHeadersMiddleware, production=ENVIRONMENT == "production")
 app.add_middleware(RequestLoggingMiddleware)
 setup_tracing(app, engine)
 # Prometheus metrics at /metrics: request counts and latency per route, plus the agent's own (observability/metrics.py).

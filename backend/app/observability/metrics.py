@@ -23,3 +23,8 @@ LLM_REQUEST_SECONDS = Histogram(
 )
 # Counted only when the service reports usage while streaming (OpenAI and Ollama do; Groq documents nothing for it).
 LLM_TOKENS = Counter("llm_tokens_used_total", "Tokens reported by the language model service", ["provider", "model", "kind"])
+
+PROMPT_INJECTION = Counter(
+    "prompt_injection_flagged_total", "Messages that looked like an attempt to take over the assistant", ["action"]
+)
+RATE_LIMITED = Counter("rate_limited_requests_total", "Requests refused because a client sent too many", ["scope"])
