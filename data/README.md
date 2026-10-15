@@ -48,6 +48,9 @@ The files are seed data. At runtime the app reads and writes the database tables
 | `lost_found_items.json` | `lost_found_items` | a student handing in an item adds a row |
 | `counselling_slots.json` | `counselling_slots` | booking an appointment sets `booked_by` |
 | `placement_drives.json` | `placement_drives` | nothing at runtime -- upcoming drives and their criteria |
+| `event_details.json` | `event_details` | nothing at runtime -- the prerequisites and materials of each seeded event (invented) |
+
+The seeded events are dated August and September 2026, so from mid-October 2026 they count as past: they can be given feedback on but not cancelled or waitlisted. Events created through the admin API behave normally.
 
 Reservations, room bookings, maintenance requests and grievance tickets have no seed file: they start empty and are created by approved actions.
 

@@ -16,6 +16,7 @@ from app.db.models import (
     Course,
     CourseOffering,
     Event,
+    EventDetail,
     Exam,
     FacultyMember,
     FeeRecord,
@@ -89,6 +90,7 @@ def seed(session: Session) -> dict[str, int]:
         ("lost_found_items", LostFoundItem, "lost_found_items.json"),
         ("counselling_slots", CounsellingSlot, "counselling_slots.json"),
         ("placement_drives", PlacementDrive, "placement_drives.json"),
+        ("event_details", EventDetail, "event_details.json"),
     ):
         added[table] = 0
         if _is_empty(session, model):

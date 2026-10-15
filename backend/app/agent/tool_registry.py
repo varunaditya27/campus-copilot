@@ -10,6 +10,7 @@ from app.tools.academic import (
     get_student_timetable,
 )
 from app.tools.attendance import calculate_attendance
+from app.tools.engagement import get_event_detail, get_event_feedback_form, get_my_registrations
 from app.tools.operations import (
     check_library_availability,
     check_placement_eligibility,
@@ -49,6 +50,14 @@ OPERATIONS_SCHEMAS = [
           {"company": {"type": "string"}, "from_date": {"type": "string", "description": "YYYY-MM-DD"}, "to_date": {"type": "string", "description": "YYYY-MM-DD"}}),
     _tool("check_placement_eligibility", "Check whether the signed-in student meets a placement drive's criteria, criterion by criterion.",
           {"drive": {"type": "string", "description": "A drive id such as 'PD-003' or a company name."}}, ["drive"]),
+]
+
+EVENT_SCHEMAS = [
+    _tool("get_event_detail", "Get everything about one event: organiser, description, prerequisites, materials to bring, seats left, waitlist length, and whether the signed-in student is registered or waiting.",
+          {"event_id": {"type": "string", "description": "The event id, e.g. 'evt_ai_001'."}}, ["event_id"]),
+    _tool("get_my_registrations", "List the events the signed-in student is registered for (with registration ids) and any waitlists they are on."),
+    _tool("get_event_feedback_form", "Get the feedback form for an event (a 1-5 rating and optional comments) and whether the signed-in student can fill it in now.",
+          {"event_id": {"type": "string"}}, ["event_id"]),
 ]
 
 # Groq's native tool-calling format: a list of {"type": "function", "function": {...}}
@@ -226,6 +235,7 @@ TOOL_SCHEMAS = [
         }
     },
     *OPERATIONS_SCHEMAS,
+    *EVENT_SCHEMAS,
     *ACTION_SCHEMAS,
 ]
 
@@ -254,6 +264,9 @@ TOOL_FUNCTIONS = {
     "get_counselling_slots": get_counselling_slots,
     "get_placement_drives": get_placement_drives,
     "check_placement_eligibility": check_placement_eligibility,
+    "get_event_detail": get_event_detail,
+    "get_my_registrations": get_my_registrations,
+    "get_event_feedback_form": get_event_feedback_form,
 }
 
 # Tools about the signed-in student. The agent supplies their student id from the
@@ -270,5 +283,8 @@ STUDENT_TOOLS = frozenset(
         "get_grievance_status",
         "get_counselling_slots",
         "check_placement_eligibility",
+        "get_event_detail",
+        "get_my_registrations",
+        "get_event_feedback_form",
     }
 )

@@ -211,12 +211,12 @@
 
 ### 4.7 Tool Expansion — Events (Enhanced)
 
-- [ ] `get_event_detail(event_id)` — full event details including organiser, prerequisites, materials needed
-- [ ] `get_my_registrations(student_id)` — list all events the student is registered for
-- [ ] `cancel_event_registration(student_id, event_id)` — cancel a registration (HITL)
-- [ ] `join_event_waitlist(student_id, event_id)` — join waitlist if event is full
-- [ ] `get_event_feedback_form(event_id)` — return feedback form link or embedded form
-- [ ] `submit_event_feedback(student_id, event_id, rating, comments)` — submit post-event feedback
+- [x] `get_event_detail(event_id)` — full event details including organiser, prerequisites, materials needed
+- [x] `get_my_registrations(student_id)` — list all events the student is registered for
+- [x] `cancel_event_registration(student_id, event_id)` — cancel a registration (HITL; a student waiting for a seat is registered automatically)
+- [x] `join_event_waitlist(student_id, event_id)` — join waitlist if event is full
+- [x] `get_event_feedback_form(event_id)` — return feedback form link or embedded form (the form's fields and whether this student may fill it in; there is no external link)
+- [x] `submit_event_feedback(student_id, event_id, rating, comments)` — submit post-event feedback
 
 ### 4.8 Multi-Agent Architecture
 

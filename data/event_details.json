@@ -1,0 +1,92 @@
+[
+  {
+    "event_id": "evt_ai_001",
+    "prerequisites": "Basic Python; a laptop with a free account on any LLM provider.",
+    "materials": "Laptop, charger, and your own API key if you have one (keys can be shared at the venue)."
+  },
+  {
+    "event_id": "evt_web_002",
+    "prerequisites": "Comfortable with JavaScript; some React helps but is not required.",
+    "materials": "Laptop with Node.js 20 or later installed."
+  },
+  {
+    "event_id": "evt_sec_003",
+    "prerequisites": "Basic networking and Linux command line.",
+    "materials": "Laptop with a virtual machine tool installed; the lab image is shared on the day."
+  },
+  {
+    "event_id": "evt_cp_004",
+    "prerequisites": "Knowledge of one of C++, Java or Python and basic data structures.",
+    "materials": "Laptop or lab computer; no external devices."
+  },
+  {
+    "event_id": "evt_res_005",
+    "prerequisites": "None. Open to all years; presenting teams register separately with their guide.",
+    "materials": "Poster or slides if presenting; ID card."
+  },
+  {
+    "event_id": "evt_robot_006",
+    "prerequisites": "Interest in electronics; no prior robotics experience needed.",
+    "materials": "Team kits are provided; bring a laptop and ID card."
+  },
+  {
+    "event_id": "evt_ai_007",
+    "prerequisites": "Completed an introductory machine learning course or equivalent.",
+    "materials": "Laptop with Python 3.10 or later."
+  },
+  {
+    "event_id": "evt_web_008",
+    "prerequisites": "Experience building a small web app in any framework.",
+    "materials": "Laptop with an API client such as curl or Postman."
+  },
+  {
+    "event_id": "evt_cp_009",
+    "prerequisites": "None; suitable for beginners and regular participants alike.",
+    "materials": "Laptop or a notebook for working problems on paper."
+  },
+  {
+    "event_id": "evt_sec_010",
+    "prerequisites": "Basic security concepts; teams of two to four.",
+    "materials": "Laptop and charger; a VPN client is provided on the day."
+  },
+  {
+    "event_id": "evt_robot_011",
+    "prerequisites": "Basic microcontroller programming (Arduino or similar).",
+    "materials": "Your team's robot, tools and spare batteries."
+  },
+  {
+    "event_id": "evt_res_012",
+    "prerequisites": "A submitted abstract approved by your faculty guide.",
+    "materials": "Poster printout (A1) or slides; ID card."
+  },
+  {
+    "event_id": "evt_ai_013",
+    "prerequisites": "Basic Python and curiosity about language models.",
+    "materials": "Laptop; sample datasets are provided."
+  },
+  {
+    "event_id": "evt_web_014",
+    "prerequisites": "Working knowledge of React components and hooks.",
+    "materials": "Laptop with Node.js 20 or later."
+  },
+  {
+    "event_id": "evt_cp_015",
+    "prerequisites": "Teams of three from the same department; strong problem-solving skills.",
+    "materials": "Team ID cards; laptops are provided in the lab."
+  },
+  {
+    "event_id": "evt_sec_016",
+    "prerequisites": "Programming in any language.",
+    "materials": "Laptop with a code editor."
+  },
+  {
+    "event_id": "evt_robot_017",
+    "prerequisites": "Embedded C or Python and a little machine learning.",
+    "materials": "Laptop; development boards are provided and returned at the end."
+  },
+  {
+    "event_id": "evt_res_018",
+    "prerequisites": "None. Open to all students and faculty.",
+    "materials": "Nothing needed; questions for the panel are welcome."
+  }
+]

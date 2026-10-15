@@ -361,6 +361,44 @@ class Event(Base):
     department: Mapped[str | None] = mapped_column(String(100))
 
 
+class EventDetail(Base):
+    """What a student should know before an event, kept apart from `events` so the
+    event form and its API stay as they are."""
+
+    __tablename__ = "event_details"
+
+    event_id: Mapped[str] = mapped_column(ForeignKey("events.id", ondelete="CASCADE"), primary_key=True)
+    prerequisites: Mapped[str | None] = mapped_column(Text)
+    materials: Mapped[str | None] = mapped_column(Text)
+
+
+class EventWaitlist(Base):
+    """Students waiting for a seat in a full event, in the order they asked."""
+
+    __tablename__ = "event_waitlist"
+    __table_args__ = (UniqueConstraint("event_id", "student_id", name="uq_event_waitlist_event_student"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    event_id: Mapped[str] = mapped_column(ForeignKey("events.id", ondelete="CASCADE"), index=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class EventFeedback(Base):
+    __tablename__ = "event_feedback"
+    __table_args__ = (
+        UniqueConstraint("event_id", "student_id", name="uq_event_feedback_event_student"),
+        CheckConstraint("rating BETWEEN 1 AND 5", name="valid_rating"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    event_id: Mapped[str] = mapped_column(ForeignKey("events.id", ondelete="CASCADE"), index=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"))
+    rating: Mapped[int]
+    comments: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
 class Registration(Base):
     __tablename__ = "registrations"
     __table_args__ = (

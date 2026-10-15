@@ -59,6 +59,9 @@ TOOL_LABELS = {
     "get_counselling_slots": "Looking up counselling slots",
     "get_placement_drives": "Looking up placement drives",
     "check_placement_eligibility": "Checking placement eligibility",
+    "get_event_detail": "Looking up the event",
+    "get_my_registrations": "Checking your registrations",
+    "get_event_feedback_form": "Opening the feedback form",
 }
 
 
@@ -108,6 +111,12 @@ def _summarize(tool: str, result: dict) -> str:
         return f"{len(result['drives'])} upcoming drives"
     if tool == "check_placement_eligibility":
         return "Matches several drives" if "matches" in result else ("Eligible" if result["eligible"] else "Not eligible")
+    if tool == "get_event_detail":
+        return f"{result['name']}: {result['seats_left']} seats left"
+    if tool == "get_my_registrations":
+        return f"{len(result['registrations'])} registrations, {len(result['waitlisted'])} waitlisted"
+    if tool == "get_event_feedback_form":
+        return "Feedback open" if result["can_submit"] else "Feedback not available"
     if tool == "get_faculty_profile":
         return result["name"] if "name" in result else f"{len(result['matches'])} possible matches"
     return "Done"

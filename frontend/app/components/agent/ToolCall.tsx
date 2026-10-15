@@ -37,6 +37,12 @@ const TOOL_ICON: Record<ToolActivityEntry["tool"], (p: { className?: string }) =
   submit_lost_item: CheckIcon,
   create_grievance_ticket: CheckIcon,
   book_counselling_appointment: CheckIcon,
+  get_event_detail: SearchIcon,
+  get_my_registrations: DocumentIcon,
+  get_event_feedback_form: DocumentIcon,
+  cancel_event_registration: CheckIcon,
+  join_event_waitlist: CheckIcon,
+  submit_event_feedback: CheckIcon,
 };
 
 export default function ToolCall({

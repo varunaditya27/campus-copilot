@@ -59,7 +59,13 @@ export type ToolName =
   | "report_maintenance_issue"
   | "submit_lost_item"
   | "create_grievance_ticket"
-  | "book_counselling_appointment";
+  | "book_counselling_appointment"
+  | "get_event_detail"
+  | "get_my_registrations"
+  | "get_event_feedback_form"
+  | "cancel_event_registration"
+  | "join_event_waitlist"
+  | "submit_event_feedback";
 
 export type ToolStatus = "running" | "done" | "error";
 

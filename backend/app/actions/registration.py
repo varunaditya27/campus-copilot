@@ -33,7 +33,7 @@ def prepare(args: dict, student: CurrentStudent) -> Prepared:
             "I couldn't find that event to register you for -- could you confirm which event you mean?"
         )
     if event.registered >= event.capacity:
-        raise ActionError(f"{event.name} is full, so there is nothing to register for.")
+        raise ActionError(f"{event.name} is full, so there is nothing to register for. I can put you on the waitlist instead.")
     if registration_service.is_registered(student.student_id, event.id):
         raise ActionError(f"You're already registered for {event.name}.")
     return Prepared(

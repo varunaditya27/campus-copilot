@@ -1,4 +1,4 @@
-from app.actions import campus, registration, support
+from app.actions import campus, events, registration, support
 from app.actions.base import ActionSpec
 
 # Every action the assistant may propose. The model can ask for any of these;
@@ -13,6 +13,9 @@ ACTIONS: dict[str, ActionSpec] = {
         campus.SUBMIT_LOST_ITEM,
         support.CREATE_GRIEVANCE,
         support.BOOK_COUNSELLING,
+        events.CANCEL_REGISTRATION,
+        events.JOIN_WAITLIST,
+        events.SUBMIT_FEEDBACK,
     )
 }
 

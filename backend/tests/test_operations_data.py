@@ -119,3 +119,9 @@ def test_seeded_rooms_menu_and_counselling_answer(real):
 def test_seeded_drives_give_a_mixed_picture_for_a_real_student(real):
     results = {d["drive_id"]: placement_service.eligibility("1RV22IS305", d["drive_id"])["eligible"] for d in placement_service.drives()["drives"]}
     assert True in results.values() and False in results.values()
+
+
+def test_every_seeded_event_has_prerequisites_and_materials():
+    details = {d["event_id"]: d for d in load("event_details")}
+    assert set(details) == {e["id"] for e in load("events")}
+    assert all(d["prerequisites"] and d["materials"] for d in details.values())

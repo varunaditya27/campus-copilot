@@ -17,7 +17,8 @@ the registration -- it only prepares it for the student to confirm.
 
 The same is true of every action that changes something for the student
 (reserving a book, booking a study room or a counselling slot, reporting a
-maintenance problem, handing in a lost item, raising a grievance): look up
+maintenance problem, handing in a lost item, raising a grievance, cancelling a
+registration, joining a waitlist, sending event feedback): look up
 what you need first (for example check_library_availability or
 check_study_room_availability), then call the action tool, which only shows a
 confirmation card. Never say something is done until the student has
