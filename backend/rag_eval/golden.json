@@ -1,0 +1,1259 @@
+{
+  "version": 2,
+  "questions": [
+    {
+      "id": "q01",
+      "question": "What's the minimum attendance I need to be allowed to write the end-semester exam?",
+      "facts": [
+        [
+          [
+            "attendance-and-academic-standing.md",
+            "in each course for a student to remain ordinarily eligible for the end-semester examination"
+          ],
+          [
+            "common-student-questions.md",
+            "at least 75% attendance in each course to be eligible to sit for that course's end-semester examination"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "My attendance is stuck at 70% this semester. Is there any way I can still sit the exam?",
+      "facts": [
+        [
+          [
+            "attendance-and-academic-standing.md",
+            "falls between 65% and 74% at the end of the semester may apply for condonation of shortage"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "What does it cost to apply for condonation of attendance shortage?",
+      "facts": [
+        [
+          [
+            "attendance-and-academic-standing.md",
+            "a condonation fee of ₹200 per course"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "What happens to a student who is barred from exams in three subjects in the same semester?",
+      "facts": [
+        [
+          [
+            "attendance-and-academic-standing.md",
+            "is required to repeat the semester in the following academic year"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "What grade point does an A+ carry?",
+      "facts": [
+        [
+          [
+            "grading-and-backlogs.md",
+            "A+ | 9 | Excellent"
+          ],
+          [
+            "common-student-questions.md",
+            "A+ (9)"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "How do they work out SGPA and CGPA?",
+      "facts": [
+        [
+          [
+            "grading-and-backlogs.md",
+            "computed as credit-weighted averages"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "How many failed subjects can I carry at the same time before it becomes a problem?",
+      "facts": [
+        [
+          [
+            "grading-and-backlogs.md",
+            "A student may carry a maximum of four active backlogs at any time"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "How much do I pay to register for a supplementary exam?",
+      "facts": [
+        [
+          [
+            "grading-and-backlogs.md",
+            "carries a fee of ₹500 per course"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "I think my paper was marked wrong. How long do I have to request a recheck and what does it cost?",
+      "facts": [
+        [
+          [
+            "grading-and-backlogs.md",
+            "within seven calendar days of results being published"
+          ],
+          [
+            "common-student-questions.md",
+            "within seven calendar days of results being published"
+          ]
+        ],
+        [
+          [
+            "grading-and-backlogs.md",
+            "The revaluation fee is ₹300 per course"
+          ],
+          [
+            "common-student-questions.md",
+            "the ₹300 revaluation fee is refunded only if your grade improves"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "At what CGPA does the university put a student on academic probation?",
+      "facts": [
+        [
+          [
+            "grading-and-backlogs.md",
+            "CGPA falls below 5.0 at the end of any semester"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "How are marks split between internals and the final exam for a theory course?",
+      "facts": [
+        [
+          [
+            "examinations-and-evaluation.md",
+            "internal assessment carries 40% weight and the end-semester examination carries 60% weight"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "If I turn up late to an end-sem exam, how late am I allowed to enter?",
+      "facts": [
+        [
+          [
+            "examinations-and-evaluation.md",
+            "students are permitted entry up to 30 minutes after the start of the examination"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q13",
+      "question": "What do I have to bring to be let into the exam hall?",
+      "facts": [
+        [
+          [
+            "examinations-and-evaluation.md",
+            "a valid hall ticket and student ID card are both required for entry to the examination hall"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "Until when can I swap out an elective without a penalty?",
+      "facts": [
+        [
+          [
+            "academic-calendar.md",
+            "add or drop an elective course during the first two weeks of the teaching period"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "I missed the course registration window. What does late registration cost?",
+      "facts": [
+        [
+          [
+            "academic-calendar.md",
+            "late-registration fee of ₹1,000"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q16",
+      "question": "How many credits in total are needed to earn the degree?",
+      "facts": [
+        [
+          [
+            "curriculum-and-degree-structure.md",
+            "A student must accumulate a minimum of 160 credits"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q17",
+      "question": "Can I take an additional minor, and what CGPA do I need for it?",
+      "facts": [
+        [
+          [
+            "curriculum-and-degree-structure.md",
+            "CGPA of 7.0 or above at the time of application, with no active backlogs"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q18",
+      "question": "Which subjects does an ECE student study in the third year?",
+      "facts": [
+        [
+          [
+            "curriculum-and-degree-structure.md",
+            "Semesters 5–6: Embedded Systems, VLSI Design, Microcontrollers, Wireless Communication"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q19",
+      "question": "My elective has too few students. Will it still run?",
+      "facts": [
+        [
+          [
+            "curriculum-and-degree-structure.md",
+            "A department may cancel an elective with fewer than 15 registered students"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q20",
+      "question": "How do I get a bonafide certificate for my bank loan, and is it free?",
+      "facts": [
+        [
+          [
+            "administration-and-governance.md",
+            "free for the first two requests each academic year and ₹100 per copy thereafter"
+          ],
+          [
+            "common-student-questions.md",
+            "at no charge for the first two requests each academic year and ₹100 per copy thereafter"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q21",
+      "question": "I need my transcript urgently. Is there a faster option and what does it cost?",
+      "facts": [
+        [
+          [
+            "administration-and-governance.md",
+            "expedited two-day turnaround available for ₹400"
+          ],
+          [
+            "common-student-questions.md",
+            "expedited two-day turnaround is available for ₹400"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q22",
+      "question": "How many students does the Computer Science department admit each year?",
+      "facts": [
+        [
+          [
+            "admissions-and-fee-structure.md",
+            "180 each for Information Science and Engineering and Computer Science and Engineering"
+          ],
+          [
+            "departments-and-programs.md",
+            "The department admits 180 students each year and maintains one of the largest final-year project cohorts"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q23",
+      "question": "What is the yearly tuition for an undergraduate?",
+      "facts": [
+        [
+          [
+            "admissions-and-fee-structure.md",
+            "Tuition Fee | 1,25,000 | Core academic instruction"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q24",
+      "question": "When do I have to pay the semester fees by?",
+      "facts": [
+        [
+          [
+            "admissions-and-fee-structure.md",
+            "on or before July 15 for the odd semester and December 15 for the even semester"
+          ],
+          [
+            "common-student-questions.md",
+            "are due within the first two weeks of each semester"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q25",
+      "question": "Can the fee be paid in instalments rather than all at once?",
+      "facts": [
+        [
+          [
+            "admissions-and-fee-structure.md",
+            "split a semester's fee into up to three monthly instalments"
+          ],
+          [
+            "scholarships-and-financial-support.md",
+            "pay a semester's fee in two installments instead of one lump sum"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q26",
+      "question": "How much of my tuition do I get back if I withdraw in the first two weeks?",
+      "facts": [
+        [
+          [
+            "admissions-and-fee-structure.md",
+            "Withdrawal within the first two weeks of a semester carries a 50% refund of tuition"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q27",
+      "question": "What CGPA do recruiting companies usually ask for?",
+      "facts": [
+        [
+          [
+            "placement-cell.md",
+            "commonly ranges from 6.0 to 7.5"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q28",
+      "question": "How many pending backlogs can I have and still sit for campus placements?",
+      "facts": [
+        [
+          [
+            "placement-cell.md",
+            "no more than one active backlog at the time of the drive"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q29",
+      "question": "Once I accept a job offer, can I still attend other companies' drives?",
+      "facts": [
+        [
+          [
+            "placement-cell.md",
+            "once a student accepts an offer, they are moved to the placed list"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q30",
+      "question": "How much of the pre-placement training must I attend to be eligible?",
+      "facts": [
+        [
+          [
+            "placement-cell.md",
+            "a minimum of 80% attendance is required for a student to be certified eligible"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q31",
+      "question": "Is the library open on Saturdays?",
+      "facts": [
+        [
+          [
+            "library.md",
+            "Saturday | 9:00 a.m. – 5:00 p.m."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q32",
+      "question": "How many books can I take out and for how many days?",
+      "facts": [
+        [
+          [
+            "library.md",
+            "may borrow up to five books at a time for a loan period of fourteen days"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q33",
+      "question": "What fine do I pay if I return a library book late?",
+      "facts": [
+        [
+          [
+            "library.md",
+            "A fine of ₹5 per day applies to items returned after the due date, capped at ₹200 per item"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q34",
+      "question": "Is there a place to study through the night during exam week?",
+      "facts": [
+        [
+          [
+            "library.md",
+            "A separate 24-hour reading room on the second floor remains open through the final week of exams"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q35",
+      "question": "How do I reserve a group discussion room?",
+      "facts": [
+        [
+          [
+            "library.md",
+            "Discussion rooms can be booked in two-hour blocks at the circulation desk"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q36",
+      "question": "I lost my ID card. What does a replacement cost and how long will it take?",
+      "facts": [
+        [
+          [
+            "campus-services.md",
+            "a replacement is typically issued within two working days for a fee of ₹150"
+          ],
+          [
+            "common-student-questions.md",
+            "A replacement is issued within three working days for a fee of ₹150"
+          ],
+          [
+            "library.md",
+            "a replacement card can be issued for a ₹150 fee through the Student Services Desk"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q37",
+      "question": "Which hostel block is only for girls?",
+      "facts": [
+        [
+          [
+            "hostel-and-accommodation.md",
+            "Vindhya Block is reserved for women residents across all years and academic levels"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q38",
+      "question": "What time do the hostel gates close at night?",
+      "facts": [
+        [
+          [
+            "hostel-and-accommodation.md",
+            "Hostel gates are open from 6:00 a.m. to 10:30 p.m. for regular movement"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q39",
+      "question": "How much does the hostel mess cost?",
+      "facts": [
+        [
+          [
+            "hostel-and-accommodation.md",
+            "The current mess fee is approximately ₹28,000 per semester"
+          ],
+          [
+            "admissions-and-fee-structure.md",
+            "Mess Fee | 28,000"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q40",
+      "question": "Can a friend sleep over in my hostel room?",
+      "facts": [
+        [
+          [
+            "hostel-and-accommodation.md",
+            "Overnight guests require prior written approval from the Chief Warden"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q41",
+      "question": "When is lunch served at the central cafeteria?",
+      "facts": [
+        [
+          [
+            "dining-and-transport.md",
+            "Lunch | 12:00 p.m. – 3:00 p.m."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q42",
+      "question": "How frequently does the campus shuttle come?",
+      "facts": [
+        [
+          [
+            "dining-and-transport.md",
+            "running every fifteen minutes during peak hours"
+          ],
+          [
+            "transportation-routes.md",
+            "The route runs approximately every 20 minutes during peak hours"
+          ],
+          [
+            "transportation-routes.md",
+            "The route runs approximately every 15 minutes between 7:00 a.m. and 10:00 p.m. daily"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q43",
+      "question": "Is there any transport into town on the weekend?",
+      "facts": [
+        [
+          [
+            "dining-and-transport.md",
+            "a limited town shuttle on Saturdays, departing the main gate at 10:00 a.m. and 4:00 p.m."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q44",
+      "question": "I come to college on my motorbike. Do I need a parking permit?",
+      "facts": [
+        [
+          [
+            "dining-and-transport.md",
+            "must register their vehicle with campus security at the start of each academic year"
+          ],
+          [
+            "transportation-routes.md",
+            "Vehicle registration is handled by the Security Office at the start of each academic year"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q45",
+      "question": "How many people fit in the seminar hall?",
+      "facts": [
+        [
+          [
+            "facilities.md",
+            "seats 150 and is fitted with a projection system"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q46",
+      "question": "Can we swim on campus, and in which months is the pool open?",
+      "facts": [
+        [
+          [
+            "sports-and-recreation.md",
+            "operates seasonally, generally from February through November"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q47",
+      "question": "Who heads the Information Science department?",
+      "facts": [
+        [
+          [
+            "faculty-and-departments-directory.md",
+            "Head of Department: Dr. Radhika Venkatesh, Professor"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q48",
+      "question": "Where do I find the CSE department office?",
+      "facts": [
+        [
+          [
+            "faculty-and-departments-directory.md",
+            "The department office is on the second floor of the Main Academic Block, Room 226"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q49",
+      "question": "Who runs the AI and data research centre?",
+      "facts": [
+        [
+          [
+            "labs-and-research-centres.md",
+            "The centre's faculty lead is Dr. Farhan Sheikh, with Dr. Ritika Chawla serving as associate lead"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q50",
+      "question": "I'd like to try penetration testing on the campus network for practice. Is that okay?",
+      "facts": [
+        [
+          [
+            "labs-and-research-centres.md",
+            "a student must have a signed scope-of-work document from the supervising faculty member"
+          ]
+        ],
+        [
+          [
+            "digital-conduct-and-computing.md",
+            "Applying such techniques to any other university system, even as an exercise, is treated as a serious violation"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q51",
+      "question": "Am I allowed to use AI coding assistants for my coursework?",
+      "facts": [
+        [
+          [
+            "digital-conduct-and-computing.md",
+            "may be used in coursework only according to the rules set by the individual course instructor"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q52",
+      "question": "How often do I have to change my university account password?",
+      "facts": [
+        [
+          [
+            "digital-conduct-and-computing.md",
+            "changed at least once every 180 days"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q53",
+      "question": "Someone phoned asking me to read out my one-time password. Is that legitimate?",
+      "facts": [
+        [
+          [
+            "digital-conduct-and-computing.md",
+            "No university office or staff member will ever ask a student to read out a password or one-time password"
+          ],
+          [
+            "campus-services.md",
+            "Under no circumstances does IT Services staff ask a student for their account password"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q54",
+      "question": "Can I report ragging without giving my name?",
+      "facts": [
+        [
+          [
+            "anti-ragging-and-grievance-redressal.md",
+            "anonymously through a drop-box maintained at the Student Activity Centre"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q55",
+      "question": "After I file a general grievance, how soon will someone respond to me?",
+      "facts": [
+        [
+          [
+            "anti-ragging-and-grievance-redressal.md",
+            "Acknowledgment within three working days"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q56",
+      "question": "If the disciplinary committee rules against me, can I appeal?",
+      "facts": [
+        [
+          [
+            "code-of-conduct-and-discipline.md",
+            "Right to appeal to the Dean of Academics within seven working days of the decision"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q57",
+      "question": "When does the big technical festival happen?",
+      "facts": [
+        [
+          [
+            "fests-and-cultural-events.md",
+            "typically held in the even semester, generally in the last week of February or first week of March"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q58",
+      "question": "When is the cultural fest held?",
+      "facts": [
+        [
+          [
+            "fests-and-cultural-events.md",
+            "typically held in the odd semester, generally in late September or early October"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q59",
+      "question": "Do I have to pay to join the coding club?",
+      "facts": [
+        [
+          [
+            "clubs-and-communities.md",
+            "There is no membership fee for any of the four technical communities"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q60",
+      "question": "On which day does the coding club hold its weekly sessions?",
+      "facts": [
+        [
+          [
+            "clubs-and-communities.md",
+            "weekly problem-solving sessions every Wednesday evening in Computing Lab 1"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q61",
+      "question": "How can I get paired with an alumnus as a mentor?",
+      "facts": [
+        [
+          [
+            "alumni-network.md",
+            "Current students in their fifth semester or later can opt into the structured mentorship program"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q62",
+      "question": "Is there a scholarship for the top student in each department?",
+      "facts": [
+        [
+          [
+            "scholarships-and-financial-support.md",
+            "The University Merit Scholarship is awarded each semester to the top-ranked student in each department"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q63",
+      "question": "Where can I get quick money help if I have a sudden emergency like a medical bill?",
+      "facts": [
+        [
+          [
+            "scholarships-and-financial-support.md",
+            "Emergency Assistance Fund for students facing a sudden, unforeseen financial crisis"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q64",
+      "question": "How do I get an appointment with a counsellor?",
+      "facts": [
+        [
+          [
+            "student-wellbeing.md",
+            "confidential one-on-one sessions with qualified counsellors on a walk-in basis during weekday mornings"
+          ],
+          [
+            "health-and-medical-centre.md",
+            "Students can self-refer to the Counseling and Wellness Office directly"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q65",
+      "question": "How much does the student health insurance cover for a hospital stay?",
+      "facts": [
+        [
+          [
+            "health-and-medical-centre.md",
+            "covers hospitalization up to ₹2,00,000 per student per academic year"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q66",
+      "question": "How big can a capstone team be, and when must we register the project?",
+      "facts": [
+        [
+          [
+            "research-and-projects.md",
+            "undertaken individually or in teams of up to four"
+          ]
+        ],
+        [
+          [
+            "research-and-projects.md",
+            "by the second week of the seventh semester"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q67",
+      "question": "What CGPA is needed to apply for a semester exchange abroad?",
+      "facts": [
+        [
+          [
+            "international-and-exchange-programs.md",
+            "a minimum CGPA, generally 7.0 or higher"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q68",
+      "question": "A light is broken in my classroom. Who do I tell?",
+      "facts": [
+        [
+          [
+            "campus-services.md",
+            "contact Facilities and Estate Management directly through the maintenance request line posted in every academic building"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q69",
+      "question": "I'm a first-year in the hostel and want to go home for the weekend. What do I need?",
+      "facts": [
+        [
+          [
+            "hostel-and-accommodation.md",
+            "first-year residents additionally require parental or guardian acknowledgment on file for any overnight leave"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q70",
+      "question": "Who should I approach if my course instructor can't sort out a problem for me?",
+      "facts": [
+        [
+          [
+            "administration-and-governance.md",
+            "should first approach the Course Coordinator, then the HOD if the matter remains unresolved"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q71",
+      "question": "Does the counselling centre charge students?",
+      "facts": [
+        [
+          [
+            "student-wellbeing.md",
+            "Sessions are free of charge for enrolled students"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q72",
+      "question": "What time is dinner in the hostel mess?",
+      "facts": [
+        [
+          [
+            "hostel-and-accommodation.md",
+            "dinner from 7:30 p.m. to 9:30 p.m."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q73",
+      "question": "How far ahead do I need to request the seminar hall for a workshop with outside speakers?",
+      "facts": [
+        [
+          [
+            "facilities.md",
+            "fifteen working days for an event expecting outside guests"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q74",
+      "question": "Does the placement cell help with resume reviews?",
+      "facts": [
+        [
+          [
+            "career-development.md",
+            "reviews student resumes on a rolling basis through drop-in sessions held twice a month"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q75",
+      "question": "Where do remedial classes for tough first-year subjects take place?",
+      "facts": [
+        [
+          [
+            "academic-support.md",
+            "held twice a week in the evenings in the Main Academic Block"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q76",
+      "question": "How many advisees does a faculty academic advisor usually have?",
+      "facts": [
+        [
+          [
+            "academic-support.md",
+            "typically responsible for a batch of 15 to 20 advisees within the department"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q77",
+      "question": "What is the ICC and what kind of complaints does it handle?",
+      "facts": [
+        [
+          [
+            "anti-ragging-and-grievance-redressal.md",
+            "handles complaints of sexual harassment involving students, faculty, or staff"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q78",
+      "question": "What is the annual alumni meet and when does it happen?",
+      "facts": [
+        [
+          [
+            "alumni-network.md",
+            "the annual Alumni Meet held on the first Saturday of December"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "q79",
+      "question": "Who is Dr. Geeta Nair?",
+      "facts": [
+        [
+          [
+            "faculty-and-departments-directory.md",
+            "Dr. Geeta Nair (Professor, VLSI design)"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q80",
+      "question": "What is Room 305?",
+      "facts": [
+        [
+          [
+            "faculty-and-departments-directory.md",
+            "The department office is on the third floor of the Main Academic Block, Room 305"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q81",
+      "question": "Where is Room 318?",
+      "facts": [
+        [
+          [
+            "faculty-and-departments-directory.md",
+            "The department office is on the third floor of the Main Academic Block, Room 318"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q82",
+      "question": "Tell me about Ms. Kavya Reddy.",
+      "facts": [
+        [
+          [
+            "faculty-and-departments-directory.md",
+            "Ms. Kavya Reddy (Assistant Professor, digital signal processing, Vice-Chair for Academic Affairs)"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q83",
+      "question": "How many students does Ashoka Block hold?",
+      "facts": [
+        [
+          [
+            "hostel-and-accommodation.md",
+            "with a total capacity of 420 students"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q84",
+      "question": "Which databases does the library give access to, like IEEE Xplore?",
+      "facts": [
+        [
+          [
+            "library.md",
+            "institutional access to IEEE Xplore, ACM Digital Library, ScienceDirect, and SpringerLink"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q85",
+      "question": "What does Route C cover?",
+      "facts": [
+        [
+          [
+            "transportation-routes.md",
+            "Route C connects academic areas to the Sports Complex"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q86",
+      "question": "Tell me about Route B.",
+      "facts": [
+        [
+          [
+            "transportation-routes.md",
+            "Route B is a short internal loop primarily serving hostel residents"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q87",
+      "question": "What is the Director's List Award?",
+      "facts": [
+        [
+          [
+            "scholarships-and-financial-support.md",
+            "The Director's List Award recognizes the top three percent of students"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q88",
+      "question": "What is the Code in 30 Days bootcamp?",
+      "facts": [
+        [
+          [
+            "clubs-and-communities.md",
+            "bootcamp run at the start of every odd semester that has onboarded over 200 first-year students"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q89",
+      "question": "Who leads the Power and Renewable Energy Lab?",
+      "facts": [
+        [
+          [
+            "labs-and-research-centres.md",
+            "The lab's faculty lead is Dr. Rekha Kulkarni"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q90",
+      "question": "What is the Student Mentorship Program?",
+      "facts": [
+        [
+          [
+            "academic-support.md",
+            "the Student Mentorship Program — which pairs senior students with first- and second-year students in the same department"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q91",
+      "question": "Who is Dr. Narayanan Subramanian?",
+      "facts": [
+        [
+          [
+            "faculty-and-departments-directory.md",
+            "Head of Department: Dr. Narayanan Subramanian, Professor, specializing in thermal engineering"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    },
+    {
+      "id": "q92",
+      "question": "Can I pay my fees by NEFT?",
+      "facts": [
+        [
+          [
+            "admissions-and-fee-structure.md",
+            "by NEFT transfer using the account details published each semester"
+          ]
+        ]
+      ],
+      "tags": [
+        "lookup"
+      ]
+    }
+  ],
+  "off_topic": [
+    "What is the weather forecast for tomorrow?",
+    "Can you recommend a good pizza restaurant near the airport?",
+    "Who won the cricket world cup in 2011?",
+    "How do I bake a chocolate cake?",
+    "What is the capital of Australia?",
+    "Explain how photosynthesis works in plants.",
+    "What's the best smartphone to buy this year?",
+    "How do I change a flat tyre on a car?",
+    "Write me a poem about the ocean.",
+    "What are the symptoms of the common cold?"
+  ],
+  "near_miss": [
+    "What is on the cafeteria menu today?",
+    "What is the phone number of the library?",
+    "Who is the current Director of the university?",
+    "What were the admission cutoff ranks this year?",
+    "When is my next exam?",
+    "What is my attendance percentage right now?",
+    "What is the campus Wi-Fi password?",
+    "How many students scored above 9 CGPA last year?"
+  ]
+}

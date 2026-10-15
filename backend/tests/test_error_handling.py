@@ -6,7 +6,7 @@ from pydantic import ValidationError
 
 from app.agent import agent
 from app.main import app
-from app.rag import retriever
+from app.rag.store import KnowledgeBaseNotFound
 from app.services import event_service
 from helpers import ASHA_PROFILE, sign_up
 from app.tools.attendance import calculate_attendance
@@ -99,7 +99,7 @@ def test_connection_failure_maps_to_502(monkeypatch, signed_in):
 
 def test_missing_knowledge_base_still_answers(monkeypatch):
     def missing(message):
-        raise retriever.KnowledgeBaseNotFound("no index")
+        raise KnowledgeBaseNotFound("no index")
 
     fake = FakeGroq(_completion(content="Answer without docs."))
     seen = {}
@@ -120,21 +120,11 @@ def test_missing_knowledge_base_still_answers(monkeypatch):
     assert any("knowledge base" in m["content"].lower() for m in seen["messages"])
 
 
-def test_retriever_raises_specific_error_when_index_missing(monkeypatch):
-    class FakeClient:
-        def __init__(self, path):
-            pass
+def test_opening_a_missing_knowledge_base_raises_the_specific_error(chroma_client):
+    from app.rag.store import ChromaStore
 
-        def get_collection(self, **kwargs):
-            raise ValueError("Collection does not exist")
-
-    retriever._get_collection.cache_clear()
-    monkeypatch.setattr(retriever.chromadb, "PersistentClient", FakeClient)
-    monkeypatch.setattr(retriever, "get_embedding_function", lambda: None)
-
-    with pytest.raises(retriever.KnowledgeBaseNotFound):
-        retriever.retrieve("anything")
-    retriever._get_collection.cache_clear()
+    with pytest.raises(KnowledgeBaseNotFound):
+        ChromaStore.open(chroma_client)
 
 
 # 1.4: input validation

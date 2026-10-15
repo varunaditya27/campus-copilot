@@ -104,40 +104,40 @@
 
 ### 3.1 Better Chunking
 
-- [ ] Replace header-only splitting in `ingest.py` with a recursive character splitter (512-token chunks, 64-token overlap)
-- [ ] Preserve parent document metadata on every chunk (document name, section, page range if applicable)
-- [ ] Deduplicate identical chunks before inserting into Chroma
-- [ ] Support incremental ingestion: only re-embed files that have changed (track file hashes)
-- [ ] Add ingestion logging: report total chunks, skipped files, time taken
+- [x] Replace header-only splitting in `ingest.py` with a recursive character splitter (512-token chunks, 64-token overlap) (done as a heading-aware splitter with 256-token chunks and 32 overlap: the embedding model cuts off anything over 256 tokens, and 256 measured at least as well as the alternatives)
+- [x] Preserve parent document metadata on every chunk (document name, section, page range if applicable)
+- [x] Deduplicate identical chunks before inserting into Chroma
+- [x] Support incremental ingestion: only re-embed files that have changed (track file hashes)
+- [x] Add ingestion logging: report total chunks, skipped files, time taken
 
 ### 3.2 Hybrid Retrieval (BM25 + Semantic)
 
-- [ ] Add `rank-bm25` to `requirements.txt`
-- [ ] Build a BM25 index over the knowledge corpus at ingest time, persist it alongside Chroma
-- [ ] At query time, run both BM25 and Chroma in parallel
-- [ ] Fuse results using Reciprocal Rank Fusion (RRF)
-- [ ] Expose `k` and `rrf_k` as config parameters
+- [x] Add `rank-bm25` to `requirements.txt` (`bm25s` instead: `rank-bm25` has had no release since 2022)
+- [x] Build a BM25 index over the knowledge corpus at ingest time, persist it alongside Chroma (built in memory from the store instead, in milliseconds, so it cannot disagree with the store)
+- [x] At query time, run both BM25 and Chroma in parallel (run one after the other: the keyword search takes about a millisecond)
+- [x] Fuse results using Reciprocal Rank Fusion (RRF)
+- [x] Expose `k` and `rrf_k` as config parameters
 
 ### 3.3 Cross-Encoder Reranking
 
-- [ ] Add `sentence-transformers` to `requirements.txt`
-- [ ] Load `cross-encoder/ms-marco-MiniLM-L-6-v2` as a local reranker model
-- [ ] After hybrid retrieval returns top-N candidates, rerank them with the cross-encoder
-- [ ] Return top-k reranked results to the LLM context (k=3 default, configurable)
-- [ ] Cache the reranker model in memory (only load once at startup)
+- [x] Add `sentence-transformers` to `requirements.txt` (`fastembed` instead: same model on ONNX Runtime, without PyTorch)
+- [x] Load `cross-encoder/ms-marco-MiniLM-L-6-v2` as a local reranker model
+- [x] After hybrid retrieval returns top-N candidates, rerank them with the cross-encoder
+- [x] Return top-k reranked results to the LLM context (k=3 default, configurable)
+- [x] Cache the reranker model in memory (only load once at startup)
 
 ### 3.4 Vector Store Upgrade
 
 - [ ] Migrate from in-process `chromadb.PersistentClient` to ChromaDB in HTTP server mode
 - [ ] Add `qdrant` as an alternative backend behind a `VECTOR_STORE=chroma|qdrant` env switch
 - [ ] Run the vector store as a separate Docker Compose service
-- [ ] Fix the `lru_cache` on `_get_collection()` — it breaks under multiple Uvicorn workers; replace with an app-lifespan singleton
+- [x] Fix the `lru_cache` on `_get_collection()` — it breaks under multiple Uvicorn workers; replace with an app-lifespan singleton (replaced by a lock-guarded shared retriever that the app warms up at startup)
 
 ### 3.5 RAG Evaluation
 
-- [ ] Build a golden dataset: 50+ question/ground-truth-answer pairs from the knowledge corpus
-- [ ] Write a `scripts/eval_rag.py` that runs each question through the retriever and scores Recall@3, MRR, and Hit Rate
-- [ ] Run this eval before and after any retriever change and log the delta
+- [x] Build a golden dataset: 50+ question/ground-truth-answer pairs from the knowledge corpus (92, plus off-topic and near-miss queries)
+- [x] Write a `scripts/eval_rag.py` that runs each question through the retriever and scores Recall@3, MRR, and Hit Rate (`python -m app.rag.evaluate`)
+- [x] Run this eval before and after any retriever change and log the delta
 - [ ] Add a `GET /admin/rag/eval` endpoint that triggers an eval run and returns a JSON report
 
 ### 3.6 Document Ingestion API
@@ -394,7 +394,7 @@
 - [x] Write unit tests for the RAG retriever (mock Chroma, test distance filtering)
 - [ ] Write integration tests for all FastAPI endpoints using `httpx.AsyncClient`
 - [x] Write end-to-end agent tests: send a message → assert the right tools are called → assert response structure
-- [ ] Write RAG eval tests that run the golden dataset and assert minimum Recall@3 threshold
+- [x] Write RAG eval tests that run the golden dataset and assert minimum Recall@3 threshold (`pytest -m slow`)
 - [ ] Add `vitest` + `testing-library/react` for Next.js component tests
 - [ ] Aim for >80% backend coverage; track with `pytest-cov`
 

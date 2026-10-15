@@ -75,8 +75,14 @@ backend/
 │   │   └── tool_registry.py        # Groq tool schemas + dispatch table
 │   │
 │   ├── rag/
-│   │   ├── ingest.py               # builds the Chroma collection from knowledge/
-│   │   ├── retriever.py            # query-time retrieval + relevance cutoff
+│   │   ├── chunking.py             # heading-aware chunks of at most 256 tokens
+│   │   ├── ingest.py               # incremental build of the store from knowledge/
+│   │   ├── store.py                # the vector store (Chroma) behind one small interface
+│   │   ├── lexical.py              # BM25 keyword search
+│   │   ├── fusion.py               # Reciprocal Rank Fusion
+│   │   ├── rerank.py               # cross-encoder reranker
+│   │   ├── retriever.py            # the search pipeline and relevance cutoff
+│   │   ├── evaluate.py             # scores retrieval against rag_eval/golden.json
 │   │   └── embeddings.py           # embedding function (local, no API key)
 │   │
 │   ├── db/
@@ -110,6 +116,7 @@ backend/
 │       └── groq_client.py           # cached Groq client
 │
 ├── cli.py                          # admin commands: python -m app.cli create-user
+├── rag_eval/                       # golden questions and the log of evaluation runs
 ├── migrations/                     # Alembic migrations (the schema's history)
 ├── tests/                          # pytest suite (fake Groq client, temporary database)
 ├── chroma/                         # persisted vector store (gitignored, rebuilt by ingest.py)
@@ -125,29 +132,48 @@ The `api/` → `agent/`+`services/` → `tools/` split is deliberate: HTTP route
 
 ## 🔎 RAG Pipeline
 
-The `knowledge/` corpus (32 markdown files, simulating a complete virtual engineering university -- see [`knowledge/README.md`](../knowledge/README.md) for the full breakdown) is chunked by `##` heading rather than by raw character count, so every retrieved chunk carries a real section title (`library.md · Hours of Operation`) instead of an arbitrary offset -- the frontend's source cards display that directly.
+The `knowledge/` corpus (32 markdown files, simulating a complete virtual engineering university -- see [`knowledge/README.md`](../knowledge/README.md) for the full breakdown) is chunked along its headings, so every retrieved chunk carries a real section title (`library.md · Hours of Operation`) -- the frontend's source cards display that directly.
 
 ```text
 knowledge/**/*.md
-      ↓  split on "## " headers
-(document, section, body) chunks
+      ↓  split on ## and ### headings, then into chunks of at most 256 tokens
+chunks that each start with "Document - Section", so they make sense alone
       ↓  embed locally (all-MiniLM-L6-v2, no API key)
 Chroma collection "campus_knowledge"
-      ↓  query at chat time
-top-k chunks, filtered by distance cutoff
-      ↓
+
+at question time:
+      ↓  search by meaning (top 30)        search by words, BM25 (top 30)
+      ↓  merged with Reciprocal Rank Fusion
+      ↓  a cross-encoder reads the question with each of the best 10 and re-orders them
+      ↓  top 3, dropping any the reranker scores below RAG_RERANK_MIN_SCORE
 injected as context for Groq + returned as `sources`
 ```
 
-The distance cutoff (`MAX_DISTANCE` in `core/config.py`, default `1.5`, overridable with the `RAG_MAX_DISTANCE` env var) exists because Chroma always returns its top-k nearest chunks regardless of whether any of them are actually relevant. Without it, an off-topic question would still get citations attached -- which defeats the point of showing sources at all. The threshold was calibrated empirically: on-topic queries against this corpus land at ~0.7-1.3, off-topic queries at ~1.8+.
+**Why each stage exists.** Every choice was measured against a set of 92 questions with known answers (`rag_eval/golden.json`; `python -m app.rag.evaluate`). Semantic search copes with rephrased questions but is weak on exact names and numbers ("Where is Room 318?"); keyword search is the reverse; merging them helps, but it is the cross-encoder, which reads question and passage together, that puts the right passage on top. Scores on that set (`rag_eval/history.jsonl` keeps every run):
 
-Rebuild the index after editing `knowledge/`:
+| Retrieval | Right passage in top 3 | Right passage first | Exact-name questions in top 3 |
+| --- | --- | --- | --- |
+| Semantic search only, `##` chunks (the starting point) | 89.1% | 65.2% | 71.4% |
+| + keyword search and reranking, 256-token chunks | **97.8%** | **82.6%** | **100%** |
+
+The off-topic test questions (weather, recipes) also went from 90% to 100% correctly receiving no passages. Three findings that shaped the design:
+
+- **Chunks are at most 256 tokens** because that is all the embedding model reads; it silently cuts off anything longer (Chroma's code and the model card both say so), so a longer chunk would be partly invisible to semantic search. On this corpus 256 scored at least as well as 128, 192 and the 512 initially suggested.
+- **Each chunk is prefixed with its document and section**, which improved the right passage being first from 66.7% to 75.6% for semantic search alone.
+- **The relevance threshold comes from the reranker's scores**: its best passage for every question in the set scored at least -7.1 on topic and at most -9.9 off topic, so `RAG_RERANK_MIN_SCORE` is -8.5. A threshold cannot separate "about the library" from "answers this question about the library", so campus-related questions the documents do not cover (a cafeteria menu, a phone number) still receive some passages; the prompt tells the model to say when the material does not contain the answer.
+
+Operating it:
 
 ```bash
-python -m app.rag.ingest
+python -m app.rag.ingest          # adds and updates only documents whose files changed
+python -m app.rag.ingest --full   # wipes the store and rebuilds everything
+python -m app.rag.evaluate        # scores retrieval; add --log "what changed" to record it
+pytest -m slow                    # the same scores as a test, with the real models (about a minute)
 ```
 
-Safe to re-run any time -- it wipes and rebuilds the collection from scratch.
+Ingestion records a hash of each file and the chunking settings; a run skips documents that match, re-embeds ones that do not, and removes chunks of deleted files. Changing `CHUNK_TOKENS`, `CHUNK_OVERLAP` or the embedding model is detected, so stale chunks are never left behind. Identical chunks are stored once.
+
+Things to know: the first start downloads the reranker (about 80 MB, ONNX, no PyTorch) and the models are loaded at startup, so the first question is not slow; a question then takes about 0.3 seconds to retrieve for. The keyword index is built in memory from the store (about 260 chunks, milliseconds), and refreshed within 5 seconds of the store changing, so it can never disagree with it. If the knowledge base has not been built, the server starts anyway and answers without campus documents, saying so.
 
 ---
 
@@ -242,8 +268,9 @@ cp .env.example .env           # add your GROQ_API_KEY
 alembic upgrade head           # creates the SQLite database (backend/campus.db)
 python -m app.db.seed          # loads data/*.json into it (safe to re-run)
 
-python -m app.rag.ingest       # builds the Chroma collection (one-time; downloads
-                                # a small local embedding model on first run)
+python -m app.rag.ingest       # builds the knowledge base (downloads a small local
+                                # embedding model on first run; the first server start
+                                # downloads the reranker, about 80 MB)
 
 uvicorn app.main:app --reload --port 8000
 ```
@@ -264,7 +291,10 @@ curl http://localhost:8000/health
 | `DATABASE_URL` | `sqlite:///<repo>/backend/campus.db` | SQLAlchemy URL. Use `postgresql+psycopg://user:password@host:5432/dbname` for PostgreSQL |
 | `JWT_SECRET` | *(random per start)* | Signs access tokens; at least 32 characters. Set it in production, otherwise every restart signs everyone out |
 | `COOKIE_SECURE` | `false` | Send the session cookie over HTTPS only; set to `true` in production |
-| `RAG_MAX_DISTANCE` | `1.5` | Retrieval distance cutoff; chunks farther than this are dropped. Re-calibrate if you change the embedding model or the corpus (lower is stricter) |
+| `RAG_TOP_K` | `3` | How many passages the agent receives per question |
+| `RAG_RRF_K` | `60` | Reciprocal Rank Fusion constant (the value from the original paper) |
+| `RAG_RERANK_MIN_SCORE` | `-8.5` | Passages the reranker scores below this are not given to the model. Re-check with `python -m app.rag.evaluate` if you change the corpus or the reranker (higher is stricter) |
+| `CHROMA_DIR` | `backend/chroma` | Where the vector store is kept |
 
 ### Database
 

@@ -1,4 +1,5 @@
 import os
+import uuid
 
 os.environ.setdefault("JWT_SECRET", "test-only-secret-" + "x" * 32)
 
@@ -8,7 +9,7 @@ from sqlalchemy.orm import sessionmaker
 from app.agent import agent
 from app.db import session as db_session
 from app.db.models import Base, Event, Student
-from fakes import FakeGroq
+from fakes import FakeEmbedding, FakeGroq
 
 
 def _event(event_id, name, category, capacity, registered, tags):
@@ -76,3 +77,28 @@ def use_fakes(monkeypatch):
         return client
 
     return install
+
+
+@pytest.fixture
+def chroma_client(monkeypatch):
+    """An in-memory Chroma with the fake embedding and a collection name of its own
+    (Chroma's in-memory client is shared by the whole process)."""
+    import chromadb
+
+    from app.rag import store as store_module
+
+    monkeypatch.setattr(store_module, "get_embedding_function", lambda: FakeEmbedding())
+    monkeypatch.setattr(store_module, "CHROMA_COLLECTION", f"test_{uuid.uuid4().hex}")
+    client = chromadb.EphemeralClient()
+    yield client
+    try:
+        client.delete_collection(name=store_module.CHROMA_COLLECTION)
+    except Exception:
+        pass
+
+
+@pytest.fixture
+def store(chroma_client):
+    from app.rag.store import ChromaStore
+
+    return ChromaStore.create(chroma_client)

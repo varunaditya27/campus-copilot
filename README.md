@@ -164,7 +164,7 @@ flowchart TB
 | Frontend | **Next.js** | Chat, source cards, tool activity, confirmation UI |
 | Backend | **FastAPI** | API endpoints, orchestration, tool execution |
 | LLM | **Groq** | Natural-language reasoning and tool calling |
-| RAG | **Chroma** | Semantic retrieval over campus knowledge |
+| RAG | **Chroma + BM25 + cross-encoder reranking** | Hybrid (semantic and keyword) retrieval over campus knowledge, re-ranked, with a relevance cutoff |
 | Structured data | **SQLAlchemy + SQLite / PostgreSQL** | Events, students, registrations, capacities (schema managed with Alembic) |
 | Language | **TypeScript + Python** | Frontend and backend implementation |
 
@@ -184,9 +184,10 @@ flowchart LR
     EMBED --> STORE[(Chroma)]
 
     Q[❓ User Question] --> QE[Query Embedding]
-    QE --> SEARCH[Semantic Search]
+    QE --> SEARCH[Semantic + Keyword Search]
     STORE --> SEARCH
-    SEARCH --> CTX[Relevant Context]
+    SEARCH --> RERANK[Rerank]
+    RERANK --> CTX[Relevant Context]
     CTX --> LLM[Groq LLM]
     Q --> LLM
     LLM --> ANS[✅ Grounded Answer]

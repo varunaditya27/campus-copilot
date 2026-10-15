@@ -1,6 +1,10 @@
-"""Fake Groq clients that emit streamed chunks the way the real SDK does."""
+"""Fakes: Groq clients that stream chunks like the real SDK, and a model-free embedding."""
+import hashlib
 import json
+import math
 from types import SimpleNamespace
+
+from chromadb import EmbeddingFunction
 
 
 def tool_call(call_id, name, args):
@@ -91,3 +95,32 @@ class FailingStreamGroq:
             raise self._exc
 
         return stream()
+
+
+class FakeEmbedding(EmbeddingFunction):
+    """Bag-of-hashed-words vectors: texts that share words end up close together.
+    Deterministic and instant, so tests can use a real Chroma without the model."""
+
+    def __init__(self):
+        pass
+
+    def __call__(self, input):
+        vectors = []
+        for text in input:
+            vector = [0.0] * 64
+            for word in text.lower().split():
+                vector[int(hashlib.md5(word.encode()).hexdigest(), 16) % 64] += 1.0
+            norm = math.sqrt(sum(x * x for x in vector)) or 1.0
+            vectors.append([x / norm for x in vector])
+        return vectors
+
+    @staticmethod
+    def name():
+        return "fake-embedding"
+
+    def get_config(self):
+        return {}
+
+    @staticmethod
+    def build_from_config(config):
+        return FakeEmbedding()
