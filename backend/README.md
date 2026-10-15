@@ -73,6 +73,8 @@ backend/
 │   │
 │   ├── agent/
 │   │   ├── agent.py                # the agent as a LangGraph graph; run_agent_stream() streams its events
+│   │   ├── domains.py              # which tools each specialist sees
+│   │   ├── supervisor.py           # the router, parallel specialists and the merge (MULTI_AGENT)
 │   │   ├── prompts.py              # system prompt + RAG context builder
 │   │   └── tool_registry.py        # Groq tool schemas + dispatch table
 │   │
@@ -256,6 +258,7 @@ retrieve → (plan) → reason ──→ respond                       the model
 - **Decisions** are three small named functions, `is_confirmation_needed`, `should_call_tools` and `is_done`, combined by the routing functions, so the rules are easy to read and test.
 - **Bounded:** the model gets at most `MAX_TOOL_ROUNDS = 4` turns, counted in the state. Behind that, `RECURSION_LIMIT` makes LangGraph itself stop a run that takes too many steps, so a routing mistake cannot loop forever. (LangGraph has no cycle detection; this limit is its equivalent.)
 - **Parallel tools:** when the model asks for several tools in one turn they run at the same time, in threads, because they are independent. Events are still sent from the node's own thread, results keep the order of the calls, and one failing tool does not stop the others.
+- **Multiple agents (off by default):** with `MULTI_AGENT=true` a LangGraph *supervisor* (`agent/supervisor.py`) puts a router in front of the agent. The router asks the model which of five domains the message belongs to (`academic`, `events`, `library`, `grievance`, `general`; the tools of each are listed in `agent/domains.py`) and the supervisor sends the message to that specialist: the same agent graph, but offered only its domain's tools and told its focus. A specialist that asks for a tool outside its domain gets an error instead of a result, and cannot propose an action outside it. If the message spans domains ("find me an event and check my attendance") the router names up to three, the specialists run **in parallel** (one LangGraph `Send` each), and a final model call merges their answers into one reply, keeping every confirmation card; if that merge call fails the specialists' own answers are joined instead. A lone specialist streams exactly like the single agent; with several, only tool activity shows live (under ids prefixed with the domain) and the merged answer streams at the end. If the router's reply cannot be read, the single agent with every tool handles the message. It costs one extra model call per question (two for a compound one), and it has not been compared with the single agent on real traffic, so it is off until an evaluation shows it helps.
 - **Planning (off by default):** with `AGENT_PLANNING=true` a `plan` node first asks the model to split a multi-step request into steps and shows the plan to the model. It adds a model call to every question and has not been shown to help, so it stays off until there is an evaluation of tool use to prove it.
 
 
@@ -374,6 +377,7 @@ curl http://localhost:8000/health
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated origins allowed to call this API |
 | `DATABASE_URL` | `sqlite:///<repo>/backend/campus.db` | SQLAlchemy URL. Use `postgresql+psycopg://user:password@host:5432/dbname` for PostgreSQL |
 | `JWT_SECRET` | *(random per start)* | Signs access tokens; at least 32 characters. Set it in production, otherwise every restart signs everyone out |
+| `MULTI_AGENT` | `false` | Route each question to a specialist agent that sees only its own tools (adds a model call per question; unproven, so off) |
 | `AGENT_PLANNING` | `false` | Plan multi-step requests before answering (adds a model call per question; unproven, so off) |
 | `COOKIE_SECURE` | `false` | Send the session cookie over HTTPS only; set to `true` in production |
 | `RAG_TOP_K` | `3` | How many passages the agent receives per question |

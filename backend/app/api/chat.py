@@ -6,7 +6,7 @@ from uuid import UUID
 from fastapi import APIRouter, Cookie, Response
 from fastapi.responses import StreamingResponse
 
-from app.agent.agent import run_agent, run_agent_stream
+from app.agent.supervisor import run_agent, run_agent_stream
 from app.api.deps import SignedInStudent
 from app.core.config import COOKIE_SECURE
 from app.core.errors import AppError

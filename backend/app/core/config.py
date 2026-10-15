@@ -36,6 +36,13 @@ QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
 # yet, so it is off until there is an evaluation to prove it. Set to "true" to try it.
 AGENT_PLANNING = os.getenv("AGENT_PLANNING", "false").lower() == "true"
 
+# Whether a router sends each question to a specialist agent (academic, events,
+# library, grievance or general) that sees only its own tools, running several in
+# parallel for a question that spans domains. It costs an extra model call per
+# question and has not been compared with the single agent on real traffic, so
+# it is off until there is an evaluation to prove it. Set to "true" to try it.
+MULTI_AGENT = os.getenv("MULTI_AGENT", "false").lower() == "true"
+
 # How many passages the agent gets for a question.
 RAG_TOP_K = int(os.getenv("RAG_TOP_K", "3"))
 

@@ -10,6 +10,7 @@ from langgraph.config import get_stream_writer
 from langgraph.graph import END, START, StateGraph
 from pydantic import ValidationError
 
+from app.agent.domains import SPECIALIST_PROMPTS, allowed_tools, schemas_for
 from app.agent.prompts import (
     KNOWLEDGE_UNAVAILABLE_MESSAGE,
     PLANNER_PROMPT,
@@ -136,7 +137,11 @@ def _describe_validation_error(exc: ValidationError) -> str:
     )
 
 
-def _run_tool(name: str, raw_arguments: str, student: CurrentStudent) -> tuple[dict | list, str]:
+def _run_tool(
+    name: str, raw_arguments: str, student: CurrentStudent, allowed: frozenset[str] | None = None
+) -> tuple[dict | list, str]:
+    if allowed is not None and name not in allowed:
+        return {"error": f"The tool {name} is not available to you here."}, "error"
     args = _parse_arguments(raw_arguments)
     if args is None:
         return {"error": "Tool arguments were not a valid JSON object"}, "error"
@@ -239,6 +244,7 @@ class AgentState:
     pending_confirmation: Confirmation | None = None
     reply: str | None = None
     loop_count: int = 0
+    domain: str | None = None  # a specialist's domain; None for the single agent with every tool
 
 
 MAX_PARALLEL_TOOLS = 8
@@ -274,6 +280,8 @@ def retrieve_node(state: AgentState) -> dict:
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "system", "content": build_student_message(state.student)},
     ]
+    if state.domain:
+        messages.insert(1, {"role": "system", "content": SPECIALIST_PROMPTS[state.domain]})
     if state.entities:
         messages.append({"role": "system", "content": build_entities_message(state.entities)})
     messages += [{"role": h.role, "content": h.content} for h in state.history]
@@ -312,7 +320,7 @@ def plan_node(state: AgentState) -> dict:
 def reason_node(state: AgentState) -> dict:
     """One model call: it answers, or asks for tools."""
     emit = get_stream_writer()
-    text, tool_calls = _stream_completion(get_groq_client(), state.messages, emit)
+    text, tool_calls = _stream_completion(get_groq_client(), state.messages, emit, schemas_for(state.domain))
     if tool_calls and text:
         emit(_event("reset"))  # the text so far was only a preamble to the tool calls
     update: dict = {"tool_calls": tool_calls, "draft": text, "loop_count": state.loop_count + 1}
@@ -325,7 +333,8 @@ def request_confirmation_node(state: AgentState) -> dict:
     """Turn the model's request for an action (such as registering) into a
     confirmation for the student to approve. Nothing is done here."""
     emit = get_stream_writer()
-    call = next(c for c in state.tool_calls if c["name"] in ACTIONS)
+    allowed = allowed_tools(state.domain)
+    call = next(c for c in state.tool_calls if c["name"] in ACTIONS and (allowed is None or c["name"] in allowed))
     try:
         confirmation = action_service.propose(state.student, call["name"], _parse_arguments(call["arguments"]) or {})
         reply = f"I've prepared this for you: {confirmation.title}. Please confirm below to complete it."
@@ -336,7 +345,7 @@ def request_confirmation_node(state: AgentState) -> dict:
 
 
 def _run_tools(
-    calls: list[dict], emit: Callable[[dict], None], student: CurrentStudent
+    calls: list[dict], emit: Callable[[dict], None], student: CurrentStudent, allowed: frozenset[str] | None = None
 ) -> tuple[list[ToolActivityEntry], list[tuple[dict | list, str]]]:
     """Run the tool calls, side by side when there are several. Events are sent from
     this thread only (the stream writer belongs to it); results keep the order of the calls."""
@@ -352,10 +361,10 @@ def _run_tools(
         emit(_event("tool_done", **entries[index].model_dump()))
 
     if len(calls) == 1:
-        finish(0, _run_tool(calls[0]["name"], calls[0]["arguments"], student))
+        finish(0, _run_tool(calls[0]["name"], calls[0]["arguments"], student, allowed))
     else:
         with ThreadPoolExecutor(max_workers=min(len(calls), MAX_PARALLEL_TOOLS)) as pool:
-            futures = {pool.submit(_run_tool, c["name"], c["arguments"], student): i for i, c in enumerate(calls)}
+            futures = {pool.submit(_run_tool, c["name"], c["arguments"], student, allowed): i for i, c in enumerate(calls)}
             for future in as_completed(futures):
                 finish(futures[future], future.result())
     return entries, outcomes
@@ -364,7 +373,7 @@ def _run_tools(
 def execute_tools_node(state: AgentState) -> dict:
     emit = get_stream_writer()
     calls = state.tool_calls
-    entries, outcomes = _run_tools(calls, emit, state.student)
+    entries, outcomes = _run_tools(calls, emit, state.student, allowed_tools(state.domain))
 
     messages = [
         {
@@ -407,7 +416,8 @@ def _sources(chunks: list[dict]) -> list[Source]:
 
 def is_confirmation_needed(state: AgentState) -> bool:
     """The model proposed an action, which only the student can approve."""
-    return any(call["name"] in ACTIONS for call in state.tool_calls)
+    allowed = allowed_tools(state.domain)
+    return any(call["name"] in ACTIONS and (allowed is None or call["name"] in allowed) for call in state.tool_calls)
 
 
 def should_call_tools(state: AgentState) -> bool:

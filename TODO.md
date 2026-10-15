@@ -220,13 +220,13 @@
 
 ### 4.8 Multi-Agent Architecture
 
-- [ ] Define a `RouterAgent` that classifies incoming user intent into a domain: `academic | events | library | grievance | general`
-- [ ] Create an `AcademicAgent` specialised for timetables, attendance, CGPA, and course queries
-- [ ] Create an `EventsAgent` specialised for event discovery, registration, and waitlists
-- [ ] Create a `LibraryAgent` specialised for book search, reservations, and due dates
-- [ ] Create a `GrievanceAgent` specialised for ticket creation and status tracking
-- [ ] Implement a LangGraph supervisor pattern: `RouterAgent` dispatches to the right specialist and collects the response
-- [ ] Allow the router to dispatch to multiple agents in parallel for compound queries ("find me an event AND check my attendance")
+- [x] Define a `RouterAgent` that classifies incoming user intent into a domain: `academic | events | library | grievance | general` (a model call returning up to three domains; if its reply is unreadable the single agent with every tool takes over)
+- [x] Create an `AcademicAgent` specialised for timetables, attendance, CGPA, and course queries (each specialist is the same agent graph restricted to its domain's tools and given a focus prompt, not a separate class; fees and placement also live here)
+- [x] Create an `EventsAgent` specialised for event discovery, registration, and waitlists
+- [x] Create a `LibraryAgent` specialised for book search, reservations, and due dates (and study rooms)
+- [x] Create a `GrievanceAgent` specialised for ticket creation and status tracking (and counselling)
+- [x] Implement a LangGraph supervisor pattern: `RouterAgent` dispatches to the right specialist and collects the response (behind `MULTI_AGENT`, off by default: it has not been compared with the single agent on a real model)
+- [x] Allow the router to dispatch to multiple agents in parallel for compound queries ("find me an event AND check my attendance")
 
 ---
 
