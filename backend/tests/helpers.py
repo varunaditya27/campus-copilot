@@ -84,3 +84,43 @@ def insert_legacy_chunks(store, rows):
             for (chunk_id, text, document, section), vector in zip(rows, vectors)
         ],
     )
+
+
+def add_academic_data(factory):
+    """Courses and records for Asha (year 3, so semester 5) and Ravi, small enough to
+    work out by hand.
+
+    Asha, completed:  A101 (4 credits) A=8, A102 (3) B+=7, A201 (4, semester 2) O=10.
+    Asha, semester 5: 18 of 25 in A501, 27 of 28 in A502, 5 of 10 in A503.
+    """
+    from app.db.models import AcademicRecord, Course
+
+    courses = [
+        ("A101", "Mathematics I", 4, 1, "theory"),
+        ("A102", "Physics", 3, 1, "theory"),
+        ("A103", "Chemistry", 3, 1, "theory"),
+        ("A201", "Data Structures", 4, 2, "theory"),
+        ("A501", "Machine Learning", 4, 5, "theory"),
+        ("A502", "Web Technologies", 3, 5, "theory"),
+        ("A503", "ML Lab", 1, 5, "lab"),
+        ("B301", "Ravi's Course", 3, 3, "theory"),
+    ]
+    records = [
+        ("1RV23IS101", "A101", 1, 40, 40, "A"),
+        ("1RV23IS101", "A102", 1, 38, 40, "B+"),
+        ("1RV23IS101", "A201", 2, 40, 40, "O"),
+        ("1RV23IS101", "A501", 5, 18, 25, None),
+        ("1RV23IS101", "A502", 5, 27, 28, None),
+        ("1RV23IS101", "A503", 5, 5, 10, None),
+        ("1RV24IS219", "B301", 3, 10, 20, None),
+    ]
+    with factory.begin() as session:
+        session.add_all(
+            Course(course_code=c, name=n, credits=cr, department="ISE", semester=s, kind=k)
+            for c, n, cr, s, k in courses
+        )
+        session.flush()
+        session.add_all(
+            AcademicRecord(student_id=sid, course_code=c, semester=s, attended=a, total=t, grade=g)
+            for sid, c, s, a, t, g in records
+        )

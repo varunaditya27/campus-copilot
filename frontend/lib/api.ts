@@ -6,8 +6,10 @@ import type {
   ConfirmRegistrationRequest,
   ConfirmRegistrationResponse,
   CurrentUser,
+  EventCategory,
   LoginRequest,
   RegisterAccountRequest,
+  StudentProfile,
 } from "./types";
 
 const API_BASE_URL =
@@ -179,6 +181,19 @@ export function listEvents(): Promise<CampusEvent[]> {
 
 export function getEvent(id: string): Promise<CampusEvent> {
   return request<CampusEvent>(`/api/events/${id}`);
+}
+
+export function getProfile(): Promise<StudentProfile> {
+  return request<StudentProfile>("/api/students/me/profile");
+}
+
+export function saveInterests(
+  interests: EventCategory[],
+): Promise<StudentProfile> {
+  return request<StudentProfile>("/api/students/me/profile", {
+    method: "PUT",
+    body: JSON.stringify({ preferences: { interests } }),
+  });
 }
 
 export function getCurrentUser(): Promise<CurrentUser> {

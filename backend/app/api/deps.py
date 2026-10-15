@@ -5,7 +5,7 @@ from fastapi import Cookie, Depends
 from app.core import security
 from app.core.errors import AppError
 from app.models.auth import CurrentStudent, CurrentUser, Role
-from app.services import auth_service
+from app.services import academic_service, auth_service
 
 ACCESS_COOKIE = "access_token"
 
@@ -32,6 +32,7 @@ def get_current_student(user: SignedInUser) -> CurrentStudent:
     """The signed-in student; any other role gets a 403."""
     if user.role != "student":
         raise forbidden()
+    profile = academic_service.get_profile(user.student_id)
     return CurrentStudent(
         user_id=user.user_id,
         student_id=user.student_id,
@@ -39,6 +40,10 @@ def get_current_student(user: SignedInUser) -> CurrentStudent:
         program=user.program,
         year=user.year,
         email=user.email,
+        semester=profile.semester if profile else None,
+        section=profile.section if profile else None,
+        electives=[e.name for e in profile.electives] if profile else [],
+        interests=profile.preferences.interests if profile else [],
     )
 
 

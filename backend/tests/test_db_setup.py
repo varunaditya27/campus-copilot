@@ -63,17 +63,18 @@ def _seeded(tmp_path, monkeypatch):
 
 def test_seed_loads_the_json_files(tmp_path, monkeypatch):
     _, added = _seeded(tmp_path, monkeypatch)
-    expected = {
-        name: len(json.loads((DATA_DIR / f"{name}.json").read_text()))
-        for name in ("students", "events", "registrations")
+    files = {
+        "students": "students", "events": "events", "registrations": "registrations",
+        "courses": "courses", "student_profiles": "student_profiles", "academic_records": "academic_records",
     }
+    expected = {name: len(json.loads((DATA_DIR / f"{file}.json").read_text())) for name, file in files.items()}
     assert added == expected
 
 
 def test_seed_is_idempotent(tmp_path, monkeypatch):
     factory, _ = _seeded(tmp_path, monkeypatch)
     with factory() as session:
-        assert seed(session) == {"students": 0, "events": 0, "registrations": 0}
+        assert set(seed(session).values()) == {0}
 
 
 def test_new_registration_ids_continue_after_seeded_ones(tmp_path, monkeypatch):

@@ -1,0 +1,3826 @@
+[
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS101",
+    "semester": 1,
+    "attended": 36,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS102",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS103",
+    "semester": 1,
+    "attended": 36,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS104",
+    "semester": 1,
+    "attended": 35,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS105",
+    "semester": 1,
+    "attended": 33,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS106",
+    "semester": 1,
+    "attended": 11,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS201",
+    "semester": 2,
+    "attended": 36,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS202",
+    "semester": 2,
+    "attended": 36,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS203",
+    "semester": 2,
+    "attended": 36,
+    "total": 42,
+    "grade": "F"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS204",
+    "semester": 2,
+    "attended": 35,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS205",
+    "semester": 2,
+    "attended": 35,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS206",
+    "semester": 2,
+    "attended": 10,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS301",
+    "semester": 3,
+    "attended": 36,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS302",
+    "semester": 3,
+    "attended": 34,
+    "total": 40,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS303",
+    "semester": 3,
+    "attended": 35,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS304",
+    "semester": 3,
+    "attended": 35,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS305",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS306",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS401",
+    "semester": 4,
+    "attended": 36,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS402",
+    "semester": 4,
+    "attended": 34,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS403",
+    "semester": 4,
+    "attended": 37,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS404",
+    "semester": 4,
+    "attended": 35,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS405",
+    "semester": 4,
+    "attended": 10,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS406",
+    "semester": 4,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS501",
+    "semester": 5,
+    "attended": 35,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS502",
+    "semester": 5,
+    "attended": 37,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS503",
+    "semester": 5,
+    "attended": 38,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS504",
+    "semester": 5,
+    "attended": 38,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS505",
+    "semester": 5,
+    "attended": 10,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS506",
+    "semester": 5,
+    "attended": 11,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS601",
+    "semester": 6,
+    "attended": 34,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS602",
+    "semester": 6,
+    "attended": 34,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS603",
+    "semester": 6,
+    "attended": 35,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS604",
+    "semester": 6,
+    "attended": 36,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS605",
+    "semester": 6,
+    "attended": 35,
+    "total": 40,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS606",
+    "semester": 6,
+    "attended": 8,
+    "total": 10,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS701",
+    "semester": 7,
+    "attended": 22,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS702",
+    "semester": 7,
+    "attended": 22,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS703",
+    "semester": 7,
+    "attended": 19,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS704",
+    "semester": 7,
+    "attended": 23,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS705",
+    "semester": 7,
+    "attended": 4,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "course_code": "CS706",
+    "semester": 7,
+    "attended": 4,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC101",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC102",
+    "semester": 1,
+    "attended": 38,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC103",
+    "semester": 1,
+    "attended": 38,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC104",
+    "semester": 1,
+    "attended": 40,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC105",
+    "semester": 1,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC106",
+    "semester": 1,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC201",
+    "semester": 2,
+    "attended": 37,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC202",
+    "semester": 2,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC203",
+    "semester": 2,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC204",
+    "semester": 2,
+    "attended": 34,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC205",
+    "semester": 2,
+    "attended": 34,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC301",
+    "semester": 3,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC302",
+    "semester": 3,
+    "attended": 38,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC303",
+    "semester": 3,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC304",
+    "semester": 3,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC305",
+    "semester": 3,
+    "attended": 11,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC306",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC401",
+    "semester": 4,
+    "attended": 40,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC402",
+    "semester": 4,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC403",
+    "semester": 4,
+    "attended": 39,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC404",
+    "semester": 4,
+    "attended": 35,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC405",
+    "semester": 4,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC406",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC501",
+    "semester": 5,
+    "attended": 36,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC502",
+    "semester": 5,
+    "attended": 36,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC503",
+    "semester": 5,
+    "attended": 36,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC504",
+    "semester": 5,
+    "attended": 36,
+    "total": 40,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC505",
+    "semester": 5,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC506",
+    "semester": 5,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC601",
+    "semester": 6,
+    "attended": 37,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC602",
+    "semester": 6,
+    "attended": 39,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC603",
+    "semester": 6,
+    "attended": 36,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC604",
+    "semester": 6,
+    "attended": 36,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC605",
+    "semester": 6,
+    "attended": 10,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC606",
+    "semester": 6,
+    "attended": 9,
+    "total": 10,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC701",
+    "semester": 7,
+    "attended": 26,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC702",
+    "semester": 7,
+    "attended": 25,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC703",
+    "semester": 7,
+    "attended": 24,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC704",
+    "semester": 7,
+    "attended": 22,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC705",
+    "semester": 7,
+    "attended": 15,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "course_code": "EC706",
+    "semester": 7,
+    "attended": 4,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE101",
+    "semester": 1,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE102",
+    "semester": 1,
+    "attended": 36,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE103",
+    "semester": 1,
+    "attended": 37,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE104",
+    "semester": 1,
+    "attended": 35,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE105",
+    "semester": 1,
+    "attended": 37,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE106",
+    "semester": 1,
+    "attended": 11,
+    "total": 12,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE201",
+    "semester": 2,
+    "attended": 39,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE202",
+    "semester": 2,
+    "attended": 37,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE203",
+    "semester": 2,
+    "attended": 40,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE204",
+    "semester": 2,
+    "attended": 38,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE205",
+    "semester": 2,
+    "attended": 37,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE206",
+    "semester": 2,
+    "attended": 10,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE301",
+    "semester": 3,
+    "attended": 38,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE302",
+    "semester": 3,
+    "attended": 39,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE303",
+    "semester": 3,
+    "attended": 39,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE304",
+    "semester": 3,
+    "attended": 38,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE305",
+    "semester": 3,
+    "attended": 11,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE306",
+    "semester": 3,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE401",
+    "semester": 4,
+    "attended": 38,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE402",
+    "semester": 4,
+    "attended": 41,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE403",
+    "semester": 4,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE404",
+    "semester": 4,
+    "attended": 37,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE405",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE406",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE501",
+    "semester": 5,
+    "attended": 39,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE502",
+    "semester": 5,
+    "attended": 35,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE503",
+    "semester": 5,
+    "attended": 36,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE504",
+    "semester": 5,
+    "attended": 36,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE505",
+    "semester": 5,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE506",
+    "semester": 5,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE601",
+    "semester": 6,
+    "attended": 37,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE602",
+    "semester": 6,
+    "attended": 37,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE603",
+    "semester": 6,
+    "attended": 37,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE604",
+    "semester": 6,
+    "attended": 38,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE605",
+    "semester": 6,
+    "attended": 12,
+    "total": 12,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE606",
+    "semester": 6,
+    "attended": 9,
+    "total": 10,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE701",
+    "semester": 7,
+    "attended": 23,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE702",
+    "semester": 7,
+    "attended": 23,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE703",
+    "semester": 7,
+    "attended": 25,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE704",
+    "semester": 7,
+    "attended": 5,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "course_code": "EE705",
+    "semester": 7,
+    "attended": 4,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS101",
+    "semester": 1,
+    "attended": 39,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS102",
+    "semester": 1,
+    "attended": 37,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS103",
+    "semester": 1,
+    "attended": 37,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS104",
+    "semester": 1,
+    "attended": 39,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS105",
+    "semester": 1,
+    "attended": 38,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS106",
+    "semester": 1,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS201",
+    "semester": 2,
+    "attended": 40,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS202",
+    "semester": 2,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS203",
+    "semester": 2,
+    "attended": 38,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS204",
+    "semester": 2,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS205",
+    "semester": 2,
+    "attended": 35,
+    "total": 40,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS301",
+    "semester": 3,
+    "attended": 36,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS302",
+    "semester": 3,
+    "attended": 39,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS303",
+    "semester": 3,
+    "attended": 37,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS304",
+    "semester": 3,
+    "attended": 37,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS305",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS306",
+    "semester": 3,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS401",
+    "semester": 4,
+    "attended": 38,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS402",
+    "semester": 4,
+    "attended": 36,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS403",
+    "semester": 4,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS404",
+    "semester": 4,
+    "attended": 38,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS405",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS406",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS501",
+    "semester": 5,
+    "attended": 37,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS502",
+    "semester": 5,
+    "attended": 38,
+    "total": 40,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS503",
+    "semester": 5,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS504",
+    "semester": 5,
+    "attended": 38,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS505",
+    "semester": 5,
+    "attended": 36,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS506",
+    "semester": 5,
+    "attended": 10,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS601",
+    "semester": 6,
+    "attended": 39,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS602",
+    "semester": 6,
+    "attended": 39,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS603",
+    "semester": 6,
+    "attended": 38,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS604",
+    "semester": 6,
+    "attended": 38,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS605",
+    "semester": 6,
+    "attended": 37,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS606",
+    "semester": 6,
+    "attended": 9,
+    "total": 10,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS701",
+    "semester": 7,
+    "attended": 25,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS702",
+    "semester": 7,
+    "attended": 23,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS703",
+    "semester": 7,
+    "attended": 25,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS704",
+    "semester": 7,
+    "attended": 23,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS705",
+    "semester": 7,
+    "attended": 4,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22IS305",
+    "course_code": "IS706",
+    "semester": 7,
+    "attended": 4,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME101",
+    "semester": 1,
+    "attended": 38,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME102",
+    "semester": 1,
+    "attended": 41,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME103",
+    "semester": 1,
+    "attended": 41,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME104",
+    "semester": 1,
+    "attended": 41,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME105",
+    "semester": 1,
+    "attended": 41,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME106",
+    "semester": 1,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME201",
+    "semester": 2,
+    "attended": 40,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME202",
+    "semester": 2,
+    "attended": 37,
+    "total": 40,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME203",
+    "semester": 2,
+    "attended": 40,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME204",
+    "semester": 2,
+    "attended": 40,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME205",
+    "semester": 2,
+    "attended": 38,
+    "total": 41,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME206",
+    "semester": 2,
+    "attended": 12,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME301",
+    "semester": 3,
+    "attended": 38,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME302",
+    "semester": 3,
+    "attended": 39,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME303",
+    "semester": 3,
+    "attended": 37,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME304",
+    "semester": 3,
+    "attended": 38,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME305",
+    "semester": 3,
+    "attended": 11,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME306",
+    "semester": 3,
+    "attended": 12,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME401",
+    "semester": 4,
+    "attended": 39,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME402",
+    "semester": 4,
+    "attended": 39,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME403",
+    "semester": 4,
+    "attended": 36,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME404",
+    "semester": 4,
+    "attended": 41,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME405",
+    "semester": 4,
+    "attended": 12,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME406",
+    "semester": 4,
+    "attended": 12,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME501",
+    "semester": 5,
+    "attended": 40,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME502",
+    "semester": 5,
+    "attended": 40,
+    "total": 41,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME503",
+    "semester": 5,
+    "attended": 37,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME504",
+    "semester": 5,
+    "attended": 40,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME505",
+    "semester": 5,
+    "attended": 11,
+    "total": 12,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME506",
+    "semester": 5,
+    "attended": 11,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME601",
+    "semester": 6,
+    "attended": 39,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME602",
+    "semester": 6,
+    "attended": 40,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME603",
+    "semester": 6,
+    "attended": 41,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME604",
+    "semester": 6,
+    "attended": 38,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME605",
+    "semester": 6,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME606",
+    "semester": 6,
+    "attended": 9,
+    "total": 10,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME701",
+    "semester": 7,
+    "attended": 24,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME702",
+    "semester": 7,
+    "attended": 24,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME703",
+    "semester": 7,
+    "attended": 26,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME704",
+    "semester": 7,
+    "attended": 5,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "course_code": "ME705",
+    "semester": 7,
+    "attended": 4,
+    "total": 5,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS101",
+    "semester": 1,
+    "attended": 36,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS102",
+    "semester": 1,
+    "attended": 37,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS103",
+    "semester": 1,
+    "attended": 36,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS104",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS105",
+    "semester": 1,
+    "attended": 39,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS106",
+    "semester": 1,
+    "attended": 10,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS201",
+    "semester": 2,
+    "attended": 36,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS202",
+    "semester": 2,
+    "attended": 34,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS203",
+    "semester": 2,
+    "attended": 34,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS204",
+    "semester": 2,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS205",
+    "semester": 2,
+    "attended": 34,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS301",
+    "semester": 3,
+    "attended": 39,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS302",
+    "semester": 3,
+    "attended": 34,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS303",
+    "semester": 3,
+    "attended": 36,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS304",
+    "semester": 3,
+    "attended": 34,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS305",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS306",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS401",
+    "semester": 4,
+    "attended": 35,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS402",
+    "semester": 4,
+    "attended": 33,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS403",
+    "semester": 4,
+    "attended": 36,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS404",
+    "semester": 4,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS405",
+    "semester": 4,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS406",
+    "semester": 4,
+    "attended": 10,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS501",
+    "semester": 5,
+    "attended": 24,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS502",
+    "semester": 5,
+    "attended": 25,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS503",
+    "semester": 5,
+    "attended": 23,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS504",
+    "semester": 5,
+    "attended": 25,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS505",
+    "semester": 5,
+    "attended": 7,
+    "total": 8,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "course_code": "CS506",
+    "semester": 5,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC101",
+    "semester": 1,
+    "attended": 35,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC102",
+    "semester": 1,
+    "attended": 33,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC103",
+    "semester": 1,
+    "attended": 33,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC104",
+    "semester": 1,
+    "attended": 35,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC105",
+    "semester": 1,
+    "attended": 37,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC106",
+    "semester": 1,
+    "attended": 10,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC201",
+    "semester": 2,
+    "attended": 35,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC202",
+    "semester": 2,
+    "attended": 33,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC203",
+    "semester": 2,
+    "attended": 35,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC204",
+    "semester": 2,
+    "attended": 37,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC205",
+    "semester": 2,
+    "attended": 36,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC301",
+    "semester": 3,
+    "attended": 38,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC302",
+    "semester": 3,
+    "attended": 38,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC303",
+    "semester": 3,
+    "attended": 33,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC304",
+    "semester": 3,
+    "attended": 34,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC305",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC306",
+    "semester": 3,
+    "attended": 11,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC401",
+    "semester": 4,
+    "attended": 34,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC402",
+    "semester": 4,
+    "attended": 34,
+    "total": 40,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC403",
+    "semester": 4,
+    "attended": 37,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC404",
+    "semester": 4,
+    "attended": 39,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC405",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC406",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC501",
+    "semester": 5,
+    "attended": 21,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC502",
+    "semester": 5,
+    "attended": 24,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC503",
+    "semester": 5,
+    "attended": 23,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC504",
+    "semester": 5,
+    "attended": 22,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC505",
+    "semester": 5,
+    "attended": 6,
+    "total": 7,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "course_code": "EC506",
+    "semester": 5,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE101",
+    "semester": 1,
+    "attended": 36,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE102",
+    "semester": 1,
+    "attended": 37,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE103",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE104",
+    "semester": 1,
+    "attended": 39,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE105",
+    "semester": 1,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE106",
+    "semester": 1,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE201",
+    "semester": 2,
+    "attended": 37,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE202",
+    "semester": 2,
+    "attended": 39,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE203",
+    "semester": 2,
+    "attended": 37,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE204",
+    "semester": 2,
+    "attended": 36,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE205",
+    "semester": 2,
+    "attended": 37,
+    "total": 40,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE301",
+    "semester": 3,
+    "attended": 38,
+    "total": 40,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE302",
+    "semester": 3,
+    "attended": 40,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE303",
+    "semester": 3,
+    "attended": 40,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE304",
+    "semester": 3,
+    "attended": 40,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE305",
+    "semester": 3,
+    "attended": 12,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE306",
+    "semester": 3,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE401",
+    "semester": 4,
+    "attended": 35,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE402",
+    "semester": 4,
+    "attended": 36,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE403",
+    "semester": 4,
+    "attended": 37,
+    "total": 40,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE404",
+    "semester": 4,
+    "attended": 36,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE405",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE406",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE501",
+    "semester": 5,
+    "attended": 23,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE502",
+    "semester": 5,
+    "attended": 24,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE503",
+    "semester": 5,
+    "attended": 21,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE504",
+    "semester": 5,
+    "attended": 25,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE505",
+    "semester": 5,
+    "attended": 7,
+    "total": 7,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "course_code": "EE506",
+    "semester": 5,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS101",
+    "semester": 1,
+    "attended": 34,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS102",
+    "semester": 1,
+    "attended": 34,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS103",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS104",
+    "semester": 1,
+    "attended": 36,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS105",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS106",
+    "semester": 1,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS201",
+    "semester": 2,
+    "attended": 33,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS202",
+    "semester": 2,
+    "attended": 36,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS203",
+    "semester": 2,
+    "attended": 38,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS204",
+    "semester": 2,
+    "attended": 36,
+    "total": 40,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS205",
+    "semester": 2,
+    "attended": 33,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS301",
+    "semester": 3,
+    "attended": 35,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS302",
+    "semester": 3,
+    "attended": 36,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS303",
+    "semester": 3,
+    "attended": 35,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS304",
+    "semester": 3,
+    "attended": 36,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS305",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS306",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS401",
+    "semester": 4,
+    "attended": 34,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS402",
+    "semester": 4,
+    "attended": 33,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS403",
+    "semester": 4,
+    "attended": 36,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS404",
+    "semester": 4,
+    "attended": 34,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS405",
+    "semester": 4,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS406",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS501",
+    "semester": 5,
+    "attended": 18,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS502",
+    "semester": 5,
+    "attended": 27,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS503",
+    "semester": 5,
+    "attended": 22,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS504",
+    "semester": 5,
+    "attended": 20,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS505",
+    "semester": 5,
+    "attended": 23,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "course_code": "IS506",
+    "semester": 5,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME101",
+    "semester": 1,
+    "attended": 36,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME102",
+    "semester": 1,
+    "attended": 39,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME103",
+    "semester": 1,
+    "attended": 35,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME104",
+    "semester": 1,
+    "attended": 38,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME105",
+    "semester": 1,
+    "attended": 39,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME106",
+    "semester": 1,
+    "attended": 11,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME201",
+    "semester": 2,
+    "attended": 35,
+    "total": 40,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME202",
+    "semester": 2,
+    "attended": 35,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME203",
+    "semester": 2,
+    "attended": 38,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME204",
+    "semester": 2,
+    "attended": 38,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME205",
+    "semester": 2,
+    "attended": 38,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME301",
+    "semester": 3,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME302",
+    "semester": 3,
+    "attended": 36,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME303",
+    "semester": 3,
+    "attended": 37,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME304",
+    "semester": 3,
+    "attended": 39,
+    "total": 42,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME305",
+    "semester": 3,
+    "attended": 11,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME306",
+    "semester": 3,
+    "attended": 10,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME401",
+    "semester": 4,
+    "attended": 39,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME402",
+    "semester": 4,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME403",
+    "semester": 4,
+    "attended": 34,
+    "total": 40,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME404",
+    "semester": 4,
+    "attended": 35,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME405",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME406",
+    "semester": 4,
+    "attended": 11,
+    "total": 12,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME501",
+    "semester": 5,
+    "attended": 24,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME502",
+    "semester": 5,
+    "attended": 21,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME503",
+    "semester": 5,
+    "attended": 23,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME504",
+    "semester": 5,
+    "attended": 25,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME505",
+    "semester": 5,
+    "attended": 8,
+    "total": 8,
+    "grade": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "course_code": "ME506",
+    "semester": 5,
+    "attended": 7,
+    "total": 8,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS101",
+    "semester": 1,
+    "attended": 35,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS102",
+    "semester": 1,
+    "attended": 36,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS103",
+    "semester": 1,
+    "attended": 36,
+    "total": 40,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS104",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS105",
+    "semester": 1,
+    "attended": 34,
+    "total": 40,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS106",
+    "semester": 1,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS201",
+    "semester": 2,
+    "attended": 38,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS202",
+    "semester": 2,
+    "attended": 37,
+    "total": 41,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS203",
+    "semester": 2,
+    "attended": 35,
+    "total": 41,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS204",
+    "semester": 2,
+    "attended": 34,
+    "total": 40,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS205",
+    "semester": 2,
+    "attended": 35,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS206",
+    "semester": 2,
+    "attended": 10,
+    "total": 12,
+    "grade": "C"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS301",
+    "semester": 3,
+    "attended": 24,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS302",
+    "semester": 3,
+    "attended": 23,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS303",
+    "semester": 3,
+    "attended": 24,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS304",
+    "semester": 3,
+    "attended": 20,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS305",
+    "semester": 3,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "course_code": "CS306",
+    "semester": 3,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC101",
+    "semester": 1,
+    "attended": 37,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC102",
+    "semester": 1,
+    "attended": 37,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC103",
+    "semester": 1,
+    "attended": 40,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC104",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC105",
+    "semester": 1,
+    "attended": 37,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC106",
+    "semester": 1,
+    "attended": 10,
+    "total": 12,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC201",
+    "semester": 2,
+    "attended": 38,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC202",
+    "semester": 2,
+    "attended": 37,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC203",
+    "semester": 2,
+    "attended": 36,
+    "total": 41,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC204",
+    "semester": 2,
+    "attended": 38,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC205",
+    "semester": 2,
+    "attended": 38,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC301",
+    "semester": 3,
+    "attended": 25,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC302",
+    "semester": 3,
+    "attended": 23,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC303",
+    "semester": 3,
+    "attended": 25,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC304",
+    "semester": 3,
+    "attended": 26,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC305",
+    "semester": 3,
+    "attended": 7,
+    "total": 7,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "course_code": "EC306",
+    "semester": 3,
+    "attended": 7,
+    "total": 7,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE101",
+    "semester": 1,
+    "attended": 38,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE102",
+    "semester": 1,
+    "attended": 40,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE103",
+    "semester": 1,
+    "attended": 39,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE104",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE105",
+    "semester": 1,
+    "attended": 41,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE106",
+    "semester": 1,
+    "attended": 12,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE201",
+    "semester": 2,
+    "attended": 39,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE202",
+    "semester": 2,
+    "attended": 37,
+    "total": 40,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE203",
+    "semester": 2,
+    "attended": 39,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE204",
+    "semester": 2,
+    "attended": 40,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE205",
+    "semester": 2,
+    "attended": 40,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE301",
+    "semester": 3,
+    "attended": 24,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE302",
+    "semester": 3,
+    "attended": 23,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE303",
+    "semester": 3,
+    "attended": 24,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE304",
+    "semester": 3,
+    "attended": 24,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE305",
+    "semester": 3,
+    "attended": 8,
+    "total": 8,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "course_code": "EE306",
+    "semester": 3,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS101",
+    "semester": 1,
+    "attended": 41,
+    "total": 42,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS102",
+    "semester": 1,
+    "attended": 37,
+    "total": 41,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS103",
+    "semester": 1,
+    "attended": 39,
+    "total": 41,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS104",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS105",
+    "semester": 1,
+    "attended": 41,
+    "total": 41,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS106",
+    "semester": 1,
+    "attended": 12,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS201",
+    "semester": 2,
+    "attended": 37,
+    "total": 40,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS202",
+    "semester": 2,
+    "attended": 39,
+    "total": 40,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS203",
+    "semester": 2,
+    "attended": 39,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS204",
+    "semester": 2,
+    "attended": 38,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS205",
+    "semester": 2,
+    "attended": 39,
+    "total": 42,
+    "grade": "A+"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS206",
+    "semester": 2,
+    "attended": 11,
+    "total": 12,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS301",
+    "semester": 3,
+    "attended": 24,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS302",
+    "semester": 3,
+    "attended": 27,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS303",
+    "semester": 3,
+    "attended": 22,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS304",
+    "semester": 3,
+    "attended": 22,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS305",
+    "semester": 3,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "course_code": "IS306",
+    "semester": 3,
+    "attended": 6,
+    "total": 7,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME101",
+    "semester": 1,
+    "attended": 35,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME102",
+    "semester": 1,
+    "attended": 36,
+    "total": 40,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME103",
+    "semester": 1,
+    "attended": 38,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME104",
+    "semester": 1,
+    "attended": 35,
+    "total": 41,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME105",
+    "semester": 1,
+    "attended": 35,
+    "total": 41,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME106",
+    "semester": 1,
+    "attended": 11,
+    "total": 12,
+    "grade": "P"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME201",
+    "semester": 2,
+    "attended": 36,
+    "total": 42,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME202",
+    "semester": 2,
+    "attended": 37,
+    "total": 42,
+    "grade": "O"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME203",
+    "semester": 2,
+    "attended": 37,
+    "total": 41,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME204",
+    "semester": 2,
+    "attended": 38,
+    "total": 40,
+    "grade": "B"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME205",
+    "semester": 2,
+    "attended": 36,
+    "total": 42,
+    "grade": "B+"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME206",
+    "semester": 2,
+    "attended": 10,
+    "total": 12,
+    "grade": "A"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME301",
+    "semester": 3,
+    "attended": 23,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME302",
+    "semester": 3,
+    "attended": 23,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME303",
+    "semester": 3,
+    "attended": 24,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME304",
+    "semester": 3,
+    "attended": 23,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME305",
+    "semester": 3,
+    "attended": 6,
+    "total": 7,
+    "grade": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "course_code": "ME306",
+    "semester": 3,
+    "attended": 6,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "course_code": "CS101",
+    "semester": 1,
+    "attended": 23,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "course_code": "CS102",
+    "semester": 1,
+    "attended": 23,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "course_code": "CS103",
+    "semester": 1,
+    "attended": 26,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "course_code": "CS104",
+    "semester": 1,
+    "attended": 25,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "course_code": "CS105",
+    "semester": 1,
+    "attended": 26,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "course_code": "CS106",
+    "semester": 1,
+    "attended": 5,
+    "total": 6,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "course_code": "EC101",
+    "semester": 1,
+    "attended": 24,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "course_code": "EC102",
+    "semester": 1,
+    "attended": 25,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "course_code": "EC103",
+    "semester": 1,
+    "attended": 23,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "course_code": "EC104",
+    "semester": 1,
+    "attended": 24,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "course_code": "EC105",
+    "semester": 1,
+    "attended": 26,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "course_code": "EC106",
+    "semester": 1,
+    "attended": 7,
+    "total": 7,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "course_code": "EE101",
+    "semester": 1,
+    "attended": 26,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "course_code": "EE102",
+    "semester": 1,
+    "attended": 23,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "course_code": "EE103",
+    "semester": 1,
+    "attended": 22,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "course_code": "EE104",
+    "semester": 1,
+    "attended": 25,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "course_code": "EE105",
+    "semester": 1,
+    "attended": 25,
+    "total": 26,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "course_code": "EE106",
+    "semester": 1,
+    "attended": 6,
+    "total": 7,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "course_code": "IS101",
+    "semester": 1,
+    "attended": 22,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "course_code": "IS102",
+    "semester": 1,
+    "attended": 20,
+    "total": 24,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "course_code": "IS103",
+    "semester": 1,
+    "attended": 25,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "course_code": "IS104",
+    "semester": 1,
+    "attended": 22,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "course_code": "IS105",
+    "semester": 1,
+    "attended": 23,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "course_code": "IS106",
+    "semester": 1,
+    "attended": 7,
+    "total": 8,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "course_code": "ME101",
+    "semester": 1,
+    "attended": 23,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "course_code": "ME102",
+    "semester": 1,
+    "attended": 20,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "course_code": "ME103",
+    "semester": 1,
+    "attended": 24,
+    "total": 27,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "course_code": "ME104",
+    "semester": 1,
+    "attended": 22,
+    "total": 25,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "course_code": "ME105",
+    "semester": 1,
+    "attended": 24,
+    "total": 28,
+    "grade": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "course_code": "ME106",
+    "semester": 1,
+    "attended": 7,
+    "total": 8,
+    "grade": null
+  }
+]

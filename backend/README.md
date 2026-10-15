@@ -68,6 +68,7 @@ backend/
 │   │   ├── deps.py                 # get_current_student: the sign-in check
 │   │   ├── events.py               # GET /api/events, /api/events/:id
 │   │   ├── registration.py         # POST /api/register
+│   │   ├── students.py             # the student's own profile
 │   │   └── staff.py                # registrations list and CSV export (staff, admin)
 │   │
 │   ├── agent/
@@ -99,6 +100,7 @@ backend/
 │   │
 │   ├── services/                   # reusable business logic, no HTTP/LLM concerns
 │   │   ├── auth_service.py         # accounts, login, refresh-token rotation
+│   │   ├── academic_service.py     # profiles, attendance and CGPA calculations
 │   │   ├── chat_service.py         # sessions and message history
 │   │   ├── knowledge_service.py    # uploads, ingest, status and deletion of documents
 │   │   ├── rag_eval_service.py     # runs the retrieval evaluation in the background
@@ -197,9 +199,13 @@ Things to know: the first start downloads the reranker (about 80 MB, ONNX, no Py
 | `search_events` | ✅ | Keyword match over structured event data (not semantic -- events have a fixed schema, so a simple match is enough) |
 | `check_event_availability` | ✅ | Remaining-seats lookup |
 | `calculate_attendance` | ✅ | Exact arithmetic in Python -- never trust an LLM with math it can just compute wrong |
+| `get_attendance_report` | ✅ (about the signed-in student) | Attendance this semester, subject by subject, which are below the 75% required and how many classes it would take to reach it |
+| `get_cgpa` | ✅ (about the signed-in student) | SGPA per completed semester, CGPA (credit-weighted, a failed course counts as zero points), and any backlogs |
 | `register_for_event` | ⚠️ schema-visible, never auto-executed | Validates event/student/capacity/duplicate and writes the registration |
 
-`app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Only the first three tools are in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`; the student is always the signed-in one, never something the model supplies) -- but the agent loop special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
+The two tools about the student's own records take no arguments from the model. The agent supplies the student's id from the login and discards any `student_id` the model puts in its call, so a model that is confused or misled by text in the conversation cannot look up someone else's attendance or grades. Their figures come from SQL and Python, never from the model, and the prompt tells the model not to state a personal academic figure it did not get from a tool.
+
+`app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Every tool except `register_for_event` is in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`; the student is always the signed-in one, never something the model supplies) -- but the agent loop special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
 
 The agent is a [LangGraph](https://docs.langchain.com/oss/python/langgraph) state graph (`agent/agent.py`), with `run_agent_stream()` streaming its events and `run_agent()` waiting for the final result:
 
@@ -237,6 +243,8 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | `POST /api/chat` | Send a message, run the agent loop, get back a reply + sources + tool activity + optional confirmation. The exchange is saved to the caller's session |
 | `POST /api/chat/stream` | Same as `POST /api/chat`, but streamed as server-sent events: tokens and tool activity arrive as they happen |
 | `GET /api/chat/history` | The current session's saved messages, for restoring the chat after a refresh |
+| `GET /api/students/me/profile` | The student's record and profile: program, year, semester, section, electives, interests (students) |
+| `PUT /api/students/me/profile` | Change interests; nothing else about the profile can be changed this way (students) |
 | `GET /api/chat/sessions` | The student's conversations, newest first, each with a short preview |
 | `DELETE /api/chat/sessions/{id}` | Delete the student's own conversation (404 for anyone else's) |
 | `POST /api/register` | Execute a registration for the signed-in student -- the only endpoint that creates registrations |
@@ -269,6 +277,8 @@ Request limits: a chat `message` is 1-2000 characters; an account's `student_id`
 | `error` | `{ error_code, message }` | The run failed; nothing was saved |
 
 Once streaming has started the HTTP status is already 200, so failures arrive as an `error` event; a request that is invalid from the start (for example an empty message) still gets a normal 422. The agent is a plain (sync) generator because the Groq client and the database are synchronous; Starlette runs such a generator in a worker thread, so it does not block other requests. Model tool calls arrive as fragments and are reassembled by index before they run.
+
+**Personalisation.** Each student has a profile (semester, section, electives, interests) and academic records (attendance and grades per course). When a chat request starts, the profile is loaded with the student, and the assistant's context says who they are: name, year, branch, current semester, electives and interests. Interests are editable on the profile page; the rest comes from the student record. The data is demo data, generated by `data/generate_academic_data.py` (see [`data/README.md`](../data/README.md)).
 
 **Sessions.** The server, not the browser, remembers the conversation. A student's first `POST /api/chat` creates a row in `sessions`, owned by that student, and sets a random `session_id` in an HttpOnly, `SameSite=Lax` cookie (HttpOnly means page scripts cannot read it) that remembers which conversation the browser is in. Each later request loads the session's most recent 40 messages (`HISTORY_WINDOW` in `api/chat.py`) and passes them to the agent; the reply is saved with its tool activity and sources. A failed agent run saves nothing. A session id that belongs to another student is treated as unknown, so nobody can read or continue someone else's conversation by guessing or borrowing an id. Set `COOKIE_SECURE=true` once the app is served over HTTPS.
 

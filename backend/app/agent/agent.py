@@ -18,7 +18,7 @@ from app.agent.prompts import (
     build_plan_message,
     build_student_message,
 )
-from app.agent.tool_registry import TOOL_FUNCTIONS, TOOL_SCHEMAS
+from app.agent.tool_registry import STUDENT_TOOLS, TOOL_FUNCTIONS, TOOL_SCHEMAS
 from app.core.config import AGENT_PLANNING, GROQ_MODEL
 from app.core.errors import AppError
 from app.core.groq_client import get_groq_client
@@ -44,6 +44,8 @@ TOOL_LABELS = {
     "search_events": "Searching campus events",
     "check_event_availability": "Checking event availability",
     "calculate_attendance": "Calculating attendance",
+    "get_attendance_report": "Checking your attendance records",
+    "get_cgpa": "Calculating your CGPA",
 }
 
 
@@ -56,6 +58,11 @@ def _summarize(tool: str, result: dict) -> str:
         return f"{result['remaining_seats']} seats available" if result["available"] else "No seats available"
     if tool == "calculate_attendance":
         return f"{result['percentage']}% attendance"
+    if tool == "get_attendance_report":
+        low = len(result["below_required"])
+        return f"{low} of {len(result['courses'])} subjects below 75%" if low else "All subjects at 75% or above"
+    if tool == "get_cgpa":
+        return f"CGPA {result['cgpa']}" if result["cgpa"] is not None else "No results yet"
     return "Done"
 
 
@@ -73,10 +80,12 @@ def _describe_validation_error(exc: ValidationError) -> str:
     )
 
 
-def _run_tool(name: str, raw_arguments: str) -> tuple[dict | list, str]:
+def _run_tool(name: str, raw_arguments: str, student: CurrentStudent) -> tuple[dict | list, str]:
     args = _parse_arguments(raw_arguments)
     if args is None:
         return {"error": "Tool arguments were not a valid JSON object"}, "error"
+    if name in STUDENT_TOOLS:
+        args = {**{k: v for k, v in args.items() if k != "student_id"}, "student_id": student.student_id}
     try:
         return TOOL_FUNCTIONS[name](**args), "done"
     except ValidationError as exc:
@@ -283,7 +292,7 @@ def request_confirmation_node(state: AgentState) -> dict:
 
 
 def _run_tools(
-    calls: list[dict], emit: Callable[[dict], None]
+    calls: list[dict], emit: Callable[[dict], None], student: CurrentStudent
 ) -> tuple[list[ToolActivityEntry], list[tuple[dict | list, str]]]:
     """Run the tool calls, side by side when there are several. Events are sent from
     this thread only (the stream writer belongs to it); results keep the order of the calls."""
@@ -299,10 +308,10 @@ def _run_tools(
         emit(_event("tool_done", **entries[index].model_dump()))
 
     if len(calls) == 1:
-        finish(0, _run_tool(calls[0]["name"], calls[0]["arguments"]))
+        finish(0, _run_tool(calls[0]["name"], calls[0]["arguments"], student))
     else:
         with ThreadPoolExecutor(max_workers=min(len(calls), MAX_PARALLEL_TOOLS)) as pool:
-            futures = {pool.submit(_run_tool, c["name"], c["arguments"]): i for i, c in enumerate(calls)}
+            futures = {pool.submit(_run_tool, c["name"], c["arguments"], student): i for i, c in enumerate(calls)}
             for future in as_completed(futures):
                 finish(futures[future], future.result())
     return entries, outcomes
@@ -311,7 +320,7 @@ def _run_tools(
 def execute_tools_node(state: AgentState) -> dict:
     emit = get_stream_writer()
     calls = state.tool_calls
-    entries, outcomes = _run_tools(calls, emit)
+    entries, outcomes = _run_tools(calls, emit, state.student)
 
     messages = [
         {

@@ -32,6 +32,9 @@ The files are seed data. At runtime the app reads and writes the database tables
 | `events.json` | `events` | `POST /api/register` increments `registered` |
 | `students.json` | `students` | nothing at runtime — a fixed roster |
 | `registrations.json` | `registrations` | `POST /api/register` inserts a row |
+| `courses.json` | `courses` | nothing at runtime -- the course catalogue |
+| `student_profiles.json` | `student_profiles` | `PUT /api/students/me/profile` changes interests |
+| `academic_records.json` | `student_academic_records` | nothing at runtime -- attendance and grades |
 
 ---
 
@@ -94,6 +97,14 @@ The append-only log `POST /api/register` writes to (see [`backend/app/services/r
 ```
 
 `registration_id` for anything created through the app follows `REG-{n:05d}`, continuing from this file's length — the `REG-DEMO-*` prefix on the seed rows exists only to make it obvious at a glance which entries were shipped versus created live during a demo.
+
+---
+
+## 🎓 `courses.json`, `student_profiles.json` and `academic_records.json`
+
+The academic side of the demo university: 228 courses (the five departments, eight semesters each, with names taken from the subject lists in [the curriculum document](../knowledge/academics/curriculum-and-degree-structure.md)), a profile for each of the 20 students (current semester, section, electives, interests), and 478 records of attendance and grades. A student in year Y is in semester 2Y - 1, because the odd semester is running; grades exist for completed semesters and attendance so far for the current one.
+
+These files are **generated**, not written by hand: `python data/generate_academic_data.py` from the repository root rewrites them, deterministically (a fixed random seed), so the output is committed and a re-run produces identical files. The generator adds a few deliberate cases so the assistant has something to say: Aarav Sharma's Machine Learning attendance is 72%, inside the 65-74% range where condonation can be applied for, with one more subject just under 75%; Arjun Reddy has one backlog (an F in semester 2); and Aditya Verma is at 58% in one subject, below the 65% line. The tests check the files for consistency (every record names a real course in the right semester, grades exist exactly for completed semesters) and run the real calculations over them.
 
 ---
 

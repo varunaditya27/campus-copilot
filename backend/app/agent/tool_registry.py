@@ -1,3 +1,4 @@
+from app.tools.academic import get_attendance_report, get_cgpa
 from app.tools.attendance import calculate_attendance
 from app.tools.events import check_event_availability, search_events
 
@@ -56,6 +57,31 @@ TOOL_SCHEMAS = [
     {
         "type": "function",
         "function": {
+            "name": "get_attendance_report",
+            "description": (
+                "Get the signed-in student's own attendance this semester, subject by "
+                "subject, with which subjects are below the 75% required and how many "
+                "classes they would need to attend to reach it. Use this instead of "
+                "guessing when they ask about their attendance."
+            ),
+            "parameters": {"type": "object", "properties": {}},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_cgpa",
+            "description": (
+                "Get the signed-in student's own SGPA for each completed semester, their "
+                "CGPA, and any backlogs, computed from their results. Use this instead of "
+                "guessing when they ask about their grades or CGPA."
+            ),
+            "parameters": {"type": "object", "properties": {}},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
             "name": "register_for_event",
             "description": (
                 "Prepare an event registration for the signed-in student to "
@@ -82,4 +108,11 @@ TOOL_FUNCTIONS = {
     "search_events": search_events,
     "check_event_availability": check_event_availability,
     "calculate_attendance": calculate_attendance,
+    "get_attendance_report": get_attendance_report,
+    "get_cgpa": get_cgpa,
 }
+
+# Tools about the signed-in student. The agent supplies their student id from the
+# login; any student id the model puts in the arguments is discarded, so the model
+# cannot be talked into looking up someone else.
+STUDENT_TOOLS = frozenset({"get_attendance_report", "get_cgpa"})

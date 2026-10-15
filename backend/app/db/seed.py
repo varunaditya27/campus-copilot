@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import DATA_DIR
 from app.db import session as db_session
-from app.db.models import Event, Registration, Student
+from app.db.models import AcademicRecord, Course, Event, Registration, Student, StudentProfile
 
 
 def _load(filename: str) -> list[dict]:
@@ -23,7 +23,7 @@ def seed(session: Session) -> dict[str, int]:
     Safe to run repeatedly: a table that already has rows is left untouched,
     so re-seeding never duplicates data or overwrites live registrations.
     """
-    added = {"students": 0, "events": 0, "registrations": 0}
+    added = {"students": 0, "events": 0, "registrations": 0, "courses": 0, "student_profiles": 0, "academic_records": 0}
 
     if _is_empty(session, Student):
         rows = [Student(**row) for row in _load("students.json")]
@@ -48,6 +48,18 @@ def seed(session: Session) -> dict[str, int]:
         ]
         session.add_all(rows)
         added["registrations"] = len(rows)
+
+    # Courses before the records that refer to them; students were added above.
+    for table, model, filename in (
+        ("courses", Course, "courses.json"),
+        ("student_profiles", StudentProfile, "student_profiles.json"),
+        ("academic_records", AcademicRecord, "academic_records.json"),
+    ):
+        if _is_empty(session, model):
+            rows = [model(**row) for row in _load(filename)]
+            session.add_all(rows)
+            session.flush()
+            added[table] = len(rows)
 
     session.commit()
     return added

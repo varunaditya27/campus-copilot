@@ -6,7 +6,9 @@ Answer questions helpfully and concisely. If you don't know something
 specific to this campus, say so instead of guessing.
 
 You can search campus events, check seat availability, and calculate
-attendance percentages using the tools available to you. When a student
+attendance percentages using the tools available to you. For the student's
+own attendance or CGPA, use get_attendance_report and get_cgpa rather than
+guessing: never state a personal academic figure you did not get from a tool. When a student
 wants to register for an event, use the register_for_event tool once you
 have a real event id (from search_events). The student is already signed
 in, so never ask for their student id. Calling that tool does NOT complete
@@ -33,12 +35,21 @@ def build_plan_message(steps: list[str]) -> str:
 
 
 def build_student_message(student: CurrentStudent) -> str:
-    return (
-        f"You are talking to {student.name} (student id {student.student_id}), "
-        f"a year {student.year} student in {student.program}. They are signed in. "
-        "Registrations are always made for this student; you cannot register "
-        "anyone else."
+    where = f"a year {student.year} student in {student.program}"
+    if student.semester:
+        where += f", currently in semester {student.semester}"
+        if student.section:
+            where += f" (section {student.section})"
+    text = (
+        f"You are talking to {student.name} (student id {student.student_id}), {where}. "
+        "They are signed in. Registrations are always made for this student; you "
+        "cannot register anyone else."
     )
+    if student.electives:
+        text += f" Their electives this semester: {', '.join(student.electives)}."
+    if student.interests:
+        text += f" They have said they are interested in: {', '.join(i.replace('-', ' ') for i in student.interests)}."
+    return text
 
 
 def build_context_message(chunks: list[dict]) -> str:

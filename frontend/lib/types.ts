@@ -36,7 +36,9 @@ export type ToolName =
   | "search_events"
   | "check_event_availability"
   | "register_for_event"
-  | "calculate_attendance";
+  | "calculate_attendance"
+  | "get_attendance_report"
+  | "get_cgpa";
 
 export type ToolStatus = "running" | "done" | "error";
 
@@ -145,4 +147,21 @@ export interface RegisterAccountRequest {
   name: string;
   email: string;
   password: string;
+}
+
+export interface ElectiveInfo {
+  course_code: string;
+  name: string;
+  credits: number;
+}
+
+export interface StudentProfile {
+  student_id: string;
+  name: string;
+  program: string;
+  year: number;
+  semester: number;
+  section: string | null;
+  electives: ElectiveInfo[];
+  preferences: { interests: EventCategory[] };
 }

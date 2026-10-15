@@ -13,6 +13,10 @@ const NAV_LINKS = [
 export default function Header() {
   const pathname = usePathname();
   const { state, logout } = useAuth();
+  const links =
+    state.status === "signedIn" && state.user.role === "student"
+      ? [...NAV_LINKS, { href: "/profile", label: "Profile" }]
+      : NAV_LINKS;
 
   return (
     <header className="bg-navy text-cream">
@@ -27,7 +31,7 @@ export default function Header() {
         </Link>
 
         <nav className="flex items-center gap-1">
-          {NAV_LINKS.map((link) => {
+          {links.map((link) => {
             const isActive =
               link.href === "/"
                 ? pathname === "/"

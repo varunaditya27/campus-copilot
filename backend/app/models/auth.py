@@ -75,3 +75,8 @@ class CurrentStudent(BaseModel):
     program: str
     year: int
     email: str
+    # From the student's profile; the assistant uses them to personalise answers.
+    semester: int | None = None
+    section: str | None = None
+    electives: list[str] = Field(default_factory=list)
+    interests: list[str] = Field(default_factory=list)

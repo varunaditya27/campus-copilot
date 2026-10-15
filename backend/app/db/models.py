@@ -42,6 +42,58 @@ class Student(Base):
     year: Mapped[int]
 
 
+class Course(Base):
+    __tablename__ = "courses"
+    __table_args__ = (
+        CheckConstraint("kind IN ('theory', 'lab', 'project', 'elective')", name="valid_kind"),
+        CheckConstraint("semester BETWEEN 1 AND 8", name="valid_semester"),
+        CheckConstraint("credits > 0", name="positive_credits"),
+    )
+
+    course_code: Mapped[str] = mapped_column(String(10), primary_key=True)
+    name: Mapped[str] = mapped_column(String(150))
+    credits: Mapped[int]
+    department: Mapped[str] = mapped_column(String(100))
+    semester: Mapped[int]
+    kind: Mapped[str] = mapped_column(String(20))
+
+
+class StudentProfile(Base):
+    """What the assistant knows about a student beyond the roster: where they are in
+    the degree, and what they have said they are interested in."""
+
+    __tablename__ = "student_profiles"
+    __table_args__ = (CheckConstraint("semester BETWEEN 1 AND 8", name="valid_semester"),)
+
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), primary_key=True)
+    semester: Mapped[int]
+    section: Mapped[str | None] = mapped_column(String(2))
+    electives: Mapped[list] = mapped_column(JSON, default=list)
+    preferences: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class AcademicRecord(Base):
+    """One student's attendance and result in one course. The grade stays empty
+    until the semester's results are published."""
+
+    __tablename__ = "student_academic_records"
+    __table_args__ = (
+        UniqueConstraint("student_id", "course_code", name="uq_student_academic_records_student_course"),
+        CheckConstraint("attended >= 0 AND attended <= total", name="attended_within_total"),
+        CheckConstraint(
+            "grade IS NULL OR grade IN ('O', 'A+', 'A', 'B+', 'B', 'C', 'P', 'F')", name="valid_grade"
+        ),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    course_code: Mapped[str] = mapped_column(ForeignKey("courses.course_code"))
+    semester: Mapped[int]
+    attended: Mapped[int]
+    total: Mapped[int]
+    grade: Mapped[str | None] = mapped_column(String(2))
+
+
 class Event(Base):
     __tablename__ = "events"
     __table_args__ = (

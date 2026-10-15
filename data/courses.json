@@ -1,0 +1,1826 @@
+[
+  {
+    "course_code": "IS101",
+    "name": "Engineering Mathematics I",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS102",
+    "name": "Engineering Physics",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS103",
+    "name": "Programming Fundamentals",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS104",
+    "name": "Technical Communication",
+    "credits": 2,
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS105",
+    "name": "Digital Logic",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS106",
+    "name": "Programming Lab",
+    "credits": 1,
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "kind": "lab"
+  },
+  {
+    "course_code": "IS201",
+    "name": "Engineering Mathematics II",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS202",
+    "name": "Discrete Mathematics",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS203",
+    "name": "Data Structures",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS204",
+    "name": "Engineering Chemistry",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS205",
+    "name": "Environmental Studies",
+    "credits": 2,
+    "department": "Information Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS206",
+    "name": "Data Structures Lab",
+    "credits": 1,
+    "department": "Information Science and Engineering",
+    "semester": 2,
+    "kind": "lab"
+  },
+  {
+    "course_code": "IS301",
+    "name": "Object-Oriented Programming",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS302",
+    "name": "Database Management Systems",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS303",
+    "name": "Operating Systems",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS304",
+    "name": "Probability and Statistics",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS305",
+    "name": "DBMS Lab",
+    "credits": 1,
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "IS306",
+    "name": "OOP Lab",
+    "credits": 1,
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "IS401",
+    "name": "Computer Networks",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS402",
+    "name": "Design and Analysis of Algorithms",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS403",
+    "name": "Software Engineering Fundamentals",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS404",
+    "name": "Theory of Computation",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS405",
+    "name": "Operating Systems Lab",
+    "credits": 1,
+    "department": "Information Science and Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "IS406",
+    "name": "Networks Lab",
+    "credits": 1,
+    "department": "Information Science and Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "IS501",
+    "name": "Machine Learning",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS502",
+    "name": "Web Technologies",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS503",
+    "name": "Software Engineering",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS504",
+    "name": "Cloud Computing",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS505",
+    "name": "Program Elective I",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "kind": "elective"
+  },
+  {
+    "course_code": "IS506",
+    "name": "Machine Learning Lab",
+    "credits": 1,
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "IS601",
+    "name": "Information Systems Design",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS602",
+    "name": "Data Mining",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS603",
+    "name": "Information Security",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS604",
+    "name": "Program Elective II",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "IS605",
+    "name": "Open Elective I",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "IS606",
+    "name": "Mini Project",
+    "credits": 2,
+    "department": "Information Science and Engineering",
+    "semester": 6,
+    "kind": "project"
+  },
+  {
+    "course_code": "IS701",
+    "name": "Big Data Analytics",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS702",
+    "name": "Deep Learning",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS703",
+    "name": "Program Elective III",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "IS704",
+    "name": "Program Elective IV",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "IS705",
+    "name": "Capstone Project Phase I",
+    "credits": 4,
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "IS706",
+    "name": "Internship",
+    "credits": 2,
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "IS801",
+    "name": "Program Elective V",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "IS802",
+    "name": "Open Elective II",
+    "credits": 3,
+    "department": "Information Science and Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "IS803",
+    "name": "Professional Ethics",
+    "credits": 2,
+    "department": "Information Science and Engineering",
+    "semester": 8,
+    "kind": "theory"
+  },
+  {
+    "course_code": "IS804",
+    "name": "Capstone Project Phase II",
+    "credits": 8,
+    "department": "Information Science and Engineering",
+    "semester": 8,
+    "kind": "project"
+  },
+  {
+    "course_code": "CS101",
+    "name": "Engineering Mathematics I",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS102",
+    "name": "Engineering Physics",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS103",
+    "name": "Programming Fundamentals",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS104",
+    "name": "Technical Communication",
+    "credits": 2,
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS105",
+    "name": "Digital Design",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS106",
+    "name": "Programming Lab",
+    "credits": 1,
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "kind": "lab"
+  },
+  {
+    "course_code": "CS201",
+    "name": "Engineering Mathematics II",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS202",
+    "name": "Discrete Mathematics",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS203",
+    "name": "Data Structures",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS204",
+    "name": "Engineering Chemistry",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS205",
+    "name": "Environmental Studies",
+    "credits": 2,
+    "department": "Computer Science and Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS206",
+    "name": "Data Structures Lab",
+    "credits": 1,
+    "department": "Computer Science and Engineering",
+    "semester": 2,
+    "kind": "lab"
+  },
+  {
+    "course_code": "CS301",
+    "name": "Computer Organization",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS302",
+    "name": "Database Systems",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS303",
+    "name": "Operating Systems",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS304",
+    "name": "Probability and Statistics",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS305",
+    "name": "Database Lab",
+    "credits": 1,
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "CS306",
+    "name": "Operating Systems Lab",
+    "credits": 1,
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "CS401",
+    "name": "Theory of Computation",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS402",
+    "name": "Algorithms",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS403",
+    "name": "Object-Oriented Design",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS404",
+    "name": "Linear Algebra",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS405",
+    "name": "Algorithms Lab",
+    "credits": 1,
+    "department": "Computer Science and Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "CS406",
+    "name": "Software Lab",
+    "credits": 1,
+    "department": "Computer Science and Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "CS501",
+    "name": "Compiler Design",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS502",
+    "name": "Artificial Intelligence",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS503",
+    "name": "Computer Networks",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS504",
+    "name": "Program Elective I",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "kind": "elective"
+  },
+  {
+    "course_code": "CS505",
+    "name": "Compiler Lab",
+    "credits": 1,
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "CS506",
+    "name": "Networks Lab",
+    "credits": 1,
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "CS601",
+    "name": "Distributed Systems",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS602",
+    "name": "Machine Learning",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS603",
+    "name": "Information Security",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS604",
+    "name": "Program Elective II",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "CS605",
+    "name": "Open Elective I",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "CS606",
+    "name": "Mini Project",
+    "credits": 2,
+    "department": "Computer Science and Engineering",
+    "semester": 6,
+    "kind": "project"
+  },
+  {
+    "course_code": "CS701",
+    "name": "Program Elective III",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "CS702",
+    "name": "Program Elective IV",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "CS703",
+    "name": "Program Elective V",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "CS704",
+    "name": "Open Elective II",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "CS705",
+    "name": "Capstone Project Phase I",
+    "credits": 4,
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "CS706",
+    "name": "Internship",
+    "credits": 2,
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "CS801",
+    "name": "Program Elective VI",
+    "credits": 3,
+    "department": "Computer Science and Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "CS802",
+    "name": "Professional Ethics",
+    "credits": 2,
+    "department": "Computer Science and Engineering",
+    "semester": 8,
+    "kind": "theory"
+  },
+  {
+    "course_code": "CS803",
+    "name": "Seminar",
+    "credits": 2,
+    "department": "Computer Science and Engineering",
+    "semester": 8,
+    "kind": "project"
+  },
+  {
+    "course_code": "CS804",
+    "name": "Capstone Project Phase II",
+    "credits": 8,
+    "department": "Computer Science and Engineering",
+    "semester": 8,
+    "kind": "project"
+  },
+  {
+    "course_code": "EC101",
+    "name": "Engineering Mathematics I",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC102",
+    "name": "Engineering Physics",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC103",
+    "name": "Basic Electronics",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC104",
+    "name": "Programming for Engineers",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC105",
+    "name": "Technical Communication",
+    "credits": 2,
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC106",
+    "name": "Electronics Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC201",
+    "name": "Engineering Mathematics II",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC202",
+    "name": "Circuit Theory",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC203",
+    "name": "Engineering Chemistry",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC204",
+    "name": "Signals and Systems",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC205",
+    "name": "Environmental Studies",
+    "credits": 2,
+    "department": "Electronics and Communication Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC206",
+    "name": "Circuits Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 2,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC301",
+    "name": "Analog Electronics",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC302",
+    "name": "Digital Signal Processing",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC303",
+    "name": "Electromagnetic Theory",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC304",
+    "name": "Probability and Random Processes",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC305",
+    "name": "Analog Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC306",
+    "name": "DSP Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC401",
+    "name": "Communication Systems",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC402",
+    "name": "Digital System Design",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC403",
+    "name": "Microprocessors",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC404",
+    "name": "Control Systems",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC405",
+    "name": "Communication Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC406",
+    "name": "Microprocessors Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC501",
+    "name": "Embedded Systems",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC502",
+    "name": "VLSI Design",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC503",
+    "name": "Microcontrollers",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC504",
+    "name": "Wireless Communication",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC505",
+    "name": "Embedded Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC506",
+    "name": "VLSI Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC601",
+    "name": "Antennas and Propagation",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC602",
+    "name": "Information Theory",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC603",
+    "name": "Program Elective I",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EC604",
+    "name": "Open Elective I",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EC605",
+    "name": "Wireless Lab",
+    "credits": 1,
+    "department": "Electronics and Communication Engineering",
+    "semester": 6,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EC606",
+    "name": "Mini Project",
+    "credits": 2,
+    "department": "Electronics and Communication Engineering",
+    "semester": 6,
+    "kind": "project"
+  },
+  {
+    "course_code": "EC701",
+    "name": "RF Systems",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC702",
+    "name": "IoT and Embedded Systems",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC703",
+    "name": "Program Elective II",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EC704",
+    "name": "Program Elective III",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EC705",
+    "name": "Capstone Project Phase I",
+    "credits": 4,
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "EC706",
+    "name": "Internship",
+    "credits": 2,
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "EC801",
+    "name": "Program Elective IV",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EC802",
+    "name": "Professional Ethics",
+    "credits": 2,
+    "department": "Electronics and Communication Engineering",
+    "semester": 8,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EC803",
+    "name": "Open Elective II",
+    "credits": 3,
+    "department": "Electronics and Communication Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EC804",
+    "name": "Capstone Project Phase II",
+    "credits": 8,
+    "department": "Electronics and Communication Engineering",
+    "semester": 8,
+    "kind": "project"
+  },
+  {
+    "course_code": "EE101",
+    "name": "Engineering Mathematics I",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE102",
+    "name": "Engineering Physics",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE103",
+    "name": "Circuit Analysis",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE104",
+    "name": "Basic Electrical Machines",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE105",
+    "name": "Technical Communication",
+    "credits": 2,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE106",
+    "name": "Electrical Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE201",
+    "name": "Engineering Mathematics II",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE202",
+    "name": "Electromagnetic Fields",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE203",
+    "name": "Engineering Chemistry",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE204",
+    "name": "Programming for Engineers",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE205",
+    "name": "Environmental Studies",
+    "credits": 2,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE206",
+    "name": "Circuits Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 2,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE301",
+    "name": "Power Systems",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE302",
+    "name": "Control Systems",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE303",
+    "name": "Power Electronics",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE304",
+    "name": "Electrical Machines",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE305",
+    "name": "Machines Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE306",
+    "name": "Control Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE401",
+    "name": "Analog Electronics",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE402",
+    "name": "Digital Electronics",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE403",
+    "name": "Measurements and Instrumentation",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE404",
+    "name": "Electrical Machines II",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE405",
+    "name": "Electronics Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE406",
+    "name": "Instrumentation Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE501",
+    "name": "Industrial Automation",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE502",
+    "name": "Renewable Energy Systems",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE503",
+    "name": "Instrumentation",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE504",
+    "name": "Power System Protection",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE505",
+    "name": "Automation Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE506",
+    "name": "Power Systems Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE601",
+    "name": "Power System Analysis",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE602",
+    "name": "Embedded Control",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE603",
+    "name": "Program Elective I",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EE604",
+    "name": "Open Elective I",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EE605",
+    "name": "Simulation Lab",
+    "credits": 1,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 6,
+    "kind": "lab"
+  },
+  {
+    "course_code": "EE606",
+    "name": "Mini Project",
+    "credits": 2,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 6,
+    "kind": "project"
+  },
+  {
+    "course_code": "EE701",
+    "name": "Smart Grids",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE702",
+    "name": "Program Elective II",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EE703",
+    "name": "Program Elective III",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EE704",
+    "name": "Capstone Project Phase I",
+    "credits": 4,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "EE705",
+    "name": "Internship",
+    "credits": 2,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "EE801",
+    "name": "Program Elective IV",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EE802",
+    "name": "Professional Ethics",
+    "credits": 2,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 8,
+    "kind": "theory"
+  },
+  {
+    "course_code": "EE803",
+    "name": "Open Elective II",
+    "credits": 3,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "EE804",
+    "name": "Capstone Project Phase II",
+    "credits": 8,
+    "department": "Electrical and Electronics Engineering",
+    "semester": 8,
+    "kind": "project"
+  },
+  {
+    "course_code": "ME101",
+    "name": "Engineering Mathematics I",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME102",
+    "name": "Engineering Physics",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME103",
+    "name": "Engineering Mechanics",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME104",
+    "name": "Engineering Graphics",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME105",
+    "name": "Technical Communication",
+    "credits": 2,
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME106",
+    "name": "Workshop Practice",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME201",
+    "name": "Engineering Mathematics II",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME202",
+    "name": "Thermodynamics",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME203",
+    "name": "Materials Science",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME204",
+    "name": "Engineering Chemistry",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME205",
+    "name": "Environmental Studies",
+    "credits": 2,
+    "department": "Mechanical Engineering",
+    "semester": 2,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME206",
+    "name": "Graphics Lab",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 2,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME301",
+    "name": "Fluid Mechanics",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME302",
+    "name": "Manufacturing Processes",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME303",
+    "name": "Machine Design",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME304",
+    "name": "Kinematics of Machines",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME305",
+    "name": "Manufacturing Lab",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME306",
+    "name": "Fluid Mechanics Lab",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME401",
+    "name": "Dynamics of Machines",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME402",
+    "name": "Applied Thermodynamics",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME403",
+    "name": "Metrology",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME404",
+    "name": "Mechanics of Materials",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 4,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME405",
+    "name": "Thermal Lab",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME406",
+    "name": "Materials Lab",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 4,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME501",
+    "name": "Heat Transfer",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME502",
+    "name": "CAD/CAM",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME503",
+    "name": "Industrial Engineering",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME504",
+    "name": "Automation and Robotics",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME505",
+    "name": "Heat Transfer Lab",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME506",
+    "name": "CAD Lab",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME601",
+    "name": "Design of Machine Elements",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME602",
+    "name": "Mechatronics",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 6,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME603",
+    "name": "Program Elective I",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "ME604",
+    "name": "Open Elective I",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 6,
+    "kind": "elective"
+  },
+  {
+    "course_code": "ME605",
+    "name": "CAM Lab",
+    "credits": 1,
+    "department": "Mechanical Engineering",
+    "semester": 6,
+    "kind": "lab"
+  },
+  {
+    "course_code": "ME606",
+    "name": "Mini Project",
+    "credits": 2,
+    "department": "Mechanical Engineering",
+    "semester": 6,
+    "kind": "project"
+  },
+  {
+    "course_code": "ME701",
+    "name": "Advanced Manufacturing",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME702",
+    "name": "Program Elective II",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "ME703",
+    "name": "Program Elective III",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "kind": "elective"
+  },
+  {
+    "course_code": "ME704",
+    "name": "Capstone Project Phase I",
+    "credits": 4,
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "ME705",
+    "name": "Internship",
+    "credits": 2,
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "kind": "project"
+  },
+  {
+    "course_code": "ME801",
+    "name": "Program Elective IV",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "ME802",
+    "name": "Professional Ethics",
+    "credits": 2,
+    "department": "Mechanical Engineering",
+    "semester": 8,
+    "kind": "theory"
+  },
+  {
+    "course_code": "ME803",
+    "name": "Open Elective II",
+    "credits": 3,
+    "department": "Mechanical Engineering",
+    "semester": 8,
+    "kind": "elective"
+  },
+  {
+    "course_code": "ME804",
+    "name": "Capstone Project Phase II",
+    "credits": 8,
+    "department": "Mechanical Engineering",
+    "semester": 8,
+    "kind": "project"
+  }
+]

@@ -1,0 +1,263 @@
+[
+  {
+    "student_id": "1RV22CS220",
+    "semester": 7,
+    "section": "A",
+    "electives": [
+      "CS701",
+      "CS702",
+      "CS703",
+      "CS704"
+    ],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "competitive-programming"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV22EC088",
+    "semester": 7,
+    "section": "B",
+    "electives": [
+      "EC703",
+      "EC704"
+    ],
+    "preferences": {
+      "interests": [
+        "cybersecurity",
+        "research"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV22EE160",
+    "semester": 7,
+    "section": "A",
+    "electives": [
+      "EE702",
+      "EE703"
+    ],
+    "preferences": {
+      "interests": [
+        "research",
+        "robotics"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV22IS305",
+    "semester": 7,
+    "section": "A",
+    "electives": [
+      "IS703",
+      "IS704"
+    ],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "web-development"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV22ME188",
+    "semester": 7,
+    "section": "B",
+    "electives": [
+      "ME702",
+      "ME703"
+    ],
+    "preferences": {
+      "interests": [
+        "competitive-programming",
+        "robotics"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV23CS114",
+    "semester": 5,
+    "section": "A",
+    "electives": [
+      "CS504"
+    ],
+    "preferences": {
+      "interests": [
+        "competitive-programming",
+        "cybersecurity"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV23EC150",
+    "semester": 5,
+    "section": "A",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "cybersecurity",
+        "robotics"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV23EE142",
+    "semester": 5,
+    "section": "B",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "research"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV23IS101",
+    "semester": 5,
+    "section": "B",
+    "electives": [
+      "IS505"
+    ],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "web-development"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV23ME201",
+    "semester": 5,
+    "section": "B",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "competitive-programming",
+        "robotics"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV24CS118",
+    "semester": 3,
+    "section": "A",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "competitive-programming",
+        "cybersecurity"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV24EC207",
+    "semester": 3,
+    "section": "A",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "cybersecurity",
+        "research"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV24EE099",
+    "semester": 3,
+    "section": "B",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "research"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV24IS219",
+    "semester": 3,
+    "section": "B",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "competitive-programming"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV24ME077",
+    "semester": 3,
+    "section": "A",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "competitive-programming",
+        "robotics"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV25CS330",
+    "semester": 1,
+    "section": "A",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "competitive-programming"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV25EC275",
+    "semester": 1,
+    "section": "B",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "cybersecurity",
+        "research"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV25EE050",
+    "semester": 1,
+    "section": "B",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "robotics"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV25IS410",
+    "semester": 1,
+    "section": "B",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "artificial-intelligence",
+        "competitive-programming"
+      ]
+    }
+  },
+  {
+    "student_id": "1RV25ME295",
+    "semester": 1,
+    "section": "B",
+    "electives": [],
+    "preferences": {
+      "interests": [
+        "competitive-programming",
+        "research"
+      ]
+    }
+  }
+]

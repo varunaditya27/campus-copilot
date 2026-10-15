@@ -163,13 +163,13 @@
 
 ### 4.2 Student Memory & Personalization
 
-- [ ] Add a `student_profiles` table: `student_id`, `major`, `semester`, `branch`, `section`, `electives`, `preferences (JSON)`
-- [ ] Add a `student_academic_records` table: `student_id`, `course_code`, `attended`, `total`, `grade`
-- [ ] At the start of every agent run, fetch the authenticated student's profile from DB
-- [ ] Inject the profile as a persona block in the system prompt: name, year, branch, current semester
-- [ ] Add a `GET /students/me/profile` endpoint for the frontend to display profile info
-- [ ] Add a `PUT /students/me/profile` endpoint to let students update their preferences
-- [ ] Let the agent reference academic records to give personalized attendance/CGPA answers
+- [x] Add a `student_profiles` table: `student_id`, `major`, `semester`, `branch`, `section`, `electives`, `preferences (JSON)` (without `major` and `branch`: they would repeat the program already on the student record)
+- [x] Add a `student_academic_records` table: `student_id`, `course_code`, `attended`, `total`, `grade` (plus a `courses` table for credits and names)
+- [x] At the start of every agent run, fetch the authenticated student's profile from DB
+- [x] Inject the profile as a persona block in the system prompt: name, year, branch, current semester
+- [x] Add a `GET /students/me/profile` endpoint for the frontend to display profile info (and a profile page)
+- [x] Add a `PUT /students/me/profile` endpoint to let students update their preferences
+- [x] Let the agent reference academic records to give personalized attendance/CGPA answers
 
 ### 4.3 Conversation Memory
 
@@ -184,8 +184,8 @@
 - [ ] `get_course_info(course_code)` — syllabus, credits, faculty, lab hours
 - [ ] `get_faculty_profile(faculty_id_or_name)` — designation, department, office, office hours, email
 - [ ] `get_exam_schedule(student_id, semester)` — upcoming exams, dates, rooms
-- [ ] `get_cgpa(student_id)` — compute current CGPA from academic records
-- [ ] `get_attendance_report(student_id)` — per-subject attendance, highlight subjects below threshold
+- [x] `get_cgpa(student_id)` — compute current CGPA from academic records (the student id comes from the login, not from the model)
+- [x] `get_attendance_report(student_id)` — per-subject attendance, highlight subjects below threshold (the student id comes from the login, not from the model)
 - [ ] `get_elective_options(student_id)` — list available electives for the student's current semester and branch
 - [ ] `get_fee_dues(student_id)` — outstanding fees, payment deadlines
 

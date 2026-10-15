@@ -1,11 +1,21 @@
 import type { ToolActivityEntry } from "@/lib/types";
-import { CheckIcon, SearchIcon, AlertIcon, SpinIcon, DotIcon } from "../icons";
+import {
+  CheckIcon,
+  SearchIcon,
+  AlertIcon,
+  SpinIcon,
+  DotIcon,
+  UserIcon,
+  DocumentIcon,
+} from "../icons";
 
 const TOOL_ICON: Record<ToolActivityEntry["tool"], (p: { className?: string }) => React.JSX.Element> = {
   search_events: SearchIcon,
   check_event_availability: DotIcon,
   register_for_event: CheckIcon,
   calculate_attendance: DotIcon,
+  get_attendance_report: UserIcon,
+  get_cgpa: DocumentIcon,
 };
 
 export default function ToolCall({
