@@ -54,3 +54,33 @@ def sign_in_as(account, **client_options):
     response = client.post("/api/auth/login", json={"email": account["email"], "password": account["password"]})
     assert response.status_code == 200, response.text
     return client
+
+
+def insert_legacy_chunks(store, rows):
+    """Put chunks into a store the way the first version of ingestion did, with only
+    a document and section recorded (no file hash, settings signature or time).
+    rows: (id, text, document, section)."""
+    from qdrant_client import models
+
+    from app.rag import store as store_module
+
+    if isinstance(store, store_module.ChromaStore):
+        store._collection.add(
+            ids=[r[0] for r in rows],
+            documents=[r[1] for r in rows],
+            metadatas=[{"document": r[2], "section": r[3]} for r in rows],
+        )
+        return
+
+    vectors = store._embed([r[1] for r in rows])
+    store._client.upsert(
+        store_module.KNOWLEDGE_COLLECTION,
+        points=[
+            models.PointStruct(
+                id=store._point_id(chunk_id),
+                vector=vector,
+                payload={"id": chunk_id, "text": text, "document": document, "section": section},
+            )
+            for (chunk_id, text, document, section), vector in zip(rows, vectors)
+        ],
+    )

@@ -8,12 +8,12 @@ from contextlib import contextmanager
 from dataclasses import asdict
 from pathlib import Path, PurePath
 
-from app.core.config import CHROMA_COLLECTION, KNOWLEDGE_DIR, UPLOAD_DIR
+from app.core.config import KNOWLEDGE_COLLECTION, KNOWLEDGE_DIR, UPLOAD_DIR
 from app.core.errors import AppError
 from app.rag import retriever
 from app.rag.ingest import IngestReport, ingest, knowledge_files
 from app.rag.pdf import pdf_to_markdown
-from app.rag.store import ChromaStore, KnowledgeBaseNotFound, get_client
+from app.rag.store import KnowledgeBaseNotFound, create_store, open_store
 
 logger = logging.getLogger(__name__)
 
@@ -64,10 +64,9 @@ def _exclusive() -> Iterator[None]:
 
 
 def _ingest_now(full: bool = False) -> IngestReport:
-    client = get_client()
-    store = ChromaStore.create(client)
+    store = create_store()
     if full:
-        store = store.reset(client)
+        store = store.reset()
     return ingest(store)
 
 
@@ -113,7 +112,7 @@ def save_upload(filename: str | None, data: bytes) -> dict:
         os.replace(handle.name, target)
 
         report = _ingest_now()
-        chunks = next((d.chunk_count for d in ChromaStore.open(get_client()).documents() if d.document == name), 0)
+        chunks = next((d.chunk_count for d in open_store().documents() if d.document == name), 0)
         if chunks == 0:
             target.unlink(missing_ok=True)
             _ingest_now()
@@ -124,8 +123,7 @@ def save_upload(filename: str | None, data: bytes) -> dict:
 def status() -> dict:
     curated = _curated_names()
     try:
-        store = ChromaStore.open(get_client())
-        infos = store.documents()
+        infos = open_store().documents()
     except KnowledgeBaseNotFound:
         infos = []
     documents = [
@@ -139,7 +137,7 @@ def status() -> dict:
     ]
     stamps = [d["ingested_at"] for d in documents if d["ingested_at"]]
     return {
-        "collection": CHROMA_COLLECTION,
+        "collection": KNOWLEDGE_COLLECTION,
         "built": bool(infos),
         "document_count": len(documents),
         "chunk_count": sum(d["chunks"] for d in documents),
@@ -160,7 +158,7 @@ def delete_document(filename: str) -> dict:
         )
     with _exclusive():
         try:
-            removed = ChromaStore.open(get_client()).delete_document(name)
+            removed = open_store().delete_document(name)
         except KnowledgeBaseNotFound:
             removed = 0
         target = UPLOAD_DIR / name

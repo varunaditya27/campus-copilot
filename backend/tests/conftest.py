@@ -82,23 +82,48 @@ def use_fakes(monkeypatch):
 @pytest.fixture
 def chroma_client(monkeypatch):
     """An in-memory Chroma with the fake embedding and a collection name of its own
-    (Chroma's in-memory client is shared by the whole process)."""
+    (Chroma's in-memory client is shared by the whole process), set up as the
+    configured vector store."""
     import chromadb
 
     from app.rag import store as store_module
 
     monkeypatch.setattr(store_module, "get_embedding_function", lambda: FakeEmbedding())
-    monkeypatch.setattr(store_module, "CHROMA_COLLECTION", f"test_{uuid.uuid4().hex}")
+    monkeypatch.setattr(store_module, "KNOWLEDGE_COLLECTION", f"test_{uuid.uuid4().hex}")
+    monkeypatch.setattr(store_module, "VECTOR_STORE", "chroma")
     client = chromadb.EphemeralClient()
+    monkeypatch.setattr(store_module, "_chroma_client", lambda: client)
     yield client
     try:
-        client.delete_collection(name=store_module.CHROMA_COLLECTION)
+        client.delete_collection(name=store_module.KNOWLEDGE_COLLECTION)
     except Exception:
         pass
 
 
 @pytest.fixture
-def store(chroma_client):
-    from app.rag.store import ChromaStore
+def qdrant_client(monkeypatch):
+    """An in-memory Qdrant with the fake embedding, set up as the configured vector store."""
+    from qdrant_client import QdrantClient
 
-    return ChromaStore.create(chroma_client)
+    from app.rag import store as store_module
+
+    monkeypatch.setattr(store_module, "get_embedding_function", lambda: FakeEmbedding())
+    monkeypatch.setattr(store_module, "VECTOR_STORE", "qdrant")
+    client = QdrantClient(":memory:")
+    monkeypatch.setattr(store_module, "_qdrant_client", lambda: client)
+    return client
+
+
+@pytest.fixture(params=["chroma", "qdrant"])
+def backend(request):
+    """Each vector database in turn, configured but with nothing built in it yet."""
+    request.getfixturevalue("chroma_client" if request.param == "chroma" else "qdrant_client")
+    return request.param
+
+
+@pytest.fixture
+def store(backend):
+    """A built, empty vector store. Tests using it run once per vector database."""
+    from app.rag.store import create_store
+
+    return create_store()

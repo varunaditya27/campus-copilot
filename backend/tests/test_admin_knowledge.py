@@ -10,7 +10,7 @@ from app.main import app
 from app.rag import ingest as ingest_module
 from app.rag import retriever as retriever_module
 from app.rag.retriever import Retriever
-from app.rag.store import ChromaStore
+from app.rag.store import open_store
 from app.services import knowledge_service, rag_eval_service
 from fakes import make_pdf
 from helpers import ADMIN, FACULTY, STAFF, sign_in_as, sign_up
@@ -28,8 +28,6 @@ def env(db, chroma_client, tmp_path, monkeypatch):
     for module in (knowledge_service, ingest_module):
         monkeypatch.setattr(module, "KNOWLEDGE_DIR", curated)
         monkeypatch.setattr(module, "UPLOAD_DIR", uploads)
-    monkeypatch.setattr(knowledge_service, "get_client", lambda: chroma_client)
-    monkeypatch.setattr(retriever_module, "get_client", lambda: chroma_client)
     retriever_module.reset_retriever()
     yield type("Env", (), {"curated": curated, "uploads": uploads, "client": chroma_client})
     retriever_module.reset_retriever()
@@ -141,7 +139,7 @@ def test_a_markdown_file_is_added_without_a_rebuild(admin, env):
 
 def test_an_uploaded_document_can_be_searched(admin, env):
     upload(admin, "zoo.md", b"# Zoo Policy\n\n## Zebras\n\nZebra feeding happens on Thursdays.\n")
-    search = Retriever(ChromaStore.open(env.client), rerank=lambda q, texts: [1.0] * len(texts))
+    search = Retriever(open_store(), rerank=lambda q, texts: [1.0] * len(texts))
     assert search.search("zebra feeding", 1)[0]["document"] == "zoo.md"
 
 
@@ -150,7 +148,7 @@ def test_uploading_the_same_name_again_replaces_it(admin, env):
     again = upload(admin, "notes.md", b"# Notes\n\n## A\n\nsecond version words\n").json()
 
     assert again["replaced"] is True and again["ingest"]["updated"] == ["notes.md"]
-    texts = " ".join(c.text for c in ChromaStore.open(env.client).all_chunks())
+    texts = " ".join(c.text for c in open_store().all_chunks())
     assert "second version" in texts and "first version" not in texts
 
 

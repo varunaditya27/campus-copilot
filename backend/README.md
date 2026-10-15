@@ -78,7 +78,7 @@ backend/
 │   ├── rag/
 │   │   ├── chunking.py             # heading-aware chunks of at most 256 tokens
 │   │   ├── ingest.py               # incremental build of the store from knowledge/
-│   │   ├── store.py                # the vector store (Chroma) behind one small interface
+│   │   ├── store.py                # the vector store (Chroma or Qdrant) behind one small interface
 │   │   ├── lexical.py              # BM25 keyword search
 │   │   ├── fusion.py               # Reciprocal Rank Fusion
 │   │   ├── pdf.py                  # text of a PDF, as markdown with a section per page
@@ -165,6 +165,15 @@ The off-topic test questions (weather, recipes) also went from 90% to 100% corre
 - **Chunks are at most 256 tokens** because that is all the embedding model reads; it silently cuts off anything longer (Chroma's code and the model card both say so), so a longer chunk would be partly invisible to semantic search. On this corpus 256 scored at least as well as 128, 192 and the 512 initially suggested.
 - **Each chunk is prefixed with its document and section**, which improved the right passage being first from 66.7% to 75.6% for semantic search alone.
 - **The relevance threshold comes from the reranker's scores**: its best passage for every question in the set scored at least -7.1 on topic and at most -9.9 off topic, so `RAG_RERANK_MIN_SCORE` is -8.5. A threshold cannot separate "about the library" from "answers this question about the library", so campus-related questions the documents do not cover (a cafeteria menu, a phone number) still receive some passages; the prompt tells the model to say when the material does not contain the answer.
+
+**Choosing a vector database.** By default the knowledge base is Chroma, kept in files under `CHROMA_DIR` (no server to run). Set `CHROMA_HOST` (and `CHROMA_PORT`) to use a Chroma server instead, or `VECTOR_STORE=qdrant` (with `QDRANT_URL`, and `QDRANT_API_KEY` if the server needs one) to use Qdrant. Retrieval and ingestion only use a small interface (`VectorStore` in `rag/store.py`), embeddings are computed in the backend with the same model whichever database stores them, and one test suite runs against both, so they behave the same: on the evaluation set, local Chroma, a Chroma server and Qdrant all score Recall@3 0.978. `docker-compose.yml` has both servers behind profiles, bound to localhost because neither has authentication switched on:
+
+```bash
+docker compose --profile qdrant up -d qdrant          # or: --profile chroma-server up -d chroma
+VECTOR_STORE=qdrant python -m app.rag.ingest          # or: CHROMA_HOST=localhost CHROMA_PORT=8100
+```
+
+Changing the database starts an empty knowledge base there, so run ingest after switching. If the database cannot be reached, the server logs it and answers without campus documents, as it does when the knowledge base has not been built.
 
 Operating it:
 
@@ -305,7 +314,10 @@ curl http://localhost:8000/health
 | `RAG_TOP_K` | `3` | How many passages the agent receives per question |
 | `RAG_RRF_K` | `60` | Reciprocal Rank Fusion constant (the value from the original paper) |
 | `RAG_RERANK_MIN_SCORE` | `-8.5` | Passages the reranker scores below this are not given to the model. Re-check with `python -m app.rag.evaluate` if you change the corpus or the reranker (higher is stricter) |
-| `CHROMA_DIR` | `backend/chroma` | Where the vector store is kept |
+| `VECTOR_STORE` | `chroma` | `chroma` or `qdrant` |
+| `CHROMA_DIR` | `backend/chroma` | Where local Chroma keeps its files |
+| `CHROMA_HOST`, `CHROMA_PORT` | *(unset)*, `8000` | Use a Chroma server instead of local files when the host is set |
+| `QDRANT_URL`, `QDRANT_API_KEY` | `http://localhost:6333`, *(unset)* | Where Qdrant is, when `VECTOR_STORE=qdrant` |
 | `KNOWLEDGE_UPLOAD_DIR` | `backend/knowledge_uploads` | Where documents uploaded through the admin API are kept |
 
 ### Database

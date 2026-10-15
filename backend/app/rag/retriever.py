@@ -7,7 +7,7 @@ from app.core.config import RAG_RERANK_MIN_SCORE, RAG_RRF_K, RAG_TOP_K
 from app.rag.fusion import reciprocal_rank_fusion
 from app.rag.lexical import KeywordIndex
 from app.rag.rerank import rerank_scores
-from app.rag.store import ChromaStore, KnowledgeBaseNotFound, StoredChunk, get_client
+from app.rag.store import KnowledgeBaseNotFound, StoredChunk, VectorStore, open_store
 
 __all__ = ["KnowledgeBaseNotFound", "Retriever", "get_retriever", "reset_retriever", "retrieve", "search", "warm_up"]
 
@@ -21,6 +21,19 @@ RERANK_CANDIDATES = 10
 
 # How long the keyword index is trusted before checking whether the store changed.
 INDEX_TTL_SECONDS = 5.0
+
+
+def _from_store(call: Callable[[], object]):
+    """Run a store operation. A store that cannot be reached counts as an unusable
+    knowledge base, so the assistant carries on without campus documents instead
+    of failing the whole question."""
+    try:
+        return call()
+    except KnowledgeBaseNotFound:
+        raise
+    except Exception as exc:
+        logger.exception("The knowledge base could not be reached")
+        raise KnowledgeBaseNotFound("The knowledge base could not be reached.") from exc
 
 
 class _KeywordSnapshot:
@@ -43,7 +56,7 @@ class Retriever:
 
     def __init__(
         self,
-        store: ChromaStore,
+        store: VectorStore,
         rerank: Callable[[str, list[str]], list[float]] = rerank_scores,
     ) -> None:
         self._store = store
@@ -57,7 +70,7 @@ class Retriever:
         if snapshot is not None and time.monotonic() - snapshot.built_at < INDEX_TTL_SECONDS:
             return snapshot
         with self._lock:
-            chunks = self._store.all_chunks()
+            chunks = _from_store(self._store.all_chunks)
             if not chunks:
                 raise KnowledgeBaseNotFound("The knowledge base is empty. Run `python -m app.rag.ingest`.")
             current = self._snapshot
@@ -80,7 +93,7 @@ class Retriever:
     def search(self, query: str, n: int) -> list[dict]:
         """The n best passages, best first, each with its reranker score. No cutoff."""
         keywords = self._keywords()
-        by_meaning = self._store.query(query, CANDIDATES_PER_SEARCH)
+        by_meaning = _from_store(lambda: self._store.query(query, CANDIDATES_PER_SEARCH))
         by_words = [keywords.chunks[position] for position, _ in keywords.index.search(query, CANDIDATES_PER_SEARCH)]
 
         known = {c.id: c for c in keywords.chunks}
@@ -113,7 +126,7 @@ def get_retriever() -> Retriever:
     global _retriever
     with _retriever_lock:
         if _retriever is None:
-            _retriever = Retriever(ChromaStore.open(get_client()))
+            _retriever = Retriever(open_store())
         return _retriever
 
 

@@ -1,7 +1,8 @@
 import pytest
 
 from app.rag.chunking import Chunk
-from app.rag.store import ChromaStore, KnowledgeBaseNotFound
+from app.rag.store import KnowledgeBaseNotFound, open_store
+from helpers import insert_legacy_chunks
 
 
 def chunk(document, index, section, body):
@@ -19,14 +20,14 @@ def fill(store):
     )
 
 
-def test_opening_a_store_that_was_never_built_says_so(chroma_client):
+def test_opening_a_store_that_was_never_built_says_so(backend):
     with pytest.raises(KnowledgeBaseNotFound):
-        ChromaStore.open(chroma_client)
+        open_store()
 
 
-def test_a_created_store_can_be_opened_again(chroma_client, store):
+def test_a_created_store_can_be_opened_again(store):
     fill(store)
-    assert ChromaStore.open(chroma_client).count() == 3
+    assert open_store().count() == 3
 
 
 def test_chunks_come_back_with_their_text_and_where_they_came_from(store):
@@ -77,9 +78,9 @@ def test_deleting_a_document_removes_only_its_chunks(store):
     assert store.delete_document("library.md") == 0
 
 
-def test_reset_empties_the_store(chroma_client, store):
+def test_reset_empties_the_store(store):
     fill(store)
-    fresh = store.reset(chroma_client)
+    fresh = store.reset()
     assert fresh.count() == 0
     fresh.upsert([chunk("a.md", 0, "S", "text")], "h", "s", "t")
     assert fresh.count() == 1
@@ -91,11 +92,23 @@ def test_upserting_nothing_is_fine(store):
 
 
 def test_an_index_from_an_older_version_is_readable_and_counts_as_out_of_date(store):
-    # The previous ingestion stored only these two fields per chunk.
-    store._collection.add(
-        ids=["library.md::0"], documents=["old chunk"], metadatas=[{"document": "library.md", "section": "Hours"}]
-    )
+    insert_legacy_chunks(store, [("library.md::0", "old chunk", "library.md", "Hours")])
 
     (info,) = store.documents()
 
     assert (info.document, info.file_hash, info.signature, info.chunk_count) == ("library.md", "", "", 1)
+
+
+def test_the_same_chunk_ids_in_a_reset_store_start_fresh(store):
+    fill(store)
+    fresh = store.reset()
+    fresh.upsert([chunk("library.md", 0, "Hours", "new words only")], "h", "s", "t")
+    assert [c.text.endswith("new words only") for c in fresh.all_chunks()] == [True]
+
+
+def test_many_chunks_are_stored_and_listed(store):
+    chunks = [chunk("big.md", i, f"Part {i}", f"number {i} filler words") for i in range(300)]
+    store.upsert(chunks, "h", "s", "t")
+    assert store.count() == 300 and len(store.all_chunks()) == 300
+    assert store.documents()[0].chunk_count == 300
+    assert store.delete_document("big.md") == 300 and store.count() == 0

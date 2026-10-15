@@ -18,9 +18,9 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 
-from app.core.config import CHROMA_COLLECTION, CHROMA_DIR, KNOWLEDGE_DIR, UPLOAD_DIR
+from app.core.config import KNOWLEDGE_COLLECTION, KNOWLEDGE_DIR, UPLOAD_DIR
 from app.rag.chunking import Chunk, chunk_markdown
-from app.rag.store import ChromaStore, get_client
+from app.rag.store import VectorStore, create_store, describe_store
 
 logger = logging.getLogger(__name__)
 
@@ -83,7 +83,7 @@ def _fingerprint(text: str) -> str:
     return hashlib.sha256(re.sub(r"\s+", " ", text).strip().lower().encode()).hexdigest()
 
 
-def ingest_file(store: ChromaStore, path: Path, seen: set[str], report: IngestReport) -> None:
+def ingest_file(store: VectorStore, path: Path, seen: set[str], report: IngestReport) -> None:
     """Replace a document's chunks with freshly made ones."""
     chunks: list[Chunk] = []
     for chunk in chunk_markdown(path.name, path.read_text(), CHUNK_TOKENS, CHUNK_OVERLAP):
@@ -99,7 +99,7 @@ def ingest_file(store: ChromaStore, path: Path, seen: set[str], report: IngestRe
     report.chunks_written += len(chunks)
 
 
-def ingest(store: ChromaStore, directories: Path | Sequence[Path] | None = None) -> IngestReport:
+def ingest(store: VectorStore, directories: Path | Sequence[Path] | None = None) -> IngestReport:
     """Bring the store in line with the files in the curated corpus and the uploads
     (or in the given folder or folders)."""
     if directories is None:
@@ -135,13 +135,14 @@ def main() -> None:
     parser.add_argument("--full", action="store_true", help="wipe the store and rebuild everything")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
+    for noisy in ("httpx", "httpcore"):
+        logging.getLogger(noisy).setLevel(logging.WARNING)  # one line per request otherwise
 
-    client = get_client()
-    store = ChromaStore.create(client)
+    store = create_store()
     if args.full:
-        store = store.reset(client)
+        store = store.reset()
     report = ingest(store)
-    print(f"Knowledge base '{CHROMA_COLLECTION}' at {CHROMA_DIR}: {report.summary()}")
+    print(f"Knowledge base '{KNOWLEDGE_COLLECTION}' in {describe_store()}: {report.summary()}")
 
 
 if __name__ == "__main__":

@@ -128,9 +128,9 @@
 
 ### 3.4 Vector Store Upgrade
 
-- [ ] Migrate from in-process `chromadb.PersistentClient` to ChromaDB in HTTP server mode
-- [ ] Add `qdrant` as an alternative backend behind a `VECTOR_STORE=chroma|qdrant` env switch
-- [ ] Run the vector store as a separate Docker Compose service
+- [x] Migrate from in-process `chromadb.PersistentClient` to ChromaDB in HTTP server mode (optional: set `CHROMA_HOST`; local files stay the default)
+- [x] Add `qdrant` as an alternative backend behind a `VECTOR_STORE=chroma|qdrant` env switch
+- [x] Run the vector store as a separate Docker Compose service
 - [x] Fix the `lru_cache` on `_get_collection()` — it breaks under multiple Uvicorn workers; replace with an app-lifespan singleton (replaced by a lock-guarded shared retriever that the app warms up at startup)
 
 ### 3.5 RAG Evaluation

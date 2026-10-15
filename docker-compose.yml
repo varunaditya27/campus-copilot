@@ -21,5 +21,28 @@ services:
       timeout: 3s
       retries: 10
 
+  # Optional vector stores for the knowledge base. Without either, the backend
+  # keeps Chroma's files on disk. Start one with its profile, for example
+  #   docker compose --profile qdrant up -d qdrant
+  # and point the backend at it (CHROMA_HOST, or VECTOR_STORE=qdrant). Neither
+  # has authentication enabled, so they listen on localhost only.
+  chroma:
+    image: chromadb/chroma:1.5.9
+    profiles: ["chroma-server"]
+    ports:
+      - "127.0.0.1:${CHROMA_SERVER_PORT:-8100}:8000"
+    volumes:
+      - chroma_data:/data
+
+  qdrant:
+    image: qdrant/qdrant:v1.19.2
+    profiles: ["qdrant"]
+    ports:
+      - "127.0.0.1:${QDRANT_PORT:-6333}:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
 volumes:
   postgres_data:
+  chroma_data:
+  qdrant_data:

@@ -170,8 +170,7 @@ def test_the_two_searches_each_look_this_deep():
 
 def test_the_shared_retriever_is_created_once_and_can_be_reset(monkeypatch):
     opened = []
-    monkeypatch.setattr(retriever_module.ChromaStore, "open", lambda client: opened.append(1) or FakeStore())
-    monkeypatch.setattr(retriever_module, "get_client", lambda: object())
+    monkeypatch.setattr(retriever_module, "open_store", lambda: opened.append(1) or FakeStore())
     retriever_module.reset_retriever()
     try:
         assert retriever_module.get_retriever() is retriever_module.get_retriever()

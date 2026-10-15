@@ -19,7 +19,17 @@ UPLOAD_DIR = Path(os.getenv("KNOWLEDGE_UPLOAD_DIR", BACKEND_DIR / "knowledge_upl
 DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{REPO_ROOT / 'backend' / 'campus.db'}")
 
 CHROMA_DIR = Path(os.getenv("CHROMA_DIR", REPO_ROOT / "backend" / "chroma"))
-CHROMA_COLLECTION = "campus_knowledge"
+KNOWLEDGE_COLLECTION = "campus_knowledge"
+
+# Which vector database holds the knowledge base: "chroma" (the default; local
+# files, or a Chroma server if CHROMA_HOST is set) or "qdrant".
+VECTOR_STORE = os.getenv("VECTOR_STORE", "chroma").lower()
+if VECTOR_STORE not in ("chroma", "qdrant"):
+    raise RuntimeError(f"VECTOR_STORE must be 'chroma' or 'qdrant', not '{VECTOR_STORE}'.")
+CHROMA_HOST = os.getenv("CHROMA_HOST", "")
+CHROMA_PORT = int(os.getenv("CHROMA_PORT", "8000"))
+QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
 
 # How many passages the agent gets for a question.
 RAG_TOP_K = int(os.getenv("RAG_TOP_K", "3"))

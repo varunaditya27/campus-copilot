@@ -2,6 +2,7 @@ import pytest
 
 from app.rag import ingest as ingest_module
 from app.rag.ingest import ingest, knowledge_files
+from helpers import insert_legacy_chunks
 
 
 def write(directory, name, text):
@@ -106,9 +107,9 @@ def test_identical_chunks_are_stored_once(store, tmp_path):
     assert report.duplicates_skipped == 1 and store.count() == 1
 
 
-def test_a_full_rebuild_starts_from_nothing(chroma_client, store, corpus):
+def test_a_full_rebuild_starts_from_nothing(store, corpus):
     ingest(store, corpus)
-    fresh = store.reset(chroma_client)
+    fresh = store.reset()
     assert fresh.count() == 0
     assert sorted(ingest(fresh, corpus).added) == ["hostel.md", "library.md"]
 
@@ -119,13 +120,12 @@ def test_the_summary_describes_the_run(store, corpus):
 
 
 def test_an_index_from_an_older_version_is_brought_up_to_date(store, corpus):
-    store._collection.add(
-        ids=["library.md::0", "library.md::1", "gone.md::0"],
-        documents=["old chunk one", "old chunk two", "old chunk of a deleted file"],
-        metadatas=[
-            {"document": "library.md", "section": "Hours"},
-            {"document": "library.md", "section": "Fines"},
-            {"document": "gone.md", "section": "S"},
+    insert_legacy_chunks(
+        store,
+        [
+            ("library.md::0", "old chunk one", "library.md", "Hours"),
+            ("library.md::1", "old chunk two", "library.md", "Fines"),
+            ("gone.md::0", "old chunk of a deleted file", "gone.md", "S"),
         ],
     )
 
