@@ -1,0 +1,60 @@
+name: Build and publish images
+
+# When something is merged to main, build both images and publish them to the GitHub Container Registry.
+# docker-compose.prod.yml pulls them from there.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  # ghcr.io image names must be lowercase.
+  PREFIX: ghcr.io/${{ github.repository_owner }}/campus-copilot
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - name: backend
+            context: .
+            file: backend/Dockerfile
+          - name: frontend
+            context: frontend
+            file: frontend/Dockerfile
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/login-action@v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ env.PREFIX }}-${{ matrix.name }}
+          tags: |
+            type=raw,value=latest
+            type=sha,format=short
+      - uses: docker/build-push-action@v7
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.file }}
+          target: runtime
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # The frontend bakes in the address the browser uses for the API. Set the repository
+          # variable NEXT_PUBLIC_API_BASE_URL to the address of your deployment (with the bundled
+          # Caddy setup it is simply https://your-domain).
+          build-args: |
+            NEXT_PUBLIC_API_BASE_URL=${{ vars.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000' }}
+          cache-from: type=gha,scope=${{ matrix.name }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.name }}

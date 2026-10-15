@@ -372,6 +372,8 @@ docker compose exec backend python -m app.cli create-user --role admin
 
 Then open http://localhost:3000. The first start downloads the search models (about 170 MB, several minutes on a slow connection) while the one-shot `ingest` service builds the knowledge base; after that, starts are fast. `make help` lists the everyday commands (`make dev` for hot reload, `make ingest`, `make migrate`, `make test`). The stack is Postgres, Redis, the backend and the frontend; Qdrant and Chroma-server are optional profiles in `docker-compose.yml`.
 
+**Deploying with HTTPS.** `docker-compose.prod.yml` pulls the images that `.github/workflows/build.yml` publishes to the GitHub Container Registry on every merge to `main`, and puts Caddy in front: it gets and renews a Let's Encrypt certificate for `DOMAIN`, redirects HTTP to HTTPS, and serves the pages and the API from one address. Set the repository variable `NEXT_PUBLIC_API_BASE_URL` to `https://<DOMAIN>` before the first publish, because the frontend image has that address baked in. `.github/workflows/ci.yml` runs on every pull request: backend tests, frontend type check and lint, a gitleaks secret scan of the full history, and a build of both images. Dependabot proposes dependency updates weekly. The workflows have only been linted with actionlint, not run on GitHub.
+
 To run the pieces by hand instead, follow the steps below.
 
 ### 1. Clone the repository

@@ -1,0 +1,105 @@
+# Production: pulls the images that the "Build and publish images" workflow pushes to the GitHub
+# Container Registry, and puts Caddy in front for HTTPS. Only ports 80 and 443 are published.
+#
+#   cp .env.example .env     # set DOMAIN, POSTGRES_PASSWORD, JWT_SECRET, GROQ_API_KEY, IMAGE_PREFIX
+#   docker compose -f docker-compose.prod.yml pull
+#   docker compose -f docker-compose.prod.yml up -d
+#
+# DOMAIN must already point at this machine (Caddy needs ports 80 and 443 reachable to get a certificate).
+# The frontend image has the API address baked in: it must have been built with
+# NEXT_PUBLIC_API_BASE_URL=https://<DOMAIN> (the repository variable of that name in GitHub).
+services:
+  caddy:
+    image: caddy:2
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - backend
+      - frontend
+    restart: unless-stopped
+
+  backend:
+    image: ${IMAGE_PREFIX:?set IMAGE_PREFIX, for example ghcr.io/your-name/campus-copilot}-backend:${IMAGE_TAG:-latest}
+    environment:
+      DATABASE_URL: postgresql+psycopg://campus:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@postgres:5432/campus_copilot
+      JWT_SECRET: ${JWT_SECRET:-}
+      # One origin serves both the pages and the API, so no other origin is allowed.
+      CORS_ORIGINS: https://${DOMAIN}
+      COOKIE_SECURE: "true"
+      ENVIRONMENT: production
+      REDIS_URL: redis://redis:6379/0
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      LLM_PROVIDER: ${LLM_PROVIDER:-groq}
+      LLM_MODEL: ${LLM_MODEL:-}
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-local}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-Campus Copilot <no-reply@campus.example>}
+    volumes:
+      - campus_data:/var/lib/campus
+      - model_cache:/home/app/.cache
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ingest:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  ingest:
+    image: ${IMAGE_PREFIX}-backend:${IMAGE_TAG:-latest}
+    entrypoint: ["python", "-m", "app.rag.ingest"]
+    environment:
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-local}
+    volumes:
+      - campus_data:/var/lib/campus
+      - model_cache:/home/app/.cache
+    restart: "no"
+
+  frontend:
+    image: ${IMAGE_PREFIX}-frontend:${IMAGE_TAG:-latest}
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: campus
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: campus_copilot
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U campus -d campus_copilot"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:8-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  campus_data:
+  model_cache:
+  caddy_data:
+  caddy_config:

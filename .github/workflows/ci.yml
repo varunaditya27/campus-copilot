@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# A newer push to the same branch makes the older run pointless.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: backend/requirements*.txt
+      # The search models are downloaded on first use; keep them between runs.
+      - uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cache/chroma
+            /tmp/fastembed_cache
+          key: search-models-${{ runner.os }}-v1
+      - name: Install
+        working-directory: backend
+        run: pip install -r requirements-dev.txt
+      - name: Test
+        working-directory: backend
+        run: pytest -q
+
+  frontend:
+    name: Frontend types and lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npx eslint app lib
+
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # the whole history: a secret removed in a later commit is still leaked
+      # The gitleaks program itself, not its GitHub Action, which asks organisations for a licence key.
+      - name: Install gitleaks (checksum verified)
+        env:
+          GITLEAKS_VERSION: 8.30.1
+        run: |
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+          curl -sSfL "$base/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" -o gitleaks.tar.gz
+          curl -sSfL "$base/gitleaks_${GITLEAKS_VERSION}_checksums.txt" -o checksums.txt
+          grep "gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" checksums.txt | sha256sum -c -
+          tar -xzf gitleaks.tar.gz gitleaks
+      - name: Scan
+        run: ./gitleaks detect --source . --redact --verbose
+
+  images:
+    name: Docker images build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: backend/Dockerfile
+          target: runtime
+          push: false
+          cache-from: type=gha,scope=backend
+          cache-to: type=gha,mode=max,scope=backend
+      - uses: docker/build-push-action@v7
+        with:
+          context: frontend
+          target: runtime
+          push: false
+          cache-from: type=gha,scope=frontend
+          cache-to: type=gha,mode=max,scope=frontend

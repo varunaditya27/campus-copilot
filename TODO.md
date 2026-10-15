@@ -363,20 +363,20 @@
 
 ### 9.1 Containerization
 
-- [ ] Write `docker-compose.yml` with services: `backend`, `frontend`, `postgres`, `redis`, `qdrant`, `celery-worker`, `celery-beat`
-- [ ] Write `backend/Dockerfile` (multi-stage: builder + slim runtime)
-- [ ] Write `frontend/Dockerfile` (Next.js standalone build)
-- [ ] Add `.dockerignore` files to both services
-- [ ] Add a `docker-compose.dev.yml` override for hot-reload development
-- [ ] Add `Makefile` with targets: `make dev`, `make build`, `make test`, `make ingest`, `make migrate`
+- [ ] Write `docker-compose.yml` with services: `backend`, `frontend`, `postgres`, `redis`, `qdrant`, `celery-worker`, `celery-beat` (all but the two Celery services, which are left out on purpose because nothing in the app uses Celery yet; Qdrant is an optional profile; there is also a one-shot `ingest` service; started for real on Postgres)
+- [x] Write `backend/Dockerfile` (multi-stage: builder + slim runtime)
+- [x] Write `frontend/Dockerfile` (Next.js standalone build)
+- [x] Add `.dockerignore` files to both services (the backend's is `backend/Dockerfile.dockerignore`, because it builds from the repository root)
+- [x] Add a `docker-compose.dev.yml` override for hot-reload development
+- [x] Add `Makefile` with targets: `make dev`, `make build`, `make test`, `make ingest`, `make migrate`
 
 ### 9.2 CI/CD Pipeline
 
-- [ ] Add `.github/workflows/ci.yml`: on every PR, run backend `pytest`, frontend `tsc --noEmit`, ESLint
-- [ ] Add `.github/workflows/build.yml`: on merge to `main`, build and push Docker images to GitHub Container Registry
-- [ ] Add a `docker-compose.prod.yml` that pulls from GHCR instead of building locally
-- [ ] Add GitHub Actions secret scanning check on every PR
-- [ ] Add Dependabot config for Python and npm dependency updates
+- [x] Add `.github/workflows/ci.yml`: on every PR, run backend `pytest`, frontend `tsc --noEmit`, ESLint (linted with actionlint; not yet run on GitHub)
+- [x] Add `.github/workflows/build.yml`: on merge to `main`, build and push Docker images to GitHub Container Registry (the frontend image bakes in the API address from the repository variable `NEXT_PUBLIC_API_BASE_URL`)
+- [x] Add a `docker-compose.prod.yml` that pulls from GHCR instead of building locally (with Caddy for HTTPS)
+- [x] Add GitHub Actions secret scanning check on every PR (the gitleaks program with a verified checksum over the full history, not its GitHub Action, which asks organisations for a licence; the history is clean today)
+- [x] Add Dependabot config for Python and npm dependency updates (also Docker and GitHub Actions)
 
 ### 9.3 Observability
 
