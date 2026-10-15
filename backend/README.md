@@ -71,7 +71,7 @@ backend/
 │   │   └── staff.py                # registrations list and CSV export (staff, admin)
 │   │
 │   ├── agent/
-│   │   ├── agent.py                # run_agent_stream(): the tool-calling loop, as a stream of events
+│   │   ├── agent.py                # the agent as a LangGraph graph; run_agent_stream() streams its events
 │   │   ├── prompts.py              # system prompt + RAG context builder
 │   │   └── tool_registry.py        # Groq tool schemas + dispatch table
 │   │
@@ -201,7 +201,22 @@ Things to know: the first start downloads the reranker (about 80 MB, ONNX, no Py
 
 `app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Only the first three tools are in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`; the student is always the signed-in one, never something the model supplies) -- but the agent loop special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
 
-The loop itself (`run_agent_stream()` in `agent/agent.py`, with `run_agent()` as a wrapper that waits for the final result) is bounded (`MAX_TOOL_ROUNDS = 4`) so the model can chain a few calls -- e.g. `search_events` then `check_event_availability` -- before producing a final answer, without risking an unbounded loop.
+The agent is a [LangGraph](https://docs.langchain.com/oss/python/langgraph) state graph (`agent/agent.py`), with `run_agent_stream()` streaming its events and `run_agent()` waiting for the final result:
+
+```text
+retrieve → (plan) → reason ──→ respond                       the model answered
+                      ↑   ├──→ request_confirmation → respond   it asked to register someone
+                      │   └──→ execute_tools ──→ reason        results go back to the model
+                      └────────────────────────→ respond       out of rounds
+```
+
+- **State** (`AgentState`): the messages so far, the retrieved passages, pending tool calls, the tool activity, any pending confirmation, the reply, and `loop_count`. Nodes return only what they add.
+- **Nodes** do one job each: `retrieve` (knowledge search), `reason` (one model call, streaming tokens), `execute_tools`, `request_confirmation` (the human-approval gate: registering is never executed, only turned into a confirmation card), `respond` (the final `done` event). Each node reports progress through LangGraph's stream writer, as the same events described under Streaming below.
+- **Decisions** are three small named functions, `is_confirmation_needed`, `should_call_tools` and `is_done`, combined by the routing functions, so the rules are easy to read and test.
+- **Bounded:** the model gets at most `MAX_TOOL_ROUNDS = 4` turns, counted in the state. Behind that, `RECURSION_LIMIT` makes LangGraph itself stop a run that takes too many steps, so a routing mistake cannot loop forever. (LangGraph has no cycle detection; this limit is its equivalent.)
+- **Parallel tools:** when the model asks for several tools in one turn they run at the same time, in threads, because they are independent. Events are still sent from the node's own thread, results keep the order of the calls, and one failing tool does not stop the others.
+- **Planning (off by default):** with `AGENT_PLANNING=true` a `plan` node first asks the model to split a multi-step request into steps and shows the plan to the model. It adds a model call to every question and has not been shown to help, so it stays off until there is an evaluation of tool use to prove it.
+
 
 ---
 
@@ -310,6 +325,7 @@ curl http://localhost:8000/health
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated origins allowed to call this API |
 | `DATABASE_URL` | `sqlite:///<repo>/backend/campus.db` | SQLAlchemy URL. Use `postgresql+psycopg://user:password@host:5432/dbname` for PostgreSQL |
 | `JWT_SECRET` | *(random per start)* | Signs access tokens; at least 32 characters. Set it in production, otherwise every restart signs everyone out |
+| `AGENT_PLANNING` | `false` | Plan multi-step requests before answering (adds a model call per question; unproven, so off) |
 | `COOKIE_SECURE` | `false` | Send the session cookie over HTTPS only; set to `true` in production |
 | `RAG_TOP_K` | `3` | How many passages the agent receives per question |
 | `RAG_RRF_K` | `60` | Reciprocal Rank Fusion constant (the value from the original paper) |

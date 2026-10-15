@@ -13,3 +13,4 @@ fastembed==0.9.0
 bm25s==0.3.13
 pypdf==6.20.1
 python-multipart==0.0.32
+langgraph==1.2.15

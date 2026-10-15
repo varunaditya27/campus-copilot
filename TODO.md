@@ -153,13 +153,13 @@
 
 ### 4.1 LangGraph Agent Migration
 
-- [ ] Add `langgraph` and `langchain-core` to `requirements.txt`
-- [ ] Define a typed `AgentState` dataclass: `messages`, `tool_calls`, `rag_chunks`, `student_profile`, `pending_confirmation`, `loop_count`
-- [ ] Rebuild `run_agent()` as a LangGraph `StateGraph` with nodes: `retrieve`, `reason`, `execute_tools`, `request_confirmation`, `respond`
-- [ ] Add explicit edge conditions: `should_call_tools`, `is_confirmation_needed`, `is_done`
-- [ ] Replace the manual `for _ in range(MAX_TOOL_ROUNDS)` loop with LangGraph's cycle detection
-- [ ] Add a `plan` node that decomposes complex multi-step goals into an ordered sub-goal list before executing tools
-- [ ] Enable parallel tool execution when multiple non-dependent tool calls are requested in the same round
+- [x] Add `langgraph` and `langchain-core` to `requirements.txt` (`langgraph` pulls in `langchain-core`)
+- [x] Define a typed `AgentState` dataclass: `messages`, `tool_calls`, `rag_chunks`, `student_profile`, `pending_confirmation`, `loop_count`
+- [x] Rebuild `run_agent()` as a LangGraph `StateGraph` with nodes: `retrieve`, `reason`, `execute_tools`, `request_confirmation`, `respond`
+- [x] Add explicit edge conditions: `should_call_tools`, `is_confirmation_needed`, `is_done`
+- [x] Replace the manual `for _ in range(MAX_TOOL_ROUNDS)` loop with LangGraph's cycle detection (LangGraph has no cycle detection; the loop is now a graph cycle bounded by `loop_count` in the state, with `recursion_limit` as a safety net)
+- [x] Add a `plan` node that decomposes complex multi-step goals into an ordered sub-goal list before executing tools (built and tested, off by default: `AGENT_PLANNING`)
+- [x] Enable parallel tool execution when multiple non-dependent tool calls are requested in the same round
 
 ### 4.2 Student Memory & Personalization
 

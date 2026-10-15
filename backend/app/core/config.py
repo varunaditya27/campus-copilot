@@ -31,6 +31,11 @@ CHROMA_PORT = int(os.getenv("CHROMA_PORT", "8000"))
 QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
 
+# Before answering, ask the model to break a multi-step request into steps. This
+# costs an extra model call on every question and has not been shown to help
+# yet, so it is off until there is an evaluation to prove it. Set to "true" to try it.
+AGENT_PLANNING = os.getenv("AGENT_PLANNING", "false").lower() == "true"
+
 # How many passages the agent gets for a question.
 RAG_TOP_K = int(os.getenv("RAG_TOP_K", "3"))
 

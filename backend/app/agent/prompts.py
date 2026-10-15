@@ -20,6 +20,18 @@ KNOWLEDGE_UNAVAILABLE_MESSAGE = (
 )
 
 
+PLANNER_PROMPT = """You help an assistant for a college campus decide how to handle a
+student's request. If the request needs several separate steps (for example
+finding something, then checking it, then acting on it), reply with ONLY a JSON
+array of short step descriptions in the order they should be done. If it is a
+single question or a single action, reply with an empty array: []"""
+
+
+def build_plan_message(steps: list[str]) -> str:
+    numbered = "\n".join(f"{number}. {step}" for number, step in enumerate(steps, start=1))
+    return f"Plan for this request. Work through it step by step, using tools where needed:\n{numbered}"
+
+
 def build_student_message(student: CurrentStudent) -> str:
     return (
         f"You are talking to {student.name} (student id {student.student_id}), "

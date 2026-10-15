@@ -157,3 +157,25 @@ def make_pdf(pages: list[str]) -> bytes:
     out += b"".join(f"{offset:010d} 00000 n \n".encode() for offset in offsets)
     out += f"trailer\n<< /Size {len(objects) + 1} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n".encode()
     return out
+
+
+class SlowGroq:
+    """Streams a text reply one word at a time with a pause between words, and records
+    when the stream finished."""
+
+    def __init__(self, words, pause=0.05):
+        self._words, self._pause = words, pause
+        self.finished_at = None
+        self.chat = SimpleNamespace(completions=SimpleNamespace(create=self._create))
+
+    def _create(self, **kwargs):
+        import time
+
+        def stream():
+            for word in self._words:
+                time.sleep(self._pause)
+                yield _chunk(content=word + " ")
+            yield _chunk(finish_reason="stop")
+            self.finished_at = time.monotonic()
+
+        return stream()
