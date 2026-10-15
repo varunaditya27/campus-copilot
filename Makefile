@@ -3,7 +3,7 @@ COMPOSE      = docker compose
 COMPOSE_DEV  = docker compose -f docker-compose.yml -f docker-compose.dev.yml
 
 .DEFAULT_GOAL := help
-.PHONY: help dev build up down logs test test-backend test-frontend lint ingest migrate create-admin clean
+.PHONY: help dev build up down logs test test-backend test-frontend coverage lint ingest migrate create-admin clean
 
 help:  ## Show this list
 	@grep -E '^[a-zA-Z_-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-16s %s\n", $$1, $$2}'
@@ -28,10 +28,14 @@ test: test-backend test-frontend  ## Run all the tests
 test-backend:  ## Backend tests, on this machine (needs backend/venv)
 	cd backend && ./venv/bin/pytest -q
 
-test-frontend:  ## Type-check and lint the frontend, on this machine
-	cd frontend && ./node_modules/.bin/tsc --noEmit && ./node_modules/.bin/eslint app lib
+test-frontend:  ## Type-check, lint and run the component tests of the frontend, on this machine
+	cd frontend && ./node_modules/.bin/tsc --noEmit && ./node_modules/.bin/eslint app lib && ./node_modules/.bin/vitest run
 
-lint: test-frontend  ## Lint the frontend
+coverage:  ## Backend tests with a coverage report
+	cd backend && ./venv/bin/pytest -q --cov=app --cov-report=term-missing:skip-covered
+
+lint:  ## Type-check and lint the frontend
+	cd frontend && ./node_modules/.bin/tsc --noEmit && ./node_modules/.bin/eslint app lib
 
 ingest:  ## Build or update the knowledge base in the running backend (add FULL=1 to rebuild everything)
 	$(COMPOSE) exec backend python -m app.rag.ingest $(if $(FULL),--full,)

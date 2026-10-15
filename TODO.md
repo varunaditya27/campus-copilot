@@ -389,14 +389,14 @@
 
 ### 9.4 Testing
 
-- [ ] Add `pytest` + `pytest-asyncio` to `requirements.txt`
+- [x] Add `pytest` + `pytest-asyncio` to `requirements.txt` (to `requirements-dev.txt`, so the production image does not carry test tools)
 - [x] Write unit tests for all tool functions (`search_events`, `calculate_attendance`, etc.)
 - [x] Write unit tests for the RAG retriever (mock Chroma, test distance filtering)
-- [ ] Write integration tests for all FastAPI endpoints using `httpx.AsyncClient`
+- [x] Write integration tests for all FastAPI endpoints using `httpx.AsyncClient` (an access table checked against the OpenAPI schema, tried as a visitor and as each role, plus async workflows)
 - [x] Write end-to-end agent tests: send a message → assert the right tools are called → assert response structure
 - [x] Write RAG eval tests that run the golden dataset and assert minimum Recall@3 threshold (`pytest -m slow`)
-- [ ] Add `vitest` + `testing-library/react` for Next.js component tests
-- [ ] Aim for >80% backend coverage; track with `pytest-cov`
+- [x] Add `vitest` + `testing-library/react` for Next.js component tests (87 tests; run in CI)
+- [x] Aim for >80% backend coverage; track with `pytest-cov` (98% measured; CI fails below 90%)
 
 ### 9.5 Security
 

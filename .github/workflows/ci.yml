@@ -34,12 +34,12 @@ jobs:
       - name: Install
         working-directory: backend
         run: pip install -r requirements-dev.txt
-      - name: Test
+      - name: Test, with coverage (fails below 90%)
         working-directory: backend
-        run: pytest -q
+        run: pytest -q --cov=app --cov-report=term-missing:skip-covered --cov-fail-under=90
 
   frontend:
-    name: Frontend types and lint
+    name: Frontend types, lint and tests
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -54,6 +54,7 @@ jobs:
       - run: npm ci
       - run: npx tsc --noEmit
       - run: npx eslint app lib
+      - run: npx vitest run
 
   secrets:
     name: Secret scan
