@@ -156,3 +156,42 @@ def cgpa(student_id: str) -> dict:
         "semesters": [{"semester": s, "sgpa": average(pairs)} for s, pairs in sorted(by_semester.items())],
         "backlogs": backlogs,
     }
+
+
+ADD_DROP_NOTE = (
+    "An elective can be added or dropped without penalty in the first two weeks of the teaching "
+    "period; after that it needs written approval from the course instructor and the department."
+)
+
+
+def elective_options(student_id: str, semester: int | None = None) -> dict:
+    """The electives offered to the student's department in a semester (the current
+    one by default), marking the ones they are taking."""
+    with db_session.SessionLocal() as db:
+        student = db.get(Student, student_id)
+        if student is None:
+            return {"error": "No student record was found."}
+        current = current_semester(db, student)
+        wanted = current if semester is None else semester
+        if not 1 <= wanted <= 8:
+            return {"error": "The semester must be between 1 and 8."}
+        profile = db.get(StudentProfile, student_id)
+        taking = set(profile.electives) if profile else set()
+        courses = db.scalars(
+            select(Course)
+            .where(Course.department == student.program, Course.semester == wanted, Course.kind == "elective")
+            .order_by(Course.course_code)
+        ).all()
+
+    result = {
+        "semester": wanted,
+        "electives": [
+            {"course_code": c.course_code, "name": c.name, "credits": c.credits, "enrolled": c.course_code in taking}
+            for c in courses
+        ],
+    }
+    if not courses:
+        result["message"] = f"No electives are offered to your department in semester {wanted}."
+    if wanted == current:
+        result["note"] = ADD_DROP_NOTE
+    return result

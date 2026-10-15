@@ -6,7 +6,19 @@ from sqlalchemy.orm import Session
 
 from app.core.config import DATA_DIR
 from app.db import session as db_session
-from app.db.models import AcademicRecord, Course, Event, Registration, Student, StudentProfile
+from app.db.models import (
+    AcademicRecord,
+    Course,
+    CourseOffering,
+    Event,
+    Exam,
+    FacultyMember,
+    FeeRecord,
+    Registration,
+    Student,
+    StudentProfile,
+    TimetableSlot,
+)
 
 
 def _load(filename: str) -> list[dict]:
@@ -23,7 +35,19 @@ def seed(session: Session) -> dict[str, int]:
     Safe to run repeatedly: a table that already has rows is left untouched,
     so re-seeding never duplicates data or overwrites live registrations.
     """
-    added = {"students": 0, "events": 0, "registrations": 0, "courses": 0, "student_profiles": 0, "academic_records": 0}
+    added = {
+        "students": 0,
+        "events": 0,
+        "registrations": 0,
+        "courses": 0,
+        "student_profiles": 0,
+        "academic_records": 0,
+        "faculty_members": 0,
+        "course_offerings": 0,
+        "timetable_slots": 0,
+        "exams": 0,
+        "fee_records": 0,
+    }
 
     if _is_empty(session, Student):
         rows = [Student(**row) for row in _load("students.json")]
@@ -49,11 +73,17 @@ def seed(session: Session) -> dict[str, int]:
         session.add_all(rows)
         added["registrations"] = len(rows)
 
-    # Courses before the records that refer to them; students were added above.
+    # Courses before the records that refer to them, faculty before the courses they
+    # teach; students were added above.
     for table, model, filename in (
         ("courses", Course, "courses.json"),
         ("student_profiles", StudentProfile, "student_profiles.json"),
         ("academic_records", AcademicRecord, "academic_records.json"),
+        ("faculty_members", FacultyMember, "faculty_members.json"),
+        ("course_offerings", CourseOffering, "course_offerings.json"),
+        ("timetable_slots", TimetableSlot, "timetable_slots.json"),
+        ("exams", Exam, "exams.json"),
+        ("fee_records", FeeRecord, "fee_records.json"),
     ):
         if _is_empty(session, model):
             rows = [model(**row) for row in _load(filename)]

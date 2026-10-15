@@ -100,7 +100,10 @@ backend/
 │   │
 │   ├── services/                   # reusable business logic, no HTTP/LLM concerns
 │   │   ├── auth_service.py         # accounts, login, refresh-token rotation
-│   │   ├── academic_service.py     # profiles, attendance and CGPA calculations
+│   │   ├── academic_service.py     # profiles, attendance, CGPA and elective options
+│   │   ├── schedule_service.py     # timetable and exam schedule
+│   │   ├── fee_service.py          # fee dues and late fees
+│   │   ├── directory_service.py    # course information and the faculty directory
 │   │   ├── chat_service.py         # sessions and message history
 │   │   ├── entity_service.py       # what a conversation has mentioned (events, courses, faculty)
 │   │   ├── summary_service.py      # cached conversation summaries
@@ -203,9 +206,15 @@ Things to know: the first start downloads the reranker (about 80 MB, ONNX, no Py
 | `calculate_attendance` | ✅ | Exact arithmetic in Python -- never trust an LLM with math it can just compute wrong |
 | `get_attendance_report` | ✅ (about the signed-in student) | Attendance this semester, subject by subject, which are below the 75% required and how many classes it would take to reach it |
 | `get_cgpa` | ✅ (about the signed-in student) | SGPA per completed semester, CGPA (credit-weighted, a failed course counts as zero points), and any backlogs |
+| `get_student_timetable` | ✅ (about the signed-in student) | Classes for today, tomorrow, a named weekday or the whole week, with times and rooms, for the student's own section |
+| `get_exam_schedule` | ✅ (about the signed-in student) | Internal tests, practicals and end-semester exams for the current (or a named) semester, each marked past, today or upcoming |
+| `get_elective_options` | ✅ (about the signed-in student) | Electives offered to the student's department in a semester, marking the ones they take, with the add/drop rule |
+| `get_fee_dues` | ✅ (about the signed-in student) | Paid and outstanding fees per term, due dates, and the late fee (500 rupees a week or part of one) inside the ten day late window |
+| `get_course_info` | ✅ (public) | A course's credits, semester, kind, instructor and weekly hours. The syllabus itself is not in the data: the tool points to the instructor's course handout |
+| `get_faculty_profile` | ✅ (public) | Designation, department, specialisation, office, office hours, email and courses taught, found by name or id. A shared surname returns the candidates instead of guessing |
 | `register_for_event` | ⚠️ schema-visible, never auto-executed | Validates event/student/capacity/duplicate and writes the registration |
 
-The two tools about the student's own records take no arguments from the model. The agent supplies the student's id from the login and discards any `student_id` the model puts in its call, so a model that is confused or misled by text in the conversation cannot look up someone else's attendance or grades. Their figures come from SQL and Python, never from the model, and the prompt tells the model not to state a personal academic figure it did not get from a tool.
+The tools about the student's own records (attendance, CGPA, timetable, exams, electives, fees) take no student id from the model. The agent supplies the student's id from the login and discards any `student_id` the model puts in its call, so a model that is confused or misled by text in the conversation cannot look up someone else's attendance or grades. Their figures come from SQL and Python, never from the model, and the prompt tells the model not to state a personal academic figure it did not get from a tool.
 
 `app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Every tool except `register_for_event` is in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`; the student is always the signed-in one, never something the model supplies) -- but the agent loop special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
 

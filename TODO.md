@@ -180,14 +180,14 @@
 
 ### 4.4 Tool Expansion — Academic
 
-- [ ] `get_student_timetable(student_id, day?)` — return schedule for today or a given day
-- [ ] `get_course_info(course_code)` — syllabus, credits, faculty, lab hours
-- [ ] `get_faculty_profile(faculty_id_or_name)` — designation, department, office, office hours, email
-- [ ] `get_exam_schedule(student_id, semester)` — upcoming exams, dates, rooms
+- [x] `get_student_timetable(student_id, day?)` — return schedule for today or a given day (also tomorrow or the whole week; the student id comes from the login)
+- [x] `get_course_info(course_code)` — syllabus, credits, faculty, lab hours (no syllabus text exists in the data, so it returns credits, instructor and weekly hours and points to the instructor's course handout)
+- [x] `get_faculty_profile(faculty_id_or_name)` — designation, department, office, office hours, email
+- [x] `get_exam_schedule(student_id, semester)` — upcoming exams, dates, rooms (current semester by default; the student id comes from the login)
 - [x] `get_cgpa(student_id)` — compute current CGPA from academic records (the student id comes from the login, not from the model)
 - [x] `get_attendance_report(student_id)` — per-subject attendance, highlight subjects below threshold (the student id comes from the login, not from the model)
-- [ ] `get_elective_options(student_id)` — list available electives for the student's current semester and branch
-- [ ] `get_fee_dues(student_id)` — outstanding fees, payment deadlines
+- [x] `get_elective_options(student_id)` — list available electives for the student's current semester and branch (any semester on request)
+- [x] `get_fee_dues(student_id)` — outstanding fees, payment deadlines (with the late fee inside the late-payment window)
 
 ### 4.5 Tool Expansion — Campus Operations
 

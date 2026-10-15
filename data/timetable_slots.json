@@ -1,0 +1,5622 @@
+[
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS106",
+    "room": "IS Lab 1"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS101",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS101",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS101",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS102",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS102",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS102",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS103",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS103",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS103",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS104",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS104",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS105",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS105",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS105",
+    "room": "Classroom IS-1A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS106",
+    "room": "IS Lab 1"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS101",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS101",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS101",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS102",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS102",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS102",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS103",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS103",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS103",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS104",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS104",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS105",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS105",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS105",
+    "room": "Classroom IS-1B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS305",
+    "room": "IS Lab 1"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS306",
+    "room": "IS Lab 2"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS301",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS301",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS301",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS302",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS302",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS302",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS303",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS303",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS303",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS304",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS304",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS304",
+    "room": "Classroom IS-3A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS305",
+    "room": "IS Lab 1"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS306",
+    "room": "IS Lab 2"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS301",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS301",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS301",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS302",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS302",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS302",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS303",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS303",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS303",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS304",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS304",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS304",
+    "room": "Classroom IS-3B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS506",
+    "room": "IS Lab 1"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS501",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS501",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS501",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS502",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS502",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS502",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS503",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS503",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS503",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS504",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS504",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS504",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS505",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS505",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS505",
+    "room": "Classroom IS-5A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS506",
+    "room": "IS Lab 1"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS501",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS501",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS501",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS502",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS502",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS502",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS503",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS503",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS503",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS504",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS504",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS504",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS505",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS505",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS505",
+    "room": "Classroom IS-5B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS705",
+    "room": "IS Project Lab"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS706",
+    "room": "IS Project Lab"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS701",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS701",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS701",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS702",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS702",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS702",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS703",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS703",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS703",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS704",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS704",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS704",
+    "room": "Classroom IS-7A"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS705",
+    "room": "IS Project Lab"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "IS706",
+    "room": "IS Project Lab"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS701",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS701",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS701",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS702",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS702",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "IS702",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS703",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS703",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "IS703",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS704",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "IS704",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Information Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "IS704",
+    "room": "Classroom IS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS106",
+    "room": "CS Lab 1"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS101",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS101",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS101",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS102",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS102",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS102",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS103",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS103",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS103",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS104",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS104",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS105",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS105",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "CS105",
+    "room": "Classroom CS-1A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS106",
+    "room": "CS Lab 1"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS101",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS101",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS101",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS102",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS102",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS102",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS103",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS103",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS103",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS104",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS104",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS105",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS105",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "CS105",
+    "room": "Classroom CS-1B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS305",
+    "room": "CS Lab 1"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS306",
+    "room": "CS Lab 2"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS301",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS301",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS301",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS302",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS302",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS302",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS303",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS303",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS303",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS304",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS304",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "CS304",
+    "room": "Classroom CS-3A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS305",
+    "room": "CS Lab 1"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS306",
+    "room": "CS Lab 2"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS301",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS301",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS301",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS302",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS302",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS302",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS303",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS303",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS303",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS304",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS304",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "CS304",
+    "room": "Classroom CS-3B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS505",
+    "room": "CS Lab 1"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS506",
+    "room": "CS Lab 2"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS501",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS501",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS501",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS502",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS502",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS502",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS503",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS503",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS503",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS504",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS504",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "CS504",
+    "room": "Classroom CS-5A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS505",
+    "room": "CS Lab 1"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS506",
+    "room": "CS Lab 2"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS501",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS501",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS501",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS502",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS502",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS502",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS503",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS503",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS503",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS504",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS504",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "CS504",
+    "room": "Classroom CS-5B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS705",
+    "room": "CS Project Lab"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS706",
+    "room": "CS Project Lab"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS701",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS701",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS701",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS702",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS702",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS702",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS703",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS703",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS703",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS704",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS704",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "CS704",
+    "room": "Classroom CS-7A"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS705",
+    "room": "CS Project Lab"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "CS706",
+    "room": "CS Project Lab"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS701",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS701",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS701",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS702",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS702",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "CS702",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS703",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS703",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "CS703",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS704",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "CS704",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Computer Science and Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "CS704",
+    "room": "Classroom CS-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC106",
+    "room": "EC Lab 1"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC101",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC101",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC101",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC102",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC102",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC102",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC103",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC103",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC103",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC104",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC104",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC104",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC105",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EC105",
+    "room": "Classroom EC-1A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC106",
+    "room": "EC Lab 1"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC101",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC101",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC101",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC102",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC102",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC102",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC103",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC103",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC103",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC104",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC104",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC104",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC105",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EC105",
+    "room": "Classroom EC-1B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC305",
+    "room": "EC Lab 1"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC306",
+    "room": "EC Lab 2"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC301",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC301",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC301",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC302",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC302",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC302",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC303",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC303",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC303",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC304",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC304",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EC304",
+    "room": "Classroom EC-3A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC305",
+    "room": "EC Lab 1"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC306",
+    "room": "EC Lab 2"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC301",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC301",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC301",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC302",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC302",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC302",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC303",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC303",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC303",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC304",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC304",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EC304",
+    "room": "Classroom EC-3B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC505",
+    "room": "EC Lab 1"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC506",
+    "room": "EC Lab 2"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC501",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC501",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC501",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC502",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC502",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC502",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC503",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC503",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC503",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC504",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC504",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EC504",
+    "room": "Classroom EC-5A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC505",
+    "room": "EC Lab 1"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC506",
+    "room": "EC Lab 2"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC501",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC501",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC501",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC502",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC502",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC502",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC503",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC503",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC503",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC504",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC504",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EC504",
+    "room": "Classroom EC-5B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC705",
+    "room": "EC Project Lab"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC706",
+    "room": "EC Project Lab"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC701",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC701",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC701",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC702",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC702",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC702",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC703",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC703",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC703",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC704",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC704",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EC704",
+    "room": "Classroom EC-7A"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC705",
+    "room": "EC Project Lab"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EC706",
+    "room": "EC Project Lab"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC701",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC701",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC701",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC702",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC702",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EC702",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC703",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC703",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EC703",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC704",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EC704",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electronics and Communication Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EC704",
+    "room": "Classroom EC-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE106",
+    "room": "EE Lab 1"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE101",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE101",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE101",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE102",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE102",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE102",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE103",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE103",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE103",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE104",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE104",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE104",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE105",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EE105",
+    "room": "Classroom EE-1A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE106",
+    "room": "EE Lab 1"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE101",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE101",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE101",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE102",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE102",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE102",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE103",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE103",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE103",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE104",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE104",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE104",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE105",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EE105",
+    "room": "Classroom EE-1B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE305",
+    "room": "EE Lab 1"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE306",
+    "room": "EE Lab 2"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE301",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE301",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE301",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE302",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE302",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE302",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE303",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE303",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE303",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE304",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE304",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EE304",
+    "room": "Classroom EE-3A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE305",
+    "room": "EE Lab 1"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE306",
+    "room": "EE Lab 2"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE301",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE301",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE301",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE302",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE302",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE302",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE303",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE303",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE303",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE304",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE304",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EE304",
+    "room": "Classroom EE-3B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE505",
+    "room": "EE Lab 1"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE506",
+    "room": "EE Lab 2"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE501",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE501",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE501",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE502",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE502",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE502",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE503",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE503",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE503",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE504",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE504",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EE504",
+    "room": "Classroom EE-5A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE505",
+    "room": "EE Lab 1"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE506",
+    "room": "EE Lab 2"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE501",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE501",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE501",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE502",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE502",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE502",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE503",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE503",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE503",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE504",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE504",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "EE504",
+    "room": "Classroom EE-5B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE704",
+    "room": "EE Project Lab"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE705",
+    "room": "EE Project Lab"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE701",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE701",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE701",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE702",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE702",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE702",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE703",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE703",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE703",
+    "room": "Classroom EE-7A"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE704",
+    "room": "EE Project Lab"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "EE705",
+    "room": "EE Project Lab"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE701",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE701",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "EE701",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE702",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE702",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "EE702",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE703",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE703",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Electrical and Electronics Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "EE703",
+    "room": "Classroom EE-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME106",
+    "room": "ME Lab 1"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME101",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME101",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME101",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME102",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME102",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME102",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME103",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME103",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 4,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME103",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME104",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME104",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME104",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME105",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "ME105",
+    "room": "Classroom ME-1A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME106",
+    "room": "ME Lab 1"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME101",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME101",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME101",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME102",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME102",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME102",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME103",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME103",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME103",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME104",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME104",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME104",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME105",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 1,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "ME105",
+    "room": "Classroom ME-1B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME305",
+    "room": "ME Lab 1"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME306",
+    "room": "ME Lab 2"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME301",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME301",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME301",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME302",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME302",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME302",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME303",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME303",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME303",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME304",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME304",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "ME304",
+    "room": "Classroom ME-3A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME305",
+    "room": "ME Lab 1"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME306",
+    "room": "ME Lab 2"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME301",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME301",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME301",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME302",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME302",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME302",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME303",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME303",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME303",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME304",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME304",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 3,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "ME304",
+    "room": "Classroom ME-3B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME505",
+    "room": "ME Lab 1"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME506",
+    "room": "ME Lab 2"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME501",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME501",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME501",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME502",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME502",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME502",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME503",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME503",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME503",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME504",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME504",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "A",
+    "day": 1,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "ME504",
+    "room": "Classroom ME-5A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME505",
+    "room": "ME Lab 1"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME506",
+    "room": "ME Lab 2"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME501",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME501",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME501",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME502",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME502",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME502",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME503",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME503",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME503",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 4,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME504",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME504",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 5,
+    "section": "B",
+    "day": 0,
+    "start": "12:15",
+    "end": "13:15",
+    "course_code": "ME504",
+    "room": "Classroom ME-5B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 0,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME704",
+    "room": "ME Project Lab"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME705",
+    "room": "ME Project Lab"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME701",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME701",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME701",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME702",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME702",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME702",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME703",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME703",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "A",
+    "day": 3,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME703",
+    "room": "Classroom ME-7A"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 4,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME704",
+    "room": "ME Project Lab"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 3,
+    "start": "14:00",
+    "end": "16:00",
+    "course_code": "ME705",
+    "room": "ME Project Lab"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME701",
+    "room": "Classroom ME-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME701",
+    "room": "Classroom ME-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "09:00",
+    "end": "10:00",
+    "course_code": "ME701",
+    "room": "Classroom ME-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME702",
+    "room": "Classroom ME-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME702",
+    "room": "Classroom ME-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "10:00",
+    "end": "11:00",
+    "course_code": "ME702",
+    "room": "Classroom ME-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 0,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME703",
+    "room": "Classroom ME-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 1,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME703",
+    "room": "Classroom ME-7B"
+  },
+  {
+    "department": "Mechanical Engineering",
+    "semester": 7,
+    "section": "B",
+    "day": 2,
+    "start": "11:15",
+    "end": "12:15",
+    "course_code": "ME703",
+    "room": "Classroom ME-7B"
+  }
+]

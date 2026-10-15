@@ -1,5 +1,14 @@
 from app.actions.registry import ACTION_SCHEMAS
-from app.tools.academic import get_attendance_report, get_cgpa
+from app.tools.academic import (
+    get_attendance_report,
+    get_cgpa,
+    get_course_info,
+    get_elective_options,
+    get_exam_schedule,
+    get_faculty_profile,
+    get_fee_dues,
+    get_student_timetable,
+)
 from app.tools.attendance import calculate_attendance
 from app.tools.events import check_event_availability, search_events
 
@@ -80,6 +89,103 @@ TOOL_SCHEMAS = [
             "parameters": {"type": "object", "properties": {}},
         },
     },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_student_timetable",
+            "description": "Get the signed-in student's own class timetable for one day (today by default, or tomorrow, or a weekday name) or for the whole week: times, courses and rooms. Use this when they ask what classes they have.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "day": {
+                        "type": "string",
+                        "description": "'today', 'tomorrow', a weekday such as 'Monday', or 'week'. Omit for today."
+                    }
+                }
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_exam_schedule",
+            "description": "Get the signed-in student's own exam dates, times and venues: internal tests, practicals and the end-semester exams, each marked upcoming or past. Defaults to their current semester.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "semester": {
+                        "type": "integer",
+                        "description": "Semester number 1-8. Omit for the current semester."
+                    }
+                }
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_elective_options",
+            "description": "List the electives offered to the signed-in student's department in a semester, marking the ones they are taking. Defaults to their current semester.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "semester": {
+                        "type": "integer",
+                        "description": "Semester number 1-8. Omit for the current semester."
+                    }
+                }
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_fee_dues",
+            "description": "Get the signed-in student's own fees: what is paid and outstanding for each term, due dates, and any late fee. Use this instead of guessing when they ask about fees or payment deadlines.",
+            "parameters": {
+                "type": "object",
+                "properties": {}
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_course_info",
+            "description": "Look up a course by its code (for example 'IS501'): name, credits, semester, instructor and weekly hours. Not about any particular student.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "course_code": {
+                        "type": "string",
+                        "description": "The course code, e.g. 'IS501'."
+                    }
+                },
+                "required": [
+                    "course_code"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_faculty_profile",
+            "description": "Look up a faculty member by name or faculty id: designation, department, specialisation, office, office hours, email and the courses they teach.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The faculty member's name (a surname alone may match several) or id such as 'FAC-IS-04'."
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        }
+    },
     *ACTION_SCHEMAS,
 ]
 
@@ -93,9 +199,24 @@ TOOL_FUNCTIONS = {
     "calculate_attendance": calculate_attendance,
     "get_attendance_report": get_attendance_report,
     "get_cgpa": get_cgpa,
+    "get_student_timetable": get_student_timetable,
+    "get_exam_schedule": get_exam_schedule,
+    "get_elective_options": get_elective_options,
+    "get_fee_dues": get_fee_dues,
+    "get_course_info": get_course_info,
+    "get_faculty_profile": get_faculty_profile,
 }
 
 # Tools about the signed-in student. The agent supplies their student id from the
 # login; any student id the model puts in the arguments is discarded, so the model
 # cannot be talked into looking up someone else.
-STUDENT_TOOLS = frozenset({"get_attendance_report", "get_cgpa"})
+STUDENT_TOOLS = frozenset(
+    {
+        "get_attendance_report",
+        "get_cgpa",
+        "get_student_timetable",
+        "get_exam_schedule",
+        "get_elective_options",
+        "get_fee_dues",
+    }
+)

@@ -44,6 +44,12 @@ TOOL_LABELS = {
     "calculate_attendance": "Calculating attendance",
     "get_attendance_report": "Checking your attendance records",
     "get_cgpa": "Calculating your CGPA",
+    "get_student_timetable": "Looking up your timetable",
+    "get_exam_schedule": "Checking your exam schedule",
+    "get_elective_options": "Listing your elective options",
+    "get_fee_dues": "Checking your fee dues",
+    "get_course_info": "Looking up the course",
+    "get_faculty_profile": "Looking up the faculty member",
 }
 
 
@@ -61,6 +67,21 @@ def _summarize(tool: str, result: dict) -> str:
         return f"{low} of {len(result['courses'])} subjects below 75%" if low else "All subjects at 75% or above"
     if tool == "get_cgpa":
         return f"CGPA {result['cgpa']}" if result["cgpa"] is not None else "No results yet"
+    if tool == "get_student_timetable":
+        if "week" in result:
+            return f"{sum(len(d['classes']) for d in result['week'])} classes this week"
+        return f"{len(result['classes'])} classes on {result['day']}"
+    if tool == "get_exam_schedule":
+        upcoming = sum(e["status"] != "past" for e in result["exams"])
+        return f"{upcoming} upcoming of {len(result['exams'])} exams"
+    if tool == "get_elective_options":
+        return f"{len(result['electives'])} electives in semester {result['semester']}"
+    if tool == "get_fee_dues":
+        return f"{result['total_outstanding']} rupees outstanding" if result["total_outstanding"] else "No fees outstanding"
+    if tool == "get_course_info":
+        return f"{result['course_code']} {result['name']}"
+    if tool == "get_faculty_profile":
+        return result["name"] if "name" in result else f"{len(result['matches'])} possible matches"
     return "Done"
 
 

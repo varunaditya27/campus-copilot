@@ -1,0 +1,1802 @@
+[
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-06"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-14"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-03"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-12"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-01"
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22CS220",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 40000,
+    "paid_on": "2026-07-06"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-06"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-05"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-07-15",
+    "paid_amount": 7000,
+    "paid_on": "2026-07-03"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-11"
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EC088",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-01"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-05"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22EE160",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-06"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-09"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-01"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-15"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-09-30"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-09-30"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-09-30"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-09-30"
+  },
+  {
+    "student_id": "1RV22IS305",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-09-30"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-09"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-15"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-07-15",
+    "paid_amount": 7000,
+    "paid_on": "2026-07-09"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-01"
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV22ME188",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-14"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-01"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-01"
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23CS114",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-05"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-08"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-07-15",
+    "paid_amount": 7000,
+    "paid_on": "2026-07-03"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-05"
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EC150",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-11"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-14"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-07"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-09"
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23EE142",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-11"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-15"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-08"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-02"
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23IS101",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-08"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-13"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-03"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-07-15",
+    "paid_amount": 7000,
+    "paid_on": "2026-07-07"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-07"
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV23ME201",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-06"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-13"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-11"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-06"
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24CS118",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-09"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-07-15",
+    "paid_amount": 7000,
+    "paid_on": "2026-07-03"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-06"
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EC207",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-05"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-15"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-01"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-12"
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24EE099",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-08"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-11"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-14"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-08"
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24IS219",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-05"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-06"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-07-15",
+    "paid_amount": 7000,
+    "paid_on": "2026-07-12"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-13"
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV24ME077",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-08"
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-03"
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-13"
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-08"
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25CS330",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-09"
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-09"
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-11"
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-07-15",
+    "paid_amount": 7000,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-12"
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EC275",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-02"
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-01"
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-12"
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-12"
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-14"
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25EE050",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-08"
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-11"
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-15"
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-07-15",
+    "paid_amount": 6000,
+    "paid_on": "2026-07-10"
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-04"
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 6000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25IS410",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 odd",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-07-15",
+    "paid_amount": 62500,
+    "paid_on": "2026-07-12"
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 odd",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-07-15",
+    "paid_amount": 9000,
+    "paid_on": "2026-07-15"
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 odd",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-07-15",
+    "paid_amount": 3000,
+    "paid_on": "2026-07-12"
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 odd",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-07-15",
+    "paid_amount": 7000,
+    "paid_on": "2026-07-05"
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 odd",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-07-15",
+    "paid_amount": 1250,
+    "paid_on": "2026-07-11"
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 even",
+    "component": "Tuition Fee",
+    "amount": 62500,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 even",
+    "component": "Development Fee",
+    "amount": 9000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 even",
+    "component": "Examination Fee",
+    "amount": 3000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 even",
+    "component": "Laboratory Fee",
+    "amount": 7000,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  },
+  {
+    "student_id": "1RV25ME295",
+    "term": "2026-27 even",
+    "component": "Student Activity Fee",
+    "amount": 1250,
+    "due_date": "2026-12-15",
+    "paid_amount": 0,
+    "paid_on": null
+  }
+]

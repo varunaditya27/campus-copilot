@@ -1,0 +1,2576 @@
+[
+  {
+    "course_code": "IS101",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS102",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS103",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS104",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS105",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-11",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS101",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS102",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS103",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS104",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS105",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-30",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS101",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "IS102",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "IS103",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "IS104",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "IS105",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-27",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "IS106",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "IS Lab 1"
+  },
+  {
+    "course_code": "IS301",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS302",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS303",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS304",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS301",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS302",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS303",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS304",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS301",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "IS302",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "IS303",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "IS304",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "IS305",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "IS Lab 1"
+  },
+  {
+    "course_code": "IS306",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "IS Lab 1"
+  },
+  {
+    "course_code": "IS501",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS502",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS503",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS504",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS505",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-11",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS501",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS502",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS503",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS504",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS505",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-30",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS501",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "IS502",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "IS503",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "IS504",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "IS505",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-27",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "IS506",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "IS Lab 1"
+  },
+  {
+    "course_code": "IS701",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS702",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS703",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS704",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS701",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS702",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS703",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS704",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "IS701",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "IS702",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "IS703",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "IS704",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "IS705",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-07",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "IS Project Lab"
+  },
+  {
+    "course_code": "IS706",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-08",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "IS Project Lab"
+  },
+  {
+    "course_code": "CS101",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS102",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS103",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS104",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS105",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-11",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS101",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS102",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS103",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS104",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS105",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-30",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS101",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "CS102",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "CS103",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "CS104",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "CS105",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-27",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "CS106",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "CS Lab 1"
+  },
+  {
+    "course_code": "CS301",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS302",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS303",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS304",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS301",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS302",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS303",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS304",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS301",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "CS302",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "CS303",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "CS304",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "CS305",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "CS Lab 1"
+  },
+  {
+    "course_code": "CS306",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "CS Lab 1"
+  },
+  {
+    "course_code": "CS501",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS502",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS503",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS504",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS501",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS502",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS503",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS504",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS501",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "CS502",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "CS503",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "CS504",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "CS505",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "CS Lab 1"
+  },
+  {
+    "course_code": "CS506",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "CS Lab 1"
+  },
+  {
+    "course_code": "CS701",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS702",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS703",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS704",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS701",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS702",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS703",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS704",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "CS701",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "CS702",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "CS703",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "CS704",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "CS705",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-07",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "CS Project Lab"
+  },
+  {
+    "course_code": "CS706",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-08",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "CS Project Lab"
+  },
+  {
+    "course_code": "EC101",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC102",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC103",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC104",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC105",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-11",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC101",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC102",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC103",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC104",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC105",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-30",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC101",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "EC102",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "EC103",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "EC104",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "EC105",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-27",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "EC106",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EC Lab 1"
+  },
+  {
+    "course_code": "EC301",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC302",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC303",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC304",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC301",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC302",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC303",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC304",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC301",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EC302",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EC303",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EC304",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EC305",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EC Lab 1"
+  },
+  {
+    "course_code": "EC306",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EC Lab 1"
+  },
+  {
+    "course_code": "EC501",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC502",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC503",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC504",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC501",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC502",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC503",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC504",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC501",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "EC502",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "EC503",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "EC504",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "EC505",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EC Lab 1"
+  },
+  {
+    "course_code": "EC506",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EC Lab 1"
+  },
+  {
+    "course_code": "EC701",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC702",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC703",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC704",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC701",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC702",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC703",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC704",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EC701",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "EC702",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "EC703",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "EC704",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "EC705",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-07",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "EC Project Lab"
+  },
+  {
+    "course_code": "EC706",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-08",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "EC Project Lab"
+  },
+  {
+    "course_code": "EE101",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE102",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE103",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE104",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE105",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-11",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE101",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE102",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE103",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE104",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE105",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-30",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE101",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EE102",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EE103",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EE104",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EE105",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-27",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "EE106",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EE Lab 1"
+  },
+  {
+    "course_code": "EE301",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE302",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE303",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE304",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE301",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE302",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE303",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE304",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE301",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "EE302",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "EE303",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "EE304",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "EE305",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EE Lab 1"
+  },
+  {
+    "course_code": "EE306",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EE Lab 1"
+  },
+  {
+    "course_code": "EE501",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE502",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE503",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE504",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE501",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE502",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE503",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE504",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE501",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "EE502",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "EE503",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "EE504",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "EE505",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EE Lab 1"
+  },
+  {
+    "course_code": "EE506",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "EE Lab 1"
+  },
+  {
+    "course_code": "EE701",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE702",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE703",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE701",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE702",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE703",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "EE701",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "EE702",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "EE703",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "EE704",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-07",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "EE Project Lab"
+  },
+  {
+    "course_code": "EE705",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-08",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "EE Project Lab"
+  },
+  {
+    "course_code": "ME101",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME102",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME103",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME104",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME105",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-11",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME101",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME102",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME103",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME104",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME105",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-30",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME101",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "ME102",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "ME103",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "ME104",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "ME105",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-27",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 1"
+  },
+  {
+    "course_code": "ME106",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "ME Lab 1"
+  },
+  {
+    "course_code": "ME301",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME302",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME303",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME304",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME301",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME302",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME303",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME304",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME301",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "ME302",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "ME303",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "ME304",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 2"
+  },
+  {
+    "course_code": "ME305",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "ME Lab 1"
+  },
+  {
+    "course_code": "ME306",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "ME Lab 1"
+  },
+  {
+    "course_code": "ME501",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME502",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME503",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME504",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-10",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME501",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME502",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME503",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME504",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-29",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME501",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "ME502",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "ME503",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "ME504",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-26",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 3"
+  },
+  {
+    "course_code": "ME505",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-16",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "ME Lab 1"
+  },
+  {
+    "course_code": "ME506",
+    "name": "Practical Examination",
+    "exam_type": "practical",
+    "date": "2026-11-17",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "ME Lab 1"
+  },
+  {
+    "course_code": "ME701",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-07",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME702",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-08",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME703",
+    "name": "Internal Test 1",
+    "exam_type": "internal",
+    "date": "2026-09-09",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME701",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-26",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME702",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-27",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME703",
+    "name": "Internal Test 2",
+    "exam_type": "internal",
+    "date": "2026-10-28",
+    "start_time": "14:00",
+    "duration_minutes": 90,
+    "venue": "Regular classroom"
+  },
+  {
+    "course_code": "ME701",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-23",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "ME702",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-24",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "ME703",
+    "name": "End-Semester Examination",
+    "exam_type": "end-semester",
+    "date": "2026-11-25",
+    "start_time": "09:30",
+    "duration_minutes": 180,
+    "venue": "Examination Hall 4"
+  },
+  {
+    "course_code": "ME704",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-07",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "ME Project Lab"
+  },
+  {
+    "course_code": "ME705",
+    "name": "Project Final Evaluation",
+    "exam_type": "project-review",
+    "date": "2026-12-08",
+    "start_time": "10:00",
+    "duration_minutes": 60,
+    "venue": "ME Project Lab"
+  }
+]

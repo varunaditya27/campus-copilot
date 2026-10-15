@@ -38,7 +38,13 @@ export type ToolName =
   | "register_for_event"
   | "calculate_attendance"
   | "get_attendance_report"
-  | "get_cgpa";
+  | "get_cgpa"
+  | "get_student_timetable"
+  | "get_exam_schedule"
+  | "get_elective_options"
+  | "get_fee_dues"
+  | "get_course_info"
+  | "get_faculty_profile";
 
 export type ToolStatus = "running" | "done" | "error";
 

@@ -49,7 +49,8 @@ def test_the_tools_are_registered_and_take_no_arguments_from_the_model():
 
 
 def test_other_tools_are_not_student_bound():
-    assert STUDENT_TOOLS == {"get_attendance_report", "get_cgpa"}
+    for name in ("search_events", "check_event_availability", "calculate_attendance", "get_course_info", "get_faculty_profile"):
+        assert name in TOOL_FUNCTIONS and name not in STUDENT_TOOLS
 
 
 # --- identity comes from the login, never from the model

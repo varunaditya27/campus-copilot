@@ -16,6 +16,12 @@ const TOOL_ICON: Record<ToolActivityEntry["tool"], (p: { className?: string }) =
   calculate_attendance: DotIcon,
   get_attendance_report: UserIcon,
   get_cgpa: DocumentIcon,
+  get_student_timetable: DotIcon,
+  get_exam_schedule: DocumentIcon,
+  get_elective_options: SearchIcon,
+  get_fee_dues: DocumentIcon,
+  get_course_info: SearchIcon,
+  get_faculty_profile: UserIcon,
 };
 
 export default function ToolCall({

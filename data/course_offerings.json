@@ -1,0 +1,1370 @@
+[
+  {
+    "course_code": "IS101",
+    "faculty_id": "FAC-IS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS102",
+    "faculty_id": "FAC-IS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS103",
+    "faculty_id": "FAC-IS-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS104",
+    "faculty_id": "FAC-IS-04",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS105",
+    "faculty_id": "FAC-IS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS106",
+    "faculty_id": "FAC-IS-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS201",
+    "faculty_id": "FAC-IS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS202",
+    "faculty_id": "FAC-IS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS203",
+    "faculty_id": "FAC-IS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS204",
+    "faculty_id": "FAC-IS-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS205",
+    "faculty_id": "FAC-IS-04",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS206",
+    "faculty_id": "FAC-IS-05",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS301",
+    "faculty_id": "FAC-IS-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS302",
+    "faculty_id": "FAC-IS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS303",
+    "faculty_id": "FAC-IS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS304",
+    "faculty_id": "FAC-IS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS305",
+    "faculty_id": "FAC-IS-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS306",
+    "faculty_id": "FAC-IS-04",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS401",
+    "faculty_id": "FAC-IS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS402",
+    "faculty_id": "FAC-IS-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS403",
+    "faculty_id": "FAC-IS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS404",
+    "faculty_id": "FAC-IS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS405",
+    "faculty_id": "FAC-IS-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS406",
+    "faculty_id": "FAC-IS-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS501",
+    "faculty_id": "FAC-IS-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS502",
+    "faculty_id": "FAC-IS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS503",
+    "faculty_id": "FAC-IS-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS504",
+    "faculty_id": "FAC-IS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS505",
+    "faculty_id": "FAC-IS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS506",
+    "faculty_id": "FAC-IS-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS601",
+    "faculty_id": "FAC-IS-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS602",
+    "faculty_id": "FAC-IS-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS603",
+    "faculty_id": "FAC-IS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS604",
+    "faculty_id": "FAC-IS-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS605",
+    "faculty_id": "FAC-IS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS606",
+    "faculty_id": "FAC-IS-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS701",
+    "faculty_id": "FAC-IS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS702",
+    "faculty_id": "FAC-IS-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS703",
+    "faculty_id": "FAC-IS-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS704",
+    "faculty_id": "FAC-IS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS705",
+    "faculty_id": "FAC-IS-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS706",
+    "faculty_id": "FAC-IS-07",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "IS801",
+    "faculty_id": "FAC-IS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS802",
+    "faculty_id": "FAC-IS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS803",
+    "faculty_id": "FAC-IS-03",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "IS804",
+    "faculty_id": "FAC-IS-04",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS101",
+    "faculty_id": "FAC-CS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS102",
+    "faculty_id": "FAC-CS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS103",
+    "faculty_id": "FAC-CS-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS104",
+    "faculty_id": "FAC-CS-04",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS105",
+    "faculty_id": "FAC-CS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS106",
+    "faculty_id": "FAC-CS-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS201",
+    "faculty_id": "FAC-CS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS202",
+    "faculty_id": "FAC-CS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS203",
+    "faculty_id": "FAC-CS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS204",
+    "faculty_id": "FAC-CS-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS205",
+    "faculty_id": "FAC-CS-04",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS206",
+    "faculty_id": "FAC-CS-05",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS301",
+    "faculty_id": "FAC-CS-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS302",
+    "faculty_id": "FAC-CS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS303",
+    "faculty_id": "FAC-CS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS304",
+    "faculty_id": "FAC-CS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS305",
+    "faculty_id": "FAC-CS-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS306",
+    "faculty_id": "FAC-CS-04",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS401",
+    "faculty_id": "FAC-CS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS402",
+    "faculty_id": "FAC-CS-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS403",
+    "faculty_id": "FAC-CS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS404",
+    "faculty_id": "FAC-CS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS405",
+    "faculty_id": "FAC-CS-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS406",
+    "faculty_id": "FAC-CS-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS501",
+    "faculty_id": "FAC-CS-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS502",
+    "faculty_id": "FAC-CS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS503",
+    "faculty_id": "FAC-CS-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS504",
+    "faculty_id": "FAC-CS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS505",
+    "faculty_id": "FAC-CS-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS506",
+    "faculty_id": "FAC-CS-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS601",
+    "faculty_id": "FAC-CS-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS602",
+    "faculty_id": "FAC-CS-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS603",
+    "faculty_id": "FAC-CS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS604",
+    "faculty_id": "FAC-CS-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS605",
+    "faculty_id": "FAC-CS-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS606",
+    "faculty_id": "FAC-CS-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS701",
+    "faculty_id": "FAC-CS-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS702",
+    "faculty_id": "FAC-CS-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS703",
+    "faculty_id": "FAC-CS-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS704",
+    "faculty_id": "FAC-CS-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS705",
+    "faculty_id": "FAC-CS-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS706",
+    "faculty_id": "FAC-CS-07",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS801",
+    "faculty_id": "FAC-CS-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS802",
+    "faculty_id": "FAC-CS-02",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "CS803",
+    "faculty_id": "FAC-CS-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "CS804",
+    "faculty_id": "FAC-CS-04",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC101",
+    "faculty_id": "FAC-EC-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC102",
+    "faculty_id": "FAC-EC-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC103",
+    "faculty_id": "FAC-EC-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC104",
+    "faculty_id": "FAC-EC-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC105",
+    "faculty_id": "FAC-EC-05",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC106",
+    "faculty_id": "FAC-EC-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC201",
+    "faculty_id": "FAC-EC-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC202",
+    "faculty_id": "FAC-EC-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC203",
+    "faculty_id": "FAC-EC-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC204",
+    "faculty_id": "FAC-EC-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC205",
+    "faculty_id": "FAC-EC-04",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC206",
+    "faculty_id": "FAC-EC-05",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC301",
+    "faculty_id": "FAC-EC-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC302",
+    "faculty_id": "FAC-EC-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC303",
+    "faculty_id": "FAC-EC-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC304",
+    "faculty_id": "FAC-EC-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC305",
+    "faculty_id": "FAC-EC-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC306",
+    "faculty_id": "FAC-EC-04",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC401",
+    "faculty_id": "FAC-EC-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC402",
+    "faculty_id": "FAC-EC-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC403",
+    "faculty_id": "FAC-EC-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC404",
+    "faculty_id": "FAC-EC-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC405",
+    "faculty_id": "FAC-EC-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC406",
+    "faculty_id": "FAC-EC-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC501",
+    "faculty_id": "FAC-EC-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC502",
+    "faculty_id": "FAC-EC-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC503",
+    "faculty_id": "FAC-EC-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC504",
+    "faculty_id": "FAC-EC-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC505",
+    "faculty_id": "FAC-EC-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC506",
+    "faculty_id": "FAC-EC-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC601",
+    "faculty_id": "FAC-EC-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC602",
+    "faculty_id": "FAC-EC-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC603",
+    "faculty_id": "FAC-EC-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC604",
+    "faculty_id": "FAC-EC-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC605",
+    "faculty_id": "FAC-EC-07",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC606",
+    "faculty_id": "FAC-EC-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC701",
+    "faculty_id": "FAC-EC-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC702",
+    "faculty_id": "FAC-EC-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC703",
+    "faculty_id": "FAC-EC-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC704",
+    "faculty_id": "FAC-EC-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC705",
+    "faculty_id": "FAC-EC-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC706",
+    "faculty_id": "FAC-EC-07",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EC801",
+    "faculty_id": "FAC-EC-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC802",
+    "faculty_id": "FAC-EC-02",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC803",
+    "faculty_id": "FAC-EC-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EC804",
+    "faculty_id": "FAC-EC-04",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE101",
+    "faculty_id": "FAC-EE-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE102",
+    "faculty_id": "FAC-EE-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE103",
+    "faculty_id": "FAC-EE-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE104",
+    "faculty_id": "FAC-EE-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE105",
+    "faculty_id": "FAC-EE-05",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE106",
+    "faculty_id": "FAC-EE-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE201",
+    "faculty_id": "FAC-EE-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE202",
+    "faculty_id": "FAC-EE-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE203",
+    "faculty_id": "FAC-EE-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE204",
+    "faculty_id": "FAC-EE-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE205",
+    "faculty_id": "FAC-EE-04",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE206",
+    "faculty_id": "FAC-EE-05",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE301",
+    "faculty_id": "FAC-EE-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE302",
+    "faculty_id": "FAC-EE-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE303",
+    "faculty_id": "FAC-EE-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE304",
+    "faculty_id": "FAC-EE-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE305",
+    "faculty_id": "FAC-EE-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE306",
+    "faculty_id": "FAC-EE-04",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE401",
+    "faculty_id": "FAC-EE-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE402",
+    "faculty_id": "FAC-EE-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE403",
+    "faculty_id": "FAC-EE-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE404",
+    "faculty_id": "FAC-EE-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE405",
+    "faculty_id": "FAC-EE-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE406",
+    "faculty_id": "FAC-EE-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE501",
+    "faculty_id": "FAC-EE-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE502",
+    "faculty_id": "FAC-EE-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE503",
+    "faculty_id": "FAC-EE-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE504",
+    "faculty_id": "FAC-EE-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE505",
+    "faculty_id": "FAC-EE-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE506",
+    "faculty_id": "FAC-EE-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE601",
+    "faculty_id": "FAC-EE-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE602",
+    "faculty_id": "FAC-EE-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE603",
+    "faculty_id": "FAC-EE-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE604",
+    "faculty_id": "FAC-EE-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE605",
+    "faculty_id": "FAC-EE-07",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE606",
+    "faculty_id": "FAC-EE-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE701",
+    "faculty_id": "FAC-EE-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE702",
+    "faculty_id": "FAC-EE-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE703",
+    "faculty_id": "FAC-EE-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE704",
+    "faculty_id": "FAC-EE-05",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE705",
+    "faculty_id": "FAC-EE-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "EE801",
+    "faculty_id": "FAC-EE-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE802",
+    "faculty_id": "FAC-EE-01",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE803",
+    "faculty_id": "FAC-EE-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "EE804",
+    "faculty_id": "FAC-EE-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME101",
+    "faculty_id": "FAC-ME-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME102",
+    "faculty_id": "FAC-ME-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME103",
+    "faculty_id": "FAC-ME-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME104",
+    "faculty_id": "FAC-ME-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME105",
+    "faculty_id": "FAC-ME-05",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME106",
+    "faculty_id": "FAC-ME-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME201",
+    "faculty_id": "FAC-ME-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME202",
+    "faculty_id": "FAC-ME-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME203",
+    "faculty_id": "FAC-ME-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME204",
+    "faculty_id": "FAC-ME-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME205",
+    "faculty_id": "FAC-ME-04",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME206",
+    "faculty_id": "FAC-ME-05",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME301",
+    "faculty_id": "FAC-ME-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME302",
+    "faculty_id": "FAC-ME-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME303",
+    "faculty_id": "FAC-ME-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME304",
+    "faculty_id": "FAC-ME-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME305",
+    "faculty_id": "FAC-ME-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME306",
+    "faculty_id": "FAC-ME-04",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME401",
+    "faculty_id": "FAC-ME-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME402",
+    "faculty_id": "FAC-ME-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME403",
+    "faculty_id": "FAC-ME-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME404",
+    "faculty_id": "FAC-ME-01",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME405",
+    "faculty_id": "FAC-ME-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME406",
+    "faculty_id": "FAC-ME-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME501",
+    "faculty_id": "FAC-ME-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME502",
+    "faculty_id": "FAC-ME-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME503",
+    "faculty_id": "FAC-ME-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME504",
+    "faculty_id": "FAC-ME-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME505",
+    "faculty_id": "FAC-ME-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME506",
+    "faculty_id": "FAC-ME-02",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME601",
+    "faculty_id": "FAC-ME-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME602",
+    "faculty_id": "FAC-ME-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME603",
+    "faculty_id": "FAC-ME-05",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME604",
+    "faculty_id": "FAC-ME-06",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME605",
+    "faculty_id": "FAC-ME-07",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME606",
+    "faculty_id": "FAC-ME-01",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME701",
+    "faculty_id": "FAC-ME-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME702",
+    "faculty_id": "FAC-ME-03",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME703",
+    "faculty_id": "FAC-ME-04",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME704",
+    "faculty_id": "FAC-ME-05",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME705",
+    "faculty_id": "FAC-ME-06",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  },
+  {
+    "course_code": "ME801",
+    "faculty_id": "FAC-ME-07",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME802",
+    "faculty_id": "FAC-ME-01",
+    "lecture_hours": 2,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME803",
+    "faculty_id": "FAC-ME-02",
+    "lecture_hours": 3,
+    "practical_hours": 0
+  },
+  {
+    "course_code": "ME804",
+    "faculty_id": "FAC-ME-03",
+    "lecture_hours": 0,
+    "practical_hours": 2
+  }
+]

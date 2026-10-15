@@ -35,6 +35,11 @@ The files are seed data. At runtime the app reads and writes the database tables
 | `courses.json` | `courses` | nothing at runtime -- the course catalogue |
 | `student_profiles.json` | `student_profiles` | `PUT /api/students/me/profile` changes interests |
 | `academic_records.json` | `student_academic_records` | nothing at runtime -- attendance and grades |
+| `faculty_members.json` | `faculty_members` | nothing at runtime -- the public faculty directory (separate from `faculty`, the sign-in accounts) |
+| `course_offerings.json` | `course_offerings` | nothing at runtime -- who teaches each course and its weekly hours |
+| `timetable_slots.json` | `timetable_slots` | nothing at runtime -- the weekly timetable of each class group |
+| `exams.json` | `exams` | nothing at runtime -- internal tests, practicals and end-semester exams |
+| `fee_records.json` | `fee_records` | nothing at runtime -- what each student owes and has paid |
 
 ---
 
@@ -97,6 +102,16 @@ The append-only log that approved registrations are written to (see [`backend/ap
 ```
 
 `registration_id` for anything created through the app follows `REG-{n:05d}`, continuing from this file's length — the `REG-DEMO-*` prefix on the seed rows exists only to make it obvious at a glance which entries were shipped versus created live during a demo.
+
+---
+
+## 🗓️ Faculty, timetable, exams and fees
+
+`python data/generate_schedule_data.py` (run after `generate_academic_data.py`) writes `faculty_members.json`, `course_offerings.json`, `timetable_slots.json`, `exams.json` and `fee_records.json`, deterministically.
+
+What comes from the knowledge documents: the 35 faculty names, designations, specialisations, Head of Department and Vice-Chair roles, and department office rooms (parsed from `knowledge/campus/faculty-and-departments-directory.md`), and the fee amounts, instalments and due dates (July 15 and December 15, half the annual structure per semester, with the 2,000 rupee a year consumables supplement for ECE and Mechanical). **Invented for the demo:** each person's office room, office hours and email (`@campus.example`), which faculty member teaches which course (round robin within the department, so it does not follow specialisation), the timetable, and every exam date and venue. The dates assume the odd semester of 2026-27; `schedule_service` and `fee_service` compare them with the real date, so as time passes everything shows as past or overdue until the generator's dates are moved.
+
+The timetable keeps every class group (department, semester, section) free of clashes and gives each course the hours it declares. It does not stop a teacher being in two places at once: a department has about seven faculty and far more weekly hours than that, so a realistic teacher timetable would need more people than the directory has. The deliberate fee cases: Ananya Iyer never paid the odd semester's laboratory fee (past the late-payment window), Aditya Verma paid part of the tuition, and Priya Menon paid the even semester early. The tests rerun the generator and compare it with the committed files, and check the files against the rules above.
 
 ---
 

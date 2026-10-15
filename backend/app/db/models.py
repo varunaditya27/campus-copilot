@@ -6,6 +6,7 @@ from sqlalchemy import (
     CheckConstraint,
     DateTime,
     ForeignKey,
+    Index,
     MetaData,
     String,
     Text,
@@ -92,6 +93,92 @@ class AcademicRecord(Base):
     attended: Mapped[int]
     total: Mapped[int]
     grade: Mapped[str | None] = mapped_column(String(2))
+
+
+class FacultyMember(Base):
+    """The public faculty directory. Separate from `faculty`, which holds the
+    accounts of faculty who can sign in."""
+
+    __tablename__ = "faculty_members"
+
+    faculty_id: Mapped[str] = mapped_column(String(20), primary_key=True)
+    name: Mapped[str] = mapped_column(String(100), index=True)
+    designation: Mapped[str] = mapped_column(String(50))
+    department: Mapped[str] = mapped_column(String(100))
+    specialisation: Mapped[str | None] = mapped_column(String(200))
+    leadership_role: Mapped[str | None] = mapped_column(String(100))
+    office: Mapped[str | None] = mapped_column(String(100))
+    office_hours: Mapped[str | None] = mapped_column(String(200))
+    email: Mapped[str] = mapped_column(String(254))
+
+
+class CourseOffering(Base):
+    """Who teaches a course this semester, and how many hours a week it takes."""
+
+    __tablename__ = "course_offerings"
+
+    course_code: Mapped[str] = mapped_column(ForeignKey("courses.course_code"), primary_key=True)
+    faculty_id: Mapped[str] = mapped_column(ForeignKey("faculty_members.faculty_id"), index=True)
+    lecture_hours: Mapped[int]
+    practical_hours: Mapped[int]
+
+
+class TimetableSlot(Base):
+    """One class in a class group's week. `day` counts from Monday = 0."""
+
+    __tablename__ = "timetable_slots"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    department: Mapped[str] = mapped_column(String(100))
+    semester: Mapped[int]
+    section: Mapped[str] = mapped_column(String(2))
+    day: Mapped[int]
+    start: Mapped[str] = mapped_column(String(5))
+    end: Mapped[str] = mapped_column(String(5))
+    course_code: Mapped[str] = mapped_column(ForeignKey("courses.course_code"))
+    room: Mapped[str] = mapped_column(String(100))
+
+    __table_args__ = (
+        CheckConstraint("day BETWEEN 0 AND 6", name="valid_day"),
+        Index("ix_timetable_slots_group", "department", "semester", "section", "day"),
+    )
+
+
+class Exam(Base):
+    __tablename__ = "exams"
+    __table_args__ = (
+        CheckConstraint(
+            "exam_type IN ('internal', 'end-semester', 'practical', 'project-review')", name="valid_exam_type"
+        ),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    course_code: Mapped[str] = mapped_column(ForeignKey("courses.course_code"), index=True)
+    name: Mapped[str] = mapped_column(String(100))
+    exam_type: Mapped[str] = mapped_column(String(20))
+    date: Mapped[str] = mapped_column(String(10))
+    start_time: Mapped[str] = mapped_column(String(5))
+    duration_minutes: Mapped[int]
+    venue: Mapped[str] = mapped_column(String(100))
+
+
+class FeeRecord(Base):
+    """One fee component a student owes for a term, and how much of it is paid."""
+
+    __tablename__ = "fee_records"
+    __table_args__ = (
+        UniqueConstraint("student_id", "term", "component", name="uq_fee_records_student_term_component"),
+        CheckConstraint("paid_amount >= 0 AND paid_amount <= amount", name="paid_within_amount"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    term: Mapped[str] = mapped_column(String(20))
+    component: Mapped[str] = mapped_column(String(50))
+    amount: Mapped[int]
+    due_date: Mapped[str] = mapped_column(String(10))
+    paid_amount: Mapped[int] = mapped_column(default=0)
+    paid_on: Mapped[str | None] = mapped_column(String(10))
 
 
 class Event(Base):
