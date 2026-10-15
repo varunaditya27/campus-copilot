@@ -130,10 +130,6 @@ def test_opening_a_missing_knowledge_base_raises_the_specific_error(chroma_clien
 # 1.4: input validation
 
 
-def test_register_rejects_a_missing_event_id(signed_in):
-    _assert_error_shape(signed_in.post("/api/register", json={}), 422, "validation_error")
-
-
 def test_chat_rejects_oversized_message(signed_in):
     response = signed_in.post("/api/chat", json={"message": "x" * 5000})
     _assert_error_shape(response, 422, "validation_error")

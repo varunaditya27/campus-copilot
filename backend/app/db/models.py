@@ -238,3 +238,28 @@ class ConversationEntity(Base):
     label: Mapped[str] = mapped_column(String(200))  # how to show it
     mentions: Mapped[int] = mapped_column(default=1)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class PendingAction(Base):
+    """Something the assistant proposed to do for a student, waiting for them to
+    approve it. The parameters are kept here, not in the browser, so what the
+    student approves is exactly what runs."""
+
+    __tablename__ = "pending_actions"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('pending', 'confirmed', 'cancelled', 'expired', 'failed')", name="valid_status"
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    action: Mapped[str] = mapped_column(String(50))
+    params: Mapped[dict] = mapped_column(JSON)
+    title: Mapped[str] = mapped_column(String(200))
+    lines: Mapped[list] = mapped_column(JSON)  # [{"label": ..., "value": ...}] shown on the confirmation card
+    status: Mapped[str] = mapped_column(String(20), default="pending")
+    result: Mapped[dict | None] = mapped_column(JSON(none_as_null=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

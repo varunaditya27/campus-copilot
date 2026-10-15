@@ -251,7 +251,6 @@ def test_delete_of_an_unknown_session_is_404(browser):
         ("get", "/api/chat/history"),
         ("get", "/api/chat/sessions"),
         ("delete", f"/api/chat/sessions/{uuid4()}"),
-        ("post", "/api/register"),
     ],
 )
 def test_signing_in_is_required(db, agent_calls, method, path):

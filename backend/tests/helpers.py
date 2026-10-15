@@ -124,3 +124,19 @@ def add_academic_data(factory):
             AcademicRecord(student_id=sid, course_code=c, semester=s, attended=a, total=t, grade=g)
             for sid, c, s, a, t, g in records
         )
+
+
+RAVI_PROFILE = CurrentStudent(
+    user_id=2, student_id="1RV24IS219", name="Ravi", program="CSE", year=2, email="ravi@example.com"
+)
+
+
+def register_through_approval(student, event_id="evt_ai_001"):
+    """Register a student the way the application does: the assistant proposes,
+    the student approves."""
+    from uuid import UUID
+
+    from app.services import action_service
+
+    confirmation = action_service.propose(student, "register_for_event", {"event_id": event_id})
+    return action_service.confirm(UUID(confirmation.action_id), student)

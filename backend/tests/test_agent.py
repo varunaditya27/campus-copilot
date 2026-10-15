@@ -70,8 +70,9 @@ def test_register_returns_confirmation_and_does_not_register(db, use_fakes):
 
     response = agent.run_agent("register me", [], ASHA_PROFILE)
 
-    assert response.confirmation.event.id == "evt_ai_001"
-    assert response.confirmation.studentId == "1RV23IS101"
+    confirmation = response.confirmation
+    assert (confirmation.action, confirmation.title) == ("register_for_event", "Register for AI Workshop")
+    assert {line.label: line.value for line in confirmation.lines}["Student"] == "1RV23IS101"
     assert "confirm" in response.reply.lower()
     assert all_registrations(db) == []
     assert event_registered(db, "evt_ai_001") == 4

@@ -1,3 +1,4 @@
+from app.actions.registry import ACTION_SCHEMAS
 from app.tools.academic import get_attendance_report, get_cgpa
 from app.tools.attendance import calculate_attendance
 from app.tools.events import check_event_availability, search_events
@@ -79,25 +80,7 @@ TOOL_SCHEMAS = [
             "parameters": {"type": "object", "properties": {}},
         },
     },
-    {
-        "type": "function",
-        "function": {
-            "name": "register_for_event",
-            "description": (
-                "Prepare an event registration for the signed-in student to "
-                "confirm. Call this once you have a real event_id (from "
-                "search_events) and they've asked to register. This does NOT "
-                "complete the registration -- it shows the student a "
-                "confirmation card; the actual registration only happens if "
-                "they approve it."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {"event_id": {"type": "string"}},
-                "required": ["event_id"],
-            },
-        },
-    },
+    *ACTION_SCHEMAS,
 ]
 
 # Only tools that are safe to auto-execute go here. register_for_event is

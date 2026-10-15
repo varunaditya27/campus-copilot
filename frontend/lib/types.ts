@@ -50,9 +50,27 @@ export interface ToolActivityEntry {
   resultSummary?: string; // e.g. "Found 3 matching events"
 }
 
-export interface RegistrationConfirmation {
-  event: Pick<CampusEvent, "id" | "name" | "date" | "time" | "venue">;
-  studentId: string;
+// What the student is shown before something is done for them. The details of
+// the action are kept on the server; the card only holds its id.
+export interface ConfirmationLine {
+  label: string;
+  value: string;
+}
+
+export interface Confirmation {
+  action_id: string;
+  action: string;
+  title: string;
+  lines: ConfirmationLine[];
+  expires_at: string; // ISO 8601
+}
+
+export interface ActionOutcome {
+  action_id: string;
+  status: "confirmed" | "cancelled" | "failed";
+  success: boolean;
+  message: string;
+  details: Record<string, string>;
 }
 
 export type ChatRole = "user" | "assistant";
@@ -63,7 +81,7 @@ export interface ChatMessage {
   content: string;
   sources?: Source[];
   toolActivity?: ToolActivityEntry[];
-  confirmation?: RegistrationConfirmation;
+  confirmation?: Confirmation;
   pending?: boolean;
 }
 
@@ -90,7 +108,7 @@ export interface ChatResponse {
   reply: string;
   sources?: Source[] | null;
   toolActivity?: ToolActivityEntry[] | null;
-  confirmation?: RegistrationConfirmation | null;
+  confirmation?: Confirmation | null;
 }
 
 // One server-sent event from POST /api/chat/stream.
@@ -103,17 +121,6 @@ export type AgentEvent =
   | { type: "token"; payload: { text: string } }
   | { type: "done"; payload: ChatResponse }
   | { type: "error"; payload: { error_code: string; message: string } };
-
-// The backend registers the signed-in student; the client does not name one.
-export interface ConfirmRegistrationRequest {
-  event_id: string;
-}
-
-export interface ConfirmRegistrationResponse {
-  success: boolean;
-  registration_id?: string;
-  error?: string;
-}
 
 export type Role = "student" | "faculty" | "staff" | "admin";
 

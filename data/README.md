@@ -29,9 +29,9 @@ The files are seed data. At runtime the app reads and writes the database tables
 
 | File | Seeds table | Changed at runtime by |
 | --- | --- | --- |
-| `events.json` | `events` | `POST /api/register` increments `registered` |
+| `events.json` | `events` | an approved registration increments `registered` |
 | `students.json` | `students` | nothing at runtime — a fixed roster |
-| `registrations.json` | `registrations` | `POST /api/register` inserts a row |
+| `registrations.json` | `registrations` | an approved registration inserts a row |
 | `courses.json` | `courses` | nothing at runtime -- the course catalogue |
 | `student_profiles.json` | `student_profiles` | `PUT /api/students/me/profile` changes interests |
 | `academic_records.json` | `student_academic_records` | nothing at runtime -- attendance and grades |
@@ -84,7 +84,7 @@ This is intentionally the *entire* student record. There's no email, no password
 
 ## 📝 `registrations.json`
 
-The append-only log `POST /api/register` writes to (see [`backend/app/services/registration_service.py`](../backend/app/services/registration_service.py)). Ships with four seed entries so the app doesn't start in a completely empty state, and so a fresh reader can see the shape without registering for anything first.
+The append-only log that approved registrations are written to (see [`backend/app/services/registration_service.py`](../backend/app/services/registration_service.py)). Ships with four seed entries so the app doesn't start in a completely empty state, and so a fresh reader can see the shape without registering for anything first.
 
 ```jsonc
 {

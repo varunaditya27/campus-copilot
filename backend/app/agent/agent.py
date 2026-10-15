@@ -19,22 +19,18 @@ from app.agent.prompts import (
     build_plan_message,
     build_student_message,
 )
+from app.actions.base import ActionError
+from app.actions.registry import ACTIONS
 from app.agent.tool_registry import STUDENT_TOOLS, TOOL_FUNCTIONS, TOOL_SCHEMAS
 from app.core.config import AGENT_PLANNING, GROQ_MODEL
 from app.core.errors import AppError
 from app.core.groq_client import get_groq_client
 from app.models.auth import CurrentStudent
 from app.models.memory import Entity
-from app.models.chat import (
-    ChatHistoryItem,
-    ChatResponse,
-    ConfirmationEvent,
-    RegistrationConfirmation,
-    Source,
-    ToolActivityEntry,
-)
+from app.models.actions import Confirmation
+from app.models.chat import ChatHistoryItem, ChatResponse, Source, ToolActivityEntry
 from app.rag.retriever import KnowledgeBaseNotFound, retrieve
-from app.services import event_service
+from app.services import action_service
 
 MAX_TOOL_ROUNDS = 4
 
@@ -158,18 +154,6 @@ def _stream_completion(
     return "".join(text_parts), tool_calls
 
 
-def _confirmation_for(args: dict, student: CurrentStudent) -> RegistrationConfirmation | None:
-    event = event_service.get_event(args.get("event_id", ""))
-    if event is None:
-        return None
-    return RegistrationConfirmation(
-        event=ConfirmationEvent(
-            id=event.id, name=event.name, date=event.date, time=event.time, venue=event.venue
-        ),
-        studentId=student.student_id,
-    )
-
-
 # --- the agent as a graph
 #
 #   retrieve -> (plan) -> reason --+--> respond            (the model answered)
@@ -194,7 +178,7 @@ class AgentState:
     tool_calls: list[dict] = field(default_factory=list)
     draft: str = ""  # text the model wrote before asking for tools
     tool_activity: Annotated[list[ToolActivityEntry], operator.add] = field(default_factory=list)
-    pending_confirmation: RegistrationConfirmation | None = None
+    pending_confirmation: Confirmation | None = None
     reply: str | None = None
     loop_count: int = 0
 
@@ -280,18 +264,15 @@ def reason_node(state: AgentState) -> dict:
 
 
 def request_confirmation_node(state: AgentState) -> dict:
-    """Turn the model's request to register into a confirmation for the student to
-    approve. Nothing is registered here."""
+    """Turn the model's request for an action (such as registering) into a
+    confirmation for the student to approve. Nothing is done here."""
     emit = get_stream_writer()
-    register_call = next(c for c in state.tool_calls if c["name"] == "register_for_event")
-    confirmation = _confirmation_for(_parse_arguments(register_call["arguments"]) or {}, state.student)
-    reply = (
-        f"I've prepared a registration for {confirmation.event.name}. "
-        "Please confirm below to complete it."
-        if confirmation
-        else "I couldn't find that event to register you for -- could you "
-        "confirm which event you mean?"
-    )
+    call = next(c for c in state.tool_calls if c["name"] in ACTIONS)
+    try:
+        confirmation = action_service.propose(state.student, call["name"], _parse_arguments(call["arguments"]) or {})
+        reply = f"I've prepared this for you: {confirmation.title}. Please confirm below to complete it."
+    except ActionError as exc:
+        confirmation, reply = None, str(exc)
     emit(_event("token", text=reply))
     return {"pending_confirmation": confirmation, "reply": reply, "tool_calls": []}
 
@@ -355,7 +336,7 @@ def respond_node(state: AgentState) -> dict:
         toolActivity=state.tool_activity or None,
         confirmation=state.pending_confirmation,
     )
-    get_stream_writer()(_event("done", **response.model_dump()))
+    get_stream_writer()(_event("done", **response.model_dump(mode="json")))
     return {}
 
 
@@ -367,8 +348,8 @@ def _sources(chunks: list[dict]) -> list[Source]:
 
 
 def is_confirmation_needed(state: AgentState) -> bool:
-    """The model asked to register someone, which must be confirmed by the student first."""
-    return any(call["name"] == "register_for_event" for call in state.tool_calls)
+    """The model proposed an action, which only the student can approve."""
+    return any(call["name"] in ACTIONS for call in state.tool_calls)
 
 
 def should_call_tools(state: AgentState) -> bool:

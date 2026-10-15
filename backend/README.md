@@ -40,16 +40,16 @@ flowchart LR
     RET --> LOOP{Agent loop}
     LOOP -->|tool call| TOOL[Run tool]
     TOOL --> LOOP
-    LOOP -->|register_for_event| CONF[Build confirmation\nfrom real event data]
+    LOOP -->|register_for_event| CONF[Check it, store it as a pending action,\nbuild the confirmation card]
     LOOP -->|no more tool calls| ANS[Final answer]
     CONF --> RES[ChatResponse]
     ANS --> RES
 
-    UI[User clicks Confirm] --> REG[POST /api/register]
-    REG --> WRITE[(Insert registration row\n+ take one seat atomically)]
+    UI[User clicks Confirm] --> REG[POST /api/actions/id/confirm]
+    REG --> WRITE[(Run the stored action:\ninsert registration + take one seat atomically)]
 ```
 
-The important asymmetry: **every tool the model can call directly is read-only or purely computational.** The one tool that mutates data (`register_for_event`) is schema-visible to the model but not auto-executed — the agent loop intercepts that specific call and turns it into a confirmation object instead. The actual write only happens through a separate endpoint, triggered by an explicit user action. See [`app/agent/agent.py`](app/agent/agent.py).
+The important asymmetry: **every tool the model can call directly is read-only or purely computational.** The one tool that mutates data (`register_for_event`) is schema-visible to the model but not auto-executed — the agent loop intercepts that specific call and turns it into a confirmation object instead. The model's request is checked and stored on the server as a *pending action* (the parameters live in the database, not in the browser, so what the student approves is exactly what runs). The actual write only happens through `POST /api/actions/{id}/confirm`, triggered by an explicit user action. Each action is an `ActionSpec` in `app/actions/` (schema, `prepare`, `execute`), so new write actions plug into the same approval path. A pending action expires after 10 minutes, runs at most once however many times or how simultaneously it is confirmed, and can only be confirmed by the student it was made for. See [`app/agent/agent.py`](app/agent/agent.py).
 
 ---
 
@@ -67,7 +67,7 @@ backend/
 │   │   ├── chat.py                 # chat, chat/stream, history, sessions
 │   │   ├── deps.py                 # get_current_student: the sign-in check
 │   │   ├── events.py               # GET /api/events, /api/events/:id
-│   │   ├── registration.py         # POST /api/register
+│   │   ├── actions.py              # POST /api/actions/{id}/confirm and /cancel
 │   │   ├── students.py             # the student's own profile
 │   │   └── staff.py                # registrations list and CSV export (staff, admin)
 │   │
@@ -250,7 +250,8 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | `GET /api/chat/sessions` | The student's conversations, newest first, each with a short preview |
 | `GET /api/chat/sessions/{id}/summary` | Two or three sentences on what a conversation was about (the student's own; cached until the conversation grows) |
 | `DELETE /api/chat/sessions/{id}` | Delete the student's own conversation (404 for anyone else's) |
-| `POST /api/register` | Execute a registration for the signed-in student -- the only endpoint that creates registrations |
+| `POST /api/actions/{id}/confirm` | Approve a pending action the assistant proposed (for example a registration) and run it, once |
+| `POST /api/actions/{id}/cancel` | Decline a pending action; nothing is done |
 
 | `GET /api/staff/registrations` | Every registration with student and event details; `?event_id=` filters (staff, admin) |
 | `GET /api/staff/registrations/export` | The same as a CSV download (staff, admin) |

@@ -61,7 +61,7 @@ Assistant replies are markdown — Groq's answers routinely include headings, li
 flowchart LR
     U[👤 User] --> UI[Next.js Frontend]
     UI -->|POST /api/chat| API[FastAPI Backend]
-    UI -->|POST /api/register| API
+    UI -->|POST /api/actions/:id/confirm| API
     UI -->|GET /api/events| API
     API --> UI
 ```
@@ -197,19 +197,17 @@ The chat page uses this instead of `POST /api/chat`. The request is the same, an
 
 The "thinking" dots stay up until the first `token` arrives.
 
-### `POST /api/register`
+### `POST /api/actions/:action_id/confirm` and `/cancel`
 
-Requires a signed-in student, and registers that student: the request names only the event.
-
-```json
-// Request
-{ "event_id": "evt_ai_001" }
-```
+Require a signed-in student. A chat reply that proposes something (such as a registration) carries `confirmation: { action_id, action, title, lines: [{label, value}], expires_at }`. The card shows it; Confirm or Cancel sends only the id, because the details are stored on the server. No request body.
 
 ```json
 // Response
-{ "success": true, "registration_id": "REG-48291" }
+{ "action_id": "...", "status": "confirmed", "success": true,
+  "message": "You're registered for AI Workshop.", "details": { "Registration ID": "REG-00001" } }
 ```
+
+`status` is `confirmed`, `cancelled` or `failed` (`success` is false for the last two, with the reason in `message`). Errors: 404 for an unknown or someone else's action, 410 `action_expired` after 10 minutes, 409 if it was already cancelled or failed.
 
 ### `GET /api/events` / `GET /api/events/:id`
 

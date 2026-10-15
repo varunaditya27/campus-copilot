@@ -3,8 +3,7 @@ import type {
   CampusEvent,
   ChatHistoryResponse,
   ChatRequest,
-  ConfirmRegistrationRequest,
-  ConfirmRegistrationResponse,
+  ActionOutcome,
   CurrentUser,
   EventCategory,
   LoginRequest,
@@ -169,10 +168,14 @@ export function getChatHistory(): Promise<ChatHistoryResponse> {
   return request<ChatHistoryResponse>("/api/chat/history");
 }
 
-export function confirmRegistration(
-  body: ConfirmRegistrationRequest,
-): Promise<ConfirmRegistrationResponse> {
-  return post<ConfirmRegistrationResponse>("/api/register", body);
+// Approve or decline something the assistant proposed. The details are kept on
+// the server, so only the id is sent.
+export function confirmAction(actionId: string): Promise<ActionOutcome> {
+  return post<ActionOutcome>(`/api/actions/${actionId}/confirm`);
+}
+
+export function cancelAction(actionId: string): Promise<ActionOutcome> {
+  return post<ActionOutcome>(`/api/actions/${actionId}/cancel`);
 }
 
 export function listEvents(): Promise<CampusEvent[]> {

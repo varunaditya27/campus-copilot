@@ -1,6 +1,7 @@
 import csv
 import io
 from datetime import datetime, timezone
+from uuid import uuid4
 
 import pytest
 from fastapi.testclient import TestClient
@@ -13,6 +14,7 @@ from app.db.models import Event, Registration, Student, User
 from app.main import app
 from app.models.auth import NewStaffAccount
 from app.services import auth_service
+from helpers import ASHA_PROFILE, RAVI_PROFILE, register_through_approval
 from helpers import ADMIN, ASHA, CSE, FACULTY, FACULTY_CSE, ISE, RAVI, STAFF, sign_in_as, sign_up
 
 EVENT = {
@@ -196,7 +198,7 @@ def test_anonymous_callers_are_asked_to_sign_in(db, method, path):
         ("post", "/api/chat/stream"),
         ("get", "/api/chat/history"),
         ("get", "/api/chat/sessions"),
-        ("post", "/api/register"),
+        ("post", f"/api/actions/{uuid4()}/confirm"),
     ],
 )
 def test_student_features_are_for_students_only(db, account, method, path):
@@ -206,8 +208,8 @@ def test_student_features_are_for_students_only(db, account, method, path):
     assert (response.status_code, response.json()["error_code"]) == (403, "forbidden")
 
 
-def test_a_student_cannot_register_other_students_or_change_events(asha, db):
-    asha.post("/api/register", json={"event_id": "evt_ai_001"})
+def test_a_student_registering_takes_exactly_one_seat(asha, db):
+    register_through_approval(ASHA_PROFILE)
     with db() as session:
         assert session.scalar(select(Event.registered).where(Event.id == "evt_ai_001")) == 5
 
@@ -384,8 +386,8 @@ def test_event_input_is_validated(db, overrides):
 
 def test_created_events_can_be_registered_for(db):
     event_id = sign_in_as(ADMIN).post("/api/admin/events", json=EVENT).json()["id"]
-    student = sign_up(TestClient(app), RAVI)
-    assert student.post("/api/register", json={"event_id": event_id}).json()["success"] is True
+    sign_up(TestClient(app), RAVI)
+    assert register_through_approval(RAVI_PROFILE, event_id).success is True
     assert TestClient(app).get(f"/api/events/{event_id}").json()["registered"] == 1
 
 

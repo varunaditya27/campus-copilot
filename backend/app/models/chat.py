@@ -4,6 +4,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field
 
+from app.models.actions import Confirmation
+
 ChatRole = Literal["user", "assistant"]
 
 # Bound on what a client may send, so one request cannot carry an
@@ -34,24 +36,11 @@ class ToolActivityEntry(BaseModel):
     resultSummary: str | None = None
 
 
-class ConfirmationEvent(BaseModel):
-    id: str
-    name: str
-    date: str
-    time: str
-    venue: str
-
-
-class RegistrationConfirmation(BaseModel):
-    event: ConfirmationEvent
-    studentId: str
-
-
 class ChatResponse(BaseModel):
     reply: str
     sources: list[Source] | None = None
     toolActivity: list[ToolActivityEntry] | None = None
-    confirmation: RegistrationConfirmation | None = None
+    confirmation: Confirmation | None = None
 
 
 class StoredMessage(BaseModel):

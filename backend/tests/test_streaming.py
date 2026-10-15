@@ -116,7 +116,8 @@ def test_register_request_streams_its_reply_and_a_confirmation(db, use_fakes):
     assert "tool_start" not in _types(events)
     assert "confirm" in _text(events).lower()
     final = events[-1]["payload"]
-    assert final["confirmation"]["event"]["id"] == "evt_ai_001"
+    assert final["confirmation"]["action"] == "register_for_event"
+    assert final["confirmation"]["title"] == "Register for AI Workshop"
     assert final["reply"] == _text(events)
 
 

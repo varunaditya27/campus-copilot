@@ -17,6 +17,19 @@ def _duplicate() -> dict:
     return {"success": False, "error": "Already registered for this event"}
 
 
+def is_registered(student_id: str, event_id: str) -> bool:
+    with db_session.SessionLocal() as db:
+        return bool(
+            db.scalar(
+                select(
+                    exists().where(
+                        Registration.student_id == student_id, Registration.event_id == event_id
+                    )
+                )
+            )
+        )
+
+
 def create_registration(student_id: str, event_id: str) -> dict:
     with db_session.SessionLocal() as session:
         event = session.get(Event, event_id)
