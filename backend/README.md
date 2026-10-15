@@ -66,7 +66,7 @@ backend/
 │   │   └── registration.py         # POST /api/register
 │   │
 │   ├── agent/
-│   │   ├── agent.py                # run_agent(): the tool-calling loop
+│   │   ├── agent.py                # run_agent_stream(): the tool-calling loop, as a stream of events
 │   │   ├── prompts.py              # system prompt + RAG context builder
 │   │   └── tool_registry.py        # Groq tool schemas + dispatch table
 │   │
@@ -150,9 +150,9 @@ Safe to re-run any time -- it wipes and rebuilds the collection from scratch.
 | `calculate_attendance` | ✅ | Exact arithmetic in Python -- never trust an LLM with math it can just compute wrong |
 | `register_for_event` | ⚠️ schema-visible, never auto-executed | Validates event/student/capacity/duplicate and writes the registration |
 
-`app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Only the first three tools are in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`, a real `student_id`) -- but `run_agent()` special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
+`app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Only the first three tools are in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`, a real `student_id`) -- but the agent loop special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
 
-The loop itself (`run_agent()` in `agent/agent.py`) is bounded (`MAX_TOOL_ROUNDS = 4`) so the model can chain a few calls -- e.g. `search_events` then `check_event_availability` -- before producing a final answer, without risking an unbounded loop.
+The loop itself (`run_agent_stream()` in `agent/agent.py`, with `run_agent()` as a wrapper that waits for the final result) is bounded (`MAX_TOOL_ROUNDS = 4`) so the model can chain a few calls -- e.g. `search_events` then `check_event_availability` -- before producing a final answer, without risking an unbounded loop.
 
 ---
 
@@ -166,6 +166,7 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | `GET /api/events` | List all campus events |
 | `GET /api/events/{id}` | Single event, 404 if unknown |
 | `POST /api/chat` | Send a message, run the agent loop, get back a reply + sources + tool activity + optional confirmation. The exchange is saved to the caller's session |
+| `POST /api/chat/stream` | Same as `POST /api/chat`, but streamed as server-sent events: tokens and tool activity arrive as they happen |
 | `GET /api/chat/history` | The current session's saved messages, for restoring the chat after a refresh |
 | `DELETE /api/chat/sessions/{id}` | Delete the caller's own conversation (404 for anyone else's) |
 | `POST /api/register` | Execute a registration -- the only endpoint that creates registrations |
@@ -173,6 +174,20 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 Every 4xx/5xx response has the same JSON shape: `{ "error_code": "...", "message": "...", "detail": ... }`. `message` is safe to show to a user; `detail` carries field-level information for validation errors (422). Notable codes: `rate_limited` (429, Groq is throttling), `context_too_long` (413), `llm_unavailable` (502), `validation_error` (422), `not_found` (404), `internal_error` (500, no internals leaked).
 
 Request limits: a chat `message` is 1-2000 characters, and `student_id` must look like a USN (e.g. `1RV23IS101`).
+
+**Streaming.** `POST /api/chat/stream` runs the same agent loop but replies with `text/event-stream`. Each event is one line, `data: {"type": ..., "payload": ...}`, followed by a blank line:
+
+| `type` | `payload` | Meaning |
+| --- | --- | --- |
+| `rag_context` | `{ sources }` | Knowledge chunks found for the question (sent first) |
+| `token` | `{ text }` | The next piece of the reply |
+| `reset` | `{}` | The text streamed so far was a preamble to a tool call: discard it |
+| `tool_start` | `{ id, tool, label }` | A tool began running |
+| `tool_done` | `{ id, tool, label, status, resultSummary }` | That tool finished |
+| `done` | the full `ChatResponse` | End of the stream; the exchange has been saved |
+| `error` | `{ error_code, message }` | The run failed; nothing was saved |
+
+Once streaming has started the HTTP status is already 200, so failures arrive as an `error` event; a request that is invalid from the start (for example an empty message) still gets a normal 422. The agent is a plain (sync) generator because the Groq client and the database are synchronous; Starlette runs such a generator in a worker thread, so it does not block other requests. Model tool calls arrive as fragments and are reassembled by index before they run.
 
 **Sessions.** The server, not the browser, remembers the conversation. The first `POST /api/chat` creates a row in `sessions` and sets a random `session_id` in an HttpOnly, `SameSite=Lax` cookie (HttpOnly means page scripts cannot read it). Each later request loads the session's most recent 40 messages (`HISTORY_WINDOW` in `api/chat.py`) and passes them to the agent; the reply is saved with its tool activity and sources. A failed agent run saves nothing. Possession of the cookie is the only proof of ownership until sign-in exists, so listing a student's past sessions waits for authentication (roadmap phase 2). Set `COOKIE_SECURE=true` once the app is served over HTTPS.
 

@@ -1,8 +1,10 @@
 import pytest
 from sqlalchemy.orm import sessionmaker
 
+from app.agent import agent
 from app.db import session as db_session
 from app.db.models import Base, Event, Student
+from fakes import FakeGroq
 
 
 def _event(event_id, name, category, capacity, registered, tags):
@@ -57,3 +59,16 @@ def db(tmp_path, monkeypatch):
     monkeypatch.setattr(db_session, "SessionLocal", factory)
     yield factory
     engine.dispose()
+
+
+@pytest.fixture
+def use_fakes(monkeypatch):
+    """Install a scripted fake Groq client and a stubbed retriever into the agent."""
+
+    def install(*replies, chunks=()):
+        client = FakeGroq(*replies)
+        monkeypatch.setattr(agent, "get_groq_client", lambda: client)
+        monkeypatch.setattr(agent, "retrieve", lambda message: list(chunks))
+        return client
+
+    return install

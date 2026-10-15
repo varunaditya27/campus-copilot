@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import type { ChatMessage, StoredMessage } from "@/lib/types";
-import { getChatHistory, sendChatMessage, ApiError } from "@/lib/api";
+import { getChatHistory, streamChatMessage, ApiError } from "@/lib/api";
+import { applyAgentEvent } from "@/lib/events";
 import ChatWindow from "./components/chat/ChatWindow";
 import ChatInput from "./components/chat/ChatInput";
 import AgentActivity from "./components/agent/AgentActivity";
@@ -68,22 +69,24 @@ export default function ChatPage() {
     setSending(true);
 
     try {
-      const res = await sendChatMessage({ message: text });
+      let failure: string | null = null;
+      let finished = false;
 
-      setMessages((prev) =>
-        prev.map((m) =>
-          m.id === pendingId
-            ? {
-                ...m,
-                content: res.reply,
-                pending: false,
-                sources: res.sources,
-                toolActivity: res.toolActivity,
-                confirmation: res.confirmation,
-              }
-            : m,
-        ),
-      );
+      await streamChatMessage({ message: text }, (event) => {
+        if (event.type === "error") {
+          failure = event.payload.message;
+        } else if (event.type === "done") {
+          finished = true;
+        }
+        setMessages((prev) =>
+          prev.map((m) => (m.id === pendingId ? applyAgentEvent(m, event) : m)),
+        );
+      });
+
+      if (failure || !finished) {
+        setMessages((prev) => prev.filter((m) => m.id !== pendingId));
+        setBanner(failure ?? "The response was interrupted. Please try again.");
+      }
     } catch (err) {
       setMessages((prev) => prev.filter((m) => m.id !== pendingId));
       setBanner(

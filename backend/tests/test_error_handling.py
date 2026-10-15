@@ -10,7 +10,9 @@ from app.rag import retriever
 from app.services import event_service
 from app.tools.attendance import calculate_attendance
 from app.tools.events import search_events
-from test_agent import FakeGroq, _completion, _tool_call
+from fakes import FailingStreamGroq, FakeGroq, RaisingGroq
+from fakes import completion as _completion
+from fakes import tool_call as _tool_call
 
 client = TestClient(app, raise_server_exceptions=False)
 _REQUEST = httpx.Request("POST", "http://groq.test")
@@ -18,15 +20,6 @@ _REQUEST = httpx.Request("POST", "http://groq.test")
 
 def _status_error(cls, status, message="boom", body=None):
     return cls(message, response=httpx.Response(status, request=_REQUEST), body=body)
-
-
-class RaisingGroq:
-    def __init__(self, exc):
-        self.chat = type("C", (), {"completions": type("X", (), {"create": self._raise})()})()
-        self._exc = exc
-
-    def _raise(self, **kwargs):
-        raise self._exc
 
 
 def _use_client(monkeypatch, groq_client):

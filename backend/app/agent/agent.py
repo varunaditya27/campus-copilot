@@ -1,4 +1,5 @@
 import json
+from collections.abc import Iterator
 
 from groq import APIError, APIStatusError, BadRequestError, RateLimitError
 from pydantic import ValidationError
@@ -89,16 +90,51 @@ def _to_app_error(exc: APIError) -> AppError:
     )
 
 
-def _call_model(client, messages: list[dict]):
+def _event(kind: str, **payload) -> dict:
+    return {"type": kind, "payload": payload}
+
+
+def _stream_completion(client, messages: list[dict]):
+    """Stream one model round.
+
+    Yields a token event for each piece of text as it arrives. The model's
+    tool calls arrive as fragments (an id and name first, then the JSON
+    arguments in pieces), so they are reassembled by index. Returns the full
+    text and the list of complete tool calls.
+    """
+    text_parts: list[str] = []
+    calls: dict[int, dict] = {}
     try:
-        return client.chat.completions.create(
+        stream = client.chat.completions.create(
             model=GROQ_MODEL,
             messages=messages,
             tools=TOOL_SCHEMAS,
             tool_choice="auto",
+            stream=True,
         )
+        for chunk in stream:
+            if not chunk.choices:
+                continue
+            delta = chunk.choices[0].delta
+            if delta.content:
+                text_parts.append(delta.content)
+                yield _event("token", text=delta.content)
+            for part in delta.tool_calls or []:
+                call = calls.setdefault(part.index, {"id": None, "name": "", "arguments": ""})
+                if part.id:
+                    call["id"] = part.id
+                if part.function:
+                    if part.function.name:
+                        call["name"] = part.function.name
+                    if part.function.arguments:
+                        call["arguments"] += part.function.arguments
     except APIError as exc:
         raise _to_app_error(exc) from exc
+
+    tool_calls = [
+        {**calls[index], "id": calls[index]["id"] or f"call_{index}"} for index in sorted(calls)
+    ]
+    return "".join(text_parts), tool_calls
 
 
 def _confirmation_for(args: dict) -> RegistrationConfirmation | None:
@@ -114,13 +150,26 @@ def _confirmation_for(args: dict) -> RegistrationConfirmation | None:
     )
 
 
-def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
+def run_agent_stream(message: str, history: list[ChatHistoryItem]) -> Iterator[dict]:
+    """Run the agent loop, yielding typed events as it goes.
+
+    Event types: rag_context, token, reset (discard the text streamed so far,
+    because the model is about to call a tool), tool_start, tool_done, and
+    finally done, whose payload is the complete ChatResponse. Failures raise
+    AppError.
+    """
     knowledge_unavailable = False
     try:
         chunks = retrieve(message)
     except KnowledgeBaseNotFound:
         chunks = []
         knowledge_unavailable = True
+
+    sources = [
+        Source(document=c["document"], section=c["section"], snippet=c["snippet"])
+        for c in chunks
+    ]
+    yield _event("rag_context", sources=[s.model_dump() for s in sources])
 
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     messages += [{"role": h.role, "content": h.content} for h in history]
@@ -135,19 +184,18 @@ def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
     confirmation: RegistrationConfirmation | None = None
 
     for _ in range(MAX_TOOL_ROUNDS):
-        completion = _call_model(client, messages)
-        reply_message = completion.choices[0].message
+        text, tool_calls = yield from _stream_completion(client, messages)
 
-        if not reply_message.tool_calls:
-            reply = reply_message.content
+        if not tool_calls:
+            reply = text
             break
 
-        register_call = next(
-            (tc for tc in reply_message.tool_calls if tc.function.name == "register_for_event"),
-            None,
-        )
+        if text:
+            yield _event("reset")
+
+        register_call = next((c for c in tool_calls if c["name"] == "register_for_event"), None)
         if register_call is not None:
-            args = _parse_arguments(register_call.function.arguments) or {}
+            args = _parse_arguments(register_call["arguments"]) or {}
             confirmation = _confirmation_for(args)
             reply = (
                 f"I've prepared a registration for {confirmation.event.name}. "
@@ -156,48 +204,61 @@ def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
                 else "I couldn't find that event to register you for -- could you "
                 "confirm the event and your student ID?"
             )
+            yield _event("token", text=reply)
             break
 
         messages.append(
             {
                 "role": "assistant",
-                "content": reply_message.content,
-                "tool_calls": [tc.model_dump() for tc in reply_message.tool_calls],
+                "content": text or None,
+                "tool_calls": [
+                    {
+                        "id": c["id"],
+                        "type": "function",
+                        "function": {"name": c["name"], "arguments": c["arguments"]},
+                    }
+                    for c in tool_calls
+                ],
             }
         )
 
-        for tool_call in reply_message.tool_calls:
-            name = tool_call.function.name
-            result, status = _run_tool(name, tool_call.function.arguments)
+        for call in tool_calls:
+            name = call["name"]
+            label = TOOL_LABELS.get(name, name)
+            yield _event("tool_start", id=call["id"], tool=name, label=label)
 
-            tool_activity.append(
-                ToolActivityEntry(
-                    id=tool_call.id,
-                    tool=name,
-                    label=TOOL_LABELS.get(name, name),
-                    status=status,
-                    resultSummary=_summarize(name, result),
-                )
+            result, status = _run_tool(name, call["arguments"])
+            entry = ToolActivityEntry(
+                id=call["id"],
+                tool=name,
+                label=label,
+                status=status,
+                resultSummary=_summarize(name, result),
             )
+            tool_activity.append(entry)
+            yield _event("tool_done", **entry.model_dump())
             messages.append(
                 {
                     "role": "tool",
-                    "tool_call_id": tool_call.id,
+                    "tool_call_id": call["id"],
                     "name": name,
                     "content": json.dumps(result),
                 }
             )
     else:
         reply = "I wasn't able to finish that request in a reasonable number of steps."
+        yield _event("token", text=reply)
 
-    sources = [
-        Source(document=c["document"], section=c["section"], snippet=c["snippet"])
-        for c in chunks
-    ]
-
-    return ChatResponse(
+    response = ChatResponse(
         reply=reply,
         sources=sources,
         toolActivity=tool_activity or None,
         confirmation=confirmation,
     )
+    yield _event("done", **response.model_dump())
+
+
+def run_agent(message: str, history: list[ChatHistoryItem]) -> ChatResponse:
+    """The same loop without streaming: wait for the final event."""
+    events = list(run_agent_stream(message, history))
+    return ChatResponse.model_validate(events[-1]["payload"])

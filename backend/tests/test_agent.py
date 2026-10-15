@@ -1,54 +1,8 @@
-import json
-from types import SimpleNamespace
-
-import pytest
-
 from app.agent import agent
 from app.models.chat import ChatHistoryItem
+from fakes import completion as _completion
+from fakes import tool_call as _tool_call
 from helpers import all_registrations, event_registered
-
-
-def _tool_call(call_id, name, args):
-    call = SimpleNamespace(
-        id=call_id,
-        function=SimpleNamespace(name=name, arguments=json.dumps(args)),
-    )
-    call.model_dump = lambda: {
-        "id": call_id,
-        "type": "function",
-        "function": {"name": name, "arguments": json.dumps(args)},
-    }
-    return call
-
-
-def _completion(content=None, tool_calls=None):
-    message = SimpleNamespace(content=content, tool_calls=tool_calls)
-    return SimpleNamespace(choices=[SimpleNamespace(message=message)])
-
-
-class FakeGroq:
-    """Returns the scripted completions in order; repeats the last one forever."""
-
-    def __init__(self, *completions):
-        self._completions = list(completions)
-        self.calls = 0
-        self.chat = SimpleNamespace(completions=SimpleNamespace(create=self._create))
-
-    def _create(self, **kwargs):
-        index = min(self.calls, len(self._completions) - 1)
-        self.calls += 1
-        return self._completions[index]
-
-
-@pytest.fixture
-def use_fakes(monkeypatch):
-    def install(*completions, chunks=()):
-        client = FakeGroq(*completions)
-        monkeypatch.setattr(agent, "get_groq_client", lambda: client)
-        monkeypatch.setattr(agent, "retrieve", lambda message: list(chunks))
-        return client
-
-    return install
 
 
 def test_plain_reply_without_tools(use_fakes):

@@ -82,12 +82,24 @@ export interface ChatHistoryResponse {
   messages: StoredMessage[];
 }
 
+// The backend sends null (not a missing key) for parts a reply does not have.
 export interface ChatResponse {
   reply: string;
-  sources?: Source[];
-  toolActivity?: ToolActivityEntry[];
-  confirmation?: RegistrationConfirmation;
+  sources?: Source[] | null;
+  toolActivity?: ToolActivityEntry[] | null;
+  confirmation?: RegistrationConfirmation | null;
 }
+
+// One server-sent event from POST /api/chat/stream.
+export type AgentEvent =
+  | { type: "rag_context"; payload: { sources: Source[] } }
+  | { type: "tool_start"; payload: { id: string; tool: ToolName; label: string } }
+  | { type: "tool_done"; payload: ToolActivityEntry }
+  // The text streamed so far was a preamble to a tool call: discard it.
+  | { type: "reset"; payload: Record<string, never> }
+  | { type: "token"; payload: { text: string } }
+  | { type: "done"; payload: ChatResponse }
+  | { type: "error"; payload: { error_code: string; message: string } };
 
 export interface ConfirmRegistrationRequest {
   event_id: string;

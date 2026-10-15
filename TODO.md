@@ -38,13 +38,13 @@
 
 ### 1.2 Streaming Responses
 
-- [ ] Convert `run_agent()` in `agent.py` to an async generator
-- [ ] Add a `/chat/stream` SSE endpoint in FastAPI using `StreamingResponse`
-- [ ] Define a typed event protocol: `{ type: "tool_start" | "tool_done" | "rag_context" | "token" | "done", payload: ... }`
-- [ ] Update Next.js frontend to consume SSE stream with `EventSource` or `fetch` with `ReadableStream`
-- [ ] Show live token streaming in the chat bubble as the LLM generates
-- [ ] Show tool activity cards appear in real-time as each tool completes, not all at once at the end
-- [ ] Show a "thinking" skeleton state while the first tool round fires
+- [x] Convert `run_agent()` in `agent.py` to an async generator (done as a sync generator, `run_agent_stream()`: the Groq client and the database are synchronous, and Starlette runs a sync generator in a worker thread)
+- [x] Add a `/chat/stream` SSE endpoint in FastAPI using `StreamingResponse`
+- [x] Define a typed event protocol: `{ type: "tool_start" | "tool_done" | "rag_context" | "token" | "done", payload: ... }` (plus `reset` and `error`)
+- [x] Update Next.js frontend to consume SSE stream with `EventSource` or `fetch` with `ReadableStream`
+- [x] Show live token streaming in the chat bubble as the LLM generates
+- [x] Show tool activity cards appear in real-time as each tool completes, not all at once at the end
+- [x] Show a "thinking" skeleton state while the first tool round fires
 
 ### 1.3 Server-Side Session & Conversation History
 

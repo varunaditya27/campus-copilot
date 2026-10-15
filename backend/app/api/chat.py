@@ -1,9 +1,12 @@
+import json
+from collections.abc import Iterator
 from typing import Annotated
 from uuid import UUID
 
 from fastapi import APIRouter, Cookie, Response
+from fastapi.responses import StreamingResponse
 
-from app.agent.agent import run_agent
+from app.agent.agent import run_agent, run_agent_stream
 from app.core.config import COOKIE_SECURE
 from app.core.errors import AppError
 from app.models.chat import ChatHistoryResponse, ChatRequest, ChatResponse
@@ -19,12 +22,7 @@ HISTORY_WINDOW = 40
 SessionCookie = Annotated[str | None, Cookie(alias=SESSION_COOKIE)]
 
 
-@router.post("")
-def chat(request: ChatRequest, response: Response, session_cookie: SessionCookie = None) -> ChatResponse:
-    session_id = chat_service.resolve_session(session_cookie)
-    history = chat_service.load_history(session_id, HISTORY_WINDOW)
-    result = run_agent(request.message, history)
-    chat_service.save_exchange(session_id, request.message, result)
+def _set_session_cookie(response: Response, session_id: UUID) -> None:
     response.set_cookie(
         SESSION_COOKIE,
         str(session_id),
@@ -33,7 +31,65 @@ def chat(request: ChatRequest, response: Response, session_cookie: SessionCookie
         samesite="lax",
         secure=COOKIE_SECURE,
     )
+
+
+@router.post("")
+def chat(request: ChatRequest, response: Response, session_cookie: SessionCookie = None) -> ChatResponse:
+    session_id = chat_service.resolve_session(session_cookie)
+    history = chat_service.load_history(session_id, HISTORY_WINDOW)
+    result = run_agent(request.message, history)
+    chat_service.save_exchange(session_id, request.message, result)
+    _set_session_cookie(response, session_id)
     return result
+
+
+def _sse(event: dict) -> str:
+    # One server-sent event: a "data:" line holding JSON, ended by a blank line.
+    return f"data: {json.dumps(event)}\n\n"
+
+
+@router.post("/stream")
+def chat_stream(request: ChatRequest, session_cookie: SessionCookie = None) -> StreamingResponse:
+    """Same as POST /api/chat, but streamed as server-sent events.
+
+    Once streaming has begun the HTTP status is already 200, so failures are
+    reported as an "error" event instead.
+    """
+    session_id = chat_service.resolve_session(session_cookie)
+    history = chat_service.load_history(session_id, HISTORY_WINDOW)
+
+    def events() -> Iterator[str]:
+        try:
+            for event in run_agent_stream(request.message, history):
+                if event["type"] == "done":
+                    chat_service.save_exchange(
+                        session_id, request.message, ChatResponse.model_validate(event["payload"])
+                    )
+                yield _sse(event)
+        except AppError as exc:
+            yield _sse(
+                {"type": "error", "payload": {"error_code": exc.error_code, "message": exc.message}}
+            )
+        except Exception:
+            yield _sse(
+                {
+                    "type": "error",
+                    "payload": {
+                        "error_code": "internal_error",
+                        "message": "Something went wrong on our side. Please try again.",
+                    },
+                }
+            )
+
+    response = StreamingResponse(
+        events(),
+        media_type="text/event-stream",
+        # no-cache: never reuse a stale stream. X-Accel-Buffering: tell nginx
+        # not to hold the events back until the response ends.
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+    _set_session_cookie(response, session_id)
+    return response
 
 
 @router.get("/history")

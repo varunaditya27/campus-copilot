@@ -158,6 +158,22 @@ Returns the conversation for the current `session_id` cookie, so the chat can be
 
 `DELETE /api/chat/sessions/{session_id}` deletes that conversation and clears the cookie (204). It only works for the caller's own session; anything else is a 404.
 
+### `POST /api/chat/stream`
+
+The chat page uses this instead of `POST /api/chat`. The request is the same, and the response is a stream of server-sent events (`text/event-stream`): each event is a `data:` line holding `{ "type": ..., "payload": ... }`, then a blank line. `EventSource` only supports GET, so `streamChatMessage` in `lib/api.ts` reads the stream with `fetch` and `lib/events.ts` folds each event into the assistant message.
+
+| `type` | `payload` |
+| --- | --- |
+| `rag_context` | `{ sources }` |
+| `token` | `{ text }` -- append to the reply |
+| `reset` | `{}` -- clear the reply streamed so far (the model is about to call a tool) |
+| `tool_start` | `{ id, tool, label }` -- show the tool as running |
+| `tool_done` | `{ id, tool, label, status, resultSummary }` |
+| `done` | the full `ChatResponse` shown above |
+| `error` | `{ error_code, message }` |
+
+The "thinking" dots stay up until the first `token` arrives.
+
 ### `POST /api/register`
 
 ```json
