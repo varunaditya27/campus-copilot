@@ -120,11 +120,10 @@ The frontend expects the backend to implement the following. This is the contrac
 
 ```json
 // Request
-{
-  "message": "Find an AI-related event tomorrow and register me.",
-  "history": [{ "role": "user", "content": "..." }]
-}
+{ "message": "Find an AI-related event tomorrow and register me." }
 ```
+
+The conversation history is kept on the server. The backend identifies the conversation by an HttpOnly `session_id` cookie it sets on the first message, so every request must be sent with `credentials: "include"` (see `lib/api.ts`). The client never sends the history itself.
 
 ```json
 // Response
@@ -142,6 +141,22 @@ The frontend expects the backend to implement the following. This is the contrac
 ```
 
 `sources`, `toolActivity`, and `confirmation` are all optional — a plain RAG answer omits `toolActivity` and `confirmation`; a pure tool call may omit `sources`.
+
+### `GET /api/chat/history`
+
+Returns the conversation for the current `session_id` cookie, so the chat can be restored after a page refresh. A browser with no session gets an empty list.
+
+```json
+{
+  "session_id": "6f1c2d0e-1b7a-4c1e-9a55-2f0d3b6a7c10",
+  "messages": [
+    { "id": 1, "role": "user", "content": "...", "toolActivity": null, "sources": null, "createdAt": "2026-10-15T13:30:00Z" },
+    { "id": 2, "role": "assistant", "content": "...", "toolActivity": [], "sources": [], "createdAt": "2026-10-15T13:30:02Z" }
+  ]
+}
+```
+
+`DELETE /api/chat/sessions/{session_id}` deletes that conversation and clears the cookie (204). It only works for the caller's own session; anything else is a 404.
 
 ### `POST /api/register`
 

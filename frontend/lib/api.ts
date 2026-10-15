@@ -1,5 +1,6 @@
 import type {
   CampusEvent,
+  ChatHistoryResponse,
   ChatRequest,
   ChatResponse,
   ConfirmRegistrationRequest,
@@ -24,6 +25,8 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   try {
     res = await fetch(`${API_BASE_URL}${path}`, {
       headers: { "Content-Type": "application/json" },
+      // The backend identifies a conversation by an HttpOnly session cookie.
+      credentials: "include",
       ...init,
     });
   } catch {
@@ -53,6 +56,10 @@ export function sendChatMessage(body: ChatRequest): Promise<ChatResponse> {
     method: "POST",
     body: JSON.stringify(body),
   });
+}
+
+export function getChatHistory(): Promise<ChatHistoryResponse> {
+  return request<ChatHistoryResponse>("/api/chat/history");
 }
 
 export function confirmRegistration(

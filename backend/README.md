@@ -86,6 +86,7 @@ backend/
 │   │   └── registration.py         # register_for_event (not model-callable)
 │   │
 │   ├── services/                   # reusable business logic, no HTTP/LLM concerns
+│   │   ├── chat_service.py         # sessions and message history
 │   │   ├── event_service.py        # reads events from the database
 │   │   └── registration_service.py # validates + writes registrations
 │   │
@@ -164,12 +165,16 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | `GET /health` | Liveness check |
 | `GET /api/events` | List all campus events |
 | `GET /api/events/{id}` | Single event, 404 if unknown |
-| `POST /api/chat` | Send a message, run the agent loop, get back a reply + sources + tool activity + optional confirmation |
+| `POST /api/chat` | Send a message, run the agent loop, get back a reply + sources + tool activity + optional confirmation. The exchange is saved to the caller's session |
+| `GET /api/chat/history` | The current session's saved messages, for restoring the chat after a refresh |
+| `DELETE /api/chat/sessions/{id}` | Delete the caller's own conversation (404 for anyone else's) |
 | `POST /api/register` | Execute a registration -- the only endpoint that creates registrations |
 
 Every 4xx/5xx response has the same JSON shape: `{ "error_code": "...", "message": "...", "detail": ... }`. `message` is safe to show to a user; `detail` carries field-level information for validation errors (422). Notable codes: `rate_limited` (429, Groq is throttling), `context_too_long` (413), `llm_unavailable` (502), `validation_error` (422), `not_found` (404), `internal_error` (500, no internals leaked).
 
-Request limits: a chat `message` is 1-2000 characters, `history` holds at most 50 items of up to 8000 characters each, and `student_id` must look like a USN (e.g. `1RV23IS101`).
+Request limits: a chat `message` is 1-2000 characters, and `student_id` must look like a USN (e.g. `1RV23IS101`).
+
+**Sessions.** The server, not the browser, remembers the conversation. The first `POST /api/chat` creates a row in `sessions` and sets a random `session_id` in an HttpOnly, `SameSite=Lax` cookie (HttpOnly means page scripts cannot read it). Each later request loads the session's most recent 40 messages (`HISTORY_WINDOW` in `api/chat.py`) and passes them to the agent; the reply is saved with its tool activity and sources. A failed agent run saves nothing. Possession of the cookie is the only proof of ownership until sign-in exists, so listing a student's past sessions waits for authentication (roadmap phase 2). Set `COOKIE_SECURE=true` once the app is served over HTTPS.
 
 ---
 
@@ -206,6 +211,7 @@ curl http://localhost:8000/health
 | `GROQ_MODEL` | `openai/gpt-oss-120b` | Chosen for tool-use/reasoning support -- verify against `GET https://api.groq.com/openai/v1/models` before changing; Groq deprecates models over time and the docs' example model may not match what your account actually has |
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated origins allowed to call this API |
 | `DATABASE_URL` | `sqlite:///<repo>/backend/campus.db` | SQLAlchemy URL. Use `postgresql+psycopg://user:password@host:5432/dbname` for PostgreSQL |
+| `COOKIE_SECURE` | `false` | Send the session cookie over HTTPS only; set to `true` in production |
 | `RAG_MAX_DISTANCE` | `1.5` | Retrieval distance cutoff; chunks farther than this are dropped. Re-calibrate if you change the embedding model or the corpus (lower is stricter) |
 
 ### Database

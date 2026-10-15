@@ -1,14 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import type { ChatMessage } from "@/lib/types";
-import { sendChatMessage, ApiError } from "@/lib/api";
+import { useEffect, useState } from "react";
+import type { ChatMessage, StoredMessage } from "@/lib/types";
+import { getChatHistory, sendChatMessage, ApiError } from "@/lib/api";
 import ChatWindow from "./components/chat/ChatWindow";
 import ChatInput from "./components/chat/ChatInput";
 import AgentActivity from "./components/agent/AgentActivity";
-
-// The backend rejects more than 50 history items; stay well under it.
-const MAX_HISTORY_MESSAGES = 40;
 
 let idCounter = 0;
 function nextId() {
@@ -16,10 +13,37 @@ function nextId() {
   return `msg_${idCounter}`;
 }
 
+function toChatMessage(m: StoredMessage): ChatMessage {
+  return {
+    id: `stored_${m.id}`,
+    role: m.role,
+    content: m.content,
+    sources: m.sources ?? undefined,
+    toolActivity: m.toolActivity ?? undefined,
+  };
+}
+
 export default function ChatPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [sending, setSending] = useState(false);
   const [banner, setBanner] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    getChatHistory()
+      .then(({ messages: stored }) => {
+        // Don't overwrite a message the user already sent while this loaded.
+        if (!cancelled) {
+          setMessages((prev) => (prev.length > 0 ? prev : stored.map(toChatMessage)));
+        }
+      })
+      .catch(() => {
+        // Restoring history is a convenience; start with an empty chat if it fails.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const allActivity = messages.flatMap((m) =>
     (m.toolActivity ?? []).map((entry) => ({ ...entry, id: `${m.id}:${entry.id}` })),
@@ -44,12 +68,7 @@ export default function ChatPage() {
     setSending(true);
 
     try {
-      const res = await sendChatMessage({
-        message: text,
-        history: messages
-          .slice(-MAX_HISTORY_MESSAGES)
-          .map((m) => ({ role: m.role, content: m.content })),
-      });
+      const res = await sendChatMessage({ message: text });
 
       setMessages((prev) =>
         prev.map((m) =>

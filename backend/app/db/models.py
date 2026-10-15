@@ -1,4 +1,5 @@
-from datetime import datetime
+import uuid
+from datetime import datetime, timezone
 
 from sqlalchemy import (
     JSON,
@@ -9,8 +10,13 @@ from sqlalchemy import (
     String,
     Text,
     UniqueConstraint,
+    Uuid,
 )
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+
+
+def _now() -> datetime:
+    return datetime.now(timezone.utc)
 
 
 class Base(DeclarativeBase):
@@ -71,3 +77,27 @@ class Registration(Base):
     event_id: Mapped[str] = mapped_column(ForeignKey("events.id"), index=True)
     registered_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     status: Mapped[str] = mapped_column(String(20), default="confirmed")
+
+
+class ChatSession(Base):
+    __tablename__ = "sessions"
+
+    session_id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    # Stays empty until students can sign in (roadmap phase 2).
+    student_id: Mapped[str | None] = mapped_column(ForeignKey("students.student_id"))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class ChatMessage(Base):
+    __tablename__ = "messages"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    session_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("sessions.session_id", ondelete="CASCADE"), index=True
+    )
+    role: Mapped[str] = mapped_column(String(20))
+    content: Mapped[str] = mapped_column(Text)
+    tool_activity: Mapped[list | None] = mapped_column(JSON(none_as_null=True))
+    sources: Mapped[list | None] = mapped_column(JSON(none_as_null=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)

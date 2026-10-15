@@ -72,7 +72,7 @@ def test_malformed_register_arguments_give_fallback_text(monkeypatch, db):
 # 2b: Groq errors
 
 
-def test_rate_limit_maps_to_429(monkeypatch):
+def test_rate_limit_maps_to_429(monkeypatch, db):
     _use_client(monkeypatch, RaisingGroq(_status_error(RateLimitError, 429)))
     _assert_error_shape(client.post("/api/chat", json={"message": "hi"}), 429, "rate_limited")
 
@@ -85,12 +85,12 @@ def test_rate_limit_maps_to_429(monkeypatch):
     ],
     ids=["status-413", "bad-request-message"],
 )
-def test_context_too_long_maps_to_413(monkeypatch, exc):
+def test_context_too_long_maps_to_413(monkeypatch, db, exc):
     _use_client(monkeypatch, RaisingGroq(exc))
     _assert_error_shape(client.post("/api/chat", json={"message": "hi"}), 413, "context_too_long")
 
 
-def test_connection_failure_maps_to_502(monkeypatch):
+def test_connection_failure_maps_to_502(monkeypatch, db):
     _use_client(monkeypatch, RaisingGroq(APIConnectionError(request=_REQUEST)))
     _assert_error_shape(client.post("/api/chat", json={"message": "hi"}), 502, "llm_unavailable")
 
@@ -148,12 +148,6 @@ def test_register_rejects_malformed_student_id(db):
 
 def test_chat_rejects_oversized_message():
     response = client.post("/api/chat", json={"message": "x" * 5000})
-    _assert_error_shape(response, 422, "validation_error")
-
-
-def test_chat_rejects_oversized_history():
-    history = [{"role": "user", "content": "hi"}] * 100
-    response = client.post("/api/chat", json={"message": "hi", "history": history})
     _assert_error_shape(response, 422, "validation_error")
 
 

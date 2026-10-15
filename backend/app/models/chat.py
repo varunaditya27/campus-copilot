@@ -1,24 +1,23 @@
+from datetime import datetime
 from typing import Literal
+from uuid import UUID
 
 from pydantic import BaseModel, Field
 
 ChatRole = Literal["user", "assistant"]
 
-# Bounds on what a client may send, so one request cannot carry an
+# Bound on what a client may send, so one request cannot carry an
 # arbitrarily large prompt to the LLM.
 MAX_MESSAGE_CHARS = 2000
-MAX_HISTORY_ITEMS = 50
-MAX_HISTORY_ITEM_CHARS = 8000
 
 
 class ChatHistoryItem(BaseModel):
     role: ChatRole
-    content: str = Field(max_length=MAX_HISTORY_ITEM_CHARS)
+    content: str
 
 
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1, max_length=MAX_MESSAGE_CHARS)
-    history: list[ChatHistoryItem] = Field(default=[], max_length=MAX_HISTORY_ITEMS)
 
 
 class Source(BaseModel):
@@ -53,3 +52,17 @@ class ChatResponse(BaseModel):
     sources: list[Source] | None = None
     toolActivity: list[ToolActivityEntry] | None = None
     confirmation: RegistrationConfirmation | None = None
+
+
+class StoredMessage(BaseModel):
+    id: int
+    role: ChatRole
+    content: str
+    toolActivity: list[ToolActivityEntry] | None = None
+    sources: list[Source] | None = None
+    createdAt: datetime
+
+
+class ChatHistoryResponse(BaseModel):
+    session_id: UUID | None
+    messages: list[StoredMessage]

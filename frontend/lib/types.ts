@@ -66,7 +66,20 @@ export interface ChatMessage {
 
 export interface ChatRequest {
   message: string;
-  history: { role: ChatRole; content: string }[];
+}
+
+export interface StoredMessage {
+  id: number;
+  role: ChatRole;
+  content: string;
+  toolActivity: ToolActivityEntry[] | null;
+  sources: Source[] | null;
+  createdAt: string; // ISO 8601
+}
+
+export interface ChatHistoryResponse {
+  session_id: string | null;
+  messages: StoredMessage[];
 }
 
 export interface ChatResponse {

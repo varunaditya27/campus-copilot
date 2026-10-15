@@ -27,3 +27,6 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+
+# Send the session cookie over HTTPS only. Turn on once the app is served over HTTPS.
+COOKIE_SECURE = os.getenv("COOKIE_SECURE", "false").lower() == "true"

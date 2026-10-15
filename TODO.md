@@ -30,7 +30,7 @@
 
 - [x] Replace `events.json`, `students.json`, `registrations.json` with SQLAlchemy models
 - [x] Set up SQLite for local dev (zero infrastructure change, ACID-safe)
-- [ ] Write Alembic migrations for all tables: `students`, `events`, `registrations`, `sessions`, `users` (students, events, registrations done; sessions with 1.3, users with 2.1)
+- [ ] Write Alembic migrations for all tables: `students`, `events`, `registrations`, `sessions`, `users` (students, events, registrations, sessions and messages done; users with 2.1)
 - [x] Replace all direct JSON file reads/writes in `event_service.py` and `registration_service.py` with DB queries
 - [x] Add unique constraint on `(student_id, event_id)` for registrations
 - [x] Add `docker-compose.yml` with a PostgreSQL service for production mode
@@ -48,13 +48,13 @@
 
 ### 1.3 Server-Side Session & Conversation History
 
-- [ ] Add a `sessions` table: `session_id (UUID)`, `student_id`, `created_at`, `updated_at`
-- [ ] Add a `messages` table: `id`, `session_id`, `role`, `content`, `tool_activity (JSON)`, `sources (JSON)`, `timestamp`
-- [ ] Generate a `session_id` cookie on first visit (or on login once auth exists)
-- [ ] Stop sending full `history[]` from client on every request — fetch history server-side using `session_id`
-- [ ] Expose `GET /chat/history?session_id=...` endpoint for frontend to load previous messages on refresh
-- [ ] Add `GET /chat/sessions` to list all past sessions for a student
-- [ ] Add `DELETE /chat/sessions/{session_id}` to clear a conversation
+- [x] Add a `sessions` table: `session_id (UUID)`, `student_id`, `created_at`, `updated_at`
+- [x] Add a `messages` table: `id`, `session_id`, `role`, `content`, `tool_activity (JSON)`, `sources (JSON)`, `timestamp` (named `created_at`)
+- [x] Generate a `session_id` cookie on first visit (or on login once auth exists)
+- [x] Stop sending full `history[]` from client on every request — fetch history server-side using `session_id`
+- [x] Expose `GET /chat/history?session_id=...` endpoint for frontend to load previous messages on refresh (reads the session cookie, which JavaScript cannot see, so no query parameter)
+- [ ] Add `GET /chat/sessions` to list all past sessions for a student (needs sign-in; deferred to phase 2)
+- [x] Add `DELETE /chat/sessions/{session_id}` to clear a conversation
 
 ### 1.4 Error Handling & Input Validation
 
