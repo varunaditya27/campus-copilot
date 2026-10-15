@@ -4,7 +4,7 @@ from uuid import UUID
 from sqlalchemy import delete, select, update
 
 from app.db import session as db_session
-from app.db.models import ChatMessage, ChatSession
+from app.db.models import ChatMessage, ChatSession, ConversationEntity
 from app.models.chat import ChatHistoryItem, ChatResponse, SessionSummary, StoredMessage
 
 PREVIEW_CHARS = 80
@@ -132,6 +132,7 @@ def delete_session(session_id: UUID, student_id: str) -> bool:
         )
         if owned is None:
             return False
+        db.execute(delete(ConversationEntity).where(ConversationEntity.session_id == session_id))
         db.execute(delete(ChatMessage).where(ChatMessage.session_id == session_id))
         db.execute(delete(ChatSession).where(ChatSession.session_id == session_id))
         db.commit()

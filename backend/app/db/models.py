@@ -199,6 +199,10 @@ class ChatSession(Base):
     student_id: Mapped[str | None] = mapped_column(ForeignKey("students.student_id"))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    # A short summary of the conversation, and the last message it covers, so it
+    # is only written again when the conversation has grown.
+    summary: Mapped[str | None] = mapped_column(Text)
+    summary_through_message_id: Mapped[int | None]
 
 
 class ChatMessage(Base):
@@ -213,3 +217,24 @@ class ChatMessage(Base):
     tool_activity: Mapped[list | None] = mapped_column(JSON(none_as_null=True))
     sources: Mapped[list | None] = mapped_column(JSON(none_as_null=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class ConversationEntity(Base):
+    """Something a conversation has talked about (an event, a course, a faculty
+    member), remembered so a later "register me for it" knows what "it" is."""
+
+    __tablename__ = "conversation_entities"
+    __table_args__ = (
+        UniqueConstraint("session_id", "kind", "key", name="uq_conversation_entities_session_kind_key"),
+        CheckConstraint("kind IN ('event', 'course', 'faculty')", name="valid_kind"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    session_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("sessions.session_id", ondelete="CASCADE"), index=True
+    )
+    kind: Mapped[str] = mapped_column(String(20))
+    key: Mapped[str] = mapped_column(String(100))  # event id, course code, or faculty name
+    label: Mapped[str] = mapped_column(String(200))  # how to show it
+    mentions: Mapped[int] = mapped_column(default=1)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)

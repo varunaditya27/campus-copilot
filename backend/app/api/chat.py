@@ -14,9 +14,10 @@ from app.models.chat import (
     ChatHistoryResponse,
     ChatRequest,
     ChatResponse,
+    ConversationSummary,
     SessionSummary,
 )
-from app.services import chat_service
+from app.services import chat_service, entity_service, summary_service
 
 router = APIRouter(prefix="/api/chat", tags=["chat"])
 
@@ -49,8 +50,9 @@ def chat(
 ) -> ChatResponse:
     session_id = chat_service.resolve_session(session_cookie, student.student_id)
     history = chat_service.load_history(session_id, HISTORY_WINDOW)
-    result = run_agent(request.message, history, student)
+    result = run_agent(request.message, history, student, entity_service.recent(session_id))
     chat_service.save_exchange(session_id, request.message, result)
+    entity_service.remember_exchange(session_id, request.message, result.reply, student.program)
     _set_session_cookie(response, session_id)
     return result
 
@@ -71,14 +73,15 @@ def chat_stream(
     """
     session_id = chat_service.resolve_session(session_cookie, student.student_id)
     history = chat_service.load_history(session_id, HISTORY_WINDOW)
+    entities = entity_service.recent(session_id)
 
     def events() -> Iterator[str]:
         try:
-            for event in run_agent_stream(request.message, history, student):
+            for event in run_agent_stream(request.message, history, student, entities):
                 if event["type"] == "done":
-                    chat_service.save_exchange(
-                        session_id, request.message, ChatResponse.model_validate(event["payload"])
-                    )
+                    done = ChatResponse.model_validate(event["payload"])
+                    chat_service.save_exchange(session_id, request.message, done)
+                    entity_service.remember_exchange(session_id, request.message, done.reply, student.program)
                 yield _sse(event)
         except AppError as exc:
             yield _sse(
@@ -117,6 +120,14 @@ def history(student: SignedInStudent, session_cookie: SessionCookie = None) -> C
 @router.get("/sessions")
 def sessions(student: SignedInStudent) -> list[SessionSummary]:
     return chat_service.list_sessions(student.student_id)
+
+
+@router.get("/sessions/{session_id}/summary")
+def summary(session_id: UUID, student: SignedInStudent) -> ConversationSummary:
+    """Two or three sentences on what a conversation was about. The first request
+    asks the model; later ones are answered from the saved summary until the
+    conversation grows."""
+    return summary_service.summarize(session_id, student.student_id)
 
 
 @router.delete("/sessions/{session_id}", status_code=204)

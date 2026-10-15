@@ -15,6 +15,7 @@ from app.agent.prompts import (
     PLANNER_PROMPT,
     SYSTEM_PROMPT,
     build_context_message,
+    build_entities_message,
     build_plan_message,
     build_student_message,
 )
@@ -23,6 +24,7 @@ from app.core.config import AGENT_PLANNING, GROQ_MODEL
 from app.core.errors import AppError
 from app.core.groq_client import get_groq_client
 from app.models.auth import CurrentStudent
+from app.models.memory import Entity
 from app.models.chat import (
     ChatHistoryItem,
     ChatResponse,
@@ -184,6 +186,7 @@ class AgentState:
     message: str
     student: CurrentStudent
     history: list[ChatHistoryItem] = field(default_factory=list)
+    entities: list[Entity] = field(default_factory=list)
     chunks: list[dict] = field(default_factory=list)
     plan: list[str] = field(default_factory=list)
     # Messages are only ever added to, so each node returns just what it adds.
@@ -229,6 +232,8 @@ def retrieve_node(state: AgentState) -> dict:
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "system", "content": build_student_message(state.student)},
     ]
+    if state.entities:
+        messages.append({"role": "system", "content": build_entities_message(state.entities)})
     messages += [{"role": h.role, "content": h.content} for h in state.history]
     if chunks:
         messages.append({"role": "system", "content": build_context_message(chunks)})
@@ -413,7 +418,10 @@ _graph = build_graph()
 
 
 def run_agent_stream(
-    message: str, history: list[ChatHistoryItem], student: CurrentStudent
+    message: str,
+    history: list[ChatHistoryItem],
+    student: CurrentStudent,
+    entities: list[Entity] | None = None,
 ) -> Iterator[dict]:
     """Run the agent for a signed-in student, yielding typed events as it goes.
 
@@ -422,15 +430,24 @@ def run_agent_stream(
     finally done, whose payload is the complete ChatResponse. Failures raise
     AppError.
     """
-    state = AgentState(message=message, student=student, history=history)
+    state = AgentState(message=message, student=student, history=history, entities=entities or [])
     config = {"recursion_limit": RECURSION_LIMIT}
     for part in _graph.stream(state, config, stream_mode="custom", version="v2"):
         yield part["data"]
 
 
 def run_agent(
-    message: str, history: list[ChatHistoryItem], student: CurrentStudent
+    message: str,
+    history: list[ChatHistoryItem],
+    student: CurrentStudent,
+    entities: list[Entity] | None = None,
 ) -> ChatResponse:
     """The same run without streaming: wait for the final event."""
-    events = list(run_agent_stream(message, history, student))
+    events = list(run_agent_stream(message, history, student, entities))
     return ChatResponse.model_validate(events[-1]["payload"])
+
+
+def complete_text(messages: list[dict]) -> str:
+    """A single model answer to the messages, with no tools. Model failures raise AppError."""
+    text, _ = _stream_completion(get_groq_client(), messages, emit=lambda event: None, tools=None)
+    return text.strip()

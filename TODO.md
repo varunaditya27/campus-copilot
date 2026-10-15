@@ -173,10 +173,10 @@
 
 ### 4.3 Conversation Memory
 
-- [ ] Implement a sliding-window context strategy: always include the last N messages from the session
-- [ ] Add entity extraction on each turn: extract and store entities (event names, course codes, faculty names) mentioned in the conversation
-- [ ] Let the agent reference extracted entities in follow-up turns without the user repeating them ("which event?" → agent already knows from context)
-- [ ] Add a `GET /chat/sessions/{session_id}/summary` endpoint that uses the LLM to produce a 2–3 sentence summary of a past conversation
+- [x] Implement a sliding-window context strategy: always include the last N messages from the session (the last 40, `HISTORY_WINDOW`)
+- [x] Add entity extraction on each turn: extract and store entities (event names, course codes, faculty names) mentioned in the conversation (by looking things up in what the app already knows, not by asking a model: instant, free, and it can only find real things)
+- [x] Let the agent reference extracted entities in follow-up turns without the user repeating them ("which event?" → agent already knows from context)
+- [x] Add a `GET /chat/sessions/{session_id}/summary` endpoint that uses the LLM to produce a 2–3 sentence summary of a past conversation
 
 ### 4.4 Tool Expansion — Academic
 

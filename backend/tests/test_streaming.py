@@ -224,7 +224,7 @@ def test_stream_endpoint_uses_the_server_side_history(browser, use_fakes):
 
 
 def test_app_error_becomes_an_error_event_and_saves_nothing(db, browser, monkeypatch):
-    def failing(message, history, student):
+    def failing(message, history, student, entities=None):
         raise AppError(429, "rate_limited", "The AI service is busy.")
         yield
 
@@ -241,7 +241,7 @@ def test_app_error_becomes_an_error_event_and_saves_nothing(db, browser, monkeyp
 
 
 def test_unexpected_error_becomes_a_generic_error_event(db, browser, monkeypatch):
-    def exploding(message, history, student):
+    def exploding(message, history, student, entities=None):
         raise RuntimeError("secret internal detail")
         yield
 

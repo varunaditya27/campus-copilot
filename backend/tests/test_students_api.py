@@ -92,7 +92,7 @@ def test_a_request_from_an_unknown_site_is_refused(asha):
 def test_the_profile_reaches_the_agent_through_the_chat_endpoint(asha, monkeypatch):
     seen = {}
 
-    def fake_agent(message, history, student):
+    def fake_agent(message, history, student, entities=None):
         seen["student"] = student
         return ChatResponse(reply="ok")
 

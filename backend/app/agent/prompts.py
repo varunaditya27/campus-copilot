@@ -1,4 +1,5 @@
 from app.models.auth import CurrentStudent
+from app.models.memory import Entity
 
 SYSTEM_PROMPT = """You are Campus Copilot, an assistant for a college campus.
 
@@ -50,6 +51,22 @@ def build_student_message(student: CurrentStudent) -> str:
     if student.interests:
         text += f" They have said they are interested in: {', '.join(i.replace('-', ' ') for i in student.interests)}."
     return text
+
+
+def build_entities_message(entities: list[Entity]) -> str:
+    groups = {"event": "events", "course": "courses", "faculty": "faculty"}
+    parts = []
+    for kind, title in groups.items():
+        items = [e for e in entities if e.kind == kind]
+        if items:
+            shown = ", ".join(f"{e.label} [{e.key}]" if kind == "event" else e.label for e in items)
+            parts.append(f"{title}: {shown}")
+    return (
+        "Earlier in this conversation you and the student discussed (most recent first) -- "
+        + "; ".join(parts)
+        + ". When the student says \"it\", \"that event\" or \"the same course\", they usually mean "
+        "the most recent of these; use the id in square brackets when calling a tool."
+    )
 
 
 def build_context_message(chunks: list[dict]) -> str:

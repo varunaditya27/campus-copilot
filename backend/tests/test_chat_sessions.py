@@ -24,7 +24,7 @@ def agent_calls(monkeypatch):
     """Replace the agent with a fake that records what it receives."""
     calls = []
 
-    def fake_run_agent(message, history, student):
+    def fake_run_agent(message, history, student, entities=None):
         calls.append({"message": message, "history": list(history), "student": student})
         return ChatResponse(
             reply=f"echo: {message}", sources=[SOURCE], toolActivity=[ACTIVITY]
@@ -178,7 +178,7 @@ def test_unusable_cookie_starts_a_fresh_session(db, browser, agent_calls, bad_co
 
 
 def test_failed_agent_run_saves_nothing(db, browser, monkeypatch):
-    def failing(message, history, student):
+    def failing(message, history, student, entities=None):
         raise AppError(429, "rate_limited", "busy")
 
     monkeypatch.setattr(chat_api, "run_agent", failing)

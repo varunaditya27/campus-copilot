@@ -177,6 +177,8 @@ Returns the conversation for the current `session_id` cookie, so the chat can be
 
 `GET /api/chat/sessions` lists the student's conversations, newest first: `[{ "session_id", "createdAt", "updatedAt", "preview" }]`.
 
+`GET /api/chat/sessions/{session_id}/summary` returns `{ session_id, summary, messageCount, cached }`: two or three sentences about the student's own conversation (404 for anyone else's, 422 if it is empty). The first request asks the model, so it can take a few seconds; later ones are instant until the conversation grows.
+
 `DELETE /api/chat/sessions/{session_id}` deletes that conversation and clears the cookie (204). It only works for the student's own sessions; anything else is a 404.
 
 ### `POST /api/chat/stream`

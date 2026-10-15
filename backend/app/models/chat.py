@@ -70,6 +70,13 @@ class SessionSummary(BaseModel):
     preview: str | None
 
 
+class ConversationSummary(BaseModel):
+    session_id: UUID
+    summary: str
+    messageCount: int
+    cached: bool  # True if the summary was written earlier and nothing has been said since
+
+
 class ChatHistoryResponse(BaseModel):
     session_id: UUID | None
     messages: list[StoredMessage]
