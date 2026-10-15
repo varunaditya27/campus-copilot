@@ -499,6 +499,24 @@ class ChatMessage(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
 
+class UsageEvent(Base):
+    """One answered question, recorded for the admin analytics. It keeps counts and
+    names only: the words of a question (common words dropped), which tools ran,
+    which documents were cited. Not the question or the answer, so it survives a
+    student deleting their conversation without keeping what they wrote."""
+
+    __tablename__ = "usage_events"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, index=True)
+    student_id: Mapped[str] = mapped_column(String(10))
+    session_id: Mapped[str] = mapped_column(String(36), index=True)
+    terms: Mapped[list] = mapped_column(JSON)
+    tools: Mapped[list] = mapped_column(JSON)  # [[tool name, status], ...]
+    documents: Mapped[list] = mapped_column(JSON)
+    zero_context: Mapped[bool]
+
+
 class ConversationEntity(Base):
     """Something a conversation has talked about (an event, a course, a faculty
     member), remembered so a later "register me for it" knows what "it" is."""

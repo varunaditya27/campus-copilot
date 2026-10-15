@@ -11,7 +11,7 @@ from pathlib import Path, PurePath
 from app.core.config import KNOWLEDGE_COLLECTION, KNOWLEDGE_DIR, UPLOAD_DIR
 from app.core.errors import AppError
 from app.rag import retriever
-from app.rag.ingest import IngestReport, ingest, knowledge_files
+from app.rag.ingest import EMBEDDING_MODEL, IngestReport, ingest, knowledge_files
 from app.rag.pdf import pdf_to_markdown
 from app.rag.store import KnowledgeBaseNotFound, create_store, open_store
 
@@ -167,3 +167,31 @@ def delete_document(filename: str) -> dict:
     if not removed and not existed:
         raise AppError(404, "not_found", f"No document named '{name}'.")
     return {"document": name, "chunks_removed": removed}
+
+
+# The vector length of the embedding model (all-MiniLM-L6-v2), checked against the installed model.
+EMBEDDING_DIMENSIONS = 384
+
+
+def document_chunks(name: str) -> dict:
+    """The chunks one document was split into, as they sit in the store."""
+    try:
+        store = open_store()
+        infos = {d.document: d for d in store.documents()}
+        chunks = [c for c in store.all_chunks() if c.document == name]
+    except KnowledgeBaseNotFound:
+        infos, chunks = {}, []
+    if name not in infos or not chunks:
+        raise AppError(404, "not_found", f"No document named '{name}' in the knowledge base.")
+    info = infos[name]
+    return {
+        "document": name,
+        "source": "curated" if name in _curated_names() else "uploaded",
+        "ingested_at": info.ingested_at or None,
+        "chunk_count": len(chunks),
+        "embedding": {"model": EMBEDDING_MODEL, "dimensions": EMBEDDING_DIMENSIONS, "collection": KNOWLEDGE_COLLECTION},
+        "chunks": [
+            {"id": c.id, "section": c.section, "characters": len(c.text), "words": len(c.text.split()), "text": c.text}
+            for c in sorted(chunks, key=lambda c: c.id)
+        ],
+    }

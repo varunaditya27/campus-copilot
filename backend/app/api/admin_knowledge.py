@@ -38,6 +38,12 @@ def status(admin: AdminUser) -> dict:
     return knowledge_service.status()
 
 
+@router.get("/knowledge/{document_name}/chunks")
+def chunks(document_name: str, admin: AdminUser) -> dict:
+    """What a document was split into, with the embedding settings, for checking what the assistant can find."""
+    return knowledge_service.document_chunks(document_name)
+
+
 @router.delete("/knowledge/{document_name}")
 def delete(document_name: str, admin: AdminUser) -> dict:
     return knowledge_service.delete_document(document_name)

@@ -79,3 +79,13 @@ REFRESH_TOKEN_DAYS = 14
 
 # Send the session cookie over HTTPS only. Turn on once the app is served over HTTPS.
 COOKIE_SECURE = os.getenv("COOKIE_SECURE", "false").lower() == "true"
+
+# Outgoing email. Without SMTP_HOST nothing is sent: the app logs that it would have
+# and carries on, so email is optional.
+SMTP_HOST = os.getenv("SMTP_HOST", "")
+SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_USER = os.getenv("SMTP_USER", "")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
+SMTP_FROM = os.getenv("SMTP_FROM", "Campus Copilot <no-reply@campus.example>")
+# STARTTLS upgrades the connection to encrypted before logging in; turn it off only for a local test server.
+SMTP_STARTTLS = os.getenv("SMTP_STARTTLS", "true").lower() == "true"

@@ -62,7 +62,10 @@ backend/
 │   │
 │   ├── api/                       # HTTP layer -- thin, no business logic
 │   │   ├── auth.py                 # register, login, refresh, logout, me
-│   │   ├── admin_events.py         # POST/PUT /api/admin/events (faculty, admin)
+│   │   ├── admin_events.py         # create, edit, delete, roster and export of events (faculty, admin)
+│   │   ├── admin_students.py       # roster list, detail, CSV import (admin)
+│   │   ├── admin_grievances.py     # the committee's ticket list and updates (staff, admin)
+│   │   ├── admin_analytics.py      # usage summary (admin)
 │   │   ├── admin_knowledge.py      # knowledge base and retrieval evaluation (admin)
 │   │   ├── chat.py                 # chat, chat/stream, history, sessions
 │   │   ├── deps.py                 # get_current_student: the sign-in check
@@ -111,6 +114,10 @@ backend/
 │   │   ├── campus_service.py       # canteen, shuttle, lost and found, maintenance
 │   │   ├── support_service.py      # grievances and counselling
 │   │   ├── placement_service.py    # drives and eligibility
+│   │   ├── student_admin_service.py # roster search, student detail, CSV import
+│   │   ├── export_service.py       # CSV writing with spreadsheet-formula protection
+│   │   ├── notification_service.py # email over SMTP
+│   │   ├── usage_service.py        # recording and summarising usage
 │   │   ├── engagement_service.py   # event detail, cancelling, waitlist, feedback
 │   │   ├── chat_service.py         # sessions and message history
 │   │   ├── entity_service.py       # what a conversation has mentioned (events, courses, faculty)
@@ -298,6 +305,16 @@ Matches the contract documented in [`frontend/README.md`](../frontend/README.md#
 | `POST /api/admin/rag/eval` | Start scoring retrieval against the golden questions (admin); read the result from `GET /api/admin/rag/eval` |
 | `POST /api/admin/events` | Create an event (faculty, admin) |
 | `PUT /api/admin/events/{id}` | Edit an event (faculty for their own department's events, admin for any) |
+| `DELETE /api/admin/events/{id}` | Delete an event. With registrations it answers `409 event_has_registrations` until called with `?force=true`, which also removes the registrations, waitlist and feedback (same rule on departments) |
+| `GET /api/admin/events/{id}/registrations` | The event, everyone registered (with student details) and the waitlist in order |
+| `POST /api/admin/events/{id}/registrations/export` | The registrations as a CSV download, with spreadsheet formulas neutralised |
+| `GET /api/admin/students` | Paged roster (`page`, `page_size` up to 100) with `q` (id or name) and `program`, `year` filters (admin) |
+| `GET /api/admin/students/{id}` | One student in full: account, CGPA and backlogs, every course record, registrations, grievance tickets (admin) |
+| `POST /api/admin/students/import` | Add students from a CSV (`student_id, name, program, year`). All or nothing: one bad row imports nothing and every problem is reported; students already on the roster are skipped and listed (admin) |
+| `GET /api/admin/knowledge/{name}/chunks` | A document's chunks with character and word counts, and the embedding model, vector size and collection (admin) |
+| `GET /api/admin/grievances` | All tickets with their student, newest first, with counts per status; `?status=` filters (staff, admin) |
+| `PUT /api/admin/grievances/{id}` | Set a ticket's status (`open`, `in_progress`, `resolved`) and resolution note; resolving needs a note. The student is emailed when the status changes (staff, admin) |
+| `GET /api/admin/analytics` | Usage over the last `?days=` (1-365, default 30): daily active students, questions per session, tool and document use, common words, approval rate of proposed actions, zero-context replies (admin) |
 
 Everything except events, health and the first three auth calls requires sign-in and answers `401 not_authenticated` otherwise. A signed-in user of the wrong role gets `403 forbidden`: the chat, sessions and registration endpoints are for students only.
 Every 4xx/5xx response has the same JSON shape: `{ "error_code": "...", "message": "...", "detail": ... }`. `message` is safe to show to a user; `detail` carries field-level information for validation errors (422). Notable codes: `rate_limited` (429, Groq is throttling), `context_too_long` (413), `llm_unavailable` (502), `validation_error` (422), `not_found` (404), `internal_error` (500, no internals leaked).
@@ -319,6 +336,8 @@ Request limits: a chat `message` is 1-2000 characters; an account's `student_id`
 Once streaming has started the HTTP status is already 200, so failures arrive as an `error` event; a request that is invalid from the start (for example an empty message) still gets a normal 422. The agent is a plain (sync) generator because the Groq client and the database are synchronous; Starlette runs such a generator in a worker thread, so it does not block other requests. Model tool calls arrive as fragments and are reassembled by index before they run.
 
 **Personalisation.** Each student has a profile (semester, section, electives, interests) and academic records (attendance and grades per course). When a chat request starts, the profile is loaded with the student, and the assistant's context says who they are: name, year, branch, current semester, electives and interests. Interests are editable on the profile page; the rest comes from the student record. The data is demo data, generated by `data/generate_academic_data.py` (see [`data/README.md`](../data/README.md)).
+
+**Analytics.** After each answered question a `usage_events` row records which words it used (common words dropped), which tools ran, which documents were cited and whether any passage was retrieved: counts and names only, never the question or the answer, so it survives a student deleting their conversation without keeping what they wrote. `GET /api/admin/analytics` summarises these with the pending-action table. A word appears on the dashboard only once at least two questions used it, so a name or id typed once never shows. Two figures the roadmap asks for are **not** available and are reported as `null` with a note: the average retrieval distance (the reranker's score is not kept) and a cache hit rate (there is no answer cache). "Tool rounds per query" is reported as tool calls per reply. Events are only recorded from this version on, there is no backfill, and a question whose answer failed is not counted.
 
 **Conversation memory.** A chat remembers what it has been about, so a follow-up like "register me for it" knows what "it" is. After each exchange the events, courses and faculty members mentioned (by the student or the assistant) are recorded for that conversation, and the most recent few of each kind are shown to the model at the start of the next turn, with the ids it needs for a tool call. Finding them takes no model call: events are matched against the events table (by id, name, or the part of the name before a colon), courses against the catalogue (by code, or by name for the student's own department only, since a name like "Machine Learning" is taught by two departments), and faculty against the names in the knowledge documents. So it is instant, and it can only find things that exist. Memory belongs to one conversation, is deleted with it, and a failure while recording it never fails the chat. `GET /api/chat/sessions/{id}/summary` asks the model for a short summary of one of the student's conversations; it is saved on the session and only written again once the conversation has grown. The model sees the conversation's most recent 60 messages, each cut to 600 characters.
 
@@ -379,6 +398,7 @@ curl http://localhost:8000/health
 | `JWT_SECRET` | *(random per start)* | Signs access tokens; at least 32 characters. Set it in production, otherwise every restart signs everyone out |
 | `MULTI_AGENT` | `false` | Route each question to a specialist agent that sees only its own tools (adds a model call per question; unproven, so off) |
 | `AGENT_PLANNING` | `false` | Plan multi-step requests before answering (adds a model call per question; unproven, so off) |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `SMTP_FROM`, `SMTP_STARTTLS` | *(unset)*, `587`, ..., `true` | Outgoing email. With `SMTP_HOST` unset nothing is sent (the app logs it and carries on). With a login, STARTTLS encrypts the connection before the password is sent |
 | `COOKIE_SECURE` | `false` | Send the session cookie over HTTPS only; set to `true` in production |
 | `RAG_TOP_K` | `3` | How many passages the agent receives per question |
 | `RAG_RRF_K` | `60` | Reciprocal Rank Fusion constant (the value from the original paper) |

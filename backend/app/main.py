@@ -5,8 +5,11 @@ from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.actions import router as actions_router
+from app.api.admin_analytics import router as admin_analytics_router
 from app.api.admin_events import router as admin_events_router
+from app.api.admin_grievances import router as admin_grievances_router
 from app.api.admin_knowledge import router as admin_knowledge_router
+from app.api.admin_students import router as admin_students_router
 from app.api.auth import router as auth_router
 from app.api.chat import router as chat_router
 from app.api.events import router as events_router
@@ -29,6 +32,9 @@ app = FastAPI(title="Campus Copilot API", lifespan=lifespan)
 register_error_handlers(app)
 app.include_router(auth_router)
 app.include_router(actions_router)
+app.include_router(admin_students_router)
+app.include_router(admin_grievances_router)
+app.include_router(admin_analytics_router)
 app.include_router(events_router)
 app.include_router(chat_router)
 app.include_router(staff_router)

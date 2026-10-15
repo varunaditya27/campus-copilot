@@ -16,3 +16,5 @@ class RegistrationRecord(BaseModel):
     student_name: str
     program: str
     year: int
+
+CSV_COLUMNS = list(RegistrationRecord.model_fields)

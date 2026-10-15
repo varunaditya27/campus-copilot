@@ -17,7 +17,7 @@ from app.models.chat import (
     ConversationSummary,
     SessionSummary,
 )
-from app.services import chat_service, entity_service, summary_service
+from app.services import chat_service, entity_service, summary_service, usage_service
 
 router = APIRouter(prefix="/api/chat", tags=["chat"])
 
@@ -53,6 +53,7 @@ def chat(
     result = run_agent(request.message, history, student, entity_service.recent(session_id))
     chat_service.save_exchange(session_id, request.message, result)
     entity_service.remember_exchange(session_id, request.message, result.reply, student.program)
+    usage_service.record_exchange(student.student_id, session_id, request.message, result)
     _set_session_cookie(response, session_id)
     return result
 
@@ -82,6 +83,7 @@ def chat_stream(
                     done = ChatResponse.model_validate(event["payload"])
                     chat_service.save_exchange(session_id, request.message, done)
                     entity_service.remember_exchange(session_id, request.message, done.reply, student.program)
+                    usage_service.record_exchange(student.student_id, session_id, request.message, done)
                 yield _sse(event)
         except AppError as exc:
             yield _sse(

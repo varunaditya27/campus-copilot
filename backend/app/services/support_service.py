@@ -1,11 +1,12 @@
 import re
 from datetime import date, datetime, timedelta
 
-from sqlalchemy import select, update
+from sqlalchemy import func, select, update
 
 from app.core import clock
+from app.core.errors import AppError
 from app.db import session as db_session
-from app.db.models import CounsellingSlot, GrievanceTicket
+from app.db.models import CounsellingSlot, GrievanceTicket, Student, User
 from app.services.schedule_service import WEEKDAYS
 
 GRIEVANCE_CATEGORIES = ("academic-administrative", "fees", "hostel", "administrative", "interpersonal", "other")
@@ -143,3 +144,66 @@ def book_counselling(student_id: str, slot_id: int) -> CounsellingSlot:
         if taken.rowcount != 1:
             raise ValueError("That slot has just been taken. Please pick another.")
         return db.get(CounsellingSlot, slot_id)
+
+
+GRIEVANCE_STATUSES = ("open", "in_progress", "resolved")
+MAX_NOTE_CHARS = 2000
+
+
+def parse_ticket_id(value: str) -> int | None:
+    match = re.fullmatch(r"(?:GR-?)?0*(\d+)", str(value).strip(), re.IGNORECASE)
+    return int(match.group(1)) if match else None
+
+
+def _admin_view(row, student) -> dict:
+    return {
+        "id": row.id,
+        "ticket": ticket_ref(row.id),
+        "student_id": row.student_id,
+        "student_name": student.name,
+        "program": student.program,
+        "category": row.category,
+        "description": row.description,
+        "status": row.status,
+        "resolution_note": row.resolution_note,
+        "submitted": row.created_at.isoformat(),
+        "updated": row.updated_at.isoformat(),
+    }
+
+
+def list_grievances(status: str | None = None, limit: int = 500) -> dict:
+    """Tickets for the committee, newest first, with the count in each status."""
+    with db_session.SessionLocal() as db:
+        counts = dict(db.execute(select(GrievanceTicket.status, func.count()).group_by(GrievanceTicket.status)).all())
+        query = select(GrievanceTicket, Student).join(Student, Student.student_id == GrievanceTicket.student_id)
+        if status:
+            query = query.where(GrievanceTicket.status == status)
+        rows = db.execute(query.order_by(GrievanceTicket.id.desc()).limit(limit)).all()
+    return {
+        "tickets": [_admin_view(t, s) for t, s in rows],
+        "counts": {s: counts.get(s, 0) for s in GRIEVANCE_STATUSES},
+    }
+
+
+def update_grievance(ticket_id: int, status: str, note: str | None) -> dict:
+    """Set a ticket's status and resolution note. Returns the ticket, whether the status
+    changed, and the student's email address for the notification (None if they have no account)."""
+    if status not in GRIEVANCE_STATUSES:
+        raise AppError(422, "invalid_status", "The status must be one of: " + ", ".join(GRIEVANCE_STATUSES) + ".")
+    note = (note or "").strip() or None
+    if note and len(note) > MAX_NOTE_CHARS:
+        raise AppError(422, "note_too_long", f"The note can be at most {MAX_NOTE_CHARS} characters.")
+    if status == "resolved" and not note:
+        raise AppError(422, "note_required", "Add a resolution note before marking a ticket resolved: the student is told the outcome.")
+    with db_session.SessionLocal() as db:
+        row = db.get(GrievanceTicket, ticket_id)
+        if row is None:
+            raise AppError(404, "not_found", "No such ticket.")
+        changed = row.status != status
+        row.status = status
+        row.resolution_note = note
+        db.commit()
+        db.refresh(row)
+        student = db.get(Student, row.student_id)
+        email = db.scalar(select(User.email).where(User.student_id == row.student_id, User.is_active.is_(True)))
+        return {"ticket": _admin_view(row, student), "status_changed": changed, "student_email": email}

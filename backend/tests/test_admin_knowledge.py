@@ -52,6 +52,7 @@ ENDPOINTS = [
     ("post", "/api/admin/knowledge/ingest"),
     ("get", "/api/admin/knowledge/status"),
     ("delete", "/api/admin/knowledge/anything.md"),
+    ("get", "/api/admin/knowledge/library.md/chunks"),
     ("post", "/api/admin/rag/eval"),
     ("get", "/api/admin/rag/eval"),
 ]
@@ -370,3 +371,30 @@ def test_a_failed_evaluation_says_what_went_wrong(admin, fake_eval):
 @pytest.mark.parametrize("k", [0, 11, -1])
 def test_k_must_be_sensible(admin, fake_eval, k):
     assert admin.post("/api/admin/rag/eval", params={"k": k}).status_code == 422
+
+
+# --- previewing chunks
+
+
+def test_a_documents_chunks_are_listed_with_the_embedding_settings(admin):
+    assert admin.post("/api/admin/knowledge/ingest").status_code == 200
+    body = admin.get("/api/admin/knowledge/library.md/chunks").json()
+    assert (body["document"], body["source"], body["chunk_count"]) == ("library.md", "curated", len(body["chunks"]))
+    assert body["embedding"] == {"model": "all-MiniLM-L6-v2", "dimensions": 384, "collection": body["embedding"]["collection"]}
+    chunk = body["chunks"][0]
+    assert chunk["section"] == "Hours" and "opens at eight" in chunk["text"]
+    assert chunk["characters"] == len(chunk["text"]) and chunk["words"] == len(chunk["text"].split())
+    assert body["ingested_at"]
+
+
+def test_the_preview_shows_only_that_document_and_marks_uploads(admin):
+    upload(admin, "notes.md", b"# Notes\n\n## Parking\n\nPark behind the sports complex.\n")
+    notes = admin.get("/api/admin/knowledge/notes.md/chunks").json()
+    assert notes["source"] == "uploaded" and {c["section"] for c in notes["chunks"]} == {"Parking"}
+    assert all("Hours" != c["section"] for c in notes["chunks"])
+
+
+def test_an_unknown_document_or_an_empty_knowledge_base_is_not_found(env, admin):
+    assert admin.get("/api/admin/knowledge/missing.md/chunks").status_code == 404
+    admin.post("/api/admin/knowledge/ingest")
+    assert admin.get("/api/admin/knowledge/missing.md/chunks").status_code == 404
