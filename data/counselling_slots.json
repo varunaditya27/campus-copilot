@@ -1,0 +1,272 @@
+[
+  {
+    "date": "2026-10-16",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": "1RV22CS220"
+  },
+  {
+    "date": "2026-10-16",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-16",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-19",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-19",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": "1RV24IS219"
+  },
+  {
+    "date": "2026-10-19",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-20",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-20",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-20",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-21",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": "1RV22EC088"
+  },
+  {
+    "date": "2026-10-21",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-21",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-22",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-22",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-22",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-23",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-23",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-23",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-26",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-26",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-26",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-27",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-27",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-27",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-28",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-28",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-28",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-29",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-29",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-29",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-30",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-30",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-10-30",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-02",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-02",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-02",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-03",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-03",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-03",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-04",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-04",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-04",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-05",
+    "start": "14:00",
+    "end": "14:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-05",
+    "start": "15:00",
+    "end": "15:45",
+    "booked_by": null
+  },
+  {
+    "date": "2026-11-05",
+    "start": "16:00",
+    "end": "16:45",
+    "booked_by": null
+  }
+]

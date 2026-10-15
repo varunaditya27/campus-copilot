@@ -225,3 +225,111 @@ def add_schedule_data(factory):
                 fee("1RV24IS219", "2026-27 odd", "Tuition Fee", 62500, "2026-07-15", 62500, "2026-07-01"),
             ]
         )
+
+
+def add_operations_data(factory):
+    """A small library, rooms, menu, routes, lost items, counselling slots and drives.
+
+    Library: BK-1 has 2 copies, both out (Ravi, due 2026-10-20, and Arjun, due 2026-10-27) and Arjun holds it; BK-2
+    has 3 copies with 1 out (Asha); BK-3 is a reference book; BK-4 has 2 copies on the shelf.
+    """
+    import json
+
+    from app.db.models import (
+        Book,
+        BookLoan,
+        BookReservation,
+        BusRoute,
+        CanteenItem,
+        CounsellingSlot,
+        LostFoundItem,
+        PlacementDrive,
+        StudyRoom,
+    )
+
+    def book(bid, title, author, copies, reference=False):
+        return Book(
+            book_id=bid, title=title, author=author, isbn=f"DEMO-{bid}", category="Computer Science",
+            shelf_location="Reference Area" if reference else "First floor, shelf CO-01",
+            copies_total=copies, reference_only=reference,
+        )
+
+    from app.db.models import Student
+
+    with factory.begin() as session:
+        session.add(Student(student_id="1RV22CS220", name="Arjun", program="CSE", year=4))
+        session.flush()
+        session.add_all(
+            [
+                book("BK-1", "Introduction to Algorithms", "Thomas Cormen", 2),
+                book("BK-2", "Operating System Concepts", "Abraham Silberschatz", 3),
+                book("BK-3", "Encyclopedia of Computer Science", "Various", 1, reference=True),
+                book("BK-4", "Algorithms", "Robert Sedgewick", 2),
+            ]
+        )
+        session.flush()
+        session.add_all(
+            [
+                BookLoan(book_id="BK-1", student_id="1RV24IS219", borrowed_on="2026-10-06", due_date="2026-10-20"),
+                BookLoan(book_id="BK-1", student_id="1RV22CS220", borrowed_on="2026-10-13", due_date="2026-10-27"),
+                BookLoan(book_id="BK-2", student_id="1RV23IS101", borrowed_on="2026-10-01", due_date="2026-10-15"),
+                StudyRoom(room_id="DR-1", name="Discussion Room 1", capacity=4, floor=2),
+                StudyRoom(room_id="DR-7", name="Discussion Room 7", capacity=8, floor=2),
+                CanteenItem(weekday=0, meal="breakfast", item="Idli", price=35, vegetarian=True),
+                CanteenItem(weekday=0, meal="lunch", item="Full thali", price=90, vegetarian=True),
+                CanteenItem(weekday=0, meal="lunch", item="Chicken biryani", price=110, vegetarian=False),
+                CanteenItem(weekday=0, meal="dinner", item="Dal khichdi", price=55, vegetarian=True),
+                CanteenItem(weekday=5, meal="breakfast", item="Poha", price=30, vegetarian=True),
+                LostFoundItem(description="Black umbrella", location_found="Main Academic Block lobby", found_on="2026-10-10"),
+                LostFoundItem(description="Blue water bottle", location_found="Central Cafeteria", found_on="2026-10-11"),
+                LostFoundItem(description="Old umbrella", location_found="Library", found_on="2026-09-01", status="claimed"),
+            ]
+        )
+        session.add(BookReservation(book_id="BK-1", student_id="1RV22CS220"))
+        session.add_all(
+            [
+                BusRoute(
+                    route_code="A", name="City Gate Line", stops=["Main Gate", "Central Library"],
+                    service=[
+                        {"days": [0, 1, 2, 3, 4], "start": "07:00", "end": "09:30", "every_minutes": 20},
+                        {"days": [0, 1, 2, 3, 4], "start": "09:30", "end": "16:30", "every_minutes": 40},
+                        {"days": [5], "start": "07:00", "end": "15:00", "every_minutes": 40},
+                    ],
+                    notes="Reduced on Saturday.",
+                ),
+                BusRoute(
+                    route_code="B", name="Hostel Loop", stops=["Ashoka Block", "Nilgiri Block"],
+                    service=[{"days": [0, 1, 2, 3, 4, 5, 6], "start": "07:00", "end": "22:00", "every_minutes": 15}],
+                    notes="Every day.",
+                ),
+                BusRoute(
+                    route_code="TOWN", name="Saturday Town Shuttle", stops=["Main Gate", "Town"],
+                    service=[{"days": [5], "departures": ["10:00", "16:00"], "returns": ["13:00", "19:00"]}],
+                    notes="Saturdays only.",
+                ),
+                CounsellingSlot(id=1, date="2026-10-14", start="14:00", end="14:45"),
+                CounsellingSlot(id=2, date="2026-10-19", start="14:00", end="14:45"),
+                CounsellingSlot(id=3, date="2026-10-19", start="15:00", end="15:45", booked_by="1RV24IS219"),
+                CounsellingSlot(id=4, date="2026-10-20", start="14:00", end="14:45"),
+                PlacementDrive(
+                    drive_id="PD-001", company="Northwind Systems", role="Software Engineer", kind="full-time",
+                    date="2026-11-01", registration_deadline="2026-10-25", min_cgpa=7.0, max_active_backlogs=1,
+                    departments="all", venue="Seminar Hall",
+                ),
+                PlacementDrive(
+                    drive_id="PD-002", company="Northwind Systems", role="Software Engineering Intern", kind="internship",
+                    date="2026-11-10", registration_deadline="2026-10-30", min_cgpa=6.5, max_active_backlogs=1,
+                    departments="all", venue="Student Activity Centre",
+                ),
+                PlacementDrive(
+                    drive_id="PD-003", company="Cobalt Labs", role="Embedded Engineer", kind="internship",
+                    date="2026-12-01", registration_deadline="2026-11-20", min_cgpa=9.0, max_active_backlogs=0,
+                    departments=["Electronics and Communication Engineering"], venue="Seminar Hall",
+                ),
+                PlacementDrive(
+                    drive_id="PD-004", company="Old Corp", role="Analyst", kind="full-time",
+                    date="2026-09-01", registration_deadline="2026-08-20", min_cgpa=6.0, max_active_backlogs=1,
+                    departments="all", venue="Seminar Hall",
+                ),
+            ]
+        )

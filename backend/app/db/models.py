@@ -181,6 +181,161 @@ class FeeRecord(Base):
     paid_on: Mapped[str | None] = mapped_column(String(10))
 
 
+class Book(Base):
+    __tablename__ = "books"
+
+    book_id: Mapped[str] = mapped_column(String(10), primary_key=True)
+    title: Mapped[str] = mapped_column(String(250), index=True)
+    author: Mapped[str] = mapped_column(String(250))
+    isbn: Mapped[str] = mapped_column(String(30), unique=True)
+    category: Mapped[str] = mapped_column(String(50))
+    shelf_location: Mapped[str] = mapped_column(String(100))
+    copies_total: Mapped[int]
+    reference_only: Mapped[bool] = mapped_column(default=False)
+
+
+class BookLoan(Base):
+    """A copy that is out. A returned book has no row."""
+
+    __tablename__ = "book_loans"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    book_id: Mapped[str] = mapped_column(ForeignKey("books.book_id"), index=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    borrowed_on: Mapped[str] = mapped_column(String(10))
+    due_date: Mapped[str] = mapped_column(String(10))
+
+
+class BookReservation(Base):
+    """A hold: the student is waiting for a copy of a title that has none on the shelf."""
+
+    __tablename__ = "book_reservations"
+    __table_args__ = (UniqueConstraint("book_id", "student_id", name="uq_book_reservations_book_student"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    book_id: Mapped[str] = mapped_column(ForeignKey("books.book_id"), index=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class CanteenItem(Base):
+    __tablename__ = "canteen_menu"
+    __table_args__ = (
+        CheckConstraint("weekday BETWEEN 0 AND 6", name="valid_weekday"),
+        CheckConstraint("meal IN ('breakfast', 'lunch', 'evening', 'dinner')", name="valid_meal"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    weekday: Mapped[int]
+    meal: Mapped[str] = mapped_column(String(20))
+    item: Mapped[str] = mapped_column(String(150))
+    price: Mapped[int]
+    vegetarian: Mapped[bool]
+
+
+class StudyRoom(Base):
+    __tablename__ = "study_rooms"
+
+    room_id: Mapped[str] = mapped_column(String(10), primary_key=True)
+    name: Mapped[str] = mapped_column(String(50))
+    capacity: Mapped[int]
+    floor: Mapped[int]
+
+
+class RoomBooking(Base):
+    __tablename__ = "room_bookings"
+    __table_args__ = (UniqueConstraint("room_id", "date", "start", name="uq_room_bookings_room_date_start"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    room_id: Mapped[str] = mapped_column(ForeignKey("study_rooms.room_id"))
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    date: Mapped[str] = mapped_column(String(10))
+    start: Mapped[str] = mapped_column(String(5))
+    end: Mapped[str] = mapped_column(String(5))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class BusRoute(Base):
+    __tablename__ = "bus_routes"
+
+    route_code: Mapped[str] = mapped_column(String(10), primary_key=True)
+    name: Mapped[str] = mapped_column(String(100))
+    stops: Mapped[list] = mapped_column(JSON)
+    service: Mapped[list] = mapped_column(JSON)  # windows with a frequency, or fixed departures
+    notes: Mapped[str] = mapped_column(Text)
+
+
+class LostFoundItem(Base):
+    __tablename__ = "lost_found_items"
+    __table_args__ = (CheckConstraint("status IN ('unclaimed', 'claimed')", name="valid_status"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    description: Mapped[str] = mapped_column(String(300))
+    location_found: Mapped[str] = mapped_column(String(200))
+    found_on: Mapped[str] = mapped_column(String(10))
+    status: Mapped[str] = mapped_column(String(20), default="unclaimed")
+    reported_by: Mapped[str | None] = mapped_column(ForeignKey("students.student_id"))
+
+
+class MaintenanceRequest(Base):
+    __tablename__ = "maintenance_requests"
+    __table_args__ = (
+        CheckConstraint("status IN ('open', 'in_progress', 'resolved')", name="valid_status"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    location: Mapped[str] = mapped_column(String(200))
+    category: Mapped[str] = mapped_column(String(30))
+    description: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(20), default="open")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
+class GrievanceTicket(Base):
+    __tablename__ = "grievance_tickets"
+    __table_args__ = (
+        CheckConstraint("status IN ('open', 'in_progress', 'resolved')", name="valid_status"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    category: Mapped[str] = mapped_column(String(30))
+    description: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(20), default="open", index=True)
+    resolution_note: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
+
+
+class CounsellingSlot(Base):
+    """An appointment slot at the Student Counselling Centre. It is taken once `booked_by` is set."""
+
+    __tablename__ = "counselling_slots"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    date: Mapped[str] = mapped_column(String(10), index=True)
+    start: Mapped[str] = mapped_column(String(5))
+    end: Mapped[str] = mapped_column(String(5))
+    booked_by: Mapped[str | None] = mapped_column(ForeignKey("students.student_id"))
+
+
+class PlacementDrive(Base):
+    __tablename__ = "placement_drives"
+    __table_args__ = (CheckConstraint("kind IN ('full-time', 'internship')", name="valid_kind"),)
+
+    drive_id: Mapped[str] = mapped_column(String(10), primary_key=True)
+    company: Mapped[str] = mapped_column(String(100))
+    role: Mapped[str] = mapped_column(String(100))
+    kind: Mapped[str] = mapped_column(String(20))
+    date: Mapped[str] = mapped_column(String(10))
+    registration_deadline: Mapped[str] = mapped_column(String(10))
+    min_cgpa: Mapped[float]
+    max_active_backlogs: Mapped[int]
+    departments: Mapped[list | str] = mapped_column(JSON)  # "all" or a list of department names
+    venue: Mapped[str] = mapped_column(String(100))
+
+
 class Event(Base):
     __tablename__ = "events"
     __table_args__ = (

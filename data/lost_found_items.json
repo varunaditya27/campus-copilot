@@ -1,0 +1,72 @@
+[
+  {
+    "description": "Black umbrella with a wooden handle",
+    "location_found": "Main Academic Block, ground floor lobby",
+    "found_on": "2026-10-06",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Blue steel water bottle",
+    "location_found": "Central Cafeteria",
+    "found_on": "2026-10-07",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Student ID card (name Karthik)",
+    "location_found": "Central Library, reference area",
+    "found_on": "2026-10-09",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Scientific calculator (Casio fx-991)",
+    "location_found": "Seminar Hall",
+    "found_on": "2026-10-10",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Grey hoodie",
+    "location_found": "Sports Complex, near the badminton court",
+    "found_on": "2026-10-10",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Set of keys on a red keychain",
+    "location_found": "Innovation and Computing Centre, Computing Lab 1",
+    "found_on": "2026-10-12",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Black wireless earphones case",
+    "location_found": "Route B shuttle",
+    "found_on": "2026-10-13",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Spiral notebook with Data Structures notes",
+    "location_found": "Main Academic Block, Room 214 corridor",
+    "found_on": "2026-10-13",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Prescription glasses in a brown case",
+    "location_found": "Student Activity Centre",
+    "found_on": "2026-10-14",
+    "status": "unclaimed",
+    "reported_by": null
+  },
+  {
+    "description": "Silver wristwatch",
+    "location_found": "Central Library, second floor",
+    "found_on": "2026-10-14",
+    "status": "unclaimed",
+    "reported_by": null
+  }
+]

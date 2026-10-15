@@ -68,6 +68,9 @@ def test_seed_loads_the_json_files(tmp_path, monkeypatch):
         "courses": "courses", "student_profiles": "student_profiles", "academic_records": "academic_records",
         "faculty_members": "faculty_members", "course_offerings": "course_offerings",
         "timetable_slots": "timetable_slots", "exams": "exams", "fee_records": "fee_records",
+        "books": "books", "book_loans": "book_loans", "canteen_menu": "canteen_menu", "study_rooms": "study_rooms",
+        "bus_routes": "bus_routes", "lost_found_items": "lost_found_items", "counselling_slots": "counselling_slots",
+        "placement_drives": "placement_drives",
     }
     expected = {name: len(json.loads((DATA_DIR / f"{file}.json").read_text())) for name, file in files.items()}
     assert added == expected

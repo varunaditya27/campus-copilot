@@ -191,23 +191,23 @@
 
 ### 4.5 Tool Expansion — Campus Operations
 
-- [ ] `check_library_availability(title_or_isbn)` — book availability, shelf location, due dates
-- [ ] `reserve_library_book(student_id, book_id)` — reserve a book (human-in-the-loop confirmation)
-- [ ] `get_canteen_menu(day?)` — today's or a given day's canteen menu
-- [ ] `book_study_room(student_id, room_id, date, time_slot)` — study room reservation (HITL)
-- [ ] `report_maintenance_issue(location, description, category)` — submit a campus maintenance request
-- [ ] `get_bus_schedule(route?)` — college shuttle timings and routes
-- [ ] `get_lost_and_found(keyword)` — search lost and found registry
-- [ ] `submit_lost_item(description, location_found)` — add to lost and found
+- [x] `check_library_availability(title_or_isbn)` — book availability, shelf location, due dates
+- [x] `reserve_library_book(student_id, book_id)` — reserve a book (human-in-the-loop confirmation; a hold is only for a title with no copy on the shelf)
+- [x] `get_canteen_menu(day?)` — today's or a given day's canteen menu
+- [x] `book_study_room(student_id, room_id, date, time_slot)` — study room reservation (HITL; with a `check_study_room_availability` tool to find free slots)
+- [x] `report_maintenance_issue(location, description, category)` — submit a campus maintenance request (goes through the approval card too, like every write)
+- [x] `get_bus_schedule(route?)` — college shuttle timings and routes
+- [x] `get_lost_and_found(keyword)` — search lost and found registry
+- [x] `submit_lost_item(description, location_found)` — add to lost and found
 
 ### 4.6 Tool Expansion — Grievances & Support
 
-- [ ] `create_grievance_ticket(student_id, category, description)` — raise a formal complaint (HITL confirmation)
-- [ ] `get_grievance_status(ticket_id)` — check status of a previously submitted ticket
-- [ ] `get_counselling_slots()` — list available student counselling appointment slots
-- [ ] `book_counselling_appointment(student_id, slot_id)` — book appointment (HITL)
-- [ ] `get_placement_drives(company?, date_range?)` — upcoming placement drives and eligibility criteria
-- [ ] `check_placement_eligibility(student_id, company_id)` — check if a student meets criteria for a specific drive
+- [x] `create_grievance_ticket(student_id, category, description)` — raise a formal complaint (HITL confirmation; refuses ragging, harassment, safety and grade disputes and points to the right body)
+- [x] `get_grievance_status(ticket_id)` — check status of a previously submitted ticket (only the student's own)
+- [x] `get_counselling_slots()` — list available student counselling appointment slots
+- [x] `book_counselling_appointment(student_id, slot_id)` — book appointment (HITL)
+- [x] `get_placement_drives(company?, date_range?)` — upcoming placement drives and eligibility criteria
+- [x] `check_placement_eligibility(student_id, company_id)` — check if a student meets criteria for a specific drive (by drive id or company name)
 
 ### 4.7 Tool Expansion — Events (Enhanced)
 

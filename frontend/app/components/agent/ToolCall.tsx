@@ -22,6 +22,21 @@ const TOOL_ICON: Record<ToolActivityEntry["tool"], (p: { className?: string }) =
   get_fee_dues: DocumentIcon,
   get_course_info: SearchIcon,
   get_faculty_profile: UserIcon,
+  check_library_availability: SearchIcon,
+  get_canteen_menu: DocumentIcon,
+  get_bus_schedule: DotIcon,
+  get_lost_and_found: SearchIcon,
+  check_study_room_availability: SearchIcon,
+  get_grievance_status: DocumentIcon,
+  get_counselling_slots: DotIcon,
+  get_placement_drives: DocumentIcon,
+  check_placement_eligibility: CheckIcon,
+  reserve_library_book: CheckIcon,
+  book_study_room: CheckIcon,
+  report_maintenance_issue: CheckIcon,
+  submit_lost_item: CheckIcon,
+  create_grievance_ticket: CheckIcon,
+  book_counselling_appointment: CheckIcon,
 };
 
 export default function ToolCall({

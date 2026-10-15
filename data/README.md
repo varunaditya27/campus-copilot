@@ -40,6 +40,16 @@ The files are seed data. At runtime the app reads and writes the database tables
 | `timetable_slots.json` | `timetable_slots` | nothing at runtime -- the weekly timetable of each class group |
 | `exams.json` | `exams` | nothing at runtime -- internal tests, practicals and end-semester exams |
 | `fee_records.json` | `fee_records` | nothing at runtime -- what each student owes and has paid |
+| `books.json` | `books` | nothing at runtime -- the library catalogue (titles and authors are real; the ISBNs are placeholders) |
+| `book_loans.json` | `book_loans` | nothing at runtime -- which copies are out, and to whom |
+| `canteen_menu.json` | `canteen_menu` | nothing at runtime -- the weekly cafeteria menu |
+| `study_rooms.json` | `study_rooms` | nothing at runtime -- the eight discussion rooms |
+| `bus_routes.json` | `bus_routes` | nothing at runtime -- shuttle routes and service windows |
+| `lost_found_items.json` | `lost_found_items` | a student handing in an item adds a row |
+| `counselling_slots.json` | `counselling_slots` | booking an appointment sets `booked_by` |
+| `placement_drives.json` | `placement_drives` | nothing at runtime -- upcoming drives and their criteria |
+
+Reservations, room bookings, maintenance requests and grievance tickets have no seed file: they start empty and are created by approved actions.
 
 ---
 
@@ -112,6 +122,14 @@ The append-only log that approved registrations are written to (see [`backend/ap
 What comes from the knowledge documents: the 35 faculty names, designations, specialisations, Head of Department and Vice-Chair roles, and department office rooms (parsed from `knowledge/campus/faculty-and-departments-directory.md`), and the fee amounts, instalments and due dates (July 15 and December 15, half the annual structure per semester, with the 2,000 rupee a year consumables supplement for ECE and Mechanical). **Invented for the demo:** each person's office room, office hours and email (`@campus.example`), which faculty member teaches which course (round robin within the department, so it does not follow specialisation), the timetable, and every exam date and venue. The dates assume the odd semester of 2026-27; `schedule_service` and `fee_service` compare them with the real date, so as time passes everything shows as past or overdue until the generator's dates are moved.
 
 The timetable keeps every class group (department, semester, section) free of clashes and gives each course the hours it declares. It does not stop a teacher being in two places at once: a department has about seven faculty and far more weekly hours than that, so a realistic teacher timetable would need more people than the directory has. The deliberate fee cases: Ananya Iyer never paid the odd semester's laboratory fee (past the late-payment window), Aditya Verma paid part of the tuition, and Priya Menon paid the even semester early. The tests rerun the generator and compare it with the committed files, and check the files against the rules above.
+
+---
+
+## 🏛️ Campus operations data
+
+`python data/generate_operations_data.py` writes the library, menu, rooms, shuttle, lost and found, counselling and placement files, deterministically, for the date 2026-10-15. Shapes come from the knowledge documents: eight rooms seating four to eight, a fourteen day loan, reference books that never circulate, the cafeteria's four meals and the 60 and 90 rupee prices, the three shuttle routes and the Saturday town shuttle, and placement criteria with CGPA thresholds between 6.0 and 7.5 and at most one active backlog. **Invented:** every menu item and its price (apart from those two), the loans, the lost items, the counselling slots (weekday afternoons; the documents give walk-ins on weekday mornings and appointments through the Student Services Desk, but no times), the drives and their companies (all fictional), and the placeholder ISBNs (`DEMO-0001`: the real numbers are not in the sources used). There is no counsellor name anywhere.
+
+Two documents disagree and the more specific one is followed: `dining-and-transport.md` says the shuttle runs every 15 minutes at peak and not on Sundays, while `transportation-routes.md` gives each route its own frequency and has Route B running every day including weekends; the data follows the routes document. Dates assume mid-October 2026, so drives and slots become past as time moves on until the generator's dates are moved.
 
 ---
 

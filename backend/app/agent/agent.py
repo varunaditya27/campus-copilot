@@ -50,6 +50,15 @@ TOOL_LABELS = {
     "get_fee_dues": "Checking your fee dues",
     "get_course_info": "Looking up the course",
     "get_faculty_profile": "Looking up the faculty member",
+    "check_library_availability": "Checking the library catalogue",
+    "get_canteen_menu": "Looking up the canteen menu",
+    "get_bus_schedule": "Checking the shuttle schedule",
+    "get_lost_and_found": "Searching lost and found",
+    "check_study_room_availability": "Checking study room availability",
+    "get_grievance_status": "Checking your grievances",
+    "get_counselling_slots": "Looking up counselling slots",
+    "get_placement_drives": "Looking up placement drives",
+    "check_placement_eligibility": "Checking placement eligibility",
 }
 
 
@@ -80,6 +89,25 @@ def _summarize(tool: str, result: dict) -> str:
         return f"{result['total_outstanding']} rupees outstanding" if result["total_outstanding"] else "No fees outstanding"
     if tool == "get_course_info":
         return f"{result['course_code']} {result['name']}"
+    if tool == "check_library_availability":
+        first = result["books"][0]
+        return f"{first['title']}: {first['status'].replace('_', ' ')}" + (f" (+{len(result['books']) - 1} more)" if len(result["books"]) > 1 else "")
+    if tool == "get_canteen_menu":
+        return f"{sum(len(m['items']) for m in result['meals'])} items on {result['day']}" if result["meals"] else result["message"]
+    if tool == "get_bus_schedule":
+        return f"{len(result['routes'])} routes, {sum(r['runs_today'] for r in result['routes'])} running today"
+    if tool == "get_lost_and_found":
+        return f"{len(result['items'])} matching items"
+    if tool == "check_study_room_availability":
+        return f"{sum(bool(r['free_slots']) for r in result['rooms'])} rooms with free slots on {result['date']}"
+    if tool == "get_grievance_status":
+        return result.get("status", f"{len(result.get('tickets', []))} tickets") if "ticket" not in result else f"{result['ticket']}: {result['status']}"
+    if tool == "get_counselling_slots":
+        return f"{len(result['slots'])} free slots"
+    if tool == "get_placement_drives":
+        return f"{len(result['drives'])} upcoming drives"
+    if tool == "check_placement_eligibility":
+        return "Matches several drives" if "matches" in result else ("Eligible" if result["eligible"] else "Not eligible")
     if tool == "get_faculty_profile":
         return result["name"] if "name" in result else f"{len(result['matches'])} possible matches"
     return "Done"

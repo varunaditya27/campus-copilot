@@ -1,0 +1,149 @@
+[
+  {
+    "route_code": "A",
+    "name": "City Gate Line",
+    "stops": [
+      "Main Gate",
+      "Central Library",
+      "Main Academic Block",
+      "Innovation and Computing Centre",
+      "Hostel Blocks"
+    ],
+    "service": [
+      {
+        "days": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "start": "07:00",
+        "end": "09:30",
+        "every_minutes": 20
+      },
+      {
+        "days": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "start": "09:30",
+        "end": "16:30",
+        "every_minutes": 40
+      },
+      {
+        "days": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "start": "16:30",
+        "end": "18:30",
+        "every_minutes": 20
+      },
+      {
+        "days": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "start": "18:30",
+        "end": "20:00",
+        "every_minutes": 40
+      },
+      {
+        "days": [
+          5
+        ],
+        "start": "07:00",
+        "end": "15:00",
+        "every_minutes": 40
+      }
+    ],
+    "notes": "Service starts at 7:00 a.m. and runs until 8:00 p.m. on weekdays; the Saturday schedule is reduced and ends at 3:00 p.m. There is no Sunday service."
+  },
+  {
+    "route_code": "B",
+    "name": "Hostel Loop",
+    "stops": [
+      "Ashoka Block",
+      "Nilgiri Block",
+      "Kaveri Block",
+      "Vindhya Block",
+      "Student Activity Centre",
+      "Main Academic Block"
+    ],
+    "service": [
+      {
+        "days": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "start": "07:00",
+        "end": "22:00",
+        "every_minutes": 15
+      }
+    ],
+    "notes": "Runs every day including weekends, since hostel residents rely on it regardless of the academic schedule."
+  },
+  {
+    "route_code": "C",
+    "name": "Sports and Recreation Line",
+    "stops": [
+      "Main Academic Block",
+      "Innovation and Computing Centre",
+      "Sports Complex"
+    ],
+    "service": [
+      {
+        "days": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "start": "16:00",
+        "end": "20:00",
+        "every_minutes": 30
+      }
+    ],
+    "notes": "Weekdays only. On weekend tournament days the Transport Office extends service from 8:00 a.m. to 8:00 p.m., every 15 minutes in the two hours before a match, according to the fixture list."
+  },
+  {
+    "route_code": "TOWN",
+    "name": "Saturday Town Shuttle",
+    "stops": [
+      "Main Gate",
+      "Town"
+    ],
+    "service": [
+      {
+        "days": [
+          5
+        ],
+        "departures": [
+          "10:00",
+          "16:00"
+        ],
+        "returns": [
+          "13:00",
+          "19:00"
+        ]
+      }
+    ],
+    "notes": "Saturdays only, 40 seats a trip allotted first come first served at the security gate."
+  }
+]

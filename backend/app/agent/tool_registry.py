@@ -10,7 +10,46 @@ from app.tools.academic import (
     get_student_timetable,
 )
 from app.tools.attendance import calculate_attendance
+from app.tools.operations import (
+    check_library_availability,
+    check_placement_eligibility,
+    check_study_room_availability,
+    get_bus_schedule,
+    get_canteen_menu,
+    get_counselling_slots,
+    get_grievance_status,
+    get_lost_and_found,
+    get_placement_drives,
+)
 from app.tools.events import check_event_availability, search_events
+
+def _tool(name: str, description: str, properties: dict | None = None, required: list[str] | None = None) -> dict:
+    parameters: dict = {"type": "object", "properties": properties or {}}
+    if required:
+        parameters["required"] = required
+    return {"type": "function", "function": {"name": name, "description": description, "parameters": parameters}}
+
+
+_DAY = {"type": "string", "description": "'today', 'tomorrow' or a weekday such as 'Monday'. Omit for today."}
+
+OPERATIONS_SCHEMAS = [
+    _tool("check_library_availability", "Look up a book by title, author or ISBN in the library catalogue: whether a copy is on the shelf, where, and if not when one is due back. Always do this before reserving a book.",
+          {"query": {"type": "string", "description": "Title, author or ISBN words."}}, ["query"]),
+    _tool("get_canteen_menu", "Get the Central Cafeteria menu with prices for a day (today by default), by meal with serving hours.", {"day": _DAY}),
+    _tool("get_bus_schedule", "Get campus shuttle routes (A, B, C and the Saturday town shuttle): stops, today's service and the next departures.",
+          {"route": {"type": "string", "description": "A route letter or name. Omit for all routes."}}),
+    _tool("get_lost_and_found", "Search the lost and found list for an item by a word such as 'umbrella' or 'keys'.",
+          {"keyword": {"type": "string"}}, ["keyword"]),
+    _tool("check_study_room_availability", "List the library discussion rooms (seating four to eight) with their free two-hour slots on a date, up to three days ahead. Always do this before booking a room.",
+          {"day": {"type": "string", "description": "YYYY-MM-DD, 'today' or 'tomorrow'. Omit for today."}, "min_capacity": {"type": "integer", "description": "Smallest group size the room must seat."}}),
+    _tool("get_grievance_status", "Get the signed-in student's own grievance tickets, or one by its number, with status and expected dates.",
+          {"ticket_id": {"type": "string", "description": "A ticket number such as 'GR-00012'. Omit to list the student's tickets."}}),
+    _tool("get_counselling_slots", "List free Student Counselling Centre appointment slots and the signed-in student's own upcoming appointment, if any."),
+    _tool("get_placement_drives", "List upcoming campus placement drives with dates, registration deadlines and criteria (minimum CGPA, backlogs, departments).",
+          {"company": {"type": "string"}, "from_date": {"type": "string", "description": "YYYY-MM-DD"}, "to_date": {"type": "string", "description": "YYYY-MM-DD"}}),
+    _tool("check_placement_eligibility", "Check whether the signed-in student meets a placement drive's criteria, criterion by criterion.",
+          {"drive": {"type": "string", "description": "A drive id such as 'PD-003' or a company name."}}, ["drive"]),
+]
 
 # Groq's native tool-calling format: a list of {"type": "function", "function": {...}}
 # definitions, matching the OpenAI function-calling schema.
@@ -186,6 +225,7 @@ TOOL_SCHEMAS = [
             }
         }
     },
+    *OPERATIONS_SCHEMAS,
     *ACTION_SCHEMAS,
 ]
 
@@ -205,6 +245,15 @@ TOOL_FUNCTIONS = {
     "get_fee_dues": get_fee_dues,
     "get_course_info": get_course_info,
     "get_faculty_profile": get_faculty_profile,
+    "check_library_availability": check_library_availability,
+    "get_canteen_menu": get_canteen_menu,
+    "get_bus_schedule": get_bus_schedule,
+    "get_lost_and_found": get_lost_and_found,
+    "check_study_room_availability": check_study_room_availability,
+    "get_grievance_status": get_grievance_status,
+    "get_counselling_slots": get_counselling_slots,
+    "get_placement_drives": get_placement_drives,
+    "check_placement_eligibility": check_placement_eligibility,
 }
 
 # Tools about the signed-in student. The agent supplies their student id from the
@@ -218,5 +267,8 @@ STUDENT_TOOLS = frozenset(
         "get_exam_schedule",
         "get_elective_options",
         "get_fee_dues",
+        "get_grievance_status",
+        "get_counselling_slots",
+        "check_placement_eligibility",
     }
 )

@@ -1,0 +1,50 @@
+[
+  {
+    "room_id": "DR-1",
+    "name": "Discussion Room 1",
+    "capacity": 4,
+    "floor": 2
+  },
+  {
+    "room_id": "DR-2",
+    "name": "Discussion Room 2",
+    "capacity": 4,
+    "floor": 2
+  },
+  {
+    "room_id": "DR-3",
+    "name": "Discussion Room 3",
+    "capacity": 4,
+    "floor": 2
+  },
+  {
+    "room_id": "DR-4",
+    "name": "Discussion Room 4",
+    "capacity": 6,
+    "floor": 2
+  },
+  {
+    "room_id": "DR-5",
+    "name": "Discussion Room 5",
+    "capacity": 6,
+    "floor": 2
+  },
+  {
+    "room_id": "DR-6",
+    "name": "Discussion Room 6",
+    "capacity": 6,
+    "floor": 2
+  },
+  {
+    "room_id": "DR-7",
+    "name": "Discussion Room 7",
+    "capacity": 8,
+    "floor": 2
+  },
+  {
+    "room_id": "DR-8",
+    "name": "Discussion Room 8",
+    "capacity": 8,
+    "floor": 2
+  }
+]

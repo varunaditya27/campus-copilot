@@ -11,11 +11,11 @@ WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", 
 _ABBREVIATIONS = {name[:3].lower(): index for index, name in enumerate(WEEKDAYS)}
 
 
-class _BadDay(ValueError):
+class BadDay(ValueError):
     pass
 
 
-def _parse_day(day: str | None, today: date) -> tuple[list[int], date | None]:
+def parse_day(day: str | None, today: date) -> tuple[list[int], date | None]:
     """The weekday numbers a request covers, and the date when it names one
     ("today", "tomorrow"). "week" covers the five teaching days."""
     word = (day or "").strip().lower() or "today"
@@ -27,7 +27,7 @@ def _parse_day(day: str | None, today: date) -> tuple[list[int], date | None]:
         return list(range(5)), None
     index = _ABBREVIATIONS.get(word[:3])
     if index is None or not WEEKDAYS[index].lower().startswith(word):
-        raise _BadDay(f"'{day}' is not a day. Use a weekday name, 'today', 'tomorrow' or 'week'.")
+        raise BadDay(f"'{day}' is not a day. Use a weekday name, 'today', 'tomorrow' or 'week'.")
     return [index], None
 
 
@@ -40,8 +40,8 @@ def _group(db, student_id: str) -> tuple[Student, StudentProfile | None, int]:
 def timetable(student_id: str, day: str | None = None) -> dict:
     """The student's classes for a day, or for the whole week."""
     try:
-        weekdays, on_date = _parse_day(day, clock.today())
-    except _BadDay as exc:
+        weekdays, on_date = parse_day(day, clock.today())
+    except BadDay as exc:
         return {"error": str(exc)}
 
     with db_session.SessionLocal() as db:

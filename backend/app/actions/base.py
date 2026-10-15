@@ -9,6 +9,14 @@ class ActionError(Exception):
     """An action cannot go ahead, for a reason that can be told to the student as it is."""
 
 
+def text_arg(args: dict, key: str, label: str, minimum: int, maximum: int) -> str:
+    """A required text argument from the model, trimmed, with a length check."""
+    value = args.get(key)
+    if not isinstance(value, str) or not minimum <= len(value.strip()) <= maximum:
+        raise ActionError(f"I need the {label} ({minimum} to {maximum} characters) to go ahead.")
+    return value.strip()
+
+
 @dataclass(frozen=True)
 class Prepared:
     """A checked, previewed action that is ready to wait for approval."""

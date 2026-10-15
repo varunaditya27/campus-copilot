@@ -1,0 +1,188 @@
+[
+  {
+    "book_id": "BK-0001",
+    "student_id": "1RV24EC207",
+    "borrowed_on": "2026-10-04",
+    "due_date": "2026-10-18"
+  },
+  {
+    "book_id": "BK-0001",
+    "student_id": "1RV25EC275",
+    "borrowed_on": "2026-10-07",
+    "due_date": "2026-10-21"
+  },
+  {
+    "book_id": "BK-0001",
+    "student_id": "1RV22EC088",
+    "borrowed_on": "2026-10-10",
+    "due_date": "2026-10-24"
+  },
+  {
+    "book_id": "BK-0001",
+    "student_id": "1RV24IS219",
+    "borrowed_on": "2026-10-13",
+    "due_date": "2026-10-27"
+  },
+  {
+    "book_id": "BK-0004",
+    "student_id": "1RV23EC150",
+    "borrowed_on": "2026-10-04",
+    "due_date": "2026-10-18"
+  },
+  {
+    "book_id": "BK-0004",
+    "student_id": "1RV24EC207",
+    "borrowed_on": "2026-10-07",
+    "due_date": "2026-10-21"
+  },
+  {
+    "book_id": "BK-0004",
+    "student_id": "1RV23IS101",
+    "borrowed_on": "2026-10-10",
+    "due_date": "2026-10-24"
+  },
+  {
+    "book_id": "BK-0004",
+    "student_id": "1RV22ME188",
+    "borrowed_on": "2026-10-13",
+    "due_date": "2026-10-27"
+  },
+  {
+    "book_id": "BK-0006",
+    "student_id": "1RV22ME188",
+    "borrowed_on": "2026-10-02",
+    "due_date": "2026-10-16"
+  },
+  {
+    "book_id": "BK-0008",
+    "student_id": "1RV23IS101",
+    "borrowed_on": "2026-10-03",
+    "due_date": "2026-10-17"
+  },
+  {
+    "book_id": "BK-0009",
+    "student_id": "1RV25ME295",
+    "borrowed_on": "2026-10-10",
+    "due_date": "2026-10-24"
+  },
+  {
+    "book_id": "BK-0010",
+    "student_id": "1RV25ME295",
+    "borrowed_on": "2026-09-30",
+    "due_date": "2026-10-14"
+  },
+  {
+    "book_id": "BK-0010",
+    "student_id": "1RV25EE050",
+    "borrowed_on": "2026-10-13",
+    "due_date": "2026-10-27"
+  },
+  {
+    "book_id": "BK-0010",
+    "student_id": "1RV23IS101",
+    "borrowed_on": "2026-10-15",
+    "due_date": "2026-10-29"
+  },
+  {
+    "book_id": "BK-0011",
+    "student_id": "1RV24CS118",
+    "borrowed_on": "2026-10-04",
+    "due_date": "2026-10-18"
+  },
+  {
+    "book_id": "BK-0012",
+    "student_id": "1RV23EC150",
+    "borrowed_on": "2026-10-04",
+    "due_date": "2026-10-18"
+  },
+  {
+    "book_id": "BK-0013",
+    "student_id": "1RV24EC207",
+    "borrowed_on": "2026-10-14",
+    "due_date": "2026-10-28"
+  },
+  {
+    "book_id": "BK-0014",
+    "student_id": "1RV22CS220",
+    "borrowed_on": "2026-10-13",
+    "due_date": "2026-10-27"
+  },
+  {
+    "book_id": "BK-0016",
+    "student_id": "1RV23ME201",
+    "borrowed_on": "2026-10-03",
+    "due_date": "2026-10-17"
+  },
+  {
+    "book_id": "BK-0017",
+    "student_id": "1RV23CS114",
+    "borrowed_on": "2026-10-03",
+    "due_date": "2026-10-17"
+  },
+  {
+    "book_id": "BK-0025",
+    "student_id": "1RV22IS305",
+    "borrowed_on": "2026-10-03",
+    "due_date": "2026-10-17"
+  },
+  {
+    "book_id": "BK-0025",
+    "student_id": "1RV22CS220",
+    "borrowed_on": "2026-10-05",
+    "due_date": "2026-10-19"
+  },
+  {
+    "book_id": "BK-0028",
+    "student_id": "1RV23CS114",
+    "borrowed_on": "2026-10-14",
+    "due_date": "2026-10-28"
+  },
+  {
+    "book_id": "BK-0029",
+    "student_id": "1RV22ME188",
+    "borrowed_on": "2026-09-29",
+    "due_date": "2026-10-13"
+  },
+  {
+    "book_id": "BK-0030",
+    "student_id": "1RV22EC088",
+    "borrowed_on": "2026-10-03",
+    "due_date": "2026-10-17"
+  },
+  {
+    "book_id": "BK-0031",
+    "student_id": "1RV23EC150",
+    "borrowed_on": "2026-10-02",
+    "due_date": "2026-10-16"
+  },
+  {
+    "book_id": "BK-0032",
+    "student_id": "1RV25CS330",
+    "borrowed_on": "2026-10-14",
+    "due_date": "2026-10-28"
+  },
+  {
+    "book_id": "BK-0033",
+    "student_id": "1RV22IS305",
+    "borrowed_on": "2026-10-05",
+    "due_date": "2026-10-19"
+  },
+  {
+    "book_id": "BK-0034",
+    "student_id": "1RV22EC088",
+    "borrowed_on": "2026-09-30",
+    "due_date": "2026-10-14"
+  },
+  {
+    "book_id": "BK-0036",
+    "student_id": "1RV25EC275",
+    "borrowed_on": "2026-10-13",
+    "due_date": "2026-10-27"
+  },
+  {
+    "book_id": "BK-0040",
+    "student_id": "1RV24CS118",
+    "borrowed_on": "2026-10-08",
+    "due_date": "2026-10-22"
+  }
+]

@@ -8,15 +8,23 @@ from app.core.config import DATA_DIR
 from app.db import session as db_session
 from app.db.models import (
     AcademicRecord,
+    Book,
+    BookLoan,
+    BusRoute,
+    CanteenItem,
+    CounsellingSlot,
     Course,
     CourseOffering,
     Event,
     Exam,
     FacultyMember,
     FeeRecord,
+    LostFoundItem,
+    PlacementDrive,
     Registration,
     Student,
     StudentProfile,
+    StudyRoom,
     TimetableSlot,
 )
 
@@ -35,20 +43,9 @@ def seed(session: Session) -> dict[str, int]:
     Safe to run repeatedly: a table that already has rows is left untouched,
     so re-seeding never duplicates data or overwrites live registrations.
     """
-    added = {
-        "students": 0,
-        "events": 0,
-        "registrations": 0,
-        "courses": 0,
-        "student_profiles": 0,
-        "academic_records": 0,
-        "faculty_members": 0,
-        "course_offerings": 0,
-        "timetable_slots": 0,
-        "exams": 0,
-        "fee_records": 0,
-    }
+    added: dict[str, int] = {}
 
+    added.update(students=0, events=0, registrations=0)
     if _is_empty(session, Student):
         rows = [Student(**row) for row in _load("students.json")]
         session.add_all(rows)
@@ -84,7 +81,16 @@ def seed(session: Session) -> dict[str, int]:
         ("timetable_slots", TimetableSlot, "timetable_slots.json"),
         ("exams", Exam, "exams.json"),
         ("fee_records", FeeRecord, "fee_records.json"),
+        ("books", Book, "books.json"),
+        ("book_loans", BookLoan, "book_loans.json"),
+        ("canteen_menu", CanteenItem, "canteen_menu.json"),
+        ("study_rooms", StudyRoom, "study_rooms.json"),
+        ("bus_routes", BusRoute, "bus_routes.json"),
+        ("lost_found_items", LostFoundItem, "lost_found_items.json"),
+        ("counselling_slots", CounsellingSlot, "counselling_slots.json"),
+        ("placement_drives", PlacementDrive, "placement_drives.json"),
     ):
+        added[table] = 0
         if _is_empty(session, model):
             rows = [model(**row) for row in _load(filename)]
             session.add_all(rows)

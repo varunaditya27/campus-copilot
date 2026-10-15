@@ -1,0 +1,512 @@
+[
+  {
+    "book_id": "BK-0001",
+    "title": "Introduction to Algorithms",
+    "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
+    "isbn": "DEMO-0001",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-08",
+    "copies_total": 4,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0002",
+    "title": "Algorithms",
+    "author": "Robert Sedgewick, Kevin Wayne",
+    "isbn": "DEMO-0002",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-15",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0003",
+    "title": "The Art of Computer Programming, Volume 1",
+    "author": "Donald E. Knuth",
+    "isbn": "DEMO-0003",
+    "category": "Computer Science",
+    "shelf_location": "Reference Area",
+    "copies_total": 1,
+    "reference_only": true
+  },
+  {
+    "book_id": "BK-0004",
+    "title": "Operating System Concepts",
+    "author": "Abraham Silberschatz, Peter B. Galvin, Greg Gagne",
+    "isbn": "DEMO-0004",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-29",
+    "copies_total": 4,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0005",
+    "title": "Modern Operating Systems",
+    "author": "Andrew S. Tanenbaum, Herbert Bos",
+    "isbn": "DEMO-0005",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-36",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0006",
+    "title": "Computer Networks",
+    "author": "Andrew S. Tanenbaum, David J. Wetherall",
+    "isbn": "DEMO-0006",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-03",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0007",
+    "title": "Computer Networking: A Top-Down Approach",
+    "author": "James F. Kurose, Keith W. Ross",
+    "isbn": "DEMO-0007",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-10",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0008",
+    "title": "Database System Concepts",
+    "author": "Abraham Silberschatz, Henry F. Korth, S. Sudarshan",
+    "isbn": "DEMO-0008",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-17",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0009",
+    "title": "Fundamentals of Database Systems",
+    "author": "Ramez Elmasri, Shamkant B. Navathe",
+    "isbn": "DEMO-0009",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-24",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0010",
+    "title": "Artificial Intelligence: A Modern Approach",
+    "author": "Stuart Russell, Peter Norvig",
+    "isbn": "DEMO-0010",
+    "category": "Artificial Intelligence",
+    "shelf_location": "First floor, shelf AR-31",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0011",
+    "title": "Pattern Recognition and Machine Learning",
+    "author": "Christopher M. Bishop",
+    "isbn": "DEMO-0011",
+    "category": "Artificial Intelligence",
+    "shelf_location": "First floor, shelf AR-38",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0012",
+    "title": "Deep Learning",
+    "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+    "isbn": "DEMO-0012",
+    "category": "Artificial Intelligence",
+    "shelf_location": "First floor, shelf AR-05",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0013",
+    "title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow",
+    "author": "Aurelien Geron",
+    "isbn": "DEMO-0013",
+    "category": "Artificial Intelligence",
+    "shelf_location": "First floor, shelf AR-12",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0014",
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "isbn": "DEMO-0014",
+    "category": "Software Engineering",
+    "shelf_location": "First floor, shelf SO-19",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0015",
+    "title": "Design Patterns",
+    "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+    "isbn": "DEMO-0015",
+    "category": "Software Engineering",
+    "shelf_location": "First floor, shelf SO-26",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0016",
+    "title": "Software Engineering",
+    "author": "Ian Sommerville",
+    "isbn": "DEMO-0016",
+    "category": "Software Engineering",
+    "shelf_location": "First floor, shelf SO-33",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0017",
+    "title": "Computer Organization and Design",
+    "author": "David A. Patterson, John L. Hennessy",
+    "isbn": "DEMO-0017",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-40",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0018",
+    "title": "Compilers: Principles, Techniques, and Tools",
+    "author": "Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman",
+    "isbn": "DEMO-0018",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-07",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0019",
+    "title": "Introduction to the Theory of Computation",
+    "author": "Michael Sipser",
+    "isbn": "DEMO-0019",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-14",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0020",
+    "title": "Discrete Mathematics and Its Applications",
+    "author": "Kenneth H. Rosen",
+    "isbn": "DEMO-0020",
+    "category": "Mathematics",
+    "shelf_location": "First floor, shelf MA-21",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0021",
+    "title": "Advanced Engineering Mathematics",
+    "author": "Erwin Kreyszig",
+    "isbn": "DEMO-0021",
+    "category": "Mathematics",
+    "shelf_location": "First floor, shelf MA-28",
+    "copies_total": 5,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0022",
+    "title": "Probability and Statistics for Engineers and Scientists",
+    "author": "Ronald E. Walpole, Raymond H. Myers",
+    "isbn": "DEMO-0022",
+    "category": "Mathematics",
+    "shelf_location": "First floor, shelf MA-35",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0023",
+    "title": "Linear Algebra and Its Applications",
+    "author": "Gilbert Strang",
+    "isbn": "DEMO-0023",
+    "category": "Mathematics",
+    "shelf_location": "First floor, shelf MA-02",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0024",
+    "title": "Fundamentals of Physics",
+    "author": "David Halliday, Robert Resnick, Jearl Walker",
+    "isbn": "DEMO-0024",
+    "category": "Physics",
+    "shelf_location": "First floor, shelf PH-09",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0025",
+    "title": "Microelectronic Circuits",
+    "author": "Adel S. Sedra, Kenneth C. Smith",
+    "isbn": "DEMO-0025",
+    "category": "Electronics",
+    "shelf_location": "First floor, shelf EL-16",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0026",
+    "title": "Digital Design",
+    "author": "M. Morris Mano, Michael D. Ciletti",
+    "isbn": "DEMO-0026",
+    "category": "Electronics",
+    "shelf_location": "First floor, shelf EL-23",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0027",
+    "title": "Signals and Systems",
+    "author": "Alan V. Oppenheim, Alan S. Willsky",
+    "isbn": "DEMO-0027",
+    "category": "Electronics",
+    "shelf_location": "First floor, shelf EL-30",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0028",
+    "title": "Digital Signal Processing",
+    "author": "John G. Proakis, Dimitris G. Manolakis",
+    "isbn": "DEMO-0028",
+    "category": "Electronics",
+    "shelf_location": "First floor, shelf EL-37",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0029",
+    "title": "Communication Systems",
+    "author": "Simon Haykin",
+    "isbn": "DEMO-0029",
+    "category": "Electronics",
+    "shelf_location": "First floor, shelf EL-04",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0030",
+    "title": "Electric Machinery Fundamentals",
+    "author": "Stephen J. Chapman",
+    "isbn": "DEMO-0030",
+    "category": "Electrical",
+    "shelf_location": "First floor, shelf EL-11",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0031",
+    "title": "Power System Analysis",
+    "author": "John J. Grainger, William D. Stevenson Jr.",
+    "isbn": "DEMO-0031",
+    "category": "Electrical",
+    "shelf_location": "First floor, shelf EL-18",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0032",
+    "title": "Control Systems Engineering",
+    "author": "Norman S. Nise",
+    "isbn": "DEMO-0032",
+    "category": "Electrical",
+    "shelf_location": "First floor, shelf EL-25",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0033",
+    "title": "Fundamentals of Thermodynamics",
+    "author": "Claus Borgnakke, Richard E. Sonntag",
+    "isbn": "DEMO-0033",
+    "category": "Mechanical",
+    "shelf_location": "First floor, shelf ME-32",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0034",
+    "title": "Fluid Mechanics",
+    "author": "Frank M. White",
+    "isbn": "DEMO-0034",
+    "category": "Mechanical",
+    "shelf_location": "First floor, shelf ME-39",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0035",
+    "title": "Shigley's Mechanical Engineering Design",
+    "author": "Richard G. Budynas, J. Keith Nisbett",
+    "isbn": "DEMO-0035",
+    "category": "Mechanical",
+    "shelf_location": "First floor, shelf ME-06",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0036",
+    "title": "Introduction to Robotics: Mechanics and Control",
+    "author": "John J. Craig",
+    "isbn": "DEMO-0036",
+    "category": "Robotics",
+    "shelf_location": "First floor, shelf RO-13",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0037",
+    "title": "Engineering Mechanics: Statics",
+    "author": "J. L. Meriam, L. G. Kraige",
+    "isbn": "DEMO-0037",
+    "category": "Mechanical",
+    "shelf_location": "First floor, shelf ME-20",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0038",
+    "title": "Concrete Mathematics",
+    "author": "Ronald L. Graham, Donald E. Knuth, Oren Patashnik",
+    "isbn": "DEMO-0038",
+    "category": "Mathematics",
+    "shelf_location": "First floor, shelf MA-27",
+    "copies_total": 1,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0039",
+    "title": "Cryptography and Network Security",
+    "author": "William Stallings",
+    "isbn": "DEMO-0039",
+    "category": "Cybersecurity",
+    "shelf_location": "First floor, shelf CY-34",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0040",
+    "title": "Computer Security: Principles and Practice",
+    "author": "William Stallings, Lawrie Brown",
+    "isbn": "DEMO-0040",
+    "category": "Cybersecurity",
+    "shelf_location": "First floor, shelf CY-01",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0041",
+    "title": "Cloud Computing: Concepts, Technology and Architecture",
+    "author": "Thomas Erl, Ricardo Puttini, Zaigham Mahmood",
+    "isbn": "DEMO-0041",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-08",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0042",
+    "title": "Python Crash Course",
+    "author": "Eric Matthes",
+    "isbn": "DEMO-0042",
+    "category": "Programming",
+    "shelf_location": "First floor, shelf PR-15",
+    "copies_total": 4,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0043",
+    "title": "The C Programming Language",
+    "author": "Brian W. Kernighan, Dennis M. Ritchie",
+    "isbn": "DEMO-0043",
+    "category": "Programming",
+    "shelf_location": "First floor, shelf PR-22",
+    "copies_total": 4,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0044",
+    "title": "Effective Java",
+    "author": "Joshua Bloch",
+    "isbn": "DEMO-0044",
+    "category": "Programming",
+    "shelf_location": "First floor, shelf PR-29",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0045",
+    "title": "Data Structures and Algorithm Analysis in C++",
+    "author": "Mark Allen Weiss",
+    "isbn": "DEMO-0045",
+    "category": "Computer Science",
+    "shelf_location": "First floor, shelf CO-36",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0046",
+    "title": "Engineering Ethics",
+    "author": "Charles B. Fleddermann",
+    "isbn": "DEMO-0046",
+    "category": "Humanities",
+    "shelf_location": "First floor, shelf HU-03",
+    "copies_total": 2,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0047",
+    "title": "Technical Communication: Principles and Practice",
+    "author": "Meenakshi Raman, Sangeeta Sharma",
+    "isbn": "DEMO-0047",
+    "category": "Humanities",
+    "shelf_location": "First floor, shelf HU-10",
+    "copies_total": 3,
+    "reference_only": false
+  },
+  {
+    "book_id": "BK-0048",
+    "title": "Question Papers 2024-25: Computer Science and Engineering",
+    "author": "Examinations Cell",
+    "isbn": "DEMO-0048",
+    "category": "Reference",
+    "shelf_location": "Reference Area",
+    "copies_total": 1,
+    "reference_only": true
+  },
+  {
+    "book_id": "BK-0049",
+    "title": "Question Papers 2024-25: Electronics and Communication Engineering",
+    "author": "Examinations Cell",
+    "isbn": "DEMO-0049",
+    "category": "Reference",
+    "shelf_location": "Reference Area",
+    "copies_total": 1,
+    "reference_only": true
+  },
+  {
+    "book_id": "BK-0050",
+    "title": "Handbook of Electrical Engineering",
+    "author": "Various",
+    "isbn": "DEMO-0050",
+    "category": "Reference",
+    "shelf_location": "Reference Area",
+    "copies_total": 1,
+    "reference_only": true
+  },
+  {
+    "book_id": "BK-0051",
+    "title": "Encyclopedia of Computer Science",
+    "author": "Various",
+    "isbn": "DEMO-0051",
+    "category": "Reference",
+    "shelf_location": "Reference Area",
+    "copies_total": 1,
+    "reference_only": true
+  }
+]

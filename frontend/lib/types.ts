@@ -44,7 +44,22 @@ export type ToolName =
   | "get_elective_options"
   | "get_fee_dues"
   | "get_course_info"
-  | "get_faculty_profile";
+  | "get_faculty_profile"
+  | "check_library_availability"
+  | "get_canteen_menu"
+  | "get_bus_schedule"
+  | "get_lost_and_found"
+  | "check_study_room_availability"
+  | "get_grievance_status"
+  | "get_counselling_slots"
+  | "get_placement_drives"
+  | "check_placement_eligibility"
+  | "reserve_library_book"
+  | "book_study_room"
+  | "report_maintenance_issue"
+  | "submit_lost_item"
+  | "create_grievance_ticket"
+  | "book_counselling_appointment";
 
 export type ToolStatus = "running" | "done" | "error";
 

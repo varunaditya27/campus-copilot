@@ -1,0 +1,639 @@
+[
+  {
+    "weekday": 0,
+    "meal": "breakfast",
+    "item": "Upma",
+    "price": 30,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "breakfast",
+    "item": "Aloo paratha with curd",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "breakfast",
+    "item": "Poha",
+    "price": 30,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "lunch",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "lunch",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "lunch",
+    "item": "Chicken biryani",
+    "price": 110,
+    "vegetarian": false
+  },
+  {
+    "weekday": 0,
+    "meal": "lunch",
+    "item": "Veg biryani with raita",
+    "price": 70,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "lunch",
+    "item": "Curd rice",
+    "price": 45,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "evening",
+    "item": "Tea or coffee",
+    "price": 15,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "evening",
+    "item": "Egg puff",
+    "price": 25,
+    "vegetarian": false
+  },
+  {
+    "weekday": 0,
+    "meal": "evening",
+    "item": "Veg puff",
+    "price": 20,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "dinner",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "dinner",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "dinner",
+    "item": "Fried rice with manchurian",
+    "price": 75,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "dinner",
+    "item": "Dal khichdi",
+    "price": 55,
+    "vegetarian": true
+  },
+  {
+    "weekday": 0,
+    "meal": "dinner",
+    "item": "Roti with mixed vegetable curry",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "breakfast",
+    "item": "Masala dosa",
+    "price": 45,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "breakfast",
+    "item": "Aloo paratha with curd",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "breakfast",
+    "item": "Puri bhaji",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "lunch",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "lunch",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "lunch",
+    "item": "Chicken biryani",
+    "price": 110,
+    "vegetarian": false
+  },
+  {
+    "weekday": 1,
+    "meal": "lunch",
+    "item": "Rajma chawal",
+    "price": 65,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "lunch",
+    "item": "Curd rice",
+    "price": 45,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "evening",
+    "item": "Pav bhaji",
+    "price": 50,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "evening",
+    "item": "Fruit salad",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "evening",
+    "item": "Egg puff",
+    "price": 25,
+    "vegetarian": false
+  },
+  {
+    "weekday": 1,
+    "meal": "dinner",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "dinner",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "dinner",
+    "item": "Roti with mixed vegetable curry",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "dinner",
+    "item": "Dal khichdi",
+    "price": 55,
+    "vegetarian": true
+  },
+  {
+    "weekday": 1,
+    "meal": "dinner",
+    "item": "Egg curry with rice",
+    "price": 70,
+    "vegetarian": false
+  },
+  {
+    "weekday": 2,
+    "meal": "breakfast",
+    "item": "Masala dosa",
+    "price": 45,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "breakfast",
+    "item": "Puri bhaji",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "breakfast",
+    "item": "Upma",
+    "price": 30,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "lunch",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "lunch",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "lunch",
+    "item": "Chicken biryani",
+    "price": 110,
+    "vegetarian": false
+  },
+  {
+    "weekday": 2,
+    "meal": "lunch",
+    "item": "Rajma chawal",
+    "price": 65,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "lunch",
+    "item": "Curd rice",
+    "price": 45,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "evening",
+    "item": "Tea or coffee",
+    "price": 15,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "evening",
+    "item": "Egg puff",
+    "price": 25,
+    "vegetarian": false
+  },
+  {
+    "weekday": 2,
+    "meal": "evening",
+    "item": "Veg puff",
+    "price": 20,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "dinner",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "dinner",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "dinner",
+    "item": "Lemon rice with papad",
+    "price": 50,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "dinner",
+    "item": "Roti with mixed vegetable curry",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 2,
+    "meal": "dinner",
+    "item": "Fried rice with manchurian",
+    "price": 75,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "breakfast",
+    "item": "Poha",
+    "price": 30,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "breakfast",
+    "item": "Bread omelette",
+    "price": 40,
+    "vegetarian": false
+  },
+  {
+    "weekday": 3,
+    "meal": "breakfast",
+    "item": "Aloo paratha with curd",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "lunch",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "lunch",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "lunch",
+    "item": "Veg biryani with raita",
+    "price": 70,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "lunch",
+    "item": "Curd rice",
+    "price": 45,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "lunch",
+    "item": "Chapati with paneer curry",
+    "price": 75,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "evening",
+    "item": "Veg puff",
+    "price": 20,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "evening",
+    "item": "Vada pav",
+    "price": 25,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "evening",
+    "item": "Egg puff",
+    "price": 25,
+    "vegetarian": false
+  },
+  {
+    "weekday": 3,
+    "meal": "dinner",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "dinner",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "dinner",
+    "item": "Roti with mixed vegetable curry",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 3,
+    "meal": "dinner",
+    "item": "Egg curry with rice",
+    "price": 70,
+    "vegetarian": false
+  },
+  {
+    "weekday": 3,
+    "meal": "dinner",
+    "item": "Dal khichdi",
+    "price": 55,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "breakfast",
+    "item": "Upma",
+    "price": 30,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "breakfast",
+    "item": "Aloo paratha with curd",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "breakfast",
+    "item": "Idli with sambar and chutney",
+    "price": 35,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "lunch",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "lunch",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "lunch",
+    "item": "Chicken biryani",
+    "price": 110,
+    "vegetarian": false
+  },
+  {
+    "weekday": 4,
+    "meal": "lunch",
+    "item": "Rajma chawal",
+    "price": 65,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "lunch",
+    "item": "Veg biryani with raita",
+    "price": 70,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "evening",
+    "item": "Egg puff",
+    "price": 25,
+    "vegetarian": false
+  },
+  {
+    "weekday": 4,
+    "meal": "evening",
+    "item": "Fruit salad",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "evening",
+    "item": "Pav bhaji",
+    "price": 50,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "dinner",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "dinner",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "dinner",
+    "item": "Dal khichdi",
+    "price": 55,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "dinner",
+    "item": "Lemon rice with papad",
+    "price": 50,
+    "vegetarian": true
+  },
+  {
+    "weekday": 4,
+    "meal": "dinner",
+    "item": "Roti with mixed vegetable curry",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "breakfast",
+    "item": "Puri bhaji",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "breakfast",
+    "item": "Upma",
+    "price": 30,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "breakfast",
+    "item": "Aloo paratha with curd",
+    "price": 40,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "lunch",
+    "item": "Basic meal: rice or roti, two curries and a side",
+    "price": 60,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "lunch",
+    "item": "Full thali",
+    "price": 90,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "lunch",
+    "item": "Curd rice",
+    "price": 45,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "lunch",
+    "item": "Chapati with paneer curry",
+    "price": 75,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "lunch",
+    "item": "Chicken biryani",
+    "price": 110,
+    "vegetarian": false
+  },
+  {
+    "weekday": 5,
+    "meal": "evening",
+    "item": "Egg puff",
+    "price": 25,
+    "vegetarian": false
+  },
+  {
+    "weekday": 5,
+    "meal": "evening",
+    "item": "Veg puff",
+    "price": 20,
+    "vegetarian": true
+  },
+  {
+    "weekday": 5,
+    "meal": "evening",
+    "item": "Vada pav",
+    "price": 25,
+    "vegetarian": true
+  }
+]

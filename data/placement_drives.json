@@ -1,0 +1,169 @@
+[
+  {
+    "drive_id": "PD-001",
+    "company": "Northwind Systems",
+    "role": "Software Engineer",
+    "kind": "full-time",
+    "date": "2026-10-27",
+    "registration_deadline": "2026-10-22",
+    "min_cgpa": 7.0,
+    "max_active_backlogs": 1,
+    "departments": "all",
+    "venue": "Seminar Hall"
+  },
+  {
+    "drive_id": "PD-002",
+    "company": "Bluepeak Analytics",
+    "role": "Data Analyst",
+    "kind": "full-time",
+    "date": "2026-11-04",
+    "registration_deadline": "2026-10-28",
+    "min_cgpa": 7.5,
+    "max_active_backlogs": 0,
+    "departments": [
+      "Information Science and Engineering",
+      "Computer Science and Engineering"
+    ],
+    "venue": "Seminar Hall"
+  },
+  {
+    "drive_id": "PD-003",
+    "company": "Cobalt Labs",
+    "role": "Embedded Systems Engineer",
+    "kind": "full-time",
+    "date": "2026-11-10",
+    "registration_deadline": "2026-11-05",
+    "min_cgpa": 6.5,
+    "max_active_backlogs": 1,
+    "departments": [
+      "Electronics and Communication Engineering",
+      "Electrical and Electronics Engineering"
+    ],
+    "venue": "Seminar Hall"
+  },
+  {
+    "drive_id": "PD-004",
+    "company": "Ironbridge Engineering",
+    "role": "Graduate Engineer Trainee",
+    "kind": "full-time",
+    "date": "2026-11-17",
+    "registration_deadline": "2026-11-10",
+    "min_cgpa": 6.0,
+    "max_active_backlogs": 1,
+    "departments": [
+      "Mechanical Engineering",
+      "Electrical and Electronics Engineering"
+    ],
+    "venue": "Seminar Hall"
+  },
+  {
+    "drive_id": "PD-005",
+    "company": "Lumen Cloud",
+    "role": "Cloud Support Engineer",
+    "kind": "full-time",
+    "date": "2026-11-24",
+    "registration_deadline": "2026-11-17",
+    "min_cgpa": 6.5,
+    "max_active_backlogs": 1,
+    "departments": "all",
+    "venue": "Seminar Hall"
+  },
+  {
+    "drive_id": "PD-006",
+    "company": "Harbor Digital Services",
+    "role": "Associate Consultant",
+    "kind": "full-time",
+    "date": "2026-12-01",
+    "registration_deadline": "2026-11-26",
+    "min_cgpa": 6.0,
+    "max_active_backlogs": 1,
+    "departments": "all",
+    "venue": "Seminar Hall"
+  },
+  {
+    "drive_id": "PD-007",
+    "company": "Quantum Loop",
+    "role": "Machine Learning Engineer",
+    "kind": "full-time",
+    "date": "2026-12-09",
+    "registration_deadline": "2026-12-02",
+    "min_cgpa": 7.5,
+    "max_active_backlogs": 0,
+    "departments": [
+      "Information Science and Engineering",
+      "Computer Science and Engineering"
+    ],
+    "venue": "Seminar Hall"
+  },
+  {
+    "drive_id": "PD-008",
+    "company": "Terrace Robotics",
+    "role": "Robotics Engineer",
+    "kind": "full-time",
+    "date": "2026-12-16",
+    "registration_deadline": "2026-12-09",
+    "min_cgpa": 7.0,
+    "max_active_backlogs": 1,
+    "departments": [
+      "Mechanical Engineering",
+      "Electronics and Communication Engineering"
+    ],
+    "venue": "Seminar Hall"
+  },
+  {
+    "drive_id": "PD-009",
+    "company": "Northwind Systems",
+    "role": "Software Engineering Intern",
+    "kind": "internship",
+    "date": "2026-11-02",
+    "registration_deadline": "2026-10-28",
+    "min_cgpa": 6.5,
+    "max_active_backlogs": 1,
+    "departments": "all",
+    "venue": "Student Activity Centre"
+  },
+  {
+    "drive_id": "PD-010",
+    "company": "Signal Forge",
+    "role": "Hardware Design Intern",
+    "kind": "internship",
+    "date": "2026-11-14",
+    "registration_deadline": "2026-11-09",
+    "min_cgpa": 6.0,
+    "max_active_backlogs": 1,
+    "departments": [
+      "Electronics and Communication Engineering",
+      "Electrical and Electronics Engineering"
+    ],
+    "venue": "Student Activity Centre"
+  },
+  {
+    "drive_id": "PD-011",
+    "company": "Pinecone Web Studio",
+    "role": "Web Development Intern",
+    "kind": "internship",
+    "date": "2026-11-22",
+    "registration_deadline": "2026-11-17",
+    "min_cgpa": 6.0,
+    "max_active_backlogs": 1,
+    "departments": [
+      "Information Science and Engineering",
+      "Computer Science and Engineering"
+    ],
+    "venue": "Student Activity Centre"
+  },
+  {
+    "drive_id": "PD-012",
+    "company": "Ironbridge Engineering",
+    "role": "Manufacturing Intern",
+    "kind": "internship",
+    "date": "2026-11-29",
+    "registration_deadline": "2026-11-24",
+    "min_cgpa": 6.0,
+    "max_active_backlogs": 1,
+    "departments": [
+      "Mechanical Engineering"
+    ],
+    "venue": "Student Activity Centre"
+  }
+]

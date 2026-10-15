@@ -104,6 +104,11 @@ backend/
 │   │   ├── schedule_service.py     # timetable and exam schedule
 │   │   ├── fee_service.py          # fee dues and late fees
 │   │   ├── directory_service.py    # course information and the faculty directory
+│   │   ├── library_service.py      # catalogue availability and holds
+│   │   ├── study_room_service.py   # discussion room availability and bookings
+│   │   ├── campus_service.py       # canteen, shuttle, lost and found, maintenance
+│   │   ├── support_service.py      # grievances and counselling
+│   │   ├── placement_service.py    # drives and eligibility
 │   │   ├── chat_service.py         # sessions and message history
 │   │   ├── entity_service.py       # what a conversation has mentioned (events, courses, faculty)
 │   │   ├── summary_service.py      # cached conversation summaries
@@ -212,11 +217,23 @@ Things to know: the first start downloads the reranker (about 80 MB, ONNX, no Py
 | `get_fee_dues` | ✅ (about the signed-in student) | Paid and outstanding fees per term, due dates, and the late fee (500 rupees a week or part of one) inside the ten day late window |
 | `get_course_info` | ✅ (public) | A course's credits, semester, kind, instructor and weekly hours. The syllabus itself is not in the data: the tool points to the instructor's course handout |
 | `get_faculty_profile` | ✅ (public) | Designation, department, specialisation, office, office hours, email and courses taught, found by name or id. A shared surname returns the candidates instead of guessing |
+| `check_library_availability` | ✅ (public) | A book by title, author or ISBN: copies on the shelf, shelf location, earliest return and holds waiting. Reference books are marked as not borrowable |
+| `check_study_room_availability` | ✅ (public) | The eight library discussion rooms and their free two-hour blocks on a date, up to three days ahead (Saturday hours are shorter; Sunday is closed) |
+| `get_canteen_menu` | ✅ (public) | The cafeteria menu for a day, by meal with hours and prices (dinner is weekdays only) |
+| `get_bus_schedule` | ✅ (public) | Routes A, B, C and the Saturday town shuttle: stops, today's service and the next departures from the current time |
+| `get_lost_and_found` | ✅ (public) | Search unclaimed lost items |
+| `get_grievance_status` | ✅ (about the signed-in student) | The student's own tickets, status, resolution note, and the policy dates (acknowledgement in three working days, outcome in four weeks) |
+| `get_counselling_slots` | ✅ (about the signed-in student) | Free counselling slots and the student's own upcoming appointment |
+| `get_placement_drives` | ✅ (public) | Upcoming drives with deadlines and criteria |
+| `check_placement_eligibility` | ✅ (about the signed-in student) | Year, department, CGPA and backlogs checked one by one against a drive's criteria |
+| `reserve_library_book`, `book_study_room`, `report_maintenance_issue`, `submit_lost_item`, `create_grievance_ticket`, `book_counselling_appointment` | ⚠️ actions: never auto-executed | Each is checked, stored as a pending action and shown on a confirmation card; only the student's approval runs it (see below) |
 | `register_for_event` | ⚠️ schema-visible, never auto-executed | Validates event/student/capacity/duplicate and writes the registration |
 
 The tools about the student's own records (attendance, CGPA, timetable, exams, electives, fees) take no student id from the model. The agent supplies the student's id from the login and discards any `student_id` the model puts in its call, so a model that is confused or misled by text in the conversation cannot look up someone else's attendance or grades. Their figures come from SQL and Python, never from the model, and the prompt tells the model not to state a personal academic figure it did not get from a tool.
 
 `app/agent/tool_registry.py` defines Groq's native function-calling schemas and a dispatch table (`TOOL_FUNCTIONS`) mapping name → Python callable. Every tool except `register_for_event` is in that dispatch table. `register_for_event`'s schema is included so the model can request it with validated arguments (a real `event_id`; the student is always the signed-in one, never something the model supplies) -- but the agent loop special-cases that specific call, looks up the actual event, and returns a `RegistrationConfirmation` instead of executing anything.
+
+**Rules the actions enforce** (each is checked when proposed and again when approved, since time passes): a hold is only for a title with no copy on the shelf; rooms are two-hour blocks within library hours, up to three days ahead, one student per slot (the database refuses a double booking); a counselling slot goes to one student and a student keeps one upcoming appointment; at most five maintenance requests a day. **A grievance ticket is refused, with pointers to real help, if it could involve ragging, harassment, a threat to safety or someone in distress** (the Anti-Ragging Committee, the Internal Complaints Committee, the hostel warden, the Dean of Student Affairs, campus security, the Counselling Centre), because the policy puts those above every routine process, and if it is a grade dispute (those follow the revaluation process). The screen is a deliberately broad keyword check on top of the model's own judgement, so it will sometimes refuse an innocent message; that is the safe direction to err in.
 
 The agent is a [LangGraph](https://docs.langchain.com/oss/python/langgraph) state graph (`agent/agent.py`), with `run_agent_stream()` streaming its events and `run_agent()` waiting for the final result:
 
