@@ -70,8 +70,8 @@ export default function GrievancesPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader eyebrow="Dashboard" title="Grievances" />
-      <p className="max-w-2xl text-[13px] text-ink-soft">
+      <PageHeader title="Grievances" />
+      <p className="max-w-2xl text-small text-muted">
         Drag a ticket to another column, or use the menu on the card. Resolving needs a note: the student is emailed the
         outcome. Anything involving ragging, harassment or safety never reaches this board; it is sent to the proper
         committee instead.
@@ -100,11 +100,11 @@ export default function GrievancesPage() {
                   setDragging(null);
                   if (ticket) void request(ticket, column.status);
                 }}
-                className={`min-h-48 border p-3 transition-colors duration-150 ${over === column.status ? "border-brass bg-brass/10" : "border-line bg-cream-sunken"}`}
+                className={`min-h-48 p-3 transition-colors duration-150 ${over === column.status ? "bg-ink/10 outline-2 outline-ink" : "bg-surface"}`}
               >
-                <h2 className="mb-3 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft">
+                <h2 className="mb-3 flex items-center justify-between text-small text-muted">
                   {column.title}
-                  <span className="bg-cream-raised px-2 py-0.5 text-ink">{inColumn.length}</span>
+                  <span className="bg-surface px-2 py-0.5 text-ink">{inColumn.length}</span>
                 </h2>
                 <ul className="space-y-2">
                   {inColumn.map((t) => (
@@ -113,27 +113,27 @@ export default function GrievancesPage() {
                       draggable
                       onDragStart={() => setDragging(t.id)}
                       onDragEnd={() => setDragging(null)}
-                      className={`cursor-grab border border-line-strong bg-cream-raised p-3 ${dragging === t.id ? "opacity-50" : ""}`}
+                      className={`cursor-grab bg-ground p-3 ${dragging === t.id ? "opacity-50" : ""}`}
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <span className="font-mono text-[12px] text-brass">{t.ticket}</span>
-                        <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink-faint">{t.category}</span>
+                        <span className="text-small font-medium tabular-nums text-ink">{t.ticket}</span>
+                        <span className="text-small text-muted">{t.category}</span>
                       </div>
                       <button
                         type="button"
                         onClick={() => setMove({ ticket: t, status: t.status })}
-                        className="mt-1 block w-full text-left text-[13.5px] text-ink hover:underline"
+                        className="mt-1 block w-full text-left text-small text-ink hover:underline"
                       >
                         <span className="line-clamp-3">{t.description}</span>
                       </button>
-                      <p className="mt-2 text-[12px] text-ink-faint">
+                      <p className="mt-2 text-small text-muted">
                         {t.student_name} · {formatDateTime(t.submitted)}
                       </p>
                       <select
                         aria-label={`Move ${t.ticket}`}
                         value={t.status}
                         onChange={(e) => void request(t, e.target.value as GrievanceStatus)}
-                        className="mt-2 w-full border border-line bg-cream px-2 py-1 font-mono text-[11px] text-ink-soft"
+                        className="mt-2 w-full border border-muted bg-ground px-2 py-1.5 text-small text-ink"
                       >
                         {COLUMNS.map((c) => (
                           <option key={c.status} value={c.status}>
@@ -143,7 +143,7 @@ export default function GrievancesPage() {
                       </select>
                     </li>
                   ))}
-                  {inColumn.length === 0 && <li className="px-1 py-4 text-center text-[12px] text-ink-faint">Nothing here.</li>}
+                  {inColumn.length === 0 && <li className="px-1 py-4 text-center text-small text-muted">Nothing here.</li>}
                 </ul>
               </section>
             );
@@ -200,10 +200,10 @@ function TicketDialog({
 
   return (
     <Modal title={`${ticket.ticket}: ${ticket.category}`} onClose={onClose}>
-      <p className="text-[12px] text-ink-faint">
+      <p className="text-small text-muted">
         {ticket.student_name} ({ticket.student_id}), {ticket.program}. Submitted {formatDateTime(ticket.submitted)}.
       </p>
-      <p className="mt-3 whitespace-pre-wrap border-l-2 border-brass pl-3 text-[14px] text-ink">{ticket.description}</p>
+      <p className="mt-3 whitespace-pre-wrap bg-surface p-3 text-body text-ink">{ticket.description}</p>
       <form onSubmit={submit} className="mt-5 space-y-4">
         <Field label="Status">
           <select value={status} onChange={(e) => setStatus(e.target.value as GrievanceStatus)} className={inputClass}>

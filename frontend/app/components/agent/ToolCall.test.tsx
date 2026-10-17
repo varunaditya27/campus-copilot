@@ -14,14 +14,14 @@ describe("a tool step", () => {
   it("marks a failed step differently from a finished one", () => {
     const { container: done } = render(<ToolCall entry={entry} index={0} isLast />);
     const { container: failed } = render(<ToolCall entry={{ ...entry, status: "error", resultSummary: "No student record was found." }} index={0} isLast />);
-    expect(done.innerHTML).toContain("border-forest");
-    expect(failed.innerHTML).toContain("border-rust");
+    expect(done.innerHTML).toContain("border-ink");
+    expect(failed.innerHTML).toContain("border-danger");
     expect(screen.getByText("No student record was found.")).toBeInTheDocument();
   });
 
   it("shows a running step without a result", () => {
     const { container } = render(<ToolCall entry={{ ...entry, status: "running", resultSummary: undefined }} index={0} isLast />);
-    expect(container.innerHTML).toContain("border-brass");
+    expect(container.innerHTML).toContain("border-accent");
   });
 
   it("draws the connecting line for every step but the last", () => {

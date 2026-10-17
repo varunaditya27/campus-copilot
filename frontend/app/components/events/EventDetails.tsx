@@ -17,57 +17,55 @@ export default function EventDetails({ event }: { event: CampusEvent }) {
 
   return (
     <article className="max-w-2xl">
-      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass">
+      <h1 className="text-3xl font-medium tracking-[-0.03em] text-balance text-ink">{event.name}</h1>
+      <p className="mt-1 text-body text-muted first-letter:uppercase">
         {event.category.replace(/-/g, " ")}
       </p>
-      <h1 className="mt-2 font-display text-3xl font-medium leading-tight text-ink">
-        {event.name}
-      </h1>
 
-      <dl className="mt-6 grid grid-cols-1 gap-3 border border-line bg-cream-raised p-4 sm:grid-cols-2">
+      <dl className="mt-6 grid grid-cols-1 gap-3 bg-surface p-4 sm:grid-cols-2">
         <div className="flex items-start gap-2.5">
-          <CalendarIcon className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
+          <CalendarIcon className="mt-0.5 h-4 w-4 shrink-0 text-muted" />
           <div>
-            <dt className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink-faint">
+            <dt className="text-small text-muted">
               Date &amp; Time
             </dt>
-            <dd className="mt-0.5 text-[13.5px] text-ink">
+            <dd className="mt-0.5 text-small text-ink">
               {formatDate(event.date)} · {event.time}
             </dd>
           </div>
         </div>
         <div className="flex items-start gap-2.5">
-          <PinIcon className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
+          <PinIcon className="mt-0.5 h-4 w-4 shrink-0 text-muted" />
           <div>
-            <dt className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink-faint">
+            <dt className="text-small text-muted">
               Venue
             </dt>
-            <dd className="mt-0.5 text-[13.5px] text-ink">{event.venue}</dd>
+            <dd className="mt-0.5 text-small text-ink">{event.venue}</dd>
           </div>
         </div>
         <div className="flex items-start gap-2.5">
-          <UserIcon className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
+          <UserIcon className="mt-0.5 h-4 w-4 shrink-0 text-muted" />
           <div>
-            <dt className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink-faint">
+            <dt className="text-small text-muted">
               Organizer
             </dt>
-            <dd className="mt-0.5 text-[13.5px] text-ink">
+            <dd className="mt-0.5 text-small text-ink">
               {event.organizer}
             </dd>
           </div>
         </div>
         <div>
-          <dt className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink-faint">
+          <dt className="text-small text-muted">
             Availability
           </dt>
           <dd className="mt-1.5 flex items-center gap-2">
-            <div className="h-1 w-24 bg-cream-sunken">
+            <div className="h-1 w-24 bg-ground">
               <div
-                className="h-full bg-brass"
+                className="h-full bg-ink"
                 style={{ width: `${fillRatio * 100}%` }}
               />
             </div>
-            <span className="font-mono text-[11px] text-ink-soft">
+            <span className="text-small tabular-nums text-muted">
               {seatsLeft > 0
                 ? `${seatsLeft} of ${event.capacity} seats left`
                 : "Full"}
@@ -76,7 +74,7 @@ export default function EventDetails({ event }: { event: CampusEvent }) {
         </div>
       </dl>
 
-      <p className="mt-6 text-[14.5px] leading-relaxed text-ink-soft">
+      <p className="mt-6 text-body text-ink">
         {event.description}
       </p>
 
@@ -84,20 +82,20 @@ export default function EventDetails({ event }: { event: CampusEvent }) {
         {event.tags.map((tag) => (
           <span
             key={tag}
-            className="border border-line px-2 py-0.5 font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink-faint"
+            className="bg-surface px-2 py-0.5 text-small text-ink"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="mt-8 border-t border-line pt-5">
-        <p className="text-[13px] leading-relaxed text-ink-faint">
+      <div className="mt-10">
+        <p className="text-small leading-relaxed text-muted">
           To register, ask Campus Copilot in the{" "}
-          <Link href="/" className="text-navy underline decoration-brass decoration-2 underline-offset-2">
+          <Link href="/" className="text-ink underline underline-offset-2 hover:decoration-2">
             chat
-          </Link>{" "}
-          — for example, &ldquo;Register me for {event.name}.&rdquo;
+          </Link>
+          . For example: &ldquo;Register me for {event.name}.&rdquo;
         </p>
       </div>
     </article>

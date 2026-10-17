@@ -9,18 +9,16 @@ export default function MessageBubble({ message }: { message: ChatMessage }) {
   return (
     <div className={`anim-rise ${isUser ? "ml-auto" : "mr-auto"} max-w-2xl`}>
       <div
-        className={`mb-1 font-mono text-[10.5px] uppercase tracking-[0.16em] ${
-          isUser ? "text-right text-ink-faint" : "text-brass"
-        }`}
+        className={`mb-1 text-small font-medium ${isUser ? "text-right text-muted" : "text-ink"}`}
       >
         {isUser ? "You" : "Campus Copilot"}
       </div>
 
       {message.pending ? (
         <div className="flex items-center gap-1.5 py-1">
-          <span className="h-1.5 w-1.5 animate-pulse bg-ink-faint" />
-          <span className="h-1.5 w-1.5 animate-pulse bg-ink-faint [animation-delay:150ms]" />
-          <span className="h-1.5 w-1.5 animate-pulse bg-ink-faint [animation-delay:300ms]" />
+          <span className="h-1.5 w-1.5 animate-pulse bg-muted" />
+          <span className="h-1.5 w-1.5 animate-pulse bg-muted [animation-delay:150ms]" />
+          <span className="h-1.5 w-1.5 animate-pulse bg-muted [animation-delay:300ms]" />
         </div>
       ) : isUser ? (
         <p className="whitespace-pre-wrap text-right text-[15px] leading-relaxed text-ink">

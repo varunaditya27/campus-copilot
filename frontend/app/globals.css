@@ -1,55 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  /* Campus institutional palette */
-  --color-cream: #f7f3e9;
-  --color-cream-raised: #fbf9f3;
-  --color-cream-sunken: #efe9d8;
-  --color-ink: #24211c;
-  --color-ink-soft: #57534a;
-  --color-ink-faint: #8b8577;
-  --color-navy: #1b2a4a;
-  --color-navy-soft: #2e3f5c;
-  --color-navy-line: #33456a;
-  --color-brass: #b8863b;
-  --color-brass-soft: #d9bc85;
-  --color-brass-line: rgba(184, 134, 59, 0.35);
-  --color-line: #ded5c0;
-  --color-line-strong: #c9bd9e;
-  --color-forest: #33684f;
-  --color-rust: #9c4a30;
+  /* Olive on bone: one ground, one ink, one accent */
+  --color-ground: #ecebe7;
+  --color-surface: #e1dfd9;
+  --color-ink: #38450f;
+  --color-muted: #5d683a;
+  --color-accent: #38450f;
+  --color-accent-ink: #ecebe7;
+  /* The one alarm colour: errors and failures only. Success uses the ink with its word or icon. */
+  --color-danger: #8b1e24;
 
-  --font-display: var(--font-fraunces);
-  --font-body: var(--font-public-sans);
-  --font-mono: var(--font-plex-mono);
+  /* Chart series, in this fixed order and never cycled; validated as neighbours and as a ring on the ground. */
+  --color-chart-1: #627d23;
+  --color-chart-2: #285994;
+  --color-chart-3: #008f83;
+  --color-chart-4: #c28e24;
+  --color-chart-5: #954676;
+  --color-chart-other: #a3a29a;
 
-  --ease-considered: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --header-h: 4rem;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 @theme inline {
-  --color-cream: var(--color-cream);
-  --color-cream-raised: var(--color-cream-raised);
-  --color-cream-sunken: var(--color-cream-sunken);
-  --color-ink: var(--color-ink);
-  --color-ink-soft: var(--color-ink-soft);
-  --color-ink-faint: var(--color-ink-faint);
-  --color-navy: var(--color-navy);
-  --color-navy-soft: var(--color-navy-soft);
-  --color-navy-line: var(--color-navy-line);
-  --color-brass: var(--color-brass);
-  --color-brass-soft: var(--color-brass-soft);
-  --color-line: var(--color-line);
-  --color-line-strong: var(--color-line-strong);
-  --color-forest: var(--color-forest);
-  --color-rust: var(--color-rust);
+  --text-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-body--line-height: 1.45;
+  --text-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --text-lead--line-height: 1.3;
+  --text-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --text-head--line-height: 0.95;
 
-  --font-display: var(--font-display);
-  --font-sans: var(--font-body);
-  --font-mono: var(--font-mono);
+  --color-ground: var(--color-ground);
+  --color-surface: var(--color-surface);
+  --color-muted: var(--color-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-ink: var(--color-accent-ink);
+  --color-danger: var(--color-danger);
+  --color-chart-1: var(--color-chart-1);
+  --color-chart-2: var(--color-chart-2);
+  --color-chart-3: var(--color-chart-3);
+  --color-chart-4: var(--color-chart-4);
+  --color-chart-5: var(--color-chart-5);
+  --color-chart-other: var(--color-chart-other);
+  --color-ink: var(--color-ink);
+
+  --font-sans: var(--font-hanken);
 }
 
-* {
-  border-color: var(--color-line);
+/* In the base layer, so border colour classes (a utility layer) can override it. */
+@layer base {
+  * {
+    border-color: var(--color-surface);
+  }
 }
 
 html {
@@ -57,23 +63,23 @@ html {
 }
 
 body {
-  background: var(--color-cream);
+  background: var(--color-ground);
   color: var(--color-ink);
-  font-family: var(--font-body);
+  font-family: var(--font-hanken);
 }
 
 ::selection {
-  background: var(--color-brass-soft);
-  color: var(--color-navy);
+  background: var(--color-ink);
+  color: var(--color-ground);
 }
 
 /* Considered motion: short, precisely-eased, never bouncy */
 @media (prefers-reduced-motion: no-preference) {
   .anim-rise {
-    animation: rise 260ms var(--ease-considered) both;
+    animation: rise 260ms var(--ease-out) both;
   }
   .anim-fade {
-    animation: fade 200ms var(--ease-considered) both;
+    animation: fade 200ms var(--ease-out) both;
   }
 }
 
@@ -110,22 +116,14 @@ body {
   }
 }
 
-/* Hairline rule utility, used instead of shadows for separation */
-.rule-top {
-  border-top: 1px solid var(--color-line);
-}
-.rule-bottom {
-  border-bottom: 1px solid var(--color-line);
-}
-
-/* Thin scrollbars that match the institutional register */
+/* Thin scrollbars in the surface tone */
 .thin-scroll {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-line-strong) transparent;
+  scrollbar-color: var(--color-surface) transparent;
 }
 .thin-scroll::-webkit-scrollbar {
   width: 6px;
 }
 .thin-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-line-strong);
+  background: var(--color-surface);
 }

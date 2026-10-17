@@ -19,9 +19,9 @@ describe("the capacity gauge", () => {
       unmount();
       return bar;
     };
-    expect(colour(5)).toContain("bg-forest");
-    expect(colour(8)).toContain("bg-brass");
-    expect(colour(10)).toContain("bg-rust");
+    expect(colour(5)).toContain("bg-muted");
+    expect(colour(8)).toContain("bg-ink");
+    expect(colour(10)).toContain("bg-danger");
   });
 
   it("never overflows and copes with a zero maximum", () => {

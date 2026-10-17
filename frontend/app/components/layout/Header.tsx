@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "../auth/AuthProvider";
@@ -7,12 +8,12 @@ import { useAuth } from "../auth/AuthProvider";
 const NAV_LINKS = [
   { href: "/", label: "Chat" },
   { href: "/events", label: "Events" },
-  { href: "/about", label: "About" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const { state, logout } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
   const role = state.status === "signedIn" ? state.user.role : null;
   const links =
     role === "student"
@@ -22,69 +23,66 @@ export default function Header() {
         : NAV_LINKS;
 
   return (
-    <header className="bg-navy text-cream">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="group flex items-baseline gap-3">
-          <span className="font-display text-xl font-medium tracking-tight">
-            Campus Copilot
-          </span>
-          <span className="hidden font-mono text-[11px] uppercase tracking-[0.16em] text-brass-soft sm:inline">
-            Agentic Assistant
-          </span>
+    <header className="sticky top-0 z-30 h-[var(--header-h)] bg-ground text-ink">
+      <div className="flex h-full items-center gap-6 px-5 md:px-6">
+        <Link href="/" className="mr-auto text-xl font-medium tracking-[-0.03em]">
+          Campus Copilot
         </Link>
 
-        <nav className="flex items-center gap-1">
+        <button
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-expanded={menuOpen}
+          aria-controls="site-nav"
+          className="text-[15px] underline-offset-[6px] hover:underline md:hidden"
+        >
+          Menu
+        </button>
+
+        <nav
+          id="site-nav"
+          className={`${menuOpen ? "flex" : "hidden"} absolute inset-x-0 top-[var(--header-h)] flex-col gap-1 bg-surface px-5 py-4 text-ink md:static md:flex md:flex-row md:gap-6 md:bg-transparent md:p-0 md:text-inherit`}
+        >
           {links.map((link) => {
             const isActive =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href);
+              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] transition-colors duration-150 ${
-                  isActive
-                    ? "text-cream"
-                    : "text-cream/60 hover:text-cream"
+                onClick={() => setMenuOpen(false)}
+                aria-current={isActive ? "page" : undefined}
+                className={`py-2 text-[15px] decoration-2 underline-offset-[6px] md:py-0 ${
+                  isActive ? "underline" : "hover:underline"
                 }`}
               >
                 {link.label}
-                {isActive && (
-                  <span className="absolute inset-x-3 -bottom-[1px] h-[2px] bg-brass" />
-                )}
               </Link>
             );
           })}
         </nav>
 
-        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.14em]">
-          {state.status === "signedIn" && (
-            <>
-              <span className="hidden text-cream/80 sm:inline">
-                {state.user.name}
-              </span>
-              <button
-                type="button"
-                onClick={logout}
-                className="text-cream/60 transition-colors duration-150 hover:text-cream"
-              >
-                Sign out
-              </button>
-            </>
-          )}
-          {state.status === "signedOut" && pathname !== "/login" && (
-            <Link
-              href="/login"
-              className="text-cream/60 transition-colors duration-150 hover:text-cream"
+        {state.status === "signedIn" && (
+          <div className="flex items-center gap-4 text-[15px]">
+            <span className="hidden lg:inline">{state.user.name}</span>
+            <button
+              type="button"
+              onClick={logout}
+              className="underline-offset-[6px] hover:underline"
             >
-              Sign in
-            </Link>
-          )}
-        </div>
+              Sign out
+            </button>
+          </div>
+        )}
+        {state.status === "signedOut" && pathname !== "/login" && (
+          <Link
+            href="/login"
+            className="bg-ink px-4 py-2.5 text-[15px] font-medium text-ground transition-transform duration-150 active:scale-[0.97]"
+          >
+            Sign in
+          </Link>
+        )}
       </div>
-      <div className="h-[2px] w-full bg-brass" />
-      <div className="h-px w-full bg-navy-line" />
     </header>
   );
 }

@@ -177,7 +177,7 @@ export default function EventForm({
           </div>
         ) : (
           ownDepartment && (
-            <p className="text-[13px] text-ink-soft sm:col-span-2">
+            <p className="text-small text-muted sm:col-span-2">
               This event will belong to {ownDepartment}.
             </p>
           )

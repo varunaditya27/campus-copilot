@@ -9,7 +9,7 @@ export default function SourceCard({ source }: { source: Source }) {
   const hasSnippet = Boolean(source.snippet);
 
   return (
-    <div className="border border-line bg-cream-raised">
+    <div className="bg-surface">
       <button
         type="button"
         onClick={() => hasSnippet && setOpen((v) => !v)}
@@ -18,16 +18,16 @@ export default function SourceCard({ source }: { source: Source }) {
         }`}
         aria-expanded={open}
       >
-        <DocumentIcon className="h-3.5 w-3.5 shrink-0 text-brass" />
-        <span className="font-mono text-[11px] tracking-tight text-ink-soft">
+        <DocumentIcon className="h-3.5 w-3.5 shrink-0 text-accent" />
+        <span className="text-small text-ink">
           {source.document}
           {source.section && (
-            <span className="text-ink-faint"> · {source.section}</span>
+            <span className="text-muted"> · {source.section}</span>
           )}
         </span>
       </button>
       {open && hasSnippet && (
-        <p className="anim-fade rule-top border-line px-2.5 py-2 font-body text-[12.5px] leading-relaxed text-ink-soft">
+        <p className="anim-fade px-2.5 pb-2 text-small leading-relaxed text-ink">
           {source.snippet}
         </p>
       )}

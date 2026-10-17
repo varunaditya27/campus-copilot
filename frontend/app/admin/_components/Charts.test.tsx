@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { BarList, Donut, LineChart, StackedBar, WordCloud } from "./Charts";
 
@@ -20,6 +20,21 @@ describe("the daily active users line", () => {
     expect(render(<LineChart points={points.slice(0, 1)} />).container.querySelectorAll("circle")).toHaveLength(1);
     expect(render(<LineChart points={points.map((p) => ({ ...p, users: 0 }))} />).container.querySelectorAll("circle")).toHaveLength(3);
   });
+
+  it("reads out a day from the keyboard, starting at the latest", () => {
+    const { container } = render(<LineChart points={points} />);
+    const chart = screen.getByRole("img", { name: "Active students per day" });
+    const readout = () => container.querySelector("[aria-live]")!.textContent;
+    fireEvent.focus(chart);
+    expect(readout()).toBe("2026-10-15: 2 students, 3 questions");
+    fireEvent.keyDown(chart, { key: "ArrowLeft" });
+    expect(readout()).toBe("2026-10-14: 4 students, 9 questions");
+    fireEvent.keyDown(chart, { key: "ArrowLeft" });
+    fireEvent.keyDown(chart, { key: "ArrowLeft" });
+    expect(readout()).toBe("2026-10-13: 0 students, 0 questions");
+    fireEvent.blur(chart);
+    expect(readout()).toBe("");
+  });
 });
 
 describe("the tool usage ring", () => {
@@ -34,6 +49,15 @@ describe("the tool usage ring", () => {
     const { container } = render(<Donut slices={[]} />);
     expect(container.querySelector("text")!.textContent).toBe("0");
     expect(container.querySelectorAll("circle[stroke-dasharray]")).toHaveLength(0);
+  });
+
+  it("folds everything past five tools into Other", () => {
+    const tools = [9, 8, 7, 6, 5, 2, 1].map((value, i) => ({ label: `tool_${i}`, value }));
+    const { container } = render(<Donut slices={tools} />);
+    expect(container.querySelectorAll("circle[stroke-dasharray]")).toHaveLength(6);
+    expect(screen.getByText("Other")).toBeInTheDocument();
+    expect(screen.queryByText("tool_5")).not.toBeInTheDocument();
+    expect(screen.getByText("3 (8%)")).toBeInTheDocument();
   });
 });
 
@@ -56,13 +80,14 @@ describe("the other charts", () => {
 
   it("splits the outcome bar in proportion and lists each part", () => {
     const { container } = render(<StackedBar parts={[{ label: "Confirmed", value: 3, colour: "#0a0" }, { label: "Cancelled", value: 1, colour: "#a00" }]} />);
-    const widths = [...container.querySelectorAll<HTMLElement>("[role=img] > div")].map((d) => d.style.width);
-    expect(widths).toEqual(["75%", "25%"]);
+    const grow = [...container.querySelectorAll<HTMLElement>("[role=img] > div")].map((d) => d.style.flexGrow);
+    expect(grow).toEqual(["3", "1"]);
     expect(screen.getByText("Confirmed 3")).toBeInTheDocument();
   });
 
   it("draws an empty bar when nothing was proposed", () => {
     const { container } = render(<StackedBar parts={[{ label: "Confirmed", value: 0, colour: "#0a0" }]} />);
-    expect((container.querySelector("[role=img] > div") as HTMLElement).style.width).toBe("0%");
+    expect(container.querySelectorAll("[role=img] > div")).toHaveLength(0);
+    expect(screen.getByText("Confirmed 0")).toBeInTheDocument();
   });
 });

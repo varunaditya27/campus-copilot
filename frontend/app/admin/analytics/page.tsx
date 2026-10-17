@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { getAnalytics } from "@/lib/adminApi";
-import { BarList, Donut, LineChart, StackedBar, WordCloud } from "../_components/Charts";
+import { BarList, Donut, LineChart, SERIES, StackedBar, WordCloud } from "../_components/Charts";
 import { useLoad } from "../_components/useLoad";
 import { Banner, Loading, PageHeader, inputClass } from "../_components/ui";
 
@@ -10,18 +10,18 @@ const percent = (value: number | null) => (value === null ? "—" : `${Math.roun
 
 function Stat({ label, value, note }: { label: string; value: string; note?: string }) {
   return (
-    <div className="border border-line bg-cream-raised p-4">
-      <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">{label}</p>
-      <p className="mt-1 font-display text-3xl font-medium text-ink">{value}</p>
-      {note && <p className="mt-1 text-[12px] text-ink-faint">{note}</p>}
+    <div className="bg-surface p-4">
+      <p className="text-small text-muted">{label}</p>
+      <p className="mt-1 text-3xl font-medium text-ink">{value}</p>
+      {note && <p className="mt-1 text-small text-muted">{note}</p>}
     </div>
   );
 }
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="border border-line bg-cream-raised p-5">
-      <h2 className="mb-4 font-display text-lg font-medium text-ink">{title}</h2>
+    <section className="bg-surface p-5">
+      <h2 className="mb-4 text-lg font-medium text-ink">{title}</h2>
       {children}
     </section>
   );
@@ -34,7 +34,7 @@ export default function AnalyticsPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader eyebrow="Dashboard" title="Analytics">
+      <PageHeader title="Analytics">
         <select value={days} onChange={(e) => setDays(Number(e.target.value))} aria-label="Time range" className={`${inputClass} w-auto`}>
           <option value={7}>Last 7 days</option>
           <option value={30}>Last 30 days</option>
@@ -46,7 +46,7 @@ export default function AnalyticsPage() {
 
       {data && (
         <>
-          <p className="text-[12px] text-ink-faint">
+          <p className="text-small text-muted">
             {data.from} to {data.to} (UTC). Counts only questions answered since usage tracking began; the questions
             themselves are not kept.
           </p>
@@ -67,16 +67,16 @@ export default function AnalyticsPage() {
           <div className="grid gap-6 lg:grid-cols-2">
             <Panel title="Most-used tools">
               {data.tool_usage.length ? (
-                <Donut slices={data.tool_usage.slice(0, 8).map((t) => ({ label: t.tool, value: t.count }))} />
+                <Donut slices={data.tool_usage.map((t) => ({ label: t.tool, value: t.count }))} />
               ) : (
-                <p className="text-[13px] text-ink-faint">No tool calls in this period.</p>
+                <p className="text-small text-muted">No tool calls in this period.</p>
               )}
             </Panel>
             <Panel title="Most-cited knowledge documents">
               {data.top_documents.length ? (
                 <BarList rows={data.top_documents.map((d) => ({ label: d.document, value: d.count }))} />
               ) : (
-                <p className="text-[13px] text-ink-faint">No documents were cited.</p>
+                <p className="text-small text-muted">No documents were cited.</p>
               )}
             </Panel>
           </div>
@@ -85,7 +85,7 @@ export default function AnalyticsPage() {
             {data.top_terms.length ? (
               <WordCloud terms={data.top_terms} />
             ) : (
-              <p className="text-[13px] text-ink-faint">
+              <p className="text-small text-muted">
                 Words appear once at least two questions have used them, so nothing personal is shown.
               </p>
             )}
@@ -106,16 +106,16 @@ export default function AnalyticsPage() {
                 />
               </div>
               <div className="mt-5">
-                <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">
+                <p className="mb-2 text-small text-muted">
                   {data.agent.actions.proposed} proposed actions
                 </p>
                 <StackedBar
                   parts={[
-                    { label: "Confirmed", value: data.agent.actions.confirmed, colour: "#33684f" },
-                    { label: "Failed after approval", value: data.agent.actions.failed, colour: "#b8863b" },
-                    { label: "Cancelled", value: data.agent.actions.cancelled, colour: "#9c4a30" },
-                    { label: "Expired", value: data.agent.actions.expired, colour: "#8b8577" },
-                    { label: "Waiting", value: data.agent.actions.waiting, colour: "#d9bc85" },
+                    { label: "Confirmed", value: data.agent.actions.confirmed, colour: SERIES[0] },
+                    { label: "Failed after approval", value: data.agent.actions.failed, colour: SERIES[1] },
+                    { label: "Cancelled", value: data.agent.actions.cancelled, colour: SERIES[2] },
+                    { label: "Expired", value: data.agent.actions.expired, colour: SERIES[3] },
+                    { label: "Waiting", value: data.agent.actions.waiting, colour: SERIES[4] },
                   ]}
                 />
               </div>
@@ -129,7 +129,7 @@ export default function AnalyticsPage() {
                 />
                 <Stat label="Average distance / cache hits" value="—" note="Not recorded" />
               </div>
-              <p className="mt-4 text-[12px] text-ink-faint">{data.rag.notes}</p>
+              <p className="mt-4 text-small text-muted">{data.rag.notes}</p>
             </Panel>
           </div>
         </>

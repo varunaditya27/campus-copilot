@@ -15,7 +15,7 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
 
   return (
     <div className="space-y-6">
-      <Link href="/admin/students" className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint hover:text-ink">
+      <Link href="/admin/students" className="text-small text-muted hover:text-ink">
         ← All students
       </Link>
       {error && <Banner kind="error">{error}</Banner>}
@@ -23,8 +23,8 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
 
       {student && (
         <>
-          <PageHeader eyebrow={student.student_id} title={student.name} />
-          <dl className="grid grid-cols-2 gap-x-8 gap-y-5 border-y border-line py-6 sm:grid-cols-4">
+          <PageHeader note={student.student_id} title={student.name} />
+          <dl className="grid grid-cols-2 gap-x-8 gap-y-5 bg-surface p-6 sm:grid-cols-4">
             {[
               ["Programme", student.program],
               ["Year", String(student.year)],
@@ -35,19 +35,19 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
               ["Interests", student.interests.length ? student.interests.join(", ") : "None given"],
             ].map(([label, value]) => (
               <div key={label}>
-                <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">{label}</dt>
-                <dd className="mt-1 text-[14px] text-ink">{value}</dd>
+                <dt className="text-small text-muted">{label}</dt>
+                <dd className="mt-1 text-body text-ink">{value}</dd>
               </div>
             ))}
           </dl>
 
           <section>
-            <h2 className="font-display text-xl font-medium">Academic records</h2>
-            {student.records.length === 0 && <p className="mt-2 text-[13px] text-ink-faint">No records.</p>}
+            <h2 className="text-xl font-medium">Academic records</h2>
+            {student.records.length === 0 && <p className="mt-2 text-small text-muted">No records.</p>}
             {semesters.map((semester) => (
-              <div key={semester} className="mt-4 overflow-x-auto border border-line bg-cream-raised">
+              <div key={semester} className="mt-4 overflow-x-auto bg-surface">
                 <table className={tableClass}>
-                  <caption className="border-b border-line-strong bg-cream-sunken px-3 py-2 text-left font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft">
+                  <caption className="px-3 pt-3 pb-1 text-left text-small font-medium text-ink">
                     Semester {semester}
                   </caption>
                   <thead>
@@ -65,7 +65,7 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
                         <tr key={r.course_code}>
                           <td className={tdClass}>
                             {r.course}
-                            <div className="font-mono text-[11px] text-ink-faint">{r.course_code}</div>
+                            <div className="text-small tabular-nums text-muted">{r.course_code}</div>
                           </td>
                           <td className={tdClass}>{r.credits}</td>
                           <td className={tdClass}>
@@ -82,29 +82,29 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
 
           <div className="grid gap-6 lg:grid-cols-2">
             <section>
-              <h2 className="font-display text-xl font-medium">Event registrations</h2>
-              <ul className="mt-3 divide-y divide-line border border-line bg-cream-raised">
+              <h2 className="text-xl font-medium">Event registrations</h2>
+              <ul className="mt-3 flex flex-col gap-0.5">
                 {student.registrations.map((r) => (
-                  <li key={r.registration_id} className="px-3 py-2.5 text-[13.5px]">
-                    <Link href={`/admin/events/${r.event_id}`} className="underline decoration-line-strong underline-offset-2 hover:decoration-brass">
+                  <li key={r.registration_id} className="bg-surface px-3 py-2.5 text-small">
+                    <Link href={`/admin/events/${r.event_id}`} className="underline underline-offset-2 hover:decoration-2">
                       {r.event}
                     </Link>
-                    <span className="ml-2 text-ink-faint">{r.date}</span>
+                    <span className="ml-2 text-muted">{r.date}</span>
                   </li>
                 ))}
-                {student.registrations.length === 0 && <li className="px-3 py-2.5 text-[13px] text-ink-faint">None.</li>}
+                {student.registrations.length === 0 && <li className="bg-surface px-3 py-2.5 text-small text-muted">None.</li>}
               </ul>
             </section>
             <section>
-              <h2 className="font-display text-xl font-medium">Grievance tickets</h2>
-              <ul className="mt-3 divide-y divide-line border border-line bg-cream-raised">
+              <h2 className="text-xl font-medium">Grievance tickets</h2>
+              <ul className="mt-3 flex flex-col gap-0.5">
                 {student.tickets.map((t) => (
-                  <li key={t.ticket} className="px-3 py-2.5 text-[13.5px]">
-                    <span className="font-mono text-[12px]">{t.ticket}</span> · {t.category} · {t.status.replace("_", " ")}
-                    <span className="ml-2 text-ink-faint">{t.submitted}</span>
+                  <li key={t.ticket} className="bg-surface px-3 py-2.5 text-small">
+                    <span className="text-small tabular-nums">{t.ticket}</span> · {t.category} · {t.status.replace("_", " ")}
+                    <span className="ml-2 text-muted">{t.submitted}</span>
                   </li>
                 ))}
-                {student.tickets.length === 0 && <li className="px-3 py-2.5 text-[13px] text-ink-faint">None.</li>}
+                {student.tickets.length === 0 && <li className="bg-surface px-3 py-2.5 text-small text-muted">None.</li>}
               </ul>
             </section>
           </div>

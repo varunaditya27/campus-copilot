@@ -21,7 +21,7 @@ export default function ProfilePage() {
 function Detail({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">
+      <dt className="text-small text-muted">
         {label}
       </dt>
       <dd className="mt-1 text-[15px] text-ink">{value}</dd>
@@ -74,16 +74,14 @@ function Profile() {
 
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 overflow-y-auto px-6 py-10">
-      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass">
-        Your profile
-      </p>
-      <h1 className="mt-2 font-display text-3xl font-medium tracking-tight text-ink">
+      <h1 className="text-3xl font-medium tracking-[-0.03em] text-ink">
         {profile?.name ?? "Loading…"}
       </h1>
+      <p className="mt-1 text-body text-muted">Your profile</p>
 
       {profile && (
         <>
-          <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 border-y border-line py-6">
+          <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 bg-surface p-6">
             <Detail label="Student ID" value={profile.student_id} />
             <Detail label="Program" value={profile.program} />
             <Detail label="Year" value={String(profile.year)} />
@@ -100,23 +98,23 @@ function Profile() {
           </dl>
 
           <form onSubmit={handleSave} className="mt-8">
-            <h2 className="font-display text-xl font-medium text-ink">
+            <h2 className="text-xl font-medium text-ink">
               What are you interested in?
             </h2>
-            <p className="mt-1 text-[13.5px] text-ink-soft">
+            <p className="mt-1 text-small text-muted">
               The assistant uses this to suggest events and tailor its answers.
             </p>
             <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
               {EVENT_CATEGORIES.map(({ value, label }) => (
                 <label
                   key={value}
-                  className="flex cursor-pointer items-center gap-3 border border-line bg-cream-raised px-3.5 py-3 text-[14px] text-ink has-[:checked]:border-brass has-[:checked]:bg-cream"
+                  className="flex cursor-pointer items-center gap-3 bg-surface px-3.5 py-3 text-body text-ink has-[:checked]:outline-2 has-[:checked]:outline-ink has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink"
                 >
                   <input
                     type="checkbox"
                     checked={interests.includes(value)}
                     onChange={() => toggle(value)}
-                    className="h-4 w-4 accent-navy"
+                    className="h-4 w-4 accent-ink"
                   />
                   {label}
                 </label>
@@ -127,12 +125,12 @@ function Profile() {
               <button
                 type="submit"
                 disabled={busy}
-                className="bg-navy px-5 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-cream transition-colors duration-150 hover:bg-brass disabled:opacity-60"
+                className="min-h-11 bg-accent px-5 py-2.5 text-small font-medium text-accent-ink transition-transform duration-150 active:scale-[0.98] disabled:opacity-60"
               >
                 {busy ? "Saving…" : "Save interests"}
               </button>
               {saved && (
-                <p className="font-mono text-[12px] text-forest">Saved.</p>
+                <p className="text-small tabular-nums text-ink">Saved.</p>
               )}
             </div>
           </form>

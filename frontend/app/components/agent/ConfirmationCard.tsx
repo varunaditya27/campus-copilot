@@ -41,15 +41,15 @@ export default function ConfirmationCard({
 
   if (status === "done" && outcome) {
     return (
-      <div className="anim-rise max-w-md border border-forest bg-cream-raised">
-        <div className="flex items-center gap-2 bg-forest px-4 py-2 text-cream">
+      <div className="anim-rise max-w-md bg-surface">
+        <div className="flex items-center gap-2 bg-ink px-4 py-2 text-ground">
           <CheckIcon className="h-4 w-4" />
-          <span className="font-mono text-[11px] uppercase tracking-[0.14em]">Done</span>
+          <span className="text-small font-medium">Done</span>
         </div>
         <div className="px-4 py-3">
           <p className="text-[14px] text-ink">{outcome.message}</p>
           {Object.entries(outcome.details).map(([label, value]) => (
-            <p key={label} className="mt-1 font-mono text-[12px] text-ink-soft">
+            <p key={label} className="mt-1 text-small text-ink">
               {label}: {value}
             </p>
           ))}
@@ -60,8 +60,8 @@ export default function ConfirmationCard({
 
   if (status === "failed" && outcome) {
     return (
-      <div className="anim-rise max-w-md border border-rust/40 bg-rust/5 px-4 py-3">
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-rust">
+      <div className="anim-rise max-w-md bg-danger/10 px-4 py-3">
+        <p className="text-small font-medium text-danger">
           Not done
         </p>
         <p className="mt-1 text-[13.5px] text-ink">{outcome.message}</p>
@@ -71,8 +71,8 @@ export default function ConfirmationCard({
 
   if (status === "cancelled" || status === "expired") {
     return (
-      <div className="anim-rise max-w-md border border-line bg-cream-raised px-4 py-3">
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">
+      <div className="anim-rise max-w-md bg-surface px-4 py-3">
+        <p className="text-small text-ink">
           {status === "cancelled"
             ? "Cancelled. Nothing was done."
             : "This took too long to approve. Ask again if you still want it."}
@@ -82,24 +82,20 @@ export default function ConfirmationCard({
   }
 
   return (
-    <div className="anim-rise max-w-md border border-brass-line bg-cream-raised">
-      <div className="flex items-center justify-between bg-navy px-4 py-2 text-cream">
-        <span className="font-mono text-[11px] uppercase tracking-[0.14em]">
-          Please confirm
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-brass-soft">
-          Requires approval
-        </span>
+    <div className="anim-rise max-w-md bg-surface">
+      <div className="flex items-center justify-between gap-4 bg-ink px-4 py-2 text-small text-ground">
+        <span className="font-medium">Please confirm</span>
+        <span>Requires approval</span>
       </div>
 
-      <dl className="rule-bottom border-line px-4 py-3">
-        <div className="font-display text-[16px] font-medium text-ink">
+      <dl className="px-4 py-3">
+        <div className="text-[16px] font-medium text-ink">
           {confirmation.title}
         </div>
-        <div className="mt-2.5 space-y-1.5 text-[13px] text-ink-soft">
+        <div className="mt-2.5 space-y-1.5 text-[13px] text-ink">
           {confirmation.lines.map((line) => (
             <div key={line.label} className="flex gap-3">
-              <dt className="w-16 shrink-0 font-mono text-[11px] uppercase tracking-[0.1em] text-ink-faint">
+              <dt className="w-16 shrink-0 text-muted">
                 {line.label}
               </dt>
               <dd>{line.value}</dd>
@@ -109,7 +105,7 @@ export default function ConfirmationCard({
       </dl>
 
       {error && (
-        <p className="rule-bottom border-line bg-rust/5 px-4 py-2 text-[12.5px] text-rust">
+        <p className="bg-danger/10 px-4 py-2 text-[13px] text-danger">
           {error}
         </p>
       )}
@@ -119,7 +115,7 @@ export default function ConfirmationCard({
           type="button"
           onClick={() => run("confirm")}
           disabled={status === "submitting"}
-          className="flex-1 border-r border-line bg-brass px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.1em] text-cream transition-colors duration-150 hover:bg-navy disabled:opacity-60"
+          className="flex-1 bg-accent px-4 py-2.5 text-small font-medium text-accent-ink transition-transform duration-150 active:scale-[0.97] disabled:opacity-60"
         >
           {status === "submitting" ? "Working…" : "Confirm"}
         </button>
@@ -127,7 +123,7 @@ export default function ConfirmationCard({
           type="button"
           onClick={() => run("cancel")}
           disabled={status === "submitting"}
-          className="flex-1 px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.1em] text-ink-soft transition-colors duration-150 hover:bg-cream-sunken disabled:opacity-60"
+          className="flex-1 px-4 py-2.5 text-small font-medium text-ink transition-colors duration-150 hover:bg-ground disabled:opacity-60"
         >
           Cancel
         </button>

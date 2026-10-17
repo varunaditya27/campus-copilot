@@ -52,14 +52,14 @@ export default function AdminStudentsPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader eyebrow="Dashboard" title="Students">
+      <PageHeader title="Students">
         <input ref={fileInput} type="file" accept=".csv,text/csv" className="hidden" onChange={onFile} aria-label="CSV file to import" />
         <Button onClick={() => fileInput.current?.click()} disabled={importing}>
           {importing ? "Importing…" : "Import CSV"}
         </Button>
       </PageHeader>
 
-      <p className="max-w-2xl text-[13px] text-ink-soft">
+      <p className="max-w-2xl text-small text-muted">
         Import adds new students from a CSV with the columns <code>student_id, name, program, year</code>. If any row is
         invalid nothing is imported, and students already on the roster are left as they are.
       </p>
@@ -119,7 +119,7 @@ export default function AdminStudentsPage() {
 
       {data && (
         <>
-          <div className="overflow-x-auto border border-line bg-cream-raised">
+          <div className="overflow-x-auto bg-surface">
             <table className={tableClass}>
               <thead>
                 <tr>
@@ -133,19 +133,19 @@ export default function AdminStudentsPage() {
                 {data.items.map((s) => (
                   <tr key={s.student_id}>
                     <td className={tdClass}>
-                      <Link href={`/admin/students/${s.student_id}`} className="font-medium underline decoration-line-strong underline-offset-2 hover:decoration-brass">
+                      <Link href={`/admin/students/${s.student_id}`} className="font-medium underline underline-offset-2 hover:decoration-2">
                         {s.name}
                       </Link>
-                      <div className="font-mono text-[11px] text-ink-faint">{s.student_id}</div>
+                      <div className="text-small tabular-nums text-muted">{s.student_id}</div>
                     </td>
                     <td className={tdClass}>{s.program}</td>
                     <td className={tdClass}>{s.year}</td>
-                    <td className={`${tdClass} text-ink-soft`}>{s.has_account ? "Signed up" : "No account"}</td>
+                    <td className={`${tdClass} text-muted`}>{s.has_account ? "Signed up" : "No account"}</td>
                   </tr>
                 ))}
                 {data.items.length === 0 && (
                   <tr>
-                    <td className={`${tdClass} text-ink-faint`} colSpan={4}>
+                    <td className={`${tdClass} text-muted`} colSpan={4}>
                       No students match.
                     </td>
                   </tr>
@@ -153,7 +153,7 @@ export default function AdminStudentsPage() {
               </tbody>
             </table>
           </div>
-          <div className="flex items-center justify-between font-mono text-[12px] text-ink-soft">
+          <div className="flex items-center justify-between text-small tabular-nums text-muted">
             <span>
               {data.total} students · page {data.page} of {pages}
             </span>

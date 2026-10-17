@@ -1,22 +1,15 @@
 import Link from "next/link";
 
 export function AuthShell({
-  eyebrow,
   title,
   children,
 }: {
-  eyebrow: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
     <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-6 py-12">
-      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass">
-        {eyebrow}
-      </p>
-      <h1 className="mt-2 font-display text-3xl font-medium tracking-tight text-ink">
-        {title}
-      </h1>
+      <h1 className="text-head font-medium tracking-[-0.04em] text-ink">{title}</h1>
       {children}
     </main>
   );
@@ -32,14 +25,12 @@ export function TextField({
 } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className="block">
-      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">
-        {label}
-      </span>
+      <span className="text-small font-medium text-ink">{label}</span>
       <input
         {...input}
-        className="mt-1.5 w-full border border-line-strong bg-cream-raised px-3 py-2.5 text-[15px] text-ink placeholder:text-ink-faint focus:border-brass focus:outline-none"
+        className="mt-1.5 w-full border border-muted bg-ground px-3 py-2.5 text-body text-ink placeholder:text-muted focus:outline-2 focus:outline-offset-2 focus:outline-ink"
       />
-      {hint && <span className="mt-1 block text-[12px] text-ink-faint">{hint}</span>}
+      {hint && <span className="mt-1 block text-small text-muted">{hint}</span>}
     </label>
   );
 }
@@ -49,7 +40,7 @@ export function FormError({ message }: { message: string | null }) {
   return (
     <p
       role="alert"
-      className="border border-rust/40 bg-rust/5 px-3 py-2 text-[13px] text-rust"
+      className="bg-danger/10 px-3 py-2 text-small text-danger"
     >
       {message}
     </p>
@@ -67,7 +58,7 @@ export function SubmitButton({
     <button
       type="submit"
       disabled={busy}
-      className="w-full bg-navy px-4 py-3 font-mono text-[12px] uppercase tracking-[0.14em] text-cream transition-colors duration-150 hover:bg-brass disabled:opacity-60"
+      className="h-12 w-full bg-accent px-4 text-body font-medium text-accent-ink transition-transform duration-150 active:scale-[0.98] disabled:opacity-60"
     >
       {children}
     </button>
@@ -84,9 +75,9 @@ export function SwitchLink({
   label: string;
 }) {
   return (
-    <p className="mt-6 text-[13.5px] text-ink-soft">
+    <p className="mt-6 text-small text-ink">
       {prompt}{" "}
-      <Link href={href} className="text-navy underline decoration-brass underline-offset-4 hover:text-brass">
+      <Link href={href} className="underline underline-offset-4 hover:decoration-2">
         {label}
       </Link>
     </p>

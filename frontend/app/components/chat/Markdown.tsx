@@ -9,28 +9,28 @@ const components: Components = {
   em: ({ children }) => <em className="italic">{children}</em>,
 
   h1: ({ children }) => (
-    <h1 className="mb-2.5 mt-4 font-display text-lg font-medium text-navy first:mt-0">
+    <h1 className="mb-2.5 mt-4 text-lg font-medium text-ink first:mt-0">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="mb-2 mt-4 font-display text-base font-medium text-navy first:mt-0">
+    <h2 className="mb-2 mt-4 text-base font-medium text-ink first:mt-0">
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mb-1.5 mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft first:mt-0">
+    <h3 className="mb-1.5 mt-3 text-[15px] font-semibold text-ink first:mt-0">
       {children}
     </h3>
   ),
 
   ul: ({ children }) => (
-    <ul className="mb-3 ml-4.5 list-disc space-y-1 text-[15px] leading-relaxed text-ink marker:text-brass last:mb-0">
+    <ul className="mb-3 ml-4.5 list-disc space-y-1 text-[15px] leading-relaxed text-ink marker:text-muted last:mb-0">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-3 ml-4.5 list-decimal space-y-1 text-[15px] leading-relaxed text-ink marker:text-brass marker:font-mono marker:text-[13px] last:mb-0">
+    <ol className="mb-3 ml-4.5 list-decimal space-y-1 text-[15px] leading-relaxed text-ink marker:text-muted last:mb-0">
       {children}
     </ol>
   ),
@@ -41,19 +41,19 @@ const components: Components = {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="text-brass underline decoration-brass-line underline-offset-2 transition-colors duration-200 hover:text-navy"
+      className="text-ink underline underline-offset-2 hover:decoration-2"
     >
       {children}
     </a>
   ),
 
   blockquote: ({ children }) => (
-    <blockquote className="mb-3 border-l-2 border-brass-line pl-3 text-ink-soft italic last:mb-0">
+    <blockquote className="mb-3 bg-surface px-3 py-2 text-ink italic last:mb-0">
       {children}
     </blockquote>
   ),
 
-  hr: () => <hr className="my-4 border-line" />,
+  hr: () => <hr className="my-6 border-0" />,
 
   code: ({ className, children, ...props }) => {
     const isBlock = /language-/.test(className ?? "");
@@ -65,13 +65,13 @@ const components: Components = {
       );
     }
     return (
-      <code className="rounded-none bg-cream-sunken px-1 py-0.5 font-mono text-[13px] text-ink">
+      <code className="bg-surface px-1 py-0.5 font-mono text-[13px] text-ink">
         {children}
       </code>
     );
   },
   pre: ({ children }) => (
-    <pre className="thin-scroll mb-3 overflow-x-auto border border-line bg-cream-sunken px-3 py-2.5 last:mb-0">
+    <pre className="thin-scroll mb-3 overflow-x-auto bg-surface px-3 py-2.5 last:mb-0">
       {children}
     </pre>
   ),
@@ -81,14 +81,14 @@ const components: Components = {
       <table className="w-full border-collapse text-[14px]">{children}</table>
     </div>
   ),
-  thead: ({ children }) => <thead className="border-b border-line-strong">{children}</thead>,
+  thead: ({ children }) => <thead className="border-b border-muted">{children}</thead>,
   th: ({ children }) => (
-    <th className="px-2.5 py-1.5 text-left font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-soft">
+    <th className="px-2.5 py-1.5 text-left text-[13px] font-medium text-muted">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="border-t border-line px-2.5 py-1.5 align-top text-ink">{children}</td>
+    <td className="border-t border-surface px-2.5 py-1.5 align-top text-ink">{children}</td>
   ),
 };
 

@@ -22,16 +22,12 @@ export default function ChatWindow({
     return (
       <div className="thin-scroll flex flex-1 flex-col items-center justify-center overflow-y-auto px-6 py-10">
         <div className="w-full max-w-2xl">
-          <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-brass">
-            Campus Copilot
-          </p>
-          <h1 className="mt-2 font-display text-[28px] font-medium leading-tight text-ink">
+          <h1 className="text-lead font-medium text-balance text-ink">
             Ask about campus policy, find an event, or get something done.
           </h1>
-          <p className="mt-2 max-w-md text-[14px] leading-relaxed text-ink-soft">
-            Answers are grounded in the campus knowledge base. Requests that
-            require action — like registering for an event — always ask for
-            your confirmation first.
+          <p className="mt-3 max-w-[60ch] text-body text-ink">
+            Answers come from the campus handbook. Anything that changes something, like
+            registering for an event, asks you to confirm first.
           </p>
           <div className="mt-6">
             <SuggestedPrompts onSelect={onSelectPrompt} />

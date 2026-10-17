@@ -28,7 +28,7 @@ export default function EventDetailPage() {
       <div className="mx-auto max-w-2xl">
         <Link
           href="/events"
-          className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-faint transition-colors hover:text-navy"
+          className="inline-flex items-center gap-1.5 text-small text-muted transition-colors hover:text-ink"
         >
           <ArrowRightIcon className="h-3 w-3 rotate-180" />
           All events
@@ -36,12 +36,12 @@ export default function EventDetailPage() {
 
         <div className="mt-6">
           {error && (
-            <div className="border border-line bg-rust/5 px-4 py-3">
-              <p className="font-mono text-[12px] text-rust">{error}</p>
+            <div className="bg-danger/10 px-4 py-3">
+              <p className="text-small tabular-nums text-danger">{error}</p>
             </div>
           )}
           {!error && !event && (
-            <p className="font-mono text-[12px] text-ink-faint">Loading…</p>
+            <p className="text-small tabular-nums text-muted">Loading…</p>
           )}
           {event && <EventDetails event={event} />}
         </div>

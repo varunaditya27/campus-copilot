@@ -94,7 +94,7 @@ export default function AdminKnowledgePage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader eyebrow="Dashboard" title="Knowledge base">
+      <PageHeader title="Knowledge base">
         <input ref={fileInput} type="file" accept=".md,.pdf" className="hidden" onChange={onFile} aria-label="Document to upload" />
         <Button onClick={() => fileInput.current?.click()} disabled={working !== null}>
           {working === "upload" ? "Uploading…" : "Upload document"}
@@ -108,13 +108,13 @@ export default function AdminKnowledgePage() {
       </PageHeader>
 
       {ingesting && (
-        <div role="status" aria-live="polite" className="border border-line bg-cream-raised px-4 py-3">
-          <p className="font-mono text-[12px] text-ink-soft">
+        <div role="status" aria-live="polite" className="bg-surface px-4 py-3">
+          <p className="text-small tabular-nums text-muted">
             {working === "rebuild" ? "Rebuilding everything" : "Checking which documents changed"}… {elapsed}s. This
             can take a minute: documents are split and embedded one by one.
           </p>
-          <div className="mt-2 h-1.5 w-full overflow-hidden bg-cream-sunken">
-            <div className="h-full w-1/3 animate-pulse bg-brass" />
+          <div className="mt-2 h-1.5 w-full overflow-hidden bg-ground">
+            <div className="h-full w-1/3 animate-pulse bg-ink" />
           </div>
         </div>
       )}
@@ -125,12 +125,12 @@ export default function AdminKnowledgePage() {
 
       {status && (
         <>
-          <p className="text-[13px] text-ink-soft">
+          <p className="text-small text-muted">
             {status.built
               ? `${status.document_count} documents, ${status.chunk_count} chunks in "${status.collection}". Last ingested ${status.last_ingested_at ? formatDateTime(status.last_ingested_at) : "never"}.`
               : "The knowledge base has not been built yet. Run an ingest."}
           </p>
-          <div className="overflow-x-auto border border-line bg-cream-raised">
+          <div className="overflow-x-auto bg-surface">
             <table className={tableClass}>
               <thead>
                 <tr>
@@ -147,7 +147,7 @@ export default function AdminKnowledgePage() {
                 {status.documents.map((d) => (
                   <tr key={d.document}>
                     <td className={`${tdClass} font-medium`}>{d.document}</td>
-                    <td className={`${tdClass} text-ink-soft`}>{d.source}</td>
+                    <td className={`${tdClass} text-muted`}>{d.source}</td>
                     <td className={tdClass}>{d.chunks}</td>
                     <td className={`${tdClass} whitespace-nowrap`}>{d.ingested_at ? formatDateTime(d.ingested_at) : "—"}</td>
                     <td className={`${tdClass} whitespace-nowrap text-right`}>
@@ -166,7 +166,7 @@ export default function AdminKnowledgePage() {
                 ))}
                 {status.documents.length === 0 && (
                   <tr>
-                    <td className={`${tdClass} text-ink-faint`} colSpan={5}>
+                    <td className={`${tdClass} text-muted`} colSpan={5}>
                       No documents.
                     </td>
                   </tr>
@@ -179,18 +179,18 @@ export default function AdminKnowledgePage() {
 
       {preview && (
         <Modal title={preview.document} onClose={() => setPreview(null)} wide>
-          <p className="text-[13px] text-ink-soft">
+          <p className="text-small text-muted">
             {preview.chunk_count} chunks · embedded with <strong>{preview.embedding.model}</strong> (
             {preview.embedding.dimensions}-dimensional vectors) in collection {preview.embedding.collection}
             {preview.ingested_at && ` · ingested ${formatDateTime(preview.ingested_at)}`}.
           </p>
           <ol className="mt-4 max-h-[60vh] space-y-3 overflow-y-auto pr-1">
             {preview.chunks.map((c) => (
-              <li key={c.id} className="border border-line bg-cream-raised p-3">
-                <p className="font-mono text-[11px] text-ink-faint">
+              <li key={c.id} className="bg-surface p-3">
+                <p className="text-small tabular-nums text-muted">
                   {c.id} · {c.section} · {c.characters} characters, {c.words} words
                 </p>
-                <p className="mt-1.5 whitespace-pre-wrap text-[13.5px] text-ink">{c.text}</p>
+                <p className="mt-1.5 whitespace-pre-wrap text-small text-ink">{c.text}</p>
               </li>
             ))}
           </ol>

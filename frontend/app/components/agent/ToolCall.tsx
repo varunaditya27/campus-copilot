@@ -59,15 +59,15 @@ export default function ToolCall({
   return (
     <div className="anim-rise relative flex gap-3 pb-5" style={{ animationDelay: `${index * 70}ms` }}>
       {!isLast && (
-        <span className="absolute left-[9px] top-5 bottom-0 w-px bg-line" aria-hidden />
+        <span className="absolute left-[8.5px] top-5 bottom-0 w-0.5 bg-surface" aria-hidden />
       )}
       <span
         className={`z-10 mt-0.5 flex h-[19px] w-[19px] shrink-0 items-center justify-center border ${
           entry.status === "error"
-            ? "border-rust text-rust bg-cream"
+            ? "border-danger text-danger bg-ground"
             : entry.status === "running"
-              ? "border-brass text-brass bg-cream"
-              : "border-forest text-forest bg-cream"
+              ? "border-accent text-accent bg-ground"
+              : "border-ink text-ink bg-ground"
         }`}
       >
         {entry.status === "running" ? (
@@ -80,7 +80,7 @@ export default function ToolCall({
       </span>
 
       <div className="min-w-0 pt-px">
-        <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-soft">
+        <p className="text-small font-medium text-muted">
           {entry.label}
         </p>
         {entry.resultSummary && (

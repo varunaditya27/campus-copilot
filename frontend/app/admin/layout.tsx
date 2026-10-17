@@ -15,7 +15,7 @@ function Dashboard({ children }: { children: React.ReactNode }) {
   if (sections.length === 0) {
     return (
       <div className="flex flex-1 items-center justify-center px-6">
-        <p className="max-w-md border border-line bg-cream-raised p-6 text-[14px] text-ink-soft">
+        <p className="max-w-md bg-surface p-6 text-body text-ink">
           The dashboard is for faculty, staff and administrators. Students use the
           chat.
         </p>
@@ -24,10 +24,10 @@ function Dashboard({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
+    <div className="flex h-[calc(100dvh-var(--header-h))] flex-col">
       <nav
         aria-label="Dashboard sections"
-        className="border-b border-line bg-cream-raised"
+        className="bg-surface"
       >
         <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-6">
           {sections.map((section) => {
@@ -37,10 +37,10 @@ function Dashboard({ children }: { children: React.ReactNode }) {
                 key={section.href}
                 href={section.href}
                 aria-current={active ? "page" : undefined}
-                className={`border-b-2 px-3 py-3 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors duration-150 ${
+                className={`border-b-2 px-3 py-3 text-small font-medium transition-colors duration-150 ${
                   active
-                    ? "border-brass text-ink"
-                    : "border-transparent text-ink-faint hover:text-ink"
+                    ? "border-ink text-ink"
+                    : "border-transparent text-muted hover:text-ink"
                 }`}
               >
                 {section.label}

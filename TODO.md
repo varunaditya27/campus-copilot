@@ -18,7 +18,6 @@
 - [x] Campus knowledge corpus (academics, administration, campus life, policies, FAQ)
 - [x] Structured data layer: `events.json`, `students.json`, `registrations.json`
 - [x] Events browser page (`/events`)
-- [x] About page (`/about`)
 
 ---
 

@@ -11,17 +11,15 @@ export default function SuggestedPrompts({
   onSelect: (prompt: string) => void;
 }) {
   return (
-    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+    <div className="flex flex-wrap gap-2">
       {PROMPTS.map((prompt) => (
         <button
           key={prompt}
           type="button"
           onClick={() => onSelect(prompt)}
-          className="group border border-line bg-cream-raised px-3.5 py-3 text-left transition-colors duration-150 hover:border-brass-line hover:bg-cream"
+          className="bg-surface px-4 py-3 text-left text-body text-ink transition-colors duration-150 hover:bg-ink hover:text-ground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink active:scale-[0.98]"
         >
-          <span className="text-[13.5px] leading-snug text-ink-soft group-hover:text-ink">
-            {prompt}
-          </span>
+          {prompt}
         </button>
       ))}
     </div>

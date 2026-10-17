@@ -38,7 +38,7 @@ describe("the header navigation", () => {
 
   it("marks the current page", () => {
     as(null);
-    expect(screen.getByRole("link", { name: "Events" }).className).toContain("text-cream");
-    expect(screen.getByRole("link", { name: "About" }).className).toContain("text-cream/60");
+    expect(screen.getByRole("link", { name: "Events" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("link", { name: "Chat" })).not.toHaveAttribute("aria-current");
   });
 });

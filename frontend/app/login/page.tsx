@@ -39,7 +39,7 @@ export default function LoginPage() {
   }
 
   return (
-    <AuthShell eyebrow="Sign in" title="Welcome back">
+    <AuthShell title="Sign in">
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <TextField
           label="Email"

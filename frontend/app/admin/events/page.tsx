@@ -60,7 +60,7 @@ export default function AdminEventsPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader eyebrow="Dashboard" title="Events">
+      <PageHeader title="Events">
         <Button kind="primary" onClick={() => setEditing("new")}>
           New event
         </Button>
@@ -71,7 +71,7 @@ export default function AdminEventsPage() {
       {!error && events === null && <Loading what="events" />}
 
       {events && (
-        <div className="overflow-x-auto border border-line bg-cream-raised">
+        <div className="overflow-x-auto bg-surface">
           <table className={tableClass}>
             <thead>
               <tr>
@@ -89,20 +89,20 @@ export default function AdminEventsPage() {
               {events.map((event) => (
                 <tr key={event.id}>
                   <td className={tdClass}>
-                    <Link href={`/admin/events/${event.id}`} className="font-medium text-ink underline decoration-line-strong underline-offset-2 hover:decoration-brass">
+                    <Link href={`/admin/events/${event.id}`} className="font-medium text-ink underline underline-offset-2 hover:decoration-2">
                       {event.name}
                     </Link>
-                    <div className="text-[12px] text-ink-faint">{event.category}</div>
+                    <div className="text-small text-muted first-letter:uppercase">{event.category.replace(/-/g, " ")}</div>
                   </td>
                   <td className={`${tdClass} whitespace-nowrap`}>
                     {event.date}
-                    <div className="text-[12px] text-ink-faint">{event.time}</div>
+                    <div className="text-small text-muted">{event.time}</div>
                   </td>
                   <td className={tdClass}>{event.venue}</td>
                   <td className={tdClass}>
                     <Gauge value={event.registered} max={event.capacity} label={`Seats taken for ${event.name}`} />
                   </td>
-                  <td className={`${tdClass} text-ink-soft`}>{event.department ?? "Campus-wide"}</td>
+                  <td className={`${tdClass} text-muted`}>{event.department ?? "Campus-wide"}</td>
                   <td className={`${tdClass} whitespace-nowrap text-right`}>
                     {canManage(event) ? (
                       <span className="inline-flex gap-2">
@@ -114,14 +114,14 @@ export default function AdminEventsPage() {
                         </Button>
                       </span>
                     ) : (
-                      <span className="text-[12px] text-ink-faint">{event.department ? "Other department" : "Admin only"}</span>
+                      <span className="text-small text-muted">{event.department ? "Other department" : "Admin only"}</span>
                     )}
                   </td>
                 </tr>
               ))}
               {events.length === 0 && (
                 <tr>
-                  <td className={`${tdClass} text-ink-faint`} colSpan={6}>
+                  <td className={`${tdClass} text-muted`} colSpan={6}>
                     No events yet.
                   </td>
                 </tr>
@@ -156,7 +156,7 @@ export default function AdminEventsPage() {
         >
           {warning ? (
             <p>
-              <strong className="text-rust">{warning}</strong>
+              <strong className="text-danger">{warning}</strong>
             </p>
           ) : (
             <p>This removes the event from the campus listing. It cannot be undone.</p>

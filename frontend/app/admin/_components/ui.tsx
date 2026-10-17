@@ -3,23 +3,19 @@
 import { useEffect, useRef } from "react";
 
 export function PageHeader({
-  eyebrow,
   title,
+  note,
   children,
 }: {
-  eyebrow: string;
   title: string;
+  note?: string;
   children?: React.ReactNode;
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass">
-          {eyebrow}
-        </p>
-        <h1 className="mt-2 font-display text-3xl font-medium tracking-tight text-ink">
-          {title}
-        </h1>
+        <h1 className="text-3xl font-medium tracking-[-0.03em] text-balance text-ink">{title}</h1>
+        {note && <p className="mt-1 text-body text-muted first-letter:uppercase">{note}</p>}
       </div>
       {children && <div className="flex flex-wrap items-center gap-2">{children}</div>}
     </div>
@@ -29,9 +25,9 @@ export function PageHeader({
 type ButtonKind = "primary" | "secondary" | "danger";
 
 const BUTTON_STYLES: Record<ButtonKind, string> = {
-  primary: "bg-navy text-cream hover:bg-brass",
-  secondary: "border border-line-strong bg-cream-raised text-ink hover:border-brass",
-  danger: "bg-rust text-cream hover:bg-navy",
+  primary: "bg-accent text-accent-ink",
+  secondary: "bg-ink/10 text-ink hover:bg-ink hover:text-ground",
+  danger: "bg-danger text-ground",
 };
 
 export function Button({
@@ -43,7 +39,7 @@ export function Button({
     <button
       type="button"
       {...props}
-      className={`px-3.5 py-2 font-mono text-[12px] uppercase tracking-[0.1em] transition-colors duration-150 disabled:opacity-50 ${BUTTON_STYLES[kind]} ${className}`}
+      className={`min-h-10 px-4 py-2 text-small font-medium transition duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink active:scale-[0.98] disabled:opacity-50 ${BUTTON_STYLES[kind]} ${className}`}
     />
   );
 }
@@ -56,19 +52,19 @@ export function Banner({
   children: React.ReactNode;
 }) {
   const styles = {
-    error: "border-rust/40 bg-rust/5 text-rust",
-    success: "border-forest/40 bg-forest/5 text-forest",
-    info: "border-line bg-cream-raised text-ink-soft",
+    error: "bg-danger/10 text-danger",
+    success: "bg-surface text-ink",
+    info: "bg-surface text-ink",
   }[kind];
   return (
-    <p role={kind === "error" ? "alert" : "status"} className={`border px-4 py-2.5 text-[13px] ${styles}`}>
+    <p role={kind === "error" ? "alert" : "status"} className={`px-4 py-2.5 text-small ${styles}`}>
       {children}
     </p>
   );
 }
 
 export function Loading({ what }: { what: string }) {
-  return <p className="font-mono text-[12px] text-ink-faint">Loading {what}…</p>;
+  return <p className="text-small text-muted">Loading {what}…</p>;
 }
 
 export function Field({
@@ -82,22 +78,20 @@ export function Field({
 }) {
   return (
     <label className="block">
-      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">
-        {label}
-      </span>
+      <span className="text-small font-medium text-ink">{label}</span>
       <div className="mt-1.5">{children}</div>
-      {hint && <span className="mt-1 block text-[12px] text-ink-faint">{hint}</span>}
+      {hint && <span className="mt-1 block text-small text-muted">{hint}</span>}
     </label>
   );
 }
 
 export const inputClass =
-  "w-full border border-line-strong bg-cream-raised px-3 py-2 text-[14px] text-ink placeholder:text-ink-faint focus:border-brass focus:outline-none";
+  "w-full border border-muted bg-ground px-3 py-2 text-body text-ink placeholder:text-muted focus:outline-2 focus:outline-offset-2 focus:outline-ink";
 
-export const tableClass = "w-full border-collapse text-left text-[13.5px]";
+export const tableClass = "w-full border-collapse text-left text-small tabular-nums";
 export const thClass =
-  "border-b border-line-strong px-3 py-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-ink-faint";
-export const tdClass = "border-b border-line px-3 py-2.5 align-top";
+  "border-b border-muted px-3 py-2 font-medium text-muted";
+export const tdClass = "border-b border-ground px-3 py-2.5 align-top";
 
 // A bar showing how much of a total is used.
 export function Gauge({
@@ -110,7 +104,7 @@ export function Gauge({
   label: string;
 }) {
   const share = max > 0 ? Math.min(100, Math.round((100 * value) / max)) : 0;
-  const colour = share >= 100 ? "bg-rust" : share >= 80 ? "bg-brass" : "bg-forest";
+  const colour = share >= 100 ? "bg-danger" : share >= 80 ? "bg-ink" : "bg-muted";
   return (
     <div>
       <div
@@ -119,11 +113,11 @@ export function Gauge({
         aria-valuemin={0}
         aria-valuemax={max}
         aria-valuenow={value}
-        className="h-2 w-full bg-cream-sunken"
+        className="h-2 w-full bg-ground"
       >
         <div className={`h-full ${colour}`} style={{ width: `${share}%` }} />
       </div>
-      <p className="mt-1 font-mono text-[11px] text-ink-soft">
+      <p className="mt-1 text-small text-muted tabular-nums">
         {value} / {max} ({share}%)
       </p>
     </div>
@@ -158,7 +152,7 @@ export function Modal({
 
   return (
     <div
-      className="anim-fade fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-navy/50 px-4 py-10"
+      className="anim-fade fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/50 px-4 py-10"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -169,15 +163,15 @@ export function Modal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className={`anim-rise w-full border border-line-strong bg-cream p-6 outline-none ${wide ? "max-w-3xl" : "max-w-lg"}`}
+        className={`anim-rise w-full bg-ground p-6 shadow-2xl outline-none ${wide ? "max-w-3xl" : "max-w-lg"}`}
       >
         <div className="flex items-start justify-between gap-4">
-          <h2 className="font-display text-xl font-medium text-ink">{title}</h2>
+          <h2 className="text-xl font-medium text-ink">{title}</h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="font-mono text-[18px] leading-none text-ink-faint hover:text-ink"
+            className="-mt-2 -mr-2 flex h-11 w-11 shrink-0 items-center justify-center text-2xl leading-none text-muted hover:text-ink"
           >
             ×
           </button>
@@ -207,7 +201,7 @@ export function ConfirmDialog({
 }) {
   return (
     <Modal title={title} onClose={onCancel}>
-      <div className="space-y-3 text-[14px] text-ink-soft">{children}</div>
+      <div className="space-y-3 text-body text-ink">{children}</div>
       {error && (
         <div className="mt-3">
           <Banner kind="error">{error}</Banner>

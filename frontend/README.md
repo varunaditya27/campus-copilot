@@ -78,8 +78,6 @@ frontend/
 │   ├── page.tsx                  # Chat page (chat column + agent activity panel)
 │   ├── layout.tsx                # Root layout, fonts, header
 │   ├── globals.css               # Design tokens, base styles, motion utilities
-│   ├── about/
-│   │   └── page.tsx              # About page
 │   ├── events/
 │   │   ├── page.tsx              # Events list
 │   │   └── [id]/page.tsx         # Single event detail

@@ -22,9 +22,7 @@ export default function RequireAuth({
   if (state.status !== "signedIn") {
     return (
       <div className="flex flex-1 items-center justify-center">
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
-          Loading…
-        </p>
+        <p className="text-small text-muted">Loading…</p>
       </div>
     );
   }

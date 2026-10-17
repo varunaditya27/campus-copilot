@@ -33,7 +33,7 @@ export default function EventRosterPage({ params }: { params: Promise<{ id: stri
 
   return (
     <div className="space-y-6">
-      <Link href="/admin/events" className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint hover:text-ink">
+      <Link href="/admin/events" className="text-small text-muted hover:text-ink">
         ← All events
       </Link>
       {error && <Banner kind="error">{error}</Banner>}
@@ -41,28 +41,28 @@ export default function EventRosterPage({ params }: { params: Promise<{ id: stri
 
       {roster && (
         <>
-          <PageHeader eyebrow={roster.event.category} title={roster.event.name}>
+          <PageHeader note={roster.event.category.replace(/-/g, " ")} title={roster.event.name}>
             <Button onClick={download} disabled={exporting || roster.registrations.length === 0}>
               {exporting ? "Exporting…" : "Export CSV"}
             </Button>
           </PageHeader>
           {exportError && <Banner kind="error">{exportError}</Banner>}
 
-          <div className="grid gap-6 border-y border-line py-6 sm:grid-cols-3">
+          <div className="grid gap-6 bg-surface p-6 sm:grid-cols-3">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">When</p>
+              <p className="text-small text-muted">When</p>
               <p className="mt-1 text-[15px]">
                 {roster.event.date} at {roster.event.time}
               </p>
-              <p className="text-[13px] text-ink-soft">{roster.event.duration_minutes} minutes</p>
+              <p className="text-small text-muted">{roster.event.duration_minutes} minutes</p>
             </div>
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">Where</p>
+              <p className="text-small text-muted">Where</p>
               <p className="mt-1 text-[15px]">{roster.event.venue}</p>
-              <p className="text-[13px] text-ink-soft">{roster.event.organizer}</p>
+              <p className="text-small text-muted">{roster.event.organizer}</p>
             </div>
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-faint">Capacity</p>
+              <p className="text-small text-muted">Capacity</p>
               <div className="mt-2">
                 <Gauge value={roster.event.registered} max={roster.event.capacity} label="Seats taken" />
               </div>
@@ -70,8 +70,8 @@ export default function EventRosterPage({ params }: { params: Promise<{ id: stri
           </div>
 
           <section>
-            <h2 className="font-display text-xl font-medium">Registered ({roster.registrations.length})</h2>
-            <div className="mt-3 overflow-x-auto border border-line bg-cream-raised">
+            <h2 className="text-xl font-medium">Registered ({roster.registrations.length})</h2>
+            <div className="mt-3 overflow-x-auto bg-surface">
               <table className={tableClass}>
                 <thead>
                   <tr>
@@ -87,17 +87,17 @@ export default function EventRosterPage({ params }: { params: Promise<{ id: stri
                     <tr key={r.registration_id}>
                       <td className={tdClass}>
                         {r.student_name}
-                        <div className="font-mono text-[11px] text-ink-faint">{r.student_id}</div>
+                        <div className="text-small tabular-nums text-muted">{r.student_id}</div>
                       </td>
                       <td className={tdClass}>{r.program}</td>
                       <td className={tdClass}>{r.year}</td>
-                      <td className={`${tdClass} font-mono text-[12px]`}>{r.registration_id}</td>
+                      <td className={`${tdClass} text-small tabular-nums`}>{r.registration_id}</td>
                       <td className={`${tdClass} whitespace-nowrap`}>{formatDateTime(r.registered_at)}</td>
                     </tr>
                   ))}
                   {roster.registrations.length === 0 && (
                     <tr>
-                      <td className={`${tdClass} text-ink-faint`} colSpan={5}>
+                      <td className={`${tdClass} text-muted`} colSpan={5}>
                         Nobody has registered yet.
                       </td>
                     </tr>
@@ -109,8 +109,8 @@ export default function EventRosterPage({ params }: { params: Promise<{ id: stri
 
           {roster.waitlist.length > 0 && (
             <section>
-              <h2 className="font-display text-xl font-medium">Waitlist ({roster.waitlist.length})</h2>
-              <div className="mt-3 overflow-x-auto border border-line bg-cream-raised">
+              <h2 className="text-xl font-medium">Waitlist ({roster.waitlist.length})</h2>
+              <div className="mt-3 overflow-x-auto bg-surface">
                 <table className={tableClass}>
                   <thead>
                     <tr>
@@ -126,7 +126,7 @@ export default function EventRosterPage({ params }: { params: Promise<{ id: stri
                         <td className={tdClass}>{w.position}</td>
                         <td className={tdClass}>
                           {w.student_name}
-                          <div className="font-mono text-[11px] text-ink-faint">{w.student_id}</div>
+                          <div className="text-small tabular-nums text-muted">{w.student_id}</div>
                         </td>
                         <td className={tdClass}>{w.program}</td>
                         <td className={tdClass}>{w.year}</td>

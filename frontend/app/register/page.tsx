@@ -48,7 +48,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <AuthShell eyebrow="Create an account" title="Join Campus Copilot">
+    <AuthShell title="Create an account">
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <TextField
           label="Student ID (USN)"

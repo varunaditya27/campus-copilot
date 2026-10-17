@@ -112,14 +112,15 @@ function Chat() {
   }
 
   return (
-    <div className="flex min-h-0 flex-1">
+    <div className="flex h-[calc(100dvh-var(--header-h))]">
       <div className="flex min-h-0 flex-1 flex-col">
         {banner && (
-          <div className="rule-bottom border-line bg-rust/10 px-6 py-2.5">
-            <p className="font-mono text-[11.5px] text-rust">{banner}</p>
+          <div className="bg-danger/10 px-6 py-2.5">
+            <p className="text-small text-danger">{banner}</p>
           </div>
         )}
         <ChatWindow messages={messages} onSelectPrompt={handleSend} />
+        <AgentActivity entries={allActivity} compact />
         <ChatInput onSend={handleSend} disabled={sending} />
       </div>
       <AgentActivity entries={allActivity} />
