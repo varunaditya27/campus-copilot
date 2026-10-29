@@ -318,7 +318,7 @@
 ### 7.2 Document Understanding (Multimodal RAG)
 
 - [x] Add `POST /admin/knowledge/upload-pdf` — accept a PDF, extract text with `pymupdf`, chunk and embed (done through the general upload endpoint, using `pypdf`: PyMuPDF is AGPL-licensed)
-- [ ] Add OCR fallback for scanned PDFs using `pytesseract` + image preprocessing
+- [ ] Add OCR fallback for scanned PDFs using `surya-ocr` + image preprocessing
 - [ ] Support ingesting lecture slide decks (`.pptx`) — extract slide text + titles
 - [ ] Add `POST /chat/ask-document` — let a student upload a document (e.g., marksheet, question paper) and ask questions about it
 - [ ] Store uploaded documents in object storage (MinIO for local / S3 for cloud)
