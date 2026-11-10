@@ -93,9 +93,11 @@
 
 ### 2.3 Institutional SSO (Stretch)
 
-- [ ] Add SAML 2.0 / OAuth2 provider support for integration with institutional identity systems
-- [ ] Accept signed USN-based tokens from a college portal if available
-- [ ] Fall back to local password auth if SSO is unavailable
+> Deemed not required (decided 2026-11-10). Will not be built.
+
+- ~~Add SAML 2.0 / OAuth2 provider support for integration with institutional identity systems~~
+- ~~Accept signed USN-based tokens from a college portal if available~~
+- ~~Fall back to local password auth if SSO is unavailable~~
 
 ---
 
@@ -275,12 +277,14 @@
 
 ### 6.1 Email Notifications
 
-- [ ] Add `email_service.py` backed by SMTP (or SendGrid/Resend for production)
-- [ ] Send confirmation email on successful event registration
-- [ ] Send reminder email 24 hours before a registered event
-- [ ] Send notification email when a grievance ticket status changes
-- [ ] Send waitlist promotion email when a spot opens up
-- [ ] Admin can send bulk announcement emails to all registered students for an event
+> Deemed not required (decided 2026-11-10). Will not be built.
+
+- ~~Add `email_service.py` backed by SMTP (or SendGrid/Resend for production)~~
+- ~~Send confirmation email on successful event registration~~
+- ~~Send reminder email 24 hours before a registered event~~
+- ~~Send notification email when a grievance ticket status changes~~
+- ~~Send waitlist promotion email when a spot opens up~~
+- ~~Admin can send bulk announcement emails to all registered students for an event~~
 
 ### 6.2 Push Notifications (Web Push)
 
@@ -307,27 +311,29 @@
 
 ## Phase 7 — Voice & Multimodal
 
+> Deemed not required (decided 2026-11-10). Will not be built.
+
 ### 7.1 Voice Interface
 
-- [ ] Add `POST /voice/transcribe` — accept audio blob, run Whisper (local via `faster-whisper`) and return transcript
-- [ ] Add voice input button in the chat UI — record audio, send to `/voice/transcribe`, auto-fill the chat input
-- [ ] Add `POST /voice/synthesize` — accept text, return audio stream using a local TTS model (e.g., Kokoro, Piper)
-- [ ] Play synthesized audio in the frontend after each agent response (user-toggleable)
-- [ ] Add a full voice mode: hold-to-speak → auto-transcribe → agent responds → auto-speak response
+- ~~Add `POST /voice/transcribe` — accept audio blob, run Whisper (local via `faster-whisper`) and return transcript~~
+- ~~Add voice input button in the chat UI — record audio, send to `/voice/transcribe`, auto-fill the chat input~~
+- ~~Add `POST /voice/synthesize` — accept text, return audio stream using a local TTS model (e.g., Kokoro, Piper)~~
+- ~~Play synthesized audio in the frontend after each agent response (user-toggleable)~~
+- ~~Add a full voice mode: hold-to-speak → auto-transcribe → agent responds → auto-speak response~~
 
 ### 7.2 Document Understanding (Multimodal RAG)
 
 - [x] Add `POST /admin/knowledge/upload-pdf` — accept a PDF, extract text with `pymupdf`, chunk and embed (done through the general upload endpoint, using `pypdf`: PyMuPDF is AGPL-licensed)
-- [ ] Add OCR fallback for scanned PDFs using `surya-ocr` + image preprocessing
-- [ ] Support ingesting lecture slide decks (`.pptx`) — extract slide text + titles
-- [ ] Add `POST /chat/ask-document` — let a student upload a document (e.g., marksheet, question paper) and ask questions about it
-- [ ] Store uploaded documents in object storage (MinIO for local / S3 for cloud)
+- ~~Add OCR fallback for scanned PDFs using `surya-ocr` + image preprocessing~~
+- ~~Support ingesting lecture slide decks (`.pptx`) — extract slide text + titles~~
+- ~~Add `POST /chat/ask-document` — let a student upload a document (e.g., marksheet, question paper) and ask questions about it~~
+- ~~Store uploaded documents in object storage (MinIO for local / S3 for cloud)~~
 
 ### 7.3 Image Input
 
-- [ ] Allow students to send an image in the chat (e.g., a photo of a timetable, a handwritten question)
-- [ ] Route image inputs to a multimodal LLM (e.g., `llava` via Ollama, or Groq's vision endpoint)
-- [ ] Extract structured data from timetable images and store in the student's profile
+- ~~Allow students to send an image in the chat (e.g., a photo of a timetable, a handwritten question)~~
+- ~~Route image inputs to a multimodal LLM (e.g., `llava` via Ollama, or Groq's vision endpoint)~~
+- ~~Extract structured data from timetable images and store in the student's profile~~
 
 ---
 
@@ -413,16 +419,18 @@
 
 ### 10.1 Android App (Kotlin)
 
-- [ ] Create a new Kotlin/Jetpack Compose project: `campus-copilot-android/`
-- [ ] Implement a `ChatScreen` with real-time SSE consumption and streaming message rendering
-- [ ] Implement `AgentActivityPanel` — expandable drawer showing tool activity in real-time
-- [ ] Implement `ConfirmationBottomSheet` — native bottom sheet for registration confirmation
-- [ ] Implement `EventsScreen` — scrollable event cards with filter chips
-- [ ] Implement `ProfileScreen` — student info, registered events, attendance summary
-- [ ] Add JWT auth: login screen + secure token storage in `EncryptedSharedPreferences`
-- [ ] Add push notifications via Firebase Cloud Messaging (FCM)
-- [ ] Add voice input via Android's `SpeechRecognizer` API with fallback to Whisper endpoint
-- [ ] Add offline mode: cache last N conversation turns and knowledge snippets in Room DB
+> Deemed not required (decided 2026-11-10). Will not be built.
+
+- ~~Create a new Kotlin/Jetpack Compose project: `campus-copilot-android/`~~
+- ~~Implement a `ChatScreen` with real-time SSE consumption and streaming message rendering~~
+- ~~Implement `AgentActivityPanel` — expandable drawer showing tool activity in real-time~~
+- ~~Implement `ConfirmationBottomSheet` — native bottom sheet for registration confirmation~~
+- ~~Implement `EventsScreen` — scrollable event cards with filter chips~~
+- ~~Implement `ProfileScreen` — student info, registered events, attendance summary~~
+- ~~Add JWT auth: login screen + secure token storage in `EncryptedSharedPreferences`~~
+- ~~Add push notifications via Firebase Cloud Messaging (FCM)~~
+- ~~Add voice input via Android's `SpeechRecognizer` API with fallback to Whisper endpoint~~
+- ~~Add offline mode: cache last N conversation turns and knowledge snippets in Room DB~~
 
 ### 10.2 PWA (Progressive Web App)
 
