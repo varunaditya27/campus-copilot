@@ -38,6 +38,7 @@ Hanken Grotesk, medium weight, with tight letter spacing for the wordmark (`-0.0
 | `icon-maskable.svg` | Same icon, full square with no rounded corners, so the phone can crop it to any shape. The mark stays inside the central 80% |
 | `mark.svg` | The mark alone in olive, for the header |
 | `badge.svg` | White mark on a transparent background, for notification badges, which the phone recolours |
+| `banner.svg` | The README banner: the mark, the name and the tagline. The text is drawn from the typeface's outlines, so it looks right with no font installed |
 
 Exported files are in `frontend/public/icons/` (`icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `badge-96.png`), plus `frontend/app/favicon.ico` and `frontend/app/apple-icon.png`. To rebuild them, run `rsvg-convert -w <size> -h <size> assets/brand/<file>.svg -o <output>.png`.
 
