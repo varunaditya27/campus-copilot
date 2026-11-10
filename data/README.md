@@ -15,7 +15,7 @@ Two kinds of information feed Campus Copilot, and they are deliberately kept apa
 - Static knowledge ([`knowledge/`](../knowledge/README.md)) — policy, process, and "how does this place work" material. Slow-changing, embedded into Chroma, retrieved semantically.
 - Structured data (this directory) — facts with an identity, a current state, and the possibility of changing *during a conversation*. An event has a seat count that goes down. A registration either exists or doesn't. No embedding model should ever be asked to "recall" whether a specific seat is still free — that's a lookup, not retrieval.
 
-This is why `search_events` and `check_event_availability` are Python functions querying this data directly (see [`backend/README.md`](../backend/README.md#-tools--the-agent-loop)), not RAG. The distinction is one of the core teaching points of the whole project.
+This is why `search_events` and `check_event_availability` are Python functions querying this data directly (see [`backend/README.md`](../backend/README.md#tools--the-agent-loop)), not RAG. The distinction is one of the core teaching points of the whole project.
 
 The files are seed data, loaded into the database by `python -m app.db.seed`. At runtime the app reads and writes the database tables they seed, never the files themselves.
 

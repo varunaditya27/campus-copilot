@@ -53,7 +53,7 @@ The corpus should support questions that require:
 - distinguishing static knowledge from something that requires a live tool (attendance math, event availability, an official record);
 - answering follow-up questions using conversation context.
 
-The agent should cite the document names used to construct an answer wherever possible. See [`backend/README.md`](../backend/README.md#-rag-pipeline) for how chunking, embedding, and the relevance cutoff actually work.
+The agent should cite the document names used to construct an answer wherever possible. See [`backend/README.md`](../backend/README.md#rag-pipeline) for how chunking, embedding, and the relevance cutoff actually work.
 
 ---
 
@@ -247,4 +247,4 @@ The agent should cite the document names used to construct an answer wherever po
 - Write every document as if no AI system exists. No document should mention Campus Copilot, an assistant, an agent, RAG, retrieval, or "the corpus" — that's the whole point of this corpus: it should read exactly like material a real university would publish on its own, for its own students, independent of anything reading it later.
 - Never link to another document with `[text](path)`. Reference other policies or offices by plain-text name instead ("the Registrar's Office," "the Student Code of Conduct") — a real handbook doesn't hyperlink to itself, and named-but-unlinked references are also a more realistic retrieval stress test than a link would be.
 - When adding a fact that another document might also touch (a fee, a deadline, a committee's process), grep the rest of the corpus for it first — several documents deliberately cover adjacent ground (a grade dispute vs. a fee dispute vs. a safety report all route through different committees), and they need to agree with each other where they overlap.
-- After editing anything in this directory, update the index: `python -m app.rag.ingest` from `backend/` (it re-embeds only the files that changed; see [`backend/README.md`](../backend/README.md#-getting-started)). If you add facts worth testing for, add questions for them to `backend/rag_eval/golden.json`: each lists the exact phrase that answers it, and `pytest` checks every phrase still appears in its document.
+- After editing anything in this directory, update the index: `python -m app.rag.ingest` from `backend/` (it re-embeds only the files that changed; see [`backend/README.md`](../backend/README.md#getting-started)). If you add facts worth testing for, add questions for them to `backend/rag_eval/golden.json`: each lists the exact phrase that answers it, and `pytest` checks every phrase still appears in its document.
