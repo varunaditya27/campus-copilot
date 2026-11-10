@@ -154,6 +154,7 @@ def test_a_forged_cookie_is_rejected(client):
 
 def test_an_expired_access_token_is_rejected(client):
     sign_up(client)
+    client.cookies.delete("access_token")  # otherwise the valid cookie from signing up is sent as well
     past = datetime.now(timezone.utc) - timedelta(minutes=1)
     import jwt
 

@@ -28,3 +28,4 @@ redis==8.1.0
 icalendar==7.3.0
 pywebpush==2.5.0
 celery==5.7.0
+starlette==1.10.0
