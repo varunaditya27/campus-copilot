@@ -25,7 +25,17 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-30 h-[var(--header-h)] bg-ground text-ink">
       <div className="flex h-full items-center gap-6 px-5 md:px-6">
-        <Link href="/" className="mr-auto text-xl font-medium tracking-[-0.03em]">
+        <Link href="/" className="mr-auto flex items-center gap-2 text-xl font-medium tracking-[-0.03em]">
+          <svg aria-hidden="true" viewBox="88 100 312 312" className="size-6" fill="currentColor">
+            <path
+              d="M347.9 333.1 A120 120 0 1 1 347.9 178.9"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="56"
+              strokeLinecap="round"
+            />
+            <circle cx="352" cy="256" r="28" />
+          </svg>
           Campus Copilot
         </Link>
 
