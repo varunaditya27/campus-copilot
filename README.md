@@ -6,6 +6,7 @@
 
 AI that doesn't just answer. It acts.
 
+[![CI](https://github.com/varunaditya27/campus-copilot/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/varunaditya27/campus-copilot/actions/workflows/ci.yml)
 [![Status: pre-release](https://img.shields.io/badge/status-pre--release-5d683a)](#status)
 [![Licence: MIT](https://img.shields.io/badge/licence-MIT-38450f)](LICENSE)
 
