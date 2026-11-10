@@ -478,6 +478,23 @@ def test_it_starts_in_production_with_safe_settings():
     assert result.returncode == 0, result.stderr[-400:]
 
 
+def docs_urls(env):
+    base = {"PATH": "/usr/bin:/bin", "JWT_SECRET": "x" * 40, "DATABASE_URL": "sqlite:////tmp/never-created.db"}
+    code = "import app.main as m; print(m.app.docs_url, m.app.redoc_url, m.app.openapi_url)"
+    result = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, env={**base, **env}, cwd=config.BACKEND_DIR)
+    assert result.returncode == 0, result.stderr[-400:]
+    return result.stdout.split()
+
+
+def test_the_api_documentation_pages_are_off_in_production():
+    safe = {"ENVIRONMENT": "production", "CORS_ORIGINS": "https://campus.example", "COOKIE_SECURE": "true"}
+    assert docs_urls(safe) == ["None", "None", "None"]
+
+
+def test_the_api_documentation_pages_stay_on_in_development():
+    assert docs_urls({}) == ["/docs", "/redoc", "/openapi.json"]
+
+
 def test_a_mistyped_origin_is_warned_about_in_development():
     result = run_app_import({"CORS_ORIGINS": "http:/localhost:3000"})
     assert result.returncode == 0 and "not an origin" in result.stderr

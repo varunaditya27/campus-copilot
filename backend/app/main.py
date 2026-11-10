@@ -55,7 +55,9 @@ for _problem in origin_problems(CORS_ORIGINS):
     logging.getLogger(__name__).warning("%s", _problem)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Campus Copilot API", lifespan=lifespan)
+# The interactive API pages list every endpoint, including the admin ones, so they are for development only.
+_docs = {"docs_url": None, "redoc_url": None, "openapi_url": None} if ENVIRONMENT == "production" else {}
+app = FastAPI(title="Campus Copilot API", lifespan=lifespan, **_docs)
 register_error_handlers(app)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, rate_limit_handler)
