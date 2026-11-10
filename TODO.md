@@ -1,11 +1,17 @@
-# Campus Copilot — Production Roadmap TODO
+<div align="center">
 
-> Every item here is a concrete, shippable unit of work. Checked items are done. Everything else is the roadmap.
-> Organized by phase. Within each phase, items are roughly ordered by dependency — complete top-to-bottom.
+# Roadmap
+
+What is done, what was decided against, and what is deferred.
+
+</div>
+
+Every item is a concrete, shippable unit of work. Checked items are done. Struck-through items were decided against. Everything else is still to do.
+Items are organised by phase and roughly ordered by dependency within each phase.
 
 ---
 
-## Phase 0 — Already Shipped ✅
+## Phase 0 — Already Shipped
 
 - [x] Next.js chat interface with agent activity log, source cards, and confirmation UI
 - [x] FastAPI backend with structured request/response schemas
