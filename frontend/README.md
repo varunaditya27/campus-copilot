@@ -1,270 +1,95 @@
 <div align="center">
 
-# 🖥️ Campus Copilot — Frontend
+# Frontend
 
-### The Chat, Events, and Confirmation Surface
-
-**A Next.js interface for an agentic campus assistant — a conversation surface, a live agent-activity log, and a human-in-the-loop confirmation step, built to feel like an institutional tool rather than a generic chatbot.**
-
-<br />
-
-[![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-
-<br />
+The chat, events, profile and admin screens of Campus Copilot, as an installable web app.
 
 </div>
 
----
-
-## ✨ What Lives Here
-
-This package is the presentation layer for [Campus Copilot](../README.md). It owns:
-
-- The **chat interface** — the conversation with the agent.
-- The **agent activity panel** — a live, plain-language log of what the agent is doing (searching, checking availability, waiting on confirmation).
-- The **confirmation card** — the human-in-the-loop gate before any consequential action (event registration) executes.
-- The **events browser** — a read-only view of campus events, independent of the chat.
-
-It does **not** own retrieval, tool execution, or agent orchestration — those live in the FastAPI backend. This app is a typed client against that backend's REST API.
-
-For the full-system architecture (RAG pipeline, tool calling, agent loop), see the [root README](../README.md).
-
----
-
-## 🎨 Design System
-
-The interface is built around a **warm, institutional** register — closer to a university notice board or a printed dossier than a SaaS chat product. Specific choices, and why:
-
-| Decision | Choice | Why |
-| --- | --- | --- |
-| Display type | [Fraunces](https://fonts.google.com/specimen/Fraunces) | A serif with real optical character, not another generic AI-app sans |
-| Body type | [Public Sans](https://fonts.google.com/specimen/Public+Sans) | Humanist, institutional — used by government design systems |
-| Mono type | [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) | Labels, tool activity, IDs, timestamps — anything system-generated |
-| Palette | Cream `#F7F3E9` · Navy `#1B2A4A` · Brass `#B8863B` | A campus-institutional palette — no gradients, no default AI purple/blue |
-| Cards & separators | Hairline borders, flat fills | No drop shadows, no glassmorphism |
-| Motion | Short, precisely-eased transitions (~200–260ms) | State changes are legible, never bouncy or decorative |
-| Iconography | Hand-built stroke icons ([`app/components/icons.tsx`](app/components/icons.tsx)) | No icon library, no emoji in the interface itself |
-
-Chat messages render as a labeled transcript (`YOU` / `CAMPUS COPILOT` + rule) rather than rounded bubbles, and the registration confirmation reads as an official form with a navy header bar rather than a modal dialog.
-
-All design tokens live in [`app/globals.css`](app/globals.css) as CSS custom properties, mapped into Tailwind v4 via `@theme inline`.
-
-Assistant replies are markdown — Groq's answers routinely include headings, lists, and tables (a grading scale, a fee breakdown) — so [`app/components/chat/Markdown.tsx`](app/components/chat/Markdown.tsx) renders them with [`react-markdown`](https://github.com/remarkjs/react-markdown) and `remark-gfm` (for tables and task lists) rather than dumping raw asterisks and hashes into a `<p>`. It's not the Tailwind Typography plugin's `prose` class — every element (`h1`–`h3`, lists, `code`/`pre`, `table`) has its own override in that file so markdown output lands in the same hairline-border, no-shadow register as the rest of the interface instead of picking up generic prose defaults. User messages skip this entirely and render as plain text, since a student typing `*` or `#` almost certainly doesn't mean markdown.
-
----
-
-## 🧠 How This Fits Together
-
-```mermaid
-flowchart LR
-    U[👤 User] --> UI[Next.js Frontend]
-    UI -->|POST /api/chat| API[FastAPI Backend]
-    UI -->|POST /api/actions/:id/confirm| API
-    UI -->|GET /api/events| API
-    API --> UI
-```
-
-The frontend never talks to Groq, Chroma, or the database directly — every request goes through the FastAPI backend, which owns orchestration.
-
----
-
-## 🗂️ Project Structure
-
-```text
-frontend/
-├── app/
-│   ├── page.tsx                  # Chat page (chat column + agent activity panel)
-│   ├── layout.tsx                # Root layout, fonts, header
-│   ├── globals.css               # Design tokens, base styles, motion utilities
-│   ├── events/
-│   │   ├── page.tsx              # Events list
-│   │   └── [id]/page.tsx         # Single event detail
-│   ├── admin/                    # The dashboard for faculty, staff and administrators
-│   │   ├── layout.tsx            # Sign-in guard and the section tabs each role may see
-│   │   ├── events/               # Table, create/edit form, delete; [id]/ is the roster with export
-│   │   ├── students/             # Searchable, filterable, paged roster, CSV import; [id]/ is one student
-│   │   ├── knowledge/            # Documents, upload, re-ingest with progress, chunk preview
-│   │   ├── grievances/           # Kanban board with drag and drop
-│   │   ├── analytics/            # Charts (plain SVG) and metrics
-│   │   └── _components/          # Buttons, modal, gauge, charts, the useLoad data hook
-│   └── components/
-│       ├── layout/
-│       │   └── Header.tsx        # Masthead navigation
-│       ├── chat/
-│       │   ├── ChatWindow.tsx    # Message list, empty state, auto-scroll
-│       │   ├── ChatInput.tsx     # Message composer
-│       │   ├── MessageBubble.tsx # Single transcript turn
-│       │   ├── Markdown.tsx      # Styled react-markdown renderer for agent replies
-│       │   └── SuggestedPrompts.tsx
-│       ├── agent/
-│       │   ├── AgentActivity.tsx # Sidebar tool-activity log
-│       │   ├── ToolCall.tsx      # Single logged tool step
-│       │   └── ConfirmationCard.tsx # Human-in-the-loop registration confirm
-│       ├── rag/
-│       │   └── SourceCard.tsx    # Citation for a retrieved knowledge chunk
-│       ├── events/
-│       │   ├── EventCard.tsx     # Event list row
-│       │   └── EventDetails.tsx  # Full event detail view
-│       └── icons.tsx             # Shared hairline icon set
-├── lib/
-│   ├── api.ts                    # Typed fetch client for the backend
-│   ├── adminApi.ts, adminTypes.ts # The dashboard's calls and types
-│   ├── adminSections.ts          # Which role sees which dashboard section
-│   └── types.ts                  # Shared request/response types
-├── public/
-├── .env.example
-└── package.json
-```
+This package is the presentation layer. It owns the screens and what the browser keeps. It does not own retrieval, tools or the agent, which live in the [backend](../backend/README.md). It is a typed client of the backend's API. The endpoints are listed in the backend's API section, and the [architecture](../docs/architecture.md) shows how the parts fit together.
 
----
+## The screens
 
-## 🔌 API Contract
+- Chat (`/`): the conversation with the agent. Replies stream in as they are written, a side panel shows each tool the agent runs in plain words, retrieved documents appear as source cards, and an action the agent proposes appears as a confirmation card. After a confirmed registration the card offers a calendar file.
+- Events (`/events`, `/events/[id]`): a read-only browser of campus events, independent of the chat.
+- Profile (`/profile`): a student's details and interests, a download of their registered events as a calendar file, the switch for push notifications, and an install prompt.
+- Sign in and sign up (`/login`, `/register`).
+- Dashboard (`/admin`): for faculty, staff and administrators. See below.
+- Offline page (`/~offline`): shown when a page that was never opened is requested without a connection.
 
-The frontend expects the backend to implement the following. This is the contract `lib/api.ts` calls against; the backend is free to change its internals as long as it satisfies these shapes.
+## Design system
 
-### `POST /api/chat`
+The interface is olive on bone: one ground, one ink, one accent, and one typeface, Hanken Grotesk. Surfaces are flat, and the only shadow is on the modal dialog. The mark and the wider brand rules are in the [brand notes](../assets/brand/brand.md).
 
-```json
-// Request
-{ "message": "Find an AI-related event tomorrow and register me." }
-```
+The tokens live in [`app/globals.css`](app/globals.css) as CSS custom properties, mapped into Tailwind v4 with `@theme inline`:
 
-The conversation history is kept on the server. The backend identifies the conversation by an HttpOnly `session_id` cookie it sets on the first message, so every request must be sent with `credentials: "include"` (see `lib/api.ts`). The client never sends the history itself.
+- ground `#ecebe7` (bone), the page;
+- surface `#e1dfd9`, cards and panels;
+- ink `#38450f` (olive), text and buttons; it is also the accent;
+- muted `#5d683a`, secondary text;
+- danger `#8b1e24`, for errors and failures only;
+- five chart colours, used in a fixed order and never cycled.
 
-```json
-// Response
-{
-  "reply": "I found AI Odyssey tomorrow at 3:00 PM...",
-  "sources": [{ "document": "campus_activities.md", "section": "Technical Events" }],
-  "toolActivity": [
-    { "id": "t1", "tool": "search_events", "label": "Searching campus events", "status": "done", "resultSummary": "Found 3 matching events" }
-  ],
-  "confirmation": {
-    "event": { "id": "evt_ai_001", "name": "AI Odyssey", "date": "2026-08-21", "time": "15:00", "venue": "Seminar Hall" },
-    "studentId": "1RV23IS123"
-  }
-}
-```
+Ink on ground has a contrast ratio of 8.69 to 1, and muted on ground 5.02 to 1. Chat messages are a labelled transcript and not rounded bubbles. Replies are Markdown, because answers routinely include lists and tables, and [`app/components/chat/Markdown.tsx`](app/components/chat/Markdown.tsx) styles each element itself. Icons are hand-built in [`app/components/icons.tsx`](app/components/icons.tsx); there is no icon library.
 
-`sources`, `toolActivity`, and `confirmation` are all optional — a plain RAG answer omits `toolActivity` and `confirmation`; a pure tool call may omit `sources`.
+## How it talks to the backend
 
-### Authentication
+Every call goes through [`lib/api.ts`](lib/api.ts). The backend owns sign-in: tokens live in HttpOnly cookies that page scripts cannot read, so requests are sent with `credentials: "include"` and the page asks the backend who is signed in. When a call answers 401, the short-lived access token has expired; the client renews it once and retries, and if that fails the session is treated as ended.
 
-The backend owns sign-in. Tokens live in HttpOnly cookies that page scripts cannot read, so the frontend never handles them: it sends requests with `credentials: "include"` and asks the backend who is signed in. Everything except events requires sign-in and answers `401` otherwise. `lib/api.ts` handles a `401` by calling `POST /api/auth/refresh` once (shared by concurrent calls, because a refresh token works once) and retrying; if that fails, `AuthProvider` marks the user signed out and `RequireAuth` sends them to `/login`.
+The chat uses `POST /api/chat/stream`, which answers with server-sent events. Each event is a `data:` line holding `{ "type": ..., "payload": ... }`:
 
-| Call | Request | Response |
-| --- | --- | --- |
-| `POST /api/auth/register` | `{ student_id, name, email, password }` (name must match the student roster, password 12-128 characters) | the profile below, and the user is signed in |
-| `POST /api/auth/login` | `{ email, password }` | the profile below |
-| `GET /api/auth/me` | | the profile below |
-| `POST /api/auth/refresh` | | 204 |
-| `POST /api/auth/logout` | | 204 |
+- `rag_context`: the sources found.
+- `token`: a piece of text to append to the reply.
+- `reset`: clear the reply streamed so far, because the model is about to call a tool.
+- `tool_start` and `tool_done`: a tool began or finished.
+- `done`: the full reply, with its sources, tool activity and any confirmation.
+- `error`: something failed after streaming began.
 
-```json
-// Profile
-{ "user_id": 1, "student_id": "1RV23IS101", "name": "Aarav Sharma", "program": "Information Science and Engineering", "year": 3, "email": "aarav@example.com" }
-```
+When the agent proposes an action, `done` carries a confirmation. The card shows it, and Confirm or Cancel sends back only the proposal's id (`POST /api/actions/:id/confirm` or `/cancel`). The details never come from the browser.
 
-The profile's `role` is `student`, `faculty`, `staff` or `admin`; `student_id`, `program` and `year` are `null` for anyone who is not a student, and `faculty` is `null` for anyone who is not faculty. The chat is for students only: other roles get `403` from the chat endpoints, and the chat page shows them a short notice instead (`StudentsOnly`). The staff and admin endpoints (`/api/staff/...`, `/api/admin/events`) have no screens yet.
+## Installable app and offline use
 
-### `GET /api/chat/history`
+The app has a manifest ([`app/manifest.ts`](app/manifest.ts)) and a service worker ([`app/sw.ts`](app/sw.ts)), built by Serwist at `/serwist/sw.js`. The worker exists only in production builds, so it cannot be tried with `npm run dev`.
 
-Returns the conversation for the current `session_id` cookie, so the chat can be restored after a page refresh. A browser with no session gets an empty list.
+- The app shell is precached, so pages open without a connection.
+- Three API answers are kept so they can be read offline: the events, who is signed in, and the last conversation. They share one cache, `campus-copilot-api`.
+- No other API answer is ever kept. The profile, registrations and the calendar file are always fetched live.
+- That cache is cleared when a session ends, when it expires, and when someone signs in, so nothing kept for one person is readable by the next. Signing out also removes the browser's push subscription from the server.
+- The worker shows push notifications and opens the page they name when one is tapped, but only pages on this site.
+- Where the browser offers installation the profile page shows an install button; on iPhone and iPad it explains Add to Home Screen.
 
-```json
-{
-  "session_id": "6f1c2d0e-1b7a-4c1e-9a55-2f0d3b6a7c10",
-  "messages": [
-    { "id": 1, "role": "user", "content": "...", "toolActivity": null, "sources": null, "createdAt": "2026-10-15T13:30:00Z" },
-    { "id": 2, "role": "assistant", "content": "...", "toolActivity": [], "sources": [], "createdAt": "2026-10-15T13:30:02Z" }
-  ]
-}
-```
+## The dashboard
 
-`GET /api/chat/sessions` lists the student's conversations, newest first: `[{ "session_id", "createdAt", "updatedAt", "preview" }]`.
+`/admin` is for signed-in faculty, staff and administrators. Students are told it is not for them, and the Dashboard link shows only for the other roles. The tabs follow the backend's permissions: faculty see Events and can manage only their own department's events, staff see Grievances, and administrators see everything.
 
-`GET /api/chat/sessions/{session_id}/summary` returns `{ session_id, summary, messageCount, cached }`: two or three sentences about the student's own conversation (404 for anyone else's, 422 if it is empty). The first request asks the model, so it can take a few seconds; later ones are instant until the conversation grows.
+- Events: deleting an event that has registrations first shows how many students are affected and only deletes after a second confirmation. The roster page has a capacity gauge and downloads the registrations as CSV.
+- Students: search waits for a pause in typing. The import is all or nothing and shows every problem.
+- Knowledge: a re-ingest is one request that can take up to a minute, so the progress indicator is a pulse with the elapsed seconds, not a percentage. The chunk preview shows the embedding model and vector size.
+- Grievances: drag a ticket between columns, or use the menu on the card, which is the keyboard route. A ticket moves on screen at once and snaps back if the server refuses. Resolving needs a note.
+- Analytics: the charts are plain SVG, with no charting library. Words appear in the word cloud only after two questions have used them.
 
-`DELETE /api/chat/sessions/{session_id}` deletes that conversation and clears the cookie (204). It only works for the student's own sessions; anything else is a 404.
+## Layout
 
-### `POST /api/chat/stream`
+- `app/` holds the routes listed above, `sw.ts`, `manifest.ts` and the `serwist/` route that builds the worker.
+- `app/components/` is split by area: `layout`, `chat`, `agent`, `rag`, `events`, `auth` and `notifications`, plus the shared `icons.tsx`.
+- `app/admin/` is the dashboard, with its shared pieces in `_components/`.
+- `lib/` holds the API client (`api.ts`, `adminApi.ts`), the types (`types.ts`, `adminTypes.ts`), which role sees which dashboard section, the offline cache and push helpers, and the small functions that turn agent events into screen state.
 
-The chat page uses this instead of `POST /api/chat`. The request is the same, and the response is a stream of server-sent events (`text/event-stream`): each event is a `data:` line holding `{ "type": ..., "payload": ... }`, then a blank line. `EventSource` only supports GET, so `streamChatMessage` in `lib/api.ts` reads the stream with `fetch` and `lib/events.ts` folds each event into the assistant message.
+## Running it
 
-| `type` | `payload` |
-| --- | --- |
-| `rag_context` | `{ sources }` |
-| `token` | `{ text }` -- append to the reply |
-| `reset` | `{}` -- clear the reply streamed so far (the model is about to call a tool) |
-| `tool_start` | `{ id, tool, label }` -- show the tool as running |
-| `tool_done` | `{ id, tool, label, status, resultSummary }` |
-| `done` | the full `ChatResponse` shown above |
-| `error` | `{ error_code, message }` |
+[Getting started](../docs/getting-started.md) covers setup. The scripts are:
 
-The "thinking" dots stay up until the first `token` arrives.
+- `npm run dev`: the development server.
+- `npm run build` and `npm run start`: a production build and serving it.
+- `npm run lint`: ESLint.
+- `npm test`: the component tests (Vitest).
 
-### `POST /api/actions/:action_id/confirm` and `/cancel`
+Type checking needs Next's generated route types, which a fresh checkout does not have, so run `npx next typegen` once before `npx tsc --noEmit`.
 
-Require a signed-in student. A chat reply that proposes something (such as a registration) carries `confirmation: { action_id, action, title, lines: [{label, value}], expires_at }`. The card shows it; Confirm or Cancel sends only the id, because the details are stored on the server. No request body.
+## Notes for contributors
 
-```json
-// Response
-{ "action_id": "...", "status": "confirmed", "success": true,
-  "message": "You're registered for AI Workshop.", "details": { "Registration ID": "REG-00001" } }
-```
-
-`status` is `confirmed`, `cancelled` or `failed` (`success` is false for the last two, with the reason in `message`). Errors: 404 for an unknown or someone else's action, 410 `action_expired` after 10 minutes, 409 if it was already cancelled or failed.
-
-### `GET /api/events` / `GET /api/events/:id`
-
-Returns `CampusEvent` objects matching the shape of `data/events.json` at the repo root — see [`lib/types.ts`](lib/types.ts) for the full type.
-
-Until these endpoints exist, pages degrade gracefully to a plain-text error banner rather than crashing — this is expected while the backend is still being built.
-
----
-
-## 🧭 The dashboard
-
-`/admin` is for signed-in faculty, staff and administrators (students are told it is not for them, and the Dashboard link only shows for the other roles). The tabs follow the backend's permissions: **faculty** see Events, and can edit only their own department's events (campus-wide ones are marked "Admin only"); **staff** see Grievances; **administrators** see everything. The pages call the `/api/admin/...` endpoints listed in [`backend/README.md`](../backend/README.md), and the server is what enforces the rules: hiding a tab is a convenience, not security.
-
-- **Events:** deleting an event that has registrations first shows how many students are affected and only deletes with a second confirmation. The roster page has a capacity gauge and downloads the registrations as CSV.
-- **Students:** search waits for a pause in typing; the import is all or nothing and shows every problem.
-- **Knowledge:** a re-ingest is one request that takes up to a minute, so the progress indicator is a pulse with the elapsed seconds rather than a percentage. The chunk preview shows the embedding model and vector size.
-- **Grievances:** drag a ticket between columns, or use the menu on the card (the keyboard route). A ticket moves on screen at once and snaps back if the server refuses. Resolving needs a note, which is emailed to the student if the server has SMTP set up.
-- **Analytics:** the charts are plain SVG, with no charting library. Words in the word cloud appear only after two questions have used them.
-
-## 🚀 Getting Started
-
-From the repository root:
-
-```bash
-cd frontend
-npm install
-cp .env.example .env.local   # points at the FastAPI backend, defaults to localhost:8000
-npm run dev
-```
-
-Then open [http://localhost:3000](http://localhost:3000).
-
-The frontend runs independently of the backend — the chat and events pages will simply show a "could not reach the backend" banner until the FastAPI server (see the [root README](../README.md#-getting-started)) is running.
-
-### Available scripts
-
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the Next.js dev server (Turbopack) |
-| `npm run build` | Production build |
-| `npm run start` | Serve the production build |
-| `npm run lint` | Run ESLint |
-
----
-
-## 🧩 Notes for Contributors
-
-- Keep new UI in the established visual language — no rounded chat bubbles, gradients, drop shadows, or emoji-as-icons. Use [`app/components/icons.tsx`](app/components/icons.tsx) for new icons.
-- Design tokens (color, type, motion) live in [`app/globals.css`](app/globals.css) — extend them there rather than hardcoding values in components.
-- New backend endpoints should be added to [`lib/api.ts`](lib/api.ts) and [`lib/types.ts`](lib/types.ts) so the rest of the app stays fully typed.
-- If a markdown element renders unstyled, add an override to the `components` map in [`app/components/chat/Markdown.tsx`](app/components/chat/Markdown.tsx) — don't reach for the Typography plugin or inline styles, and don't let raw HTML through unstyled.
-
+- Keep new interface in the established look: flat surfaces, one typeface, no gradients, and no emoji used as icons. Use [`app/components/icons.tsx`](app/components/icons.tsx) for new icons.
+- Design tokens live in [`app/globals.css`](app/globals.css). Extend them there and do not hard-code values in components.
+- New backend endpoints go in [`lib/api.ts`](lib/api.ts) and [`lib/types.ts`](lib/types.ts), so the app stays fully typed.
+- If a Markdown element renders unstyled, add an override to the `components` map in [`app/components/chat/Markdown.tsx`](app/components/chat/Markdown.tsx). Do not use the Typography plugin or inline styles.
+- This version of Next.js has breaking changes from older ones. Read the matching guide in `node_modules/next/dist/docs/` before changing how routes, metadata or caching work.
