@@ -1,16 +1,18 @@
-from fastapi import APIRouter, Response
+from fastapi import APIRouter, BackgroundTasks, Response
 
 from app.api.deps import EventEditor
 from app.models.events import CampusEvent, EventInput
 from app.models.registration import CSV_COLUMNS
-from app.services import event_service, export_service
+from app.services import event_notices, event_service, export_service
 
 router = APIRouter(prefix="/api/admin/events", tags=["admin"])
 
 
 @router.post("", status_code=201)
-def create_event(data: EventInput, editor: EventEditor) -> CampusEvent:
-    return event_service.create_event(data, editor)
+def create_event(data: EventInput, editor: EventEditor, background: BackgroundTasks) -> CampusEvent:
+    event = event_service.create_event(data, editor)
+    background.add_task(event_notices.new_event, event)  # after the response, so sending does not slow it down
+    return event
 
 
 @router.put("/{event_id}")
