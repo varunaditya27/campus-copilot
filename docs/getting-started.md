@@ -33,6 +33,11 @@ Students register on the sign-up page with a student id and name from the sample
 
 You need Python 3.14 and Node.js 22.
 
+```bash
+git clone https://github.com/varunaditya27/campus-copilot.git
+cd campus-copilot
+```
+
 **Backend**
 
 ```bash
