@@ -217,6 +217,7 @@ def settings(monkeypatch):
 
 
 def test_groq_is_the_default_and_uses_current_production_models(settings):
+    settings()
     client = get_llm_client()
     assert isinstance(client, GroqLLMClient) and client.provider == "groq"
     assert [client.model_for(t) for t in ("fast", "balanced", "best")] == ["openai/gpt-oss-20b", "openai/gpt-oss-120b", "openai/gpt-oss-120b"]
@@ -279,6 +280,7 @@ def test_an_unknown_provider_is_a_clear_error(settings):
 
 
 def test_the_client_is_built_once(settings):
+    settings()
     assert get_llm_client() is get_llm_client()
 
 
