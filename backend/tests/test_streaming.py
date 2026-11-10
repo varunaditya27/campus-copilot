@@ -137,7 +137,7 @@ def test_giving_up_after_max_rounds_streams_the_fallback(use_fakes):
 def test_a_failing_request_raises_an_app_error(monkeypatch):
     exc = RateLimitError("slow down", response=httpx.Response(429, request=_REQUEST), body=None)
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(RaisingGroq(exc)))
-    monkeypatch.setattr(agent, "retrieve", lambda message: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda message: ([], None))
 
     with pytest.raises(AppError) as info:
         list(agent.run_agent_stream("hi", [], ASHA_PROFILE))
@@ -149,7 +149,7 @@ def test_a_connection_lost_mid_stream_raises_an_app_error(monkeypatch):
     monkeypatch.setattr(
         agent, "get_llm_client", lambda: fake_llm(FailingStreamGroq(APIConnectionError(request=_REQUEST)))
     )
-    monkeypatch.setattr(agent, "retrieve", lambda message: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda message: ([], None))
     seen = []
 
     with pytest.raises(AppError) as info:

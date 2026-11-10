@@ -44,6 +44,7 @@ class ChatResponse(BaseModel):
     sources: list[Source] | None = None
     toolActivity: list[ToolActivityEntry] | None = None
     confirmation: Confirmation | None = None
+    retrievalScore: float | None = None  # best reranker score for the question; kept for the admin analytics
 
 
 class StoredMessage(BaseModel):

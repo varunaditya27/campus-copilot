@@ -31,7 +31,7 @@ def _status_error(cls, status, message="boom", body=None):
 
 def _use_client(monkeypatch, groq_client):
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(groq_client))
-    monkeypatch.setattr(agent, "retrieve", lambda message: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda message: ([], None))
 
 
 def _assert_error_shape(response, status, code):
@@ -112,7 +112,7 @@ def test_missing_knowledge_base_still_answers(monkeypatch):
 
     fake.chat.completions.create = spy
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(fake))
-    monkeypatch.setattr(agent, "retrieve", missing)
+    monkeypatch.setattr(agent, "retrieve_scored", missing)
 
     response = agent.run_agent("leave policy?", [], ASHA_PROFILE)
 

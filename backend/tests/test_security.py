@@ -182,7 +182,7 @@ def test_in_log_mode_the_message_goes_through_but_is_noted(db, monkeypatch):
     monkeypatch.setattr(config, "PROMPT_GUARD", "log")
     llm = fake_llm(FakeGroq(_completion(content="normal answer")))
     monkeypatch.setattr(agent, "get_llm_client", lambda: llm)
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     client = sign_up(TestClient(app))
     before = sample("prompt_injection_flagged_total", action="logged")
     assert client.post("/api/chat", json={"message": ATTACK}).json()["reply"] == "normal answer"
@@ -196,7 +196,7 @@ def test_when_switched_off_nothing_is_checked(db, monkeypatch):
     monkeypatch.setattr(config, "PROMPT_GUARD", "off")
     llm = fake_llm(FakeGroq(_completion(content="answered")))
     monkeypatch.setattr(agent, "get_llm_client", lambda: llm)
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     before = (sample("prompt_injection_flagged_total", action="logged"), sample("prompt_injection_flagged_total", action="blocked"))
     assert sign_up(TestClient(app)).post("/api/chat", json={"message": ATTACK}).json()["reply"] == "answered"
     assert (sample("prompt_injection_flagged_total", action="logged"), sample("prompt_injection_flagged_total", action="blocked")) == before

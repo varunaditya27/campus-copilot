@@ -149,7 +149,7 @@ def test_secrets_never_reach_the_log(client, logs):
 
 def test_a_streamed_reply_is_logged_once_when_it_ends(db, logs, monkeypatch):
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(FakeGroq(_completion(content="hello there"))))
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     client = sign_up(TestClient(app))
     with client.stream("POST", "/api/chat/stream", json={"message": "hi"}) as response:
         list(response.iter_lines())
@@ -178,7 +178,7 @@ def test_an_unhandled_error_is_a_500_with_a_traceback_and_a_request_line(logs):
 def run_agent_with_tool(monkeypatch, name="get_cgpa", args=None):
     client = fake_llm(FakeGroq(_completion(tool_calls=[_tool_call("c1", name, args or {})]), _completion(content="done")))
     monkeypatch.setattr(agent, "get_llm_client", lambda: client)
-    monkeypatch.setattr(agent, "retrieve", lambda m: [{"document": "d.md", "section": "S", "snippet": "x"}])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([{"document": "d.md", "section": "S", "snippet": "x"}], None))
     return agent.run_agent("what is my cgpa", [], ASHA_PROFILE)
 
 
@@ -229,7 +229,7 @@ def test_retrieval_latency_and_how_many_passages_came_back_are_recorded(db, monk
 def test_a_proposed_action_is_counted(db, monkeypatch):
     before = sample("agent_confirmations_requested_total", action="register_for_event")
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(FakeGroq(_completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "evt_ai_001"})]))))
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     agent.run_agent("register me", [], ASHA_PROFILE)
     assert sample("agent_confirmations_requested_total", action="register_for_event") == before + 1
 

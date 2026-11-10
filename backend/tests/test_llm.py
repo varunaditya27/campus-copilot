@@ -193,7 +193,7 @@ class Scripted(BaseLLMClient):
 def test_the_agent_runs_on_any_provider_that_implements_the_base_class(db, monkeypatch):
     scripted = Scripted()
     monkeypatch.setattr(agent, "get_llm_client", lambda: scripted)
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     response = agent.run_agent("hello", [], ASHA_PROFILE)
     assert response.reply == "from a different provider" and scripted.asked == [("balanced", True)]
 
@@ -296,7 +296,7 @@ def test_the_tier_follows_the_request_or_the_kind_of_task(requested, agentic, ex
 def run_with(monkeypatch, replies, quality=None, message="hi"):
     raw = Recording(*replies)
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(raw))
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     agent.run_agent(message, [], ASHA_PROFILE, quality=quality)
     return [r["model"] for r in raw.requests]
 
@@ -324,7 +324,7 @@ def test_a_plan_makes_the_task_agentic(db, monkeypatch):
 def test_the_quality_can_be_chosen_in_the_chat_request(db, monkeypatch):
     raw = Recording(_completion(content="hello"))
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(raw))
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     client = sign_up(TestClient(app))
     assert client.post("/api/chat", json={"message": "hi", "quality": "best"}).status_code == 200
     assert raw.requests[0]["model"] == "best-model"
@@ -336,7 +336,7 @@ def test_the_router_uses_the_fast_model(db, monkeypatch):
 
     raw = Recording(_completion(content='["general"]'), _completion(content="hello"))
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(raw))
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     monkeypatch.setattr(supervisor, "MULTI_AGENT", True)
     list(supervisor.run_agent_stream("hi", [], ASHA_PROFILE))
     assert [r["model"] for r in raw.requests] == ["fast-model", "balanced-model"]

@@ -66,7 +66,7 @@ def multi(monkeypatch):
 
     def install(brain, chunks=()):
         monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(brain))
-        monkeypatch.setattr(agent, "retrieve", lambda message: list(chunks))
+        monkeypatch.setattr(agent, "retrieve_scored", lambda message: (list(chunks), None))
         return brain
 
     return install
@@ -256,7 +256,7 @@ def test_a_model_failure_while_routing_is_the_usual_error(multi):
 def test_with_the_flag_off_there_is_no_router_at_all(monkeypatch):
     brain = Brain("unused")
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(brain))
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     assert supervisor.MULTI_AGENT is False
     assert stream("hello")[-1]["payload"]["reply"] == "single agent answer"
     assert [c[0] for c in brain.calls] == ["single"]

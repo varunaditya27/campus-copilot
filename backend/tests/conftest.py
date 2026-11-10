@@ -87,7 +87,7 @@ def use_fakes(monkeypatch):
     def install(*replies, chunks=()):
         client = FakeGroq(*replies)
         monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(client))
-        monkeypatch.setattr(agent, "retrieve", lambda message: list(chunks))
+        monkeypatch.setattr(agent, "retrieve_scored", lambda message: (list(chunks), None))
         return client
 
     return install

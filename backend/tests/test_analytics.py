@@ -16,20 +16,22 @@ from helpers import ADMIN, ASHA, ASHA_PROFILE, FACULTY, RAVI, STAFF, sign_in_as,
 NOW = datetime(2026, 10, 15, 12, 0, tzinfo=timezone.utc)
 
 
-def reply(tools=(), sources=()):
+def reply(tools=(), sources=(), score=None):
     return ChatResponse(
         reply="ok",
+        retrievalScore=score,
         sources=[Source(document=d, section="S", snippet="x") for d in sources] or None,
         toolActivity=[ToolActivityEntry(id=f"c{i}", tool=t, label=t, status=s) for i, (t, s) in enumerate(tools)] or None,
     )
 
 
-def add(db, student="1RV23IS101", session="s1", days_ago=0, terms=(), tools=(), documents=(), zero=False):
+def add(db, student="1RV23IS101", session="s1", days_ago=0, terms=(), tools=(), documents=(), zero=False, top_score=None):
     with db.begin() as s:
         s.add(
             UsageEvent(
                 created_at=NOW - timedelta(days=days_ago), student_id=student, session_id=session,
                 terms=list(terms), tools=[list(t) for t in tools], documents=list(documents), zero_context=zero,
+                top_score=top_score,
             )
         )
 
@@ -149,7 +151,20 @@ def test_zero_context_rate(db):
     add(db, zero=False)
     rag = usage_service.summary(7, NOW)["rag"]
     assert (rag["zero_context_replies"], rag["zero_context_rate"]) == (1, 0.25)
-    assert rag["average_distance"] is None and rag["cache_hit_rate"] is None and "not recorded" in rag["notes"]
+    assert rag["average_top_score"] is None and "cache_hit_rate" not in rag
+
+
+def test_the_average_best_score_leaves_out_replies_recorded_without_one(db):
+    add(db, top_score=2.0)
+    add(db, top_score=-1.0)
+    add(db)  # recorded before the score was kept
+    assert usage_service.summary(7, NOW)["rag"]["average_top_score"] == 0.5
+
+
+def test_the_best_retrieval_score_is_recorded_with_the_exchange(db):
+    usage_service.record_exchange("1RV23IS101", "s", "hello", reply(score=-2.5))
+    with db() as session:
+        assert session.scalar(select(UsageEvent.top_score)) == -2.5
 
 
 def test_an_empty_database_gives_empty_but_well_formed_results(db):

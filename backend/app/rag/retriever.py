@@ -108,13 +108,20 @@ class Retriever:
             for c, score in ranked
         ]
 
-    def retrieve(self, query: str, k: int = RAG_TOP_K) -> list[dict]:
-        """The passages worth giving the model: the best k that the reranker judges relevant."""
-        return [
+    def retrieve_scored(self, query: str, k: int = RAG_TOP_K) -> tuple[list[dict], float | None]:
+        """What retrieve returns, plus the best reranker score among everything considered
+        (None if nothing was). The score is reported even when no passage clears the cutoff."""
+        hits = self.search(query, k)
+        passages = [
             {"document": hit["document"], "section": hit["section"], "snippet": hit["snippet"]}
-            for hit in self.search(query, k)
+            for hit in hits
             if hit["score"] >= RAG_RERANK_MIN_SCORE
         ]
+        return passages, (hits[0]["score"] if hits else None)
+
+    def retrieve(self, query: str, k: int = RAG_TOP_K) -> list[dict]:
+        """The passages worth giving the model: the best k that the reranker judges relevant."""
+        return self.retrieve_scored(query, k)[0]
 
 
 _retriever: Retriever | None = None
@@ -154,3 +161,7 @@ def search(query: str, n: int) -> list[dict]:
 
 def retrieve(query: str, k: int = RAG_TOP_K) -> list[dict]:
     return get_retriever().retrieve(query, k)
+
+
+def retrieve_scored(query: str, k: int = RAG_TOP_K) -> tuple[list[dict], float | None]:
+    return get_retriever().retrieve_scored(query, k)

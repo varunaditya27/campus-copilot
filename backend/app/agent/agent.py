@@ -35,7 +35,7 @@ from app.observability.logging import get_logger
 from app.models.memory import Entity
 from app.models.actions import Confirmation
 from app.models.chat import ChatHistoryItem, ChatResponse, Source, ToolActivityEntry
-from app.rag.retriever import KnowledgeBaseNotFound, retrieve
+from app.rag.retriever import KnowledgeBaseNotFound, retrieve_scored
 from app.services import action_service
 
 MAX_TOOL_ROUNDS = 4
@@ -209,6 +209,7 @@ class AgentState:
     history: list[ChatHistoryItem] = field(default_factory=list)
     entities: list[Entity] = field(default_factory=list)
     chunks: list[dict] = field(default_factory=list)
+    top_score: float | None = None  # best reranker score for the question, even if no passage cleared the cutoff
     plan: list[str] = field(default_factory=list)
     # Messages are only ever added to, so each node returns just what it adds.
     messages: Annotated[list[dict], operator.add] = field(default_factory=list)
@@ -245,9 +246,9 @@ def retrieve_node(state: AgentState) -> dict:
     knowledge_unavailable = False
     started = time.perf_counter()
     try:
-        chunks = retrieve(state.message)
+        chunks, top_score = retrieve_scored(state.message)
     except KnowledgeBaseNotFound:
-        chunks = []
+        chunks, top_score = [], None
         knowledge_unavailable = True
     elapsed = time.perf_counter() - started
     metrics.RAG_RETRIEVAL_SECONDS.observe(elapsed)
@@ -270,7 +271,7 @@ def retrieve_node(state: AgentState) -> dict:
     elif knowledge_unavailable:
         messages.append({"role": "system", "content": KNOWLEDGE_UNAVAILABLE_MESSAGE})
     messages.append({"role": "user", "content": state.message})
-    return {"chunks": chunks, "messages": messages}
+    return {"chunks": chunks, "top_score": top_score, "messages": messages}
 
 
 def _parse_plan(text: str) -> list[str]:
@@ -393,6 +394,7 @@ def respond_node(state: AgentState) -> dict:
         sources=_sources(state.chunks),
         toolActivity=state.tool_activity or None,
         confirmation=state.pending_confirmation,
+        retrievalScore=state.top_score,
     )
     get_stream_writer()(_event("done", **response.model_dump(mode="json")))
     return {}

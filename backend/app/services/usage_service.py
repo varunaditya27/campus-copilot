@@ -52,6 +52,7 @@ def record_exchange(student_id: str, session_id: str, message: str, response: Ch
                     tools=[[entry.tool, entry.status] for entry in response.toolActivity or []],
                     documents=sorted({s.document for s in sources}),
                     zero_context=not sources,
+                    top_score=response.retrievalScore,
                 )
             )
             db.commit()
@@ -83,6 +84,7 @@ def summary(days: int, now: datetime | None = None) -> dict:
     documents: Counter = Counter()
     terms: Counter = Counter()
     tool_calls = used_tools = zero_context = 0
+    top_scores: list[float] = []
     for event in events:
         day = per_day.get(_utc(event.created_at).date())
         if day is not None:
@@ -97,6 +99,8 @@ def summary(days: int, now: datetime | None = None) -> dict:
         documents.update(event.documents)
         terms.update(event.terms)
         zero_context += event.zero_context
+        if event.top_score is not None:
+            top_scores.append(event.top_score)
 
     replies = len(events)
     buckets = [
@@ -137,8 +141,7 @@ def summary(days: int, now: datetime | None = None) -> dict:
             "replies": replies,
             "zero_context_replies": zero_context,
             "zero_context_rate": _share(zero_context, replies),
-            "average_distance": None,
-            "cache_hit_rate": None,
-            "notes": "Retrieval distance is not recorded (the reranker's score is not kept), and there is no answer cache, so there is no hit rate.",
+            "average_top_score": round(sum(top_scores) / len(top_scores), 2) if top_scores else None,
+            "notes": "The score is the reranker's best score for each question: higher means a closer match, and it is only comparable while the reranker model stays the same. Questions answered before it was recorded are left out.",
         },
     }

@@ -168,7 +168,7 @@ async def test_a_chat_reply_streams_over_async_http(db, monkeypatch):
 
     client_llm = fake_llm(FakeGroq(_completion(content="Hello from the stream")))
     monkeypatch.setattr(agent, "get_llm_client", lambda: client_llm)
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     async with session("student") as client:
         events = []
         async with client.stream("POST", "/api/chat/stream", json={"message": "hi"}) as response:
@@ -189,7 +189,7 @@ async def test_a_real_workflow_over_async_http(db, monkeypatch):
 
     llm = fake_llm(FakeGroq(_completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "evt_ai_001"})])))
     monkeypatch.setattr(agent, "get_llm_client", lambda: llm)
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
 
     async with session("student") as student, session("admin") as admin:
         events = (await student.get("/api/events")).json()
@@ -212,7 +212,7 @@ async def test_two_simultaneous_confirmations_register_once(db, monkeypatch):
 
     llm = fake_llm(FakeGroq(_completion(tool_calls=[_tool_call("c1", "register_for_event", {"event_id": "evt_ai_001"})])))
     monkeypatch.setattr(agent, "get_llm_client", lambda: llm)
-    monkeypatch.setattr(agent, "retrieve", lambda m: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda m: ([], None))
     async with session("student") as student:
         action_id = (await student.post("/api/chat", json={"message": "register me"})).json()["confirmation"]["action_id"]
         first, second = await asyncio.gather(

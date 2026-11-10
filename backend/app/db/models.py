@@ -515,6 +515,7 @@ class UsageEvent(Base):
     tools: Mapped[list] = mapped_column(JSON)  # [[tool name, status], ...]
     documents: Mapped[list] = mapped_column(JSON)
     zero_context: Mapped[bool]
+    top_score: Mapped[float | None]  # best reranker score; None for events recorded before it was kept
 
 
 class ConversationEntity(Base):

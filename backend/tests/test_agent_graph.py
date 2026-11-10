@@ -167,7 +167,7 @@ def test_a_failing_tool_among_several_does_not_stop_the_others(db, use_fakes, mo
 def test_tokens_arrive_while_the_model_is_still_talking(monkeypatch):
     slow = SlowGroq(["one", "two", "three", "four"], pause=0.1)
     monkeypatch.setattr(agent, "get_llm_client", lambda: fake_llm(slow))
-    monkeypatch.setattr(agent, "retrieve", lambda message: [])
+    monkeypatch.setattr(agent, "retrieve_scored", lambda message: ([], None))
 
     first_token_at = None
     for event in agent.run_agent_stream("hi", [], ASHA_PROFILE):

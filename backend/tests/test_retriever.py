@@ -105,6 +105,18 @@ def test_the_threshold_keeps_a_score_exactly_at_the_limit(monkeypatch):
     assert make(rerank=lambda q, texts: [-8.6] * len(texts)).retrieve("library", 2) == []
 
 
+def test_retrieve_scored_reports_the_best_score_even_when_nothing_is_relevant_enough(monkeypatch):
+    monkeypatch.setattr(retriever_module, "RAG_RERANK_MIN_SCORE", 100.0)
+    passages, top = make(rerank=lambda q, texts: [-3.0] + [-9.0] * (len(texts) - 1)).retrieve_scored("library", 3)
+    assert passages == [] and top == -3.0
+
+
+def test_retrieve_scored_hands_over_the_same_passages_as_retrieve(monkeypatch):
+    monkeypatch.setattr(retriever_module, "RAG_RERANK_MIN_SCORE", 1.0)
+    passages, top = make().retrieve_scored("library fine per day", 5)
+    assert passages and passages == make().retrieve("library fine per day", 5) and top >= 1.0
+
+
 def test_k_limits_what_retrieve_returns(monkeypatch):
     monkeypatch.setattr(retriever_module, "RAG_RERANK_MIN_SCORE", -100.0)
     assert len(make().retrieve("library", 2)) == 2

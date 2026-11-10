@@ -177,7 +177,14 @@ def merge_node(state: SupervisorState) -> dict:
         for entry in (response.toolActivity or [])
     ]
     confirmation = next((r.confirmation for r in responses if r.confirmation), None)
-    final = ChatResponse(reply=reply, sources=sources or None, toolActivity=activity or None, confirmation=confirmation)
+    scores = [r.retrievalScore for r in responses if r.retrievalScore is not None]
+    final = ChatResponse(
+        reply=reply,
+        sources=sources or None,
+        toolActivity=activity or None,
+        confirmation=confirmation,
+        retrievalScore=max(scores, default=None),
+    )
     emit(agent._event("done", **final.model_dump(mode="json")))
     return {}
 
