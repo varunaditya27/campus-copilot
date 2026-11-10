@@ -9,6 +9,9 @@
 __pycache__/
 *.pyc
 
+# test coverage data
+.coverage
+
 # chroma persistence (rebuilt by rag/ingest.py)
 chroma/
 

@@ -5,3 +5,7 @@
 secrets/
 
 .taste-skill/
+
+# Python bytecode, wherever a script is run from
+__pycache__/
+*.pyc
