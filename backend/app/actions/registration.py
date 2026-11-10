@@ -1,7 +1,7 @@
 from app.actions.base import ActionError, ActionSpec, Done, Prepared
 from app.models.actions import ConfirmationLine
 from app.models.auth import CurrentStudent
-from app.services import event_service, registration_service
+from app.services import event_service, push_service, registration_service
 
 NAME = "register_for_event"
 
@@ -54,6 +54,9 @@ def execute(params: dict, student: CurrentStudent) -> Done:
     if not result["success"]:
         raise ActionError(result["error"])
     event = event_service.get_event(params["event_id"])
+    push_service.notify(
+        student.student_id, "You're registered", f"{event.name}, {event.date} at {event.time}, {event.venue}", f"/events/{event.id}"
+    )
     return Done(
         message=f"You're registered for {event.name}.",
         details={"Registration ID": result["registration_id"]},

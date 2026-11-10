@@ -56,6 +56,25 @@ def _create_admin_key(args: argparse.Namespace) -> int:
     return 0
 
 
+def _create_vapid_keys(args: argparse.Namespace) -> int:
+    import base64
+
+    from cryptography.hazmat.primitives import serialization
+    from py_vapid import Vapid
+
+    def encode(raw: bytes) -> str:
+        return base64.urlsafe_b64encode(raw).rstrip(b"=").decode()
+
+    pair = Vapid()
+    pair.generate_keys()
+    private = encode(pair.private_key.private_numbers().private_value.to_bytes(32, "big"))
+    public = encode(pair.public_key.public_bytes(serialization.Encoding.X962, serialization.PublicFormat.UncompressedPoint))
+    print("Add these to the server's settings. Keep the private key secret, and set VAPID_SUBJECT to a contact such as mailto:admin@college.edu.")
+    print(f"VAPID_PUBLIC_KEY={public}")
+    print(f"VAPID_PRIVATE_KEY={private}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m app.cli")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -71,6 +90,9 @@ def main(argv: list[str] | None = None) -> int:
 
     key = commands.add_parser("create-admin-key", help="make an API key for scripts to call the admin endpoints")
     key.set_defaults(run=_create_admin_key)
+
+    vapid = commands.add_parser("create-vapid-keys", help="make the key pair that web push notifications are signed with")
+    vapid.set_defaults(run=_create_vapid_keys)
 
     args = parser.parse_args(argv)
     return args.run(args)

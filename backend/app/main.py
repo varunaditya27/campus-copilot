@@ -15,6 +15,7 @@ from app.api.admin_students import router as admin_students_router
 from app.api.auth import router as auth_router
 from app.api.chat import router as chat_router
 from app.api.events import router as events_router
+from app.api.notifications import router as notifications_router
 from app.api.staff import router as staff_router
 from app.api.students import router as students_router
 from app.core.config import CORS_ORIGINS, COOKIE_SECURE, ENVIRONMENT, JWT_SECRET_IS_TEMPORARY
@@ -67,6 +68,7 @@ app.include_router(events_router)
 app.include_router(chat_router)
 app.include_router(staff_router)
 app.include_router(students_router)
+app.include_router(notifications_router)
 app.include_router(admin_events_router)
 app.include_router(admin_knowledge_router)
 

@@ -3,7 +3,7 @@ COMPOSE      = docker compose
 COMPOSE_DEV  = docker compose -f docker-compose.yml -f docker-compose.dev.yml
 
 .DEFAULT_GOAL := help
-.PHONY: help dev build up down logs test test-backend test-frontend coverage lint ingest migrate create-admin clean
+.PHONY: help dev build up down logs test test-backend test-frontend coverage lint ingest migrate create-admin vapid-keys clean
 
 help:  ## Show this list
 	@grep -E '^[a-zA-Z_-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-16s %s\n", $$1, $$2}'
@@ -45,6 +45,9 @@ migrate:  ## Apply database migrations in the running backend
 
 create-admin:  ## Create an administrator account in the running backend
 	$(COMPOSE) exec backend python -m app.cli create-user --role admin
+
+vapid-keys:  ## Make the key pair for web push notifications, in the running backend
+	$(COMPOSE) exec backend python -m app.cli create-vapid-keys
 
 clean:  ## Stop the stack AND delete its data volumes (asks first)
 	@read -p "Delete all data volumes for this project? [y/N] " answer && [ "$$answer" = "y" ] && $(COMPOSE) down -v

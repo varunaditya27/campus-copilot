@@ -2,7 +2,7 @@ from app.actions.base import ActionError, ActionSpec, Done, Prepared, text_arg
 from app.actions.campus import _schema
 from app.models.actions import ConfirmationLine
 from app.models.auth import CurrentStudent
-from app.services import engagement_service
+from app.services import engagement_service, event_service, push_service
 
 
 def _event_lines(event) -> list[ConfirmationLine]:
@@ -32,9 +32,14 @@ def _prepare_cancel(args: dict, student: CurrentStudent) -> Prepared:
 
 def _execute_cancel(params: dict, student: CurrentStudent) -> Done:
     try:
-        engagement_service.cancel_registration(student.student_id, params["event_id"])
+        result = engagement_service.cancel_registration(student.student_id, params["event_id"])
     except ValueError as exc:
         raise ActionError(str(exc)) from None
+    if result["promoted_student"]:
+        event = event_service.get_event(params["event_id"])
+        push_service.notify(
+            result["promoted_student"], "A seat opened up", f"You're now registered for {event.name}, {event.date} at {event.time}.", f"/events/{event.id}"
+        )
     return Done(message="Your registration is cancelled and your seat has been released.")
 
 

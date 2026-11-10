@@ -413,6 +413,20 @@ class Registration(Base):
     status: Mapped[str] = mapped_column(String(20), default="confirmed")
 
 
+class PushSubscription(Base):
+    """A browser that agreed to receive push notifications for a student. The endpoint is the
+    push service's address for that one browser, so it is unique: a browser belongs to one student."""
+
+    __tablename__ = "push_subscriptions"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    student_id: Mapped[str] = mapped_column(ForeignKey("students.student_id"), index=True)
+    endpoint: Mapped[str] = mapped_column(String(2048), unique=True)
+    p256dh: Mapped[str] = mapped_column(String(256))
+    auth: Mapped[str] = mapped_column(String(64))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+
+
 ROLES = ("student", "faculty", "staff", "admin")
 
 

@@ -95,6 +95,12 @@ OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "")
 EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "local").lower()
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "")
 
+# Web push notifications. A VAPID key pair identifies this server to the browsers' push services;
+# `make vapid-keys` makes one. With any of the three missing, push is switched off.
+VAPID_PUBLIC_KEY = os.getenv("VAPID_PUBLIC_KEY", "")
+VAPID_PRIVATE_KEY = _secret("VAPID_PRIVATE_KEY")
+VAPID_SUBJECT = os.getenv("VAPID_SUBJECT", "")  # a contact for the push services, such as mailto:admin@college.edu
+
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
 
 _jwt_secret = _secret("JWT_SECRET")
