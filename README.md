@@ -35,7 +35,7 @@ It is a learning project and a reference implementation of that design, with a f
 
 What works today: a chat grounded in campus documents, with sources; tools for timetables, exams, fees, attendance, the library, study rooms, the canteen and more; ten actions that wait for the student's approval; an admin dashboard for events, students, documents, grievances and usage; an installable web app that can be read offline; push notifications; a calendar file of registered events; and scheduled event reminders and attendance warnings. It has rate limits, a prompt injection screen, HTTPS in production, structured logs, metrics and tracing, a test suite, and continuous checks on every push.
 
-Decided against building: single sign-on, email notifications, voice and image input, an Android app, sign-in with Google Calendar, and an answer cache.
+Decided against building: single sign-on, more email (reminders and confirmations go out as push notifications; the only email is an optional message when a grievance ticket changes status), voice and image input, an Android app, sign-in with Google Calendar, and an answer cache.
 
 Deferred: support for several colleges at once, and research-grade extras (answers that check themselves, a knowledge graph, thumbs up and down on replies, and explanations of why the assistant said something).
 
