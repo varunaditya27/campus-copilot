@@ -1,9 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Response
 
 from app.api.deps import SignedInStudent
 from app.core.errors import AppError
 from app.models.academic import ProfileUpdate, StudentProfileView
-from app.services import academic_service
+from app.services import academic_service, calendar_service
 
 router = APIRouter(prefix="/api/students", tags=["students"])
 
@@ -23,3 +23,13 @@ def update_profile(update: ProfileUpdate, student: SignedInStudent) -> StudentPr
     if profile is None:
         raise AppError(404, "not_found", "No student record was found.")
     return profile
+
+
+@router.get("/me/calendar.ics")
+def my_calendar(student: SignedInStudent) -> Response:
+    """The events the student is registered for, as a file any calendar app can import."""
+    return Response(
+        content=calendar_service.registrations_calendar(student.student_id),
+        media_type="text/calendar; charset=utf-8",
+        headers={"Content-Disposition": 'attachment; filename="campus-copilot-events.ics"'},
+    )
