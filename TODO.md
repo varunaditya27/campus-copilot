@@ -289,9 +289,9 @@
 
 ### 6.2 Push Notifications (Web Push)
 
-- [ ] Add service worker to Next.js frontend for Web Push API
-- [ ] Store push subscription objects per student in the DB
-- [ ] Add `POST /notifications/subscribe` to register a student's push subscription
+- [x] Add service worker to Next.js frontend for Web Push API (the same worker that does the offline caching)
+- [x] Store push subscription objects per student in the DB
+- [x] Add `POST /notifications/subscribe` to register a student's push subscription (as `/api/notifications/subscribe`, with `unsubscribe` and `public-key`; only the browsers' own push services are accepted as addresses)
 - [ ] Trigger push for: event reminders, registration confirmations, new events matching student interests, exam schedule updates
 
 ### 6.3 Calendar Integration

@@ -207,6 +207,18 @@ export async function downloadMyCalendar(): Promise<Blob> {
   return res.blob();
 }
 
+export function getPushPublicKey(): Promise<{ public_key: string }> {
+  return request<{ public_key: string }>("/api/notifications/public-key");
+}
+
+export function savePushSubscription(subscription: PushSubscriptionJSON): Promise<void> {
+  return post<void>("/api/notifications/subscribe", subscription);
+}
+
+export function deletePushSubscription(endpoint: string): Promise<void> {
+  return post<void>("/api/notifications/unsubscribe", { endpoint });
+}
+
 export function getProfile(): Promise<StudentProfile> {
   return request<StudentProfile>("/api/students/me/profile");
 }

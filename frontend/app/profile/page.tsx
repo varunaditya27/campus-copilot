@@ -8,6 +8,7 @@ import RequireAuth from "../components/auth/RequireAuth";
 import StudentsOnly from "../components/auth/StudentsOnly";
 import { FormError } from "../components/auth/AuthForm";
 import AddToCalendar from "../components/events/AddToCalendar";
+import NotificationSettings from "../components/notifications/NotificationSettings";
 
 export default function ProfilePage() {
   return (
@@ -143,6 +144,8 @@ function Profile() {
             </p>
             <AddToCalendar />
           </section>
+
+          <NotificationSettings />
         </>
       )}
       {!profile && <FormError message={error} />}
