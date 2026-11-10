@@ -105,30 +105,39 @@ def check_cancellation(student_id: str, event_id: str) -> tuple[Event, int]:
 def cancel_registration(student_id: str, event_id: str) -> dict:
     """Free the student's seat. If students are waiting, the first one is registered in the same step."""
     check_cancellation(student_id, event_id)
-    promoted = None
     with db_session.SessionLocal() as db:
         removed = db.execute(delete(Registration).where(Registration.event_id == event_id, Registration.student_id == student_id))
         if removed.rowcount != 1:
             db.rollback()
             raise ValueError("That registration was already cancelled.")
         db.execute(update(Event).where(Event.id == event_id, Event.registered > 0).values(registered=Event.registered - 1))
-        first = db.scalar(select(EventWaitlist).where(EventWaitlist.event_id == event_id).order_by(EventWaitlist.id))
-        if first is not None:
-            promoted = first.student_id
-            db.delete(first)
-            db.execute(update(Event).where(Event.id == event_id, Event.registered < Event.capacity).values(registered=Event.registered + 1))
-            registration = Registration(
-                registration_id=f"pending-{first.id}-{event_id}",
-                student_id=promoted,
-                event_id=event_id,
-                registered_at=datetime.now(timezone.utc),
-                status="confirmed",
-            )
-            db.add(registration)
-            db.flush()
-            registration.registration_id = f"REG-{registration.id:05d}"
+        promoted = next(iter(promote_waitlist(db, event_id, 1)), None)
         db.commit()
     return {"promoted_student": promoted}
+
+
+def promote_waitlist(db, event_id: str, seats: int) -> list[str]:
+    """Register the first `seats` students waiting for the event, in the order they joined, and say who.
+    The caller commits."""
+    if seats <= 0:
+        return []
+    waiting = db.scalars(select(EventWaitlist).where(EventWaitlist.event_id == event_id).order_by(EventWaitlist.id).limit(seats)).all()
+    promoted = []
+    for entry in waiting:
+        db.delete(entry)
+        db.execute(update(Event).where(Event.id == event_id, Event.registered < Event.capacity).values(registered=Event.registered + 1))
+        registration = Registration(
+            registration_id=f"pending-{entry.id}-{event_id}",
+            student_id=entry.student_id,
+            event_id=event_id,
+            registered_at=datetime.now(timezone.utc),
+            status="confirmed",
+        )
+        db.add(registration)
+        db.flush()
+        registration.registration_id = f"REG-{registration.id:05d}"
+        promoted.append(entry.student_id)
+    return promoted
 
 
 # --- waitlist

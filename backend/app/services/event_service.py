@@ -7,7 +7,7 @@ from app.db import session as db_session
 from app.db.models import Event, EventDetail, EventFeedback, EventWaitlist, Registration, Student
 from app.models.auth import CurrentUser
 from app.models.events import CampusEvent, EventInput
-from app.services import registration_service
+from app.services import engagement_service, event_notices, registration_service
 
 
 def list_events() -> list[CampusEvent]:
@@ -56,8 +56,15 @@ def update_event(event_id: str, data: EventInput, editor: CurrentUser) -> Campus
         # Only an admin can move an event between departments.
         if editor.role == "admin" and "department" in data.model_fields_set:
             row.department = data.department
+        session.flush()
+        # New seats go to the students who have been waiting, in the order they joined.
+        promoted = engagement_service.promote_waitlist(session, event_id, row.capacity - row.registered)
         session.commit()
-        return CampusEvent.model_validate(row, from_attributes=True)
+        session.refresh(row)  # the promotions changed the number registered
+        updated = CampusEvent.model_validate(row, from_attributes=True)
+    for student_id in promoted:
+        event_notices.seat_opened(student_id, updated)
+    return updated
 
 
 def _editable(session, event_id: str, editor: CurrentUser) -> Event:
