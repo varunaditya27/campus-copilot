@@ -1,9 +1,10 @@
 import json
-from datetime import datetime
+from datetime import date, datetime, timedelta
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.core import clock
 from app.core.config import DATA_DIR
 from app.db import session as db_session
 from app.db.models import (
@@ -34,6 +35,30 @@ def _load(filename: str) -> list[dict]:
     return json.loads((DATA_DIR / filename).read_text())
 
 
+# The day the scripts in data/ wrote the sample data for. Loading it on a later day moves the dates
+# forward by the same number of days, so the sample library loans, appointment slots, placement
+# drives, exams and fee dates are still around the load day and not months in the past.
+SAMPLE_DAY = date(2026, 10, 15)
+
+# The date columns that move with the load day, by file. They are ISO text (2026-10-15), here and in the tables.
+MOVING_DATES = {
+    "exams.json": ("date",),
+    "fee_records.json": ("due_date", "paid_on"),
+    "book_loans.json": ("borrowed_on", "due_date"),
+    "lost_found_items.json": ("found_on",),
+    "counselling_slots.json": ("date",),
+    "placement_drives.json": ("date", "registration_deadline"),
+}
+
+
+def _moved(rows: list[dict], fields: tuple[str, ...], days: int) -> list[dict]:
+    for row in rows:
+        for field in fields:
+            if row.get(field):
+                row[field] = (date.fromisoformat(row[field]) + timedelta(days=days)).isoformat()
+    return rows
+
+
 def _is_empty(session: Session, model) -> bool:
     return session.scalar(select(func.count()).select_from(model)) == 0
 
@@ -45,6 +70,8 @@ def seed(session: Session) -> dict[str, int]:
     so re-seeding never duplicates data or overwrites live registrations.
     """
     added: dict[str, int] = {}
+    today = clock.today()
+    sample_shift = (today - SAMPLE_DAY).days
 
     added.update(students=0, events=0, registrations=0)
     if _is_empty(session, Student):
@@ -52,8 +79,13 @@ def seed(session: Session) -> dict[str, int]:
         session.add_all(rows)
         added["students"] = len(rows)
 
+    # The events were written earlier than the other data, so they move on their own: the first one is
+    # tomorrow, and the registrations, which were made just before it, move with them.
+    events = _load("events.json")
+    event_shift = (today + timedelta(days=1) - min(date.fromisoformat(e["date"]) for e in events)).days
+
     if _is_empty(session, Event):
-        rows = [Event(**row) for row in _load("events.json")]
+        rows = [Event(**row) for row in _moved(events, ("date",), event_shift)]
         session.add_all(rows)
         added["events"] = len(rows)
 
@@ -63,7 +95,7 @@ def seed(session: Session) -> dict[str, int]:
                 registration_id=row["registration_id"],
                 student_id=row["student_id"],
                 event_id=row["event_id"],
-                registered_at=datetime.fromisoformat(row["registered_at"]),
+                registered_at=datetime.fromisoformat(row["registered_at"]) + timedelta(days=event_shift),
                 status=row["status"],
             )
             for row in _load("registrations.json")
@@ -94,7 +126,7 @@ def seed(session: Session) -> dict[str, int]:
     ):
         added[table] = 0
         if _is_empty(session, model):
-            rows = [model(**row) for row in _load(filename)]
+            rows = [model(**row) for row in _moved(_load(filename), MOVING_DATES.get(filename, ()), sample_shift)]
             session.add_all(rows)
             session.flush()
             added[table] = len(rows)
