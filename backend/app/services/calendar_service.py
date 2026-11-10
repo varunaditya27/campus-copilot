@@ -1,15 +1,12 @@
 from datetime import datetime, timedelta, timezone
-from zoneinfo import ZoneInfo
 
 from icalendar import Calendar
 from icalendar import Event as CalendarEvent
 from sqlalchemy import select
 
+from app.core.clock import CAMPUS_TIMEZONE
 from app.db import session as db_session
 from app.db.models import Event, Registration
-
-# Event dates and times are stored without a time zone: they are campus local time.
-CAMPUS_TIMEZONE = ZoneInfo("Asia/Kolkata")
 
 
 def registrations_calendar(student_id: str) -> bytes:
