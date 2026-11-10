@@ -1,7 +1,7 @@
 # Next.js standalone build. The API address is baked into the browser code at build time:
 #   docker build --build-arg NEXT_PUBLIC_API_BASE_URL=https://api.example.org -t campus-copilot-frontend frontend
 
-FROM node:22-slim AS deps
+FROM node:25-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
@@ -20,7 +20,7 @@ ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL \
 COPY . .
 RUN npm run build
 
-FROM node:22-slim AS runtime
+FROM node:25-slim AS runtime
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 HOSTNAME=0.0.0.0 PORT=3000
 WORKDIR /app
 COPY --from=builder --chown=node:node /app/.next/standalone ./
