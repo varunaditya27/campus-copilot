@@ -1,3 +1,4 @@
+import { withSerwist } from "@serwist/turbopack";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -15,8 +16,13 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },
+      // The service worker script must always be checked afresh, or a new version would not reach people.
+      {
+        source: "/serwist/:path*",
+        headers: [{ key: "Cache-Control", value: "no-cache, no-store, must-revalidate" }],
+      },
     ];
   },
 };
 
-export default nextConfig;
+export default withSerwist(nextConfig);

@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import { SerwistProvider } from "@serwist/turbopack/react";
+import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk } from "next/font/google";
 import AuthProvider from "./components/auth/AuthProvider";
 import Header from "./components/layout/Header";
@@ -15,6 +16,10 @@ export const metadata: Metadata = {
     "An agentic campus assistant — grounded answers, live tools, and human-confirmed actions.",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#ecebe7",
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -22,10 +27,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${hanken.variable} antialiased`}
     >
       <body className="flex min-h-dvh flex-col">
-        <AuthProvider>
-          <Header />
-          <div className="flex min-h-0 flex-1 flex-col">{children}</div>
-        </AuthProvider>
+        <SerwistProvider
+          swUrl="/serwist/sw.js"
+          disable={process.env.NODE_ENV === "development"}
+        >
+          <AuthProvider>
+            <Header />
+            <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+          </AuthProvider>
+        </SerwistProvider>
       </body>
     </html>
   );
