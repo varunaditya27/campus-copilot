@@ -1,47 +1,60 @@
-# Contributing to Campus Copilot
+<div align="center">
 
-Thanks for taking an interest in the project. Campus Copilot is a workshop artifact first and a production system second — contributions are welcome, but should keep that goal in mind.
+# Contributing
 
-## Before You Start
+How to propose a change to Campus Copilot.
 
-For anything beyond a small fix (typo, dead link, obvious bug), open an issue first to discuss the direction. This project deliberately keeps its scope small — see the [Future Extensions](README.md#-future-extensions) section of the root README for ideas that are intentionally *out* of scope for now.
+</div>
 
-## What a Good Contribution Looks Like
+Thanks for taking an interest. Campus Copilot is a learning project and a reference implementation first, so contributions that keep it small and understandable are the most welcome.
 
-A useful contribution should improve one of the following:
+## Before you start
 
-- User experience
-- Retrieval quality
-- Agent reliability
-- Tool design
-- Campus knowledge coverage
-- Error handling
-- Developer experience
-- Documentation
+For anything beyond a small fix (a typo, a dead link, an obvious bug), open an issue first to talk about the direction. The scope is kept small on purpose. The [roadmap](TODO.md) records what is done, what was decided against, and what is deferred.
 
-## Where Things Live
+## What a good contribution improves
 
-The project is split into four independently-documented pieces. Read the relevant one before changing it:
+- the experience of a student or an admin;
+- retrieval quality or agent reliability;
+- the design of a tool;
+- the coverage of the campus documents;
+- error handling and developer experience;
+- the documentation.
 
-- [`frontend/README.md`](frontend/README.md) — Next.js UI, design system, component layout.
-- [`backend/README.md`](backend/README.md) — FastAPI service, RAG pipeline, agent loop, tools.
-- [`knowledge/README.md`](knowledge/README.md) — the campus knowledge corpus (RAG source).
-- [`data/README.md`](data/README.md) — structured application data (events, students, registrations).
+## Where things live
 
-## Ground Rules
+Each part has its own document. Read the one for the part you are changing.
 
-- **Keep the system understandable.** Every component should have one obvious responsibility — see [Design Principles](README.md#-design-principles) in the root README.
-- **Don't overbuild.** This project prefers a small, well-understood tool set over a large one. If you're adding a new tool the model can call, think about whether it needs the same human-confirmation treatment as `register_for_event` (see [Human-in-the-Loop](README.md#-human-in-the-loop)).
-- **Keep the demo corpus fictional.** Documents in `knowledge/` and records in `data/` must stay clearly fictionalized workshop data — no real institution names, no real people, no real contact details.
-- **Update docs alongside code.** If a change affects setup, the API contract, or the corpus structure, update the relevant README in the same change.
+- [Architecture](docs/architecture.md): how the parts fit together.
+- [Backend](backend/README.md): the API, the agent, retrieval, tools, security and settings.
+- [Frontend](frontend/README.md): the screens, the design system and offline behaviour.
+- [Knowledge](knowledge/README.md): the campus documents the assistant reads.
+- [Data](data/README.md): the structured sample data.
+- [Glossary](docs/glossary.md): technical terms in plain words.
 
-## Submitting a Change
+## Ground rules
 
-1. Fork the repository and create a branch for your change.
-2. Make the change, keeping it scoped to one concern.
-3. Update the relevant README(s) if behavior, setup, or structure changed.
-4. Open a pull request describing what changed and why.
+- Keep each part to one job. See the [principles](README.md#principles).
+- Do not overbuild. A small, well-understood set of tools is preferred to a large one. If you add something the model can ask for that changes data, it must wait for the student's approval, like the existing actions (see [actions need a yes](docs/architecture.md#actions-need-a-yes)).
+- Keep the sample data fictional. Documents in `knowledge/` and records in `data/` must not name a real institution, a real person or a real contact detail.
+- Update the documents in the same change. If setup, the API or the corpus structure changes, change the matching document. A new technical term goes in the glossary.
+- Draw diagrams as SVG files in `docs/diagrams/`, not as Mermaid or as text drawings.
 
-## Reporting Issues
+## Before you open a pull request
 
-When filing an issue, include what you expected, what happened instead, and enough detail (steps, environment, relevant logs) for someone else to reproduce it.
+```bash
+make test
+```
+
+This runs the backend tests and the frontend type check, lint and tests. The same checks run on every pull request.
+
+## Submitting a change
+
+1. Fork the repository and make a branch.
+2. Make the change, keeping it to one concern.
+3. Update the documents if behaviour, setup or structure changed.
+4. Open a pull request that says what changed and why.
+
+## Reporting an issue
+
+Say what you expected, what happened instead, and give enough detail (steps, environment, relevant logs) for someone else to reproduce it.
