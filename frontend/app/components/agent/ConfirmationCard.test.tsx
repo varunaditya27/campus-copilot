@@ -49,6 +49,19 @@ describe("the confirmation card", () => {
     expect(screen.queryByRole("button", { name: "Confirm" })).not.toBeInTheDocument();
   });
 
+  it("offers to add events to a calendar after a registration, but not after other actions", async () => {
+    mocks.confirmAction.mockResolvedValue(outcome());
+    const { unmount } = render(<ConfirmationCard confirmation={confirmation} />);
+    await userEvent.click(screen.getByRole("button", { name: "Confirm" }));
+    expect(await screen.findByRole("button", { name: "Add my events to calendar" })).toBeInTheDocument();
+    unmount();
+
+    render(<ConfirmationCard confirmation={{ ...confirmation, action: "cancel_registration" }} />);
+    await userEvent.click(screen.getByRole("button", { name: "Confirm" }));
+    await screen.findByText("You're registered for AI Workshop.");
+    expect(screen.queryByRole("button", { name: "Add my events to calendar" })).not.toBeInTheDocument();
+  });
+
   it("explains a refusal in the server's own words", async () => {
     mocks.confirmAction.mockResolvedValue(outcome({ status: "failed", success: false, message: "This event is full", details: {} }));
     render(<ConfirmationCard confirmation={confirmation} />);

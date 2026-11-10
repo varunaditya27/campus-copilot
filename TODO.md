@@ -296,9 +296,9 @@
 
 ### 6.3 Calendar Integration
 
-- [ ] Add `GET /students/me/calendar.ics` — export registered events as an `.ics` file (importable to Google Calendar, Apple Calendar)
-- [ ] Add "Add to Calendar" button in the frontend confirmation card and registration list
-- [ ] Add Google Calendar OAuth integration to directly push events into the student's Google Calendar (optional, HITL consent)
+- [x] Add `GET /api/students/me/calendar.ics` — export registered events as an `.ics` file (importable to Google Calendar, Apple Calendar); event times are read as Asia/Kolkata and the file carries that zone's definition
+- [x] Add "Add to Calendar" button in the frontend confirmation card and registration list (the button shows after a registration is confirmed and on the profile page, which is the closest thing to a registration list; there is no student-facing list of registrations)
+- ~~Add Google Calendar OAuth integration to directly push events into the student's Google Calendar (optional, HITL consent)~~ (deemed not required, decided 2026-11-10: the `.ics` file already works with Google Calendar)
 
 ### 6.4 Proactive Agent (Scheduled Tasks)
 

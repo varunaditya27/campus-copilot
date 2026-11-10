@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { ActionOutcome, Confirmation } from "@/lib/types";
 import { ApiError, cancelAction, confirmAction } from "@/lib/api";
 import { CheckIcon } from "../icons";
+import AddToCalendar from "../events/AddToCalendar";
 
 type Status = "idle" | "submitting" | "done" | "failed" | "cancelled" | "expired";
 
@@ -53,6 +54,11 @@ export default function ConfirmationCard({
               {label}: {value}
             </p>
           ))}
+          {confirmation.action === "register_for_event" && (
+            <div className="mt-3">
+              <AddToCalendar />
+            </div>
+          )}
         </div>
       </div>
     );

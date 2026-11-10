@@ -200,6 +200,13 @@ export function getEvent(id: string): Promise<CampusEvent> {
   return request<CampusEvent>(`/api/events/${id}`);
 }
 
+export async function downloadMyCalendar(): Promise<Blob> {
+  const path = "/api/students/me/calendar.ics";
+  const res = await send(path);
+  if (!res.ok) throw await toApiError(path, res);
+  return res.blob();
+}
+
 export function getProfile(): Promise<StudentProfile> {
   return request<StudentProfile>("/api/students/me/profile");
 }

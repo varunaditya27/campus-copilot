@@ -7,6 +7,7 @@ import type { EventCategory, StudentProfile } from "@/lib/types";
 import RequireAuth from "../components/auth/RequireAuth";
 import StudentsOnly from "../components/auth/StudentsOnly";
 import { FormError } from "../components/auth/AuthForm";
+import AddToCalendar from "../components/events/AddToCalendar";
 
 export default function ProfilePage() {
   return (
@@ -134,6 +135,14 @@ function Profile() {
               )}
             </div>
           </form>
+
+          <section className="mt-10">
+            <h2 className="text-xl font-medium text-ink">Your events</h2>
+            <p className="mt-1 mb-4 text-small text-muted">
+              Download the events you registered for and import them into your calendar app.
+            </p>
+            <AddToCalendar />
+          </section>
         </>
       )}
       {!profile && <FormError message={error} />}
