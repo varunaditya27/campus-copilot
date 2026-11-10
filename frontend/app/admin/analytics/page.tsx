@@ -127,7 +127,11 @@ export default function AnalyticsPage() {
                   value={percent(data.rag.zero_context_rate)}
                   note={`${data.rag.zero_context_replies} of ${data.rag.replies}`}
                 />
-                <Stat label="Average distance / cache hits" value="—" note="Not recorded" />
+                <Stat
+                  label="Average best match score"
+                  value={data.rag.average_top_score === null ? "—" : data.rag.average_top_score.toFixed(2)}
+                  note="Higher is a closer match"
+                />
               </div>
               <p className="mt-4 text-small text-muted">{data.rag.notes}</p>
             </Panel>

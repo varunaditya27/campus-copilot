@@ -181,8 +181,7 @@ export interface Analytics {
     replies: number;
     zero_context_replies: number;
     zero_context_rate: number | null;
-    average_distance: number | null;
-    cache_hit_rate: number | null;
+    average_top_score: number | null;
     notes: string;
   };
 }

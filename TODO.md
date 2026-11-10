@@ -269,7 +269,8 @@
 - [x] Track: daily active users, messages per session, most-used tools, most-queried knowledge documents (a `usage_events` table of names and counts, not conversations; recorded from this version on)
 - [x] Build `/admin/analytics` page with charts: DAU graph, tool usage pie chart, top-10 queries word cloud (plain SVG; the cloud shows words, not whole queries, and only after two uses)
 - [x] Add agent performance metrics: average tool rounds per query, confirmation accept/reject rate (tool calls per reply, since rounds are not recorded)
-- [ ] Add RAG metrics: average retrieval distance, cache hit rate, queries that returned zero context (partly done: only the zero-context rate is measured; the reranker's score is not kept and there is no cache, so the other two show as not recorded)
+- [x] Add RAG metrics: average retrieval distance, queries that returned zero context (the distance is the reranker's best score per question, where higher is a closer match, shown as "average best match score"; it is only recorded from this version on)
+- ~~Add RAG metrics: cache hit rate~~ (deemed not required, decided 2026-11-10: there is no answer cache, and one could serve stale fees or timetables)
 
 ---
 
