@@ -438,8 +438,8 @@
 - [x] Add `next-pwa` to the Next.js frontend (done with Serwist instead, which the Next.js documentation points to; `next-pwa` is not used)
 - [x] Configure service worker for offline caching of the shell, last conversation, and event list (the shell is precached; the events, who is signed in and the last conversation are kept in one cache that is cleared when a session ends or someone signs in; all other API answers are never kept)
 - [x] Add `manifest.json` with app name, icons, theme color (`app/manifest.ts`, with a maskable icon)
-- [ ] Add "Add to Home Screen" prompt for mobile browsers
-- [ ] Ensure the chat UI is fully responsive and thumb-friendly on 375px screens
+- [x] Add "Add to Home Screen" prompt for mobile browsers (an install button where the browser offers one, instructions on iPhone and iPad)
+- [x] Ensure the chat UI is fully responsive and thumb-friendly on 375px screens (checked in a browser on the sign-in, register, chat, events and profile pages: no sideways scrolling, buttons at least 44px tall)
 
 ---
 

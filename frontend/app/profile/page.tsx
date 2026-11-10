@@ -8,6 +8,7 @@ import RequireAuth from "../components/auth/RequireAuth";
 import StudentsOnly from "../components/auth/StudentsOnly";
 import { FormError } from "../components/auth/AuthForm";
 import AddToCalendar from "../components/events/AddToCalendar";
+import InstallPrompt from "../components/notifications/InstallPrompt";
 import NotificationSettings from "../components/notifications/NotificationSettings";
 
 export default function ProfilePage() {
@@ -146,6 +147,7 @@ function Profile() {
           </section>
 
           <NotificationSettings />
+          <InstallPrompt />
         </>
       )}
       {!profile && <FormError message={error} />}
