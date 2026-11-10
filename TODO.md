@@ -302,7 +302,7 @@
 
 ### 6.4 Proactive Agent (Scheduled Tasks)
 
-- [ ] Add Celery + Redis to `docker-compose.yml` for async task queue
+- [x] Add Celery + Redis to `docker-compose.yml` for async task queue (Redis was already there; added `celery-worker` and `celery-beat` to the development and production files)
 - [x] Scheduled task (daily, 8 AM): scan all upcoming registered events in the next 24 hours → send reminders (as push messages, since email was dropped; campus time, Asia/Kolkata; only students with a subscribed browser)
 - [x] Scheduled task (weekly): detect students with attendance below 75% → send proactive warning with tool-generated summary (Mondays at 9 AM, from the same attendance report the assistant uses, naming the two lowest courses)
 - [x] Scheduled task (on event capacity change): promote students from waitlist automatically (not a scheduled task: it happens at the moment a seat is freed by a cancellation, and now also when an admin raises an event's capacity, which was missing before)
@@ -369,7 +369,7 @@
 
 ### 9.1 Containerization
 
-- [ ] Write `docker-compose.yml` with services: `backend`, `frontend`, `postgres`, `redis`, `qdrant`, `celery-worker`, `celery-beat` (all but the two Celery services, which are left out on purpose because nothing in the app uses Celery yet; Qdrant is an optional profile; there is also a one-shot `ingest` service; started for real on Postgres)
+- [x] Write `docker-compose.yml` with services: `backend`, `frontend`, `postgres`, `redis`, `qdrant`, `celery-worker`, `celery-beat` (Qdrant is an optional profile; there is also a one-shot `ingest` service; the stack was started for real on Postgres before the Celery services were added; since then the files only pass `docker compose config`, and the worker and beat were run for real against Redis outside Docker, but the two new services were not started inside Docker)
 - [x] Write `backend/Dockerfile` (multi-stage: builder + slim runtime)
 - [x] Write `frontend/Dockerfile` (Next.js standalone build)
 - [x] Add `.dockerignore` files to both services (the backend's is `backend/Dockerfile.dockerignore`, because it builds from the repository root)

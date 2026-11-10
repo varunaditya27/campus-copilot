@@ -9,8 +9,8 @@
 # the first start into the model_cache volume. Optional extras: the vector stores below (profiles
 # chroma-server and qdrant) and the monitoring stack (profile monitoring).
 #
-# There are no celery-worker or celery-beat services: nothing in the application uses Celery yet
-# (notifications and background jobs are a later phase), so idle workers would only mislead.
+# celery-worker and celery-beat send the event reminders (every morning at 08:00) and the attendance
+# warnings (Mondays at 09:00), in Asia/Kolkata time. Run exactly one celery-beat: two would send every message twice.
 #
 # Run locally without Postgres: the backend falls back to a SQLite file when DATABASE_URL is not set.
 services:
@@ -45,6 +45,9 @@ services:
       SMTP_USER: ${SMTP_USER:-}
       SMTP_PASSWORD: ${SMTP_PASSWORD:-}
       SMTP_FROM: ${SMTP_FROM:-Campus Copilot <no-reply@campus.example>}
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
@@ -78,6 +81,38 @@ services:
       - campus_data:/var/lib/campus
       - model_cache:/home/app/.cache
     restart: "no"
+
+  # Background jobs. They use the backend's image but not its start-up script: the backend applies the
+  # database migrations, and these only read the data.
+  celery-worker:
+    image: ${IMAGE_PREFIX:-campus-copilot}-backend:${IMAGE_TAG:-local}
+    entrypoint: ["celery", "-A", "app.worker:celery_app", "worker", "--loglevel=info"]
+    environment: &background-jobs
+      DATABASE_URL: postgresql+psycopg://campus:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@postgres:5432/campus_copilot
+      REDIS_URL: redis://redis:6379/0
+      LOG_FORMAT: ${LOG_FORMAT:-json}
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-}
+    depends_on:
+      backend:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  celery-beat:
+    image: ${IMAGE_PREFIX:-campus-copilot}-backend:${IMAGE_TAG:-local}
+    entrypoint: ["celery", "-A", "app.worker:celery_app", "beat", "--loglevel=info", "--schedule", "/tmp/celerybeat-schedule"]
+    environment: *background-jobs
+    depends_on:
+      backend:
+        condition: service_started
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
 
   frontend:
     build:

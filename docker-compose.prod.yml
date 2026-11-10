@@ -4,6 +4,8 @@
 #   cp .env.example .env     # set DOMAIN, POSTGRES_PASSWORD, IMAGE_PREFIX
 #   mkdir -p secrets && openssl rand -hex 32 > secrets/jwt_secret && printf '%s' "$GROQ_KEY" > secrets/groq_api_key
 #   chmod 600 secrets/*   # the secrets folder is git-ignored
+#   # Optional, for web push notifications: run `make vapid-keys`, put the private key in secrets/vapid_private_key,
+#   # and set VAPID_PUBLIC_KEY, VAPID_SUBJECT and VAPID_PRIVATE_KEY_FILE=/secrets/vapid_private_key in .env.
 #   docker compose -f docker-compose.prod.yml pull
 #   docker compose -f docker-compose.prod.yml up -d
 #
@@ -55,6 +57,9 @@ services:
       SMTP_USER: ${SMTP_USER:-}
       SMTP_PASSWORD: ${SMTP_PASSWORD:-}
       SMTP_FROM: ${SMTP_FROM:-Campus Copilot <no-reply@campus.example>}
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_PRIVATE_KEY_FILE: ${VAPID_PRIVATE_KEY_FILE:-/dev/null}  # an empty file: push is switched off
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-}
     volumes:
       # ':z' lets SELinux hosts read the folder. The files must be readable by the container's user (uid 1000):
       # owned by uid 1000 with mode 600, or mode 644 if your user has another uid.
@@ -68,6 +73,40 @@ services:
         condition: service_healthy
       ingest:
         condition: service_completed_successfully
+    restart: unless-stopped
+
+  # Background jobs: event reminders every morning at 08:00 and attendance warnings on Mondays at 09:00 (Asia/Kolkata).
+  # Run exactly one celery-beat: two would send every message twice.
+  celery-worker:
+    image: ${IMAGE_PREFIX}-backend:${IMAGE_TAG:-latest}
+    entrypoint: ["celery", "-A", "app.worker:celery_app", "worker", "--loglevel=info"]
+    environment: &background-jobs
+      DATABASE_URL: postgresql+psycopg://campus:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@postgres:5432/campus_copilot
+      REDIS_URL: redis://redis:6379/0
+      ENVIRONMENT: production
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_PRIVATE_KEY_FILE: ${VAPID_PRIVATE_KEY_FILE:-/dev/null}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-}
+    volumes:
+      - ./secrets:/secrets:ro,z
+    depends_on:
+      backend:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  celery-beat:
+    image: ${IMAGE_PREFIX}-backend:${IMAGE_TAG:-latest}
+    entrypoint: ["celery", "-A", "app.worker:celery_app", "beat", "--loglevel=info", "--schedule", "/tmp/celerybeat-schedule"]
+    environment: *background-jobs
+    depends_on:
+      backend:
+        condition: service_started
+      redis:
+        condition: service_healthy
     restart: unless-stopped
 
   ingest:
