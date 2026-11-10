@@ -13,6 +13,8 @@ const mocks = vi.hoisted(() => ({
   registerAccount: vi.fn(),
   onSessionExpired: vi.fn(),
   replace: vi.fn(),
+  clearOfflineData: vi.fn(),
+  removePushSubscription: vi.fn(),
 }));
 vi.mock("@/lib/api", () => ({
   getCurrentUser: mocks.getCurrentUser,
@@ -21,6 +23,8 @@ vi.mock("@/lib/api", () => ({
   registerAccount: mocks.registerAccount,
   onSessionExpired: mocks.onSessionExpired,
 }));
+vi.mock("@/lib/offline", () => ({ clearOfflineData: mocks.clearOfflineData }));
+vi.mock("@/lib/push", () => ({ removePushSubscription: mocks.removePushSubscription }));
 vi.mock("next/navigation", () => ({ useRouter: () => ({ replace: mocks.replace }), usePathname: () => "/" }));
 
 const user = (role: CurrentUser["role"]): CurrentUser => ({
@@ -34,6 +38,48 @@ function Who() {
 }
 
 beforeEach(() => Object.values(mocks).forEach((m) => m.mockReset()));
+
+describe("what is kept for offline use", () => {
+  it("is cleared when the session expires", async () => {
+    mocks.getCurrentUser.mockResolvedValue(user("student"));
+    render(<AuthProvider><Who /></AuthProvider>);
+    await screen.findByText("signed in as Asha");
+    act(() => (mocks.onSessionExpired.mock.calls[0][0] as () => void)());
+    await screen.findByText("signedOut");
+    expect(mocks.clearOfflineData).toHaveBeenCalledTimes(1);
+  });
+
+  it("is cleared when someone signs in, so the previous person's data is not readable", async () => {
+    mocks.getCurrentUser.mockRejectedValue(new Error("401"));
+    mocks.login.mockResolvedValue(user("student"));
+    function Button() {
+      const { login } = useAuth();
+      return <button onClick={() => login({ email: "a@b.c", password: "pw" })}>in</button>;
+    }
+    render(<AuthProvider><Who /><Button /></AuthProvider>);
+    await screen.findByText("signedOut");
+    await userEvent.click(screen.getByText("in"));
+    expect(await screen.findByText("signed in as Asha")).toBeInTheDocument();
+    expect(mocks.clearOfflineData).toHaveBeenCalledTimes(1);
+  });
+
+  it("is cleared on sign-out, after the browser's push subscription is removed while still signed in", async () => {
+    mocks.getCurrentUser.mockResolvedValue(user("student"));
+    mocks.logout.mockResolvedValue(undefined);
+    function Button() {
+      const { logout } = useAuth();
+      return <button onClick={() => logout()}>out</button>;
+    }
+    render(<AuthProvider><Who /><Button /></AuthProvider>);
+    await screen.findByText("signed in as Asha");
+    await userEvent.click(screen.getByText("out"));
+    await screen.findByText("signedOut");
+
+    const order = (m: { mock: { invocationCallOrder: number[] } }) => m.mock.invocationCallOrder[0];
+    expect(order(mocks.removePushSubscription)).toBeLessThan(order(mocks.logout));
+    expect(order(mocks.logout)).toBeLessThan(order(mocks.clearOfflineData));
+  });
+});
 
 describe("the sign-in state", () => {
   it("asks the server who is signed in, because the cookies cannot be read by the page", async () => {

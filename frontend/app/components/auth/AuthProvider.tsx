@@ -15,6 +15,8 @@ import {
   onSessionExpired,
   registerAccount,
 } from "@/lib/api";
+import { clearOfflineData } from "@/lib/offline";
+import { removePushSubscription } from "@/lib/push";
 import type {
   CurrentUser,
   LoginRequest,
@@ -53,7 +55,10 @@ export default function AuthProvider({
   useEffect(() => {
     // The backend decides who is signed in (from HttpOnly cookies the page
     // cannot read), so ask it, and listen for the session ending later.
-    onSessionExpired(() => setState({ status: "signedOut" }));
+    onSessionExpired(() => {
+      void clearOfflineData();
+      setState({ status: "signedOut" });
+    });
     getCurrentUser().then(
       (user) => setState({ status: "signedIn", user }),
       () => setState({ status: "signedOut" }),
@@ -62,18 +67,24 @@ export default function AuthProvider({
   }, []);
 
   const login = useCallback(async (body: LoginRequest) => {
-    setState({ status: "signedIn", user: await loginRequest(body) });
+    const user = await loginRequest(body);
+    await clearOfflineData(); // nothing kept for the previous person may stay readable
+    setState({ status: "signedIn", user });
   }, []);
 
   const register = useCallback(async (body: RegisterAccountRequest) => {
-    setState({ status: "signedIn", user: await registerAccount(body) });
+    const user = await registerAccount(body);
+    await clearOfflineData();
+    setState({ status: "signedIn", user });
   }, []);
 
   const logout = useCallback(async () => {
+    await removePushSubscription(); // while still signed in, so the server can forget this browser
     try {
       await logoutRequest();
     } finally {
       // Even if the request failed, stop showing the user as signed in.
+      await clearOfflineData();
       setState({ status: "signedOut" });
     }
   }, []);
