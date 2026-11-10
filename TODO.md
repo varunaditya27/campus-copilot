@@ -292,7 +292,7 @@
 - [x] Add service worker to Next.js frontend for Web Push API (the same worker that does the offline caching)
 - [x] Store push subscription objects per student in the DB
 - [x] Add `POST /notifications/subscribe` to register a student's push subscription (as `/api/notifications/subscribe`, with `unsubscribe` and `public-key`; only the browsers' own push services are accepted as addresses)
-- [ ] Trigger push for: event reminders, registration confirmations, new events matching student interests, exam schedule updates
+- [x] Trigger push for: event reminders, registration confirmations, new events matching student interests, exam schedule updates (all but the exam schedule updates, because the app has no way to change the exam schedule; a student is also told when a waitlist seat opens for them)
 
 ### 6.3 Calendar Integration
 
@@ -303,10 +303,10 @@
 ### 6.4 Proactive Agent (Scheduled Tasks)
 
 - [ ] Add Celery + Redis to `docker-compose.yml` for async task queue
-- [ ] Scheduled task (daily, 8 AM): scan all upcoming registered events in the next 24 hours → send reminders
-- [ ] Scheduled task (weekly): detect students with attendance below 75% → send proactive warning with tool-generated summary
-- [ ] Scheduled task (on event capacity change): promote students from waitlist automatically
-- [ ] Scheduled task (on new event creation): match event category to student interests → send targeted notifications
+- [x] Scheduled task (daily, 8 AM): scan all upcoming registered events in the next 24 hours → send reminders (as push messages, since email was dropped; campus time, Asia/Kolkata; only students with a subscribed browser)
+- [x] Scheduled task (weekly): detect students with attendance below 75% → send proactive warning with tool-generated summary (Mondays at 9 AM, from the same attendance report the assistant uses, naming the two lowest courses)
+- [x] Scheduled task (on event capacity change): promote students from waitlist automatically (not a scheduled task: it happens at the moment a seat is freed by a cancellation, and now also when an admin raises an event's capacity, which was missing before)
+- [x] Scheduled task (on new event creation): match event category to student interests → send targeted notifications (sent right after the event is created, in the web app's background, not through Celery)
 
 ---
 
