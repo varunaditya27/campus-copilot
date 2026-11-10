@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>Campus Copilot app icon</title>
+  <rect width="512" height="512" rx="112" fill="#38450f"/>
+  <path d="M347.9 333.1 A120 120 0 1 1 347.9 178.9" fill="none" stroke="#ecebe7" stroke-width="56" stroke-linecap="round"/>
+  <circle cx="352" cy="256" r="28" fill="#ecebe7"/>
+</svg>
