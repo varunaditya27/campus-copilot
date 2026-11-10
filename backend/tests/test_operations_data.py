@@ -3,7 +3,7 @@ the rules the knowledge documents state."""
 import importlib.util
 import json
 from collections import Counter
-from datetime import date
+from datetime import date, datetime
 
 import pytest
 from sqlalchemy.orm import sessionmaker
@@ -99,6 +99,7 @@ def real(tmp_path, monkeypatch):
     factory = sessionmaker(engine, expire_on_commit=False)
     monkeypatch.setattr(db_session, "SessionLocal", factory)
     monkeypatch.setattr(clock, "today", lambda: date(2026, 10, 15))
+    monkeypatch.setattr(clock, "now", lambda: datetime(2026, 10, 15, 9, 0))
     with factory() as session:
         seed(session)
     yield
