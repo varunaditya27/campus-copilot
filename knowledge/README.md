@@ -1,101 +1,47 @@
 <div align="center">
 
-# 📚 Campus Copilot — Knowledge Corpus
+# Knowledge corpus
 
-### The Virtual University the Agent Is Grounded In
-
-**A markdown corpus simulating a complete engineering college — academics, administration, campus life, and policy — written so that retrieval quality reflects real source-document design, not toy data.**
-
-<br />
-
-[![Markdown](https://img.shields.io/badge/Markdown-000000?logo=markdown&logoColor=white)](https://www.markdownguide.org/)
-[![Chroma](https://img.shields.io/badge/Chroma-5B21B6?logoColor=white)](https://www.trychroma.com/)
-
-<br />
+Fictional campus documents, written the way a real college writes its own.
 
 </div>
 
 ---
 
-## ✨ What Lives Here
+## What Lives Here
 
 This is the retrieval source for [Campus Copilot](../README.md)'s RAG pipeline — the material the [backend](../backend/README.md) embeds into Chroma and the agent cites as `sources` when it answers a question. It is not application data: events, students, and registrations are structured JSON at the repo root and are queried through tools, not retrieval. This corpus is for the kind of knowledge that's genuinely document-shaped — policy, process, and "how does this place work" — the kind a real student would look up in a handbook rather than a database.
 
 ## Important
 
-The documents are **demonstration data for the workshop**. They are intentionally written the way a real university actually writes its own material — as documents that assume they're being read by a student or staff member, not by an AI system — so that retrieval and citation quality reflect a real deployment rather than a corpus written with the RAG pipeline in mind. No individual document says "this is fictional"; that's stated once, here: no document names a real institution, and any name-like detail (faculty names, committee names) is a clearly invented placeholder for a fictional university.
+The documents are demonstration data for Campus Copilot. They are intentionally written the way a real university actually writes its own material — as documents that assume they're being read by a student or staff member, not by an AI system — so that retrieval and citation quality reflect a real deployment rather than a corpus written with the RAG pipeline in mind. No individual document says "this is fictional"; that's stated once, here: no document names a real institution, and any name-like detail (faculty names, committee names) is a clearly invented placeholder for a fictional university.
 
 For a real deployment, replace these documents with verified institutional material and attach source metadata, publication dates, and document versions.
 
 ---
 
-## 🎓 Corpus Design
+## Corpus Design
 
-The corpus simulates a **complete virtual engineering university** rather than a handful of illustrative pages. The intent is to make retrieval meaningfully hard: many documents cover adjacent ground (a course grade dispute vs. a fee dispute vs. a ragging report all route through different committees), so the agent has to actually retrieve the right section, not just the right file.
+The corpus simulates a complete virtual engineering university rather than a handful of illustrative pages. The intent is to make retrieval meaningfully hard: many documents cover adjacent ground (a course grade dispute vs. a fee dispute vs. a ragging report all route through different committees), so the agent has to actually retrieve the right section, not just the right file.
 
-Documents are organized into five topical categories rather than one enormous handbook. This is a production principle, not just tidiness: retrieval quality depends heavily on the structure of the source material, and a single sprawling document produces vague, low-precision chunks no matter how good the embedding model is.
+Documents are organised into six topical folders rather than one enormous handbook. This is a production principle, not just tidiness: retrieval quality depends heavily on the structure of the source material, and a single sprawling document produces vague, low-precision chunks no matter how good the embedding model is.
 
-```text
-knowledge/
-├── academics/
-│   ├── curriculum-and-degree-structure.md
-│   ├── grading-and-backlogs.md
-│   ├── attendance-and-academic-standing.md
-│   ├── examinations-and-evaluation.md
-│   ├── academic-calendar.md
-│   └── academic-support.md
-│
-├── administration/
-│   ├── administration-and-governance.md
-│   ├── admissions-and-fee-structure.md
-│   └── placement-cell.md
-│
-├── campus/
-│   ├── faculty-and-departments-directory.md
-│   ├── departments-and-programs.md
-│   ├── labs-and-research-centres.md
-│   ├── library.md
-│   ├── facilities.md
-│   ├── hostel-and-accommodation.md
-│   ├── health-and-medical-centre.md
-│   ├── transportation-routes.md
-│   ├── dining-and-transport.md
-│   └── campus-services.md
-│
-├── student-life/
-│   ├── clubs-and-communities.md
-│   ├── fests-and-cultural-events.md
-│   ├── sports-and-recreation.md
-│   ├── research-and-projects.md
-│   ├── career-development.md
-│   ├── alumni-network.md
-│   ├── international-and-exchange-programs.md
-│   ├── scholarships-and-financial-support.md
-│   └── student-wellbeing.md
-│
-├── policies/
-│   ├── digital-conduct-and-computing.md
-│   ├── code-of-conduct-and-discipline.md
-│   └── anti-ragging-and-grievance-redressal.md
-│
-└── faq/
-    └── common-student-questions.md
-```
+There are six folders, each described below: `academics`, `administration`, `campus`, `student-life`, `policies` and `faq`. The documents in each are listed under Example Questions.
 
 ### Why This Split
 
-- **academics/** — how the degree itself works: curriculum, grading, attendance, exams, calendar, and support.
-- **administration/** — how the institution is run: governance structure, admissions/fees, placements. Distinct from `academics/` because these are institutional-process documents, not degree-content documents.
-- **campus/** — the physical and service layer: departments, faculty, labs, library, facilities, hostels, health, transport, and general campus services.
-- **student-life/** — everything outside the classroom: clubs, fests, sports, research culture, career growth, alumni, and international programs.
-- **policies/** — conduct and safety: computing conduct, the general code of conduct, and the dedicated anti-ragging/grievance path. Kept separate from `administration/` because these documents encode *behavioral* rules and escalation paths, not organizational structure.
-- **faq/** — a genuine student quick-answers page (duplicate ID cards, transcripts, timetable clashes, fee deadlines, grade appeals) — the kind of page a registrar's office actually publishes, not a page about the assistant.
+- academics/ — how the degree itself works: curriculum, grading, attendance, exams, calendar, and support.
+- administration/ — how the institution is run: governance structure, admissions/fees, placements. Distinct from `academics/` because these are institutional-process documents, not degree-content documents.
+- campus/ — the physical and service layer: departments, faculty, labs, library, facilities, hostels, health, transport, and general campus services.
+- student-life/ — everything outside the classroom: clubs, fests, sports, research culture, career growth, alumni, and international programs.
+- policies/ — conduct and safety: computing conduct, the general code of conduct, and the dedicated anti-ragging/grievance path. Kept separate from `administration/` because these documents encode *behavioral* rules and escalation paths, not organizational structure.
+- faq/ — a genuine student quick-answers page (duplicate ID cards, transcripts, timetable clashes, fee deadlines, grade appeals) — the kind of page a registrar's office actually publishes, not a page about the assistant.
 
 Several documents deliberately cross-reference each other by name rather than by link (a grade dispute in `grading-and-backlogs.md` points a student to the General Grievance Redressal Committee; a ragging report in `anti-ragging-and-grievance-redressal.md` is explicitly prioritized over a routine request) — this mirrors how a real handbook is never a flat list of independent facts, and how real institutional documents reference each other in prose ("see the Student Code of Conduct") rather than with hyperlinks.
 
 ---
 
-## 🔎 Retrieval Expectations
+## Retrieval Expectations
 
 The corpus should support questions that require:
 
@@ -295,7 +241,7 @@ The agent should cite the document names used to construct an answer wherever po
 
 ---
 
-## 🧩 Notes for Contributors
+## Notes for Contributors
 
 - Chunking follows the `##` and `###` headings and then caps each chunk at 256 tokens (see [`backend/app/rag/chunking.py`](../backend/app/rag/chunking.py)), and every chunk is prefixed with its document title and section path, so every section should stand reasonably well on its own — write section headers that would make sense as a citation label, not just as prose flow.
 - Write every document as if no AI system exists. No document should mention Campus Copilot, an assistant, an agent, RAG, retrieval, or "the corpus" — that's the whole point of this corpus: it should read exactly like material a real university would publish on its own, for its own students, independent of anything reading it later.
