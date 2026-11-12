@@ -17,7 +17,7 @@ openai==3.31.0
 qdrant-client==1.19.1
 structlog==26.1.0
 prometheus-fastapi-instrumentator==8.1.0
-sentry-sdk[fastapi]==2.72.0
+sentry-sdk[fastapi]==2.74.0
 opentelemetry-sdk==1.45.2
 opentelemetry-exporter-otlp-proto-http==1.45.2
 opentelemetry-instrumentation-fastapi==0.66b2
